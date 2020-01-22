@@ -21,12 +21,12 @@ If you want to run GhiDump in headless mode, import the repo as a project in Ecl
     /my/project/location myProjectName -import /marvellous/executables/dir -postScript GhiDump.java -scriptPath "/path/to/GhiDump/src"
 
 ## Output
-Exported Protocol Buffers in `GhiDumps` folder follow definitions in `proto` folders. There are five main exported .pb:
- - `symbols.pb` contains every symbol processed by Ghidra, with XREFS and much more
- - `functions.pb` contains every function encountered divided into basic blocks
- - `data.pb` contains every data reference and value in `.data` and `.bss` sections
- - `metadata.pb` contains metadata about the binary, e.g. architecture, name, etc..
- - `segments.pb` contains starting address, ending address and length in bytes of memory blocks
+Exported Protocol Buffers in `GhiDumps` folder follow definitions in `proto` folders. There's one big exported .pb with:
+ - `symbols` contains every symbol processed by Ghidra, with XREFS and much more
+ - `functions` contains every function encountered divided into basic blocks
+ - `data` contains every data reference and value in `.data` and `.bss` sections
+ - `metadata` contains metadata about the binary, e.g. architecture, name, etc..
+ - `segments` contains starting address, ending address and length in bytes of memory blocks
  
 ## Results
 This repository contains a tarball with exported protocol buffers based on `binaries-gnu.tar.gz`, that contains i386, x86_64 and arm64 binaries of GNU Utilities like binutils, coreutils, etc..
