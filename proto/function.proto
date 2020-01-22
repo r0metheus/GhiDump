@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package protoclasses;
+
+option java_outer_classname = "FunctionProto";
+
+message FunctionMessage{
+  string name = 1;
+  string entry_point = 2;
+  string decompiled = 3;
+
+  message ParameterMessage{
+    string name = 1;
+    string data_type = 2;
+    uint32 length = 3;
+    repeated string registers = 4;
+  }
+
+  message VariableMessage{
+    string name = 1;
+    string data_type = 2;
+    uint32 length = 3;
+    int32 stack_offset = 4;
+    repeated string registers = 5;
+  }
+
+  message BasicBlockMessage{
+    string starting_address = 1;
+    string ending_address = 2;
+    
+    message InstructionMessage{
+      string instruction = 1;
+      string mnemonic = 2;
+      uint32 ops_number = 3;
+      bool is_thumb = 4;
+      
+      message OperandMessage{
+        string name = 1;
+        
+        message OperandObject{
+            string name = 1;
+            string type = 2;
+        }
+        
+        message Reference{
+            string from_address = 1;
+            string to_address = 2;
+            string reference_type = 3;
+            bytes reference_value = 4;
+        }
+        
+        repeated Reference references = 2;
+        repeated OperandObject op_objects = 3;
+      }
+      
+      repeated OperandMessage operands = 5;
+    }
+
+    repeated InstructionMessage instructions = 3;
+  }
+
+  repeated ParameterMessage parameters = 4;
+  repeated VariableMessage variables = 5;
+  repeated BasicBlockMessage basic_blocks = 6;
+}
+
+message FunctionsList{
+    repeated FunctionMessage functions = 1;
+}

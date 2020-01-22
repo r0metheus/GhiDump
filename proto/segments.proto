@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package protoclasses;
+
+option java_outer_classname = "SegmentsProto";
+
+message SegmentMessage {
+  string name = 1;
+  string starting_address = 2;
+  string ending_address = 3;
+  uint32 length = 4;
+}
+
+message SegmentList {
+  repeated SegmentMessage segments = 1;
+}

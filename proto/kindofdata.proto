@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package protoclasses;
+
+option java_outer_classname = "KindOfData";
+
+enum Kind{
+    DEFINED = 0;
+    STRING = 1;
+    ARRAY = 2;
+    CONSTANT = 3;
+    DYNAMIC = 4;
+    POINTER = 5;
+    STRUCTURE = 6;
+    UNION = 7;
+    VOLATILE = 8;
+}

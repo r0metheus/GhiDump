@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package protoclasses;
+
+option java_outer_classname = "MetadataProto";
+
+message MetadataMessage {
+  string key = 1;
+  string value = 2;
+}
+
+message MetaList {
+  repeated MetadataMessage metadata = 1;
+}

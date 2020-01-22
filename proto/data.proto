@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package protoclasses;
+
+import "kindofdata.proto";
+
+option java_outer_classname = "DataProto";
+
+message DataMessage {
+  string address = 1;
+  string data_type = 2;
+  uint32 length = 3;
+  
+  repeated Kind kind = 4;
+  bytes value = 5;
+}
+
+message DataList {
+  repeated DataMessage data = 1;
+}

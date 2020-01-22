@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package protoclasses;
+
+import "metadata.proto";
+import "segments.proto";
+import "symbols.proto";
+import "data.proto";
+import "function.proto";
+
+option java_outer_classname = "GhiDumpProto";
+
+message GhiDumpMessage{
+    MetaList metadata = 1;
+    SegmentList segments = 2;
+    SymbolsList symbols = 3;
+    DataList data = 4;
+    FunctionsList functions = 5;
+}
