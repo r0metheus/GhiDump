@@ -29,7 +29,7 @@ Exported Protocol Buffers in `GhiDumps` folder follow definitions in `proto` fol
  - `segments` contains starting address, ending address and length in bytes of memory blocks
  
 ## Results
-This repository contains a tarball with exported protocol buffers based on `binaries-gnu.tar.gz`, that contains i386, x86_64 and arm64 binaries of GNU Utilities like binutils, coreutils, etc..
+This repository contains a tarball with exported protocol buffers based on amd64, i386, arm and win32 binaries of GNU Utilities like binutils, coreutils, etc..
 
 ## License
 [GPLv3](https://github.com/r0metheus/GhiDump/blob/master/LICENSE)
