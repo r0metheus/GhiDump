@@ -14,7 +14,7 @@ It was born primarily as a project for my degree course in Computer Engineering.
 5. Open the Script Manager and check the GhiDump script
 6. Find GhiDump shortcut in `Tools > GhiDump`
 
-GhiDumps are in `/home/$USER`
+GhiDumps are in `/home/$USER/GhiDumps` or `$GHIDRA_DIR/GhiDumps` depending on Ghidra directory.
 
 If you want to run GhiDump in headless mode, import the repo as a project in Eclipse, edit run configuration and make sure you insert the arguments such as
 
