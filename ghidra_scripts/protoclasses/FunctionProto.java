@@ -20,30 +20,36 @@ public final class FunctionProto {
 
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
     java.lang.String getName();
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
      * <code>string entry_point = 2;</code>
+     * @return The entryPoint.
      */
     java.lang.String getEntryPoint();
     /**
      * <code>string entry_point = 2;</code>
+     * @return The bytes for entryPoint.
      */
     com.google.protobuf.ByteString
         getEntryPointBytes();
 
     /**
      * <code>string decompiled = 3;</code>
+     * @return The decompiled.
      */
     java.lang.String getDecompiled();
     /**
      * <code>string decompiled = 3;</code>
+     * @return The bytes for decompiled.
      */
     com.google.protobuf.ByteString
         getDecompiledBytes();
@@ -142,6 +148,13 @@ public final class FunctionProto {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FunctionMessage();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -184,34 +197,34 @@ public final class FunctionProto {
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 parameters_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.ParameterMessage>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000001;
               }
               parameters_.add(
                   input.readMessage(protoclasses.FunctionProto.FunctionMessage.ParameterMessage.parser(), extensionRegistry));
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 variables_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.VariableMessage>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000002;
               }
               variables_.add(
                   input.readMessage(protoclasses.FunctionProto.FunctionMessage.VariableMessage.parser(), extensionRegistry));
               break;
             }
             case 50: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                 basicBlocks_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000004;
               }
               basicBlocks_.add(
                   input.readMessage(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.parser(), extensionRegistry));
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -225,13 +238,13 @@ public final class FunctionProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           parameters_ = java.util.Collections.unmodifiableList(parameters_);
         }
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
           variables_ = java.util.Collections.unmodifiableList(variables_);
         }
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
           basicBlocks_ = java.util.Collections.unmodifiableList(basicBlocks_);
         }
         this.unknownFields = unknownFields.build();
@@ -257,44 +270,55 @@ public final class FunctionProto {
 
       /**
        * <code>string name = 1;</code>
+       * @return The name.
        */
       java.lang.String getName();
       /**
        * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
       com.google.protobuf.ByteString
           getNameBytes();
 
       /**
        * <code>string data_type = 2;</code>
+       * @return The dataType.
        */
       java.lang.String getDataType();
       /**
        * <code>string data_type = 2;</code>
+       * @return The bytes for dataType.
        */
       com.google.protobuf.ByteString
           getDataTypeBytes();
 
       /**
        * <code>uint32 length = 3;</code>
+       * @return The length.
        */
       int getLength();
 
       /**
        * <code>repeated string registers = 4;</code>
+       * @return A list containing the registers.
        */
       java.util.List<java.lang.String>
           getRegistersList();
       /**
        * <code>repeated string registers = 4;</code>
+       * @return The count of registers.
        */
       int getRegistersCount();
       /**
        * <code>repeated string registers = 4;</code>
+       * @param index The index of the element to return.
+       * @return The registers at the given index.
        */
       java.lang.String getRegisters(int index);
       /**
        * <code>repeated string registers = 4;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the registers at the given index.
        */
       com.google.protobuf.ByteString
           getRegistersBytes(int index);
@@ -314,8 +338,14 @@ public final class FunctionProto {
       private ParameterMessage() {
         name_ = "";
         dataType_ = "";
-        length_ = 0;
         registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new ParameterMessage();
       }
 
       @java.lang.Override
@@ -361,15 +391,15 @@ public final class FunctionProto {
               }
               case 34: {
                 java.lang.String s = input.readStringRequireUtf8();
-                if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                   registers_ = new com.google.protobuf.LazyStringArrayList();
-                  mutable_bitField0_ |= 0x00000008;
+                  mutable_bitField0_ |= 0x00000001;
                 }
                 registers_.add(s);
                 break;
               }
               default: {
-                if (!parseUnknownFieldProto3(
+                if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
@@ -383,7 +413,7 @@ public final class FunctionProto {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((mutable_bitField0_ & 0x00000001) != 0)) {
             registers_ = registers_.getUnmodifiableView();
           }
           this.unknownFields = unknownFields.build();
@@ -403,11 +433,11 @@ public final class FunctionProto {
                 protoclasses.FunctionProto.FunctionMessage.ParameterMessage.class, protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder.class);
       }
 
-      private int bitField0_;
       public static final int NAME_FIELD_NUMBER = 1;
       private volatile java.lang.Object name_;
       /**
        * <code>string name = 1;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -423,6 +453,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -442,6 +473,7 @@ public final class FunctionProto {
       private volatile java.lang.Object dataType_;
       /**
        * <code>string data_type = 2;</code>
+       * @return The dataType.
        */
       public java.lang.String getDataType() {
         java.lang.Object ref = dataType_;
@@ -457,6 +489,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string data_type = 2;</code>
+       * @return The bytes for dataType.
        */
       public com.google.protobuf.ByteString
           getDataTypeBytes() {
@@ -476,6 +509,7 @@ public final class FunctionProto {
       private int length_;
       /**
        * <code>uint32 length = 3;</code>
+       * @return The length.
        */
       public int getLength() {
         return length_;
@@ -485,6 +519,7 @@ public final class FunctionProto {
       private com.google.protobuf.LazyStringList registers_;
       /**
        * <code>repeated string registers = 4;</code>
+       * @return A list containing the registers.
        */
       public com.google.protobuf.ProtocolStringList
           getRegistersList() {
@@ -492,18 +527,23 @@ public final class FunctionProto {
       }
       /**
        * <code>repeated string registers = 4;</code>
+       * @return The count of registers.
        */
       public int getRegistersCount() {
         return registers_.size();
       }
       /**
        * <code>repeated string registers = 4;</code>
+       * @param index The index of the element to return.
+       * @return The registers at the given index.
        */
       public java.lang.String getRegisters(int index) {
         return registers_.get(index);
       }
       /**
        * <code>repeated string registers = 4;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the registers at the given index.
        */
       public com.google.protobuf.ByteString
           getRegistersBytes(int index) {
@@ -578,17 +618,16 @@ public final class FunctionProto {
         }
         protoclasses.FunctionProto.FunctionMessage.ParameterMessage other = (protoclasses.FunctionProto.FunctionMessage.ParameterMessage) obj;
 
-        boolean result = true;
-        result = result && getName()
-            .equals(other.getName());
-        result = result && getDataType()
-            .equals(other.getDataType());
-        result = result && (getLength()
-            == other.getLength());
-        result = result && getRegistersList()
-            .equals(other.getRegistersList());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
+        if (!getName()
+            .equals(other.getName())) return false;
+        if (!getDataType()
+            .equals(other.getDataType())) return false;
+        if (getLength()
+            != other.getLength()) return false;
+        if (!getRegistersList()
+            .equals(other.getRegistersList())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
       @java.lang.Override
@@ -748,7 +787,7 @@ public final class FunctionProto {
           length_ = 0;
 
           registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000001);
           return this;
         }
 
@@ -776,51 +815,49 @@ public final class FunctionProto {
         public protoclasses.FunctionProto.FunctionMessage.ParameterMessage buildPartial() {
           protoclasses.FunctionProto.FunctionMessage.ParameterMessage result = new protoclasses.FunctionProto.FunctionMessage.ParameterMessage(this);
           int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
           result.name_ = name_;
           result.dataType_ = dataType_;
           result.length_ = length_;
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             registers_ = registers_.getUnmodifiableView();
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.registers_ = registers_;
-          result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
         }
 
         @java.lang.Override
         public Builder clone() {
-          return (Builder) super.clone();
+          return super.clone();
         }
         @java.lang.Override
         public Builder setField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.setField(field, value);
+          return super.setField(field, value);
         }
         @java.lang.Override
         public Builder clearField(
             com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
+          return super.clearField(field);
         }
         @java.lang.Override
         public Builder clearOneof(
             com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
+          return super.clearOneof(oneof);
         }
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
+          return super.setRepeatedField(field, index, value);
         }
         @java.lang.Override
         public Builder addRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
+          return super.addRepeatedField(field, value);
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -848,7 +885,7 @@ public final class FunctionProto {
           if (!other.registers_.isEmpty()) {
             if (registers_.isEmpty()) {
               registers_ = other.registers_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureRegistersIsMutable();
               registers_.addAll(other.registers_);
@@ -888,6 +925,7 @@ public final class FunctionProto {
         private java.lang.Object name_ = "";
         /**
          * <code>string name = 1;</code>
+         * @return The name.
          */
         public java.lang.String getName() {
           java.lang.Object ref = name_;
@@ -903,6 +941,7 @@ public final class FunctionProto {
         }
         /**
          * <code>string name = 1;</code>
+         * @return The bytes for name.
          */
         public com.google.protobuf.ByteString
             getNameBytes() {
@@ -919,6 +958,8 @@ public final class FunctionProto {
         }
         /**
          * <code>string name = 1;</code>
+         * @param value The name to set.
+         * @return This builder for chaining.
          */
         public Builder setName(
             java.lang.String value) {
@@ -932,6 +973,7 @@ public final class FunctionProto {
         }
         /**
          * <code>string name = 1;</code>
+         * @return This builder for chaining.
          */
         public Builder clearName() {
           
@@ -941,6 +983,8 @@ public final class FunctionProto {
         }
         /**
          * <code>string name = 1;</code>
+         * @param value The bytes for name to set.
+         * @return This builder for chaining.
          */
         public Builder setNameBytes(
             com.google.protobuf.ByteString value) {
@@ -957,6 +1001,7 @@ public final class FunctionProto {
         private java.lang.Object dataType_ = "";
         /**
          * <code>string data_type = 2;</code>
+         * @return The dataType.
          */
         public java.lang.String getDataType() {
           java.lang.Object ref = dataType_;
@@ -972,6 +1017,7 @@ public final class FunctionProto {
         }
         /**
          * <code>string data_type = 2;</code>
+         * @return The bytes for dataType.
          */
         public com.google.protobuf.ByteString
             getDataTypeBytes() {
@@ -988,6 +1034,8 @@ public final class FunctionProto {
         }
         /**
          * <code>string data_type = 2;</code>
+         * @param value The dataType to set.
+         * @return This builder for chaining.
          */
         public Builder setDataType(
             java.lang.String value) {
@@ -1001,6 +1049,7 @@ public final class FunctionProto {
         }
         /**
          * <code>string data_type = 2;</code>
+         * @return This builder for chaining.
          */
         public Builder clearDataType() {
           
@@ -1010,6 +1059,8 @@ public final class FunctionProto {
         }
         /**
          * <code>string data_type = 2;</code>
+         * @param value The bytes for dataType to set.
+         * @return This builder for chaining.
          */
         public Builder setDataTypeBytes(
             com.google.protobuf.ByteString value) {
@@ -1026,12 +1077,15 @@ public final class FunctionProto {
         private int length_ ;
         /**
          * <code>uint32 length = 3;</code>
+         * @return The length.
          */
         public int getLength() {
           return length_;
         }
         /**
          * <code>uint32 length = 3;</code>
+         * @param value The length to set.
+         * @return This builder for chaining.
          */
         public Builder setLength(int value) {
           
@@ -1041,6 +1095,7 @@ public final class FunctionProto {
         }
         /**
          * <code>uint32 length = 3;</code>
+         * @return This builder for chaining.
          */
         public Builder clearLength() {
           
@@ -1051,13 +1106,14 @@ public final class FunctionProto {
 
         private com.google.protobuf.LazyStringList registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         private void ensureRegistersIsMutable() {
-          if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (!((bitField0_ & 0x00000001) != 0)) {
             registers_ = new com.google.protobuf.LazyStringArrayList(registers_);
-            bitField0_ |= 0x00000008;
+            bitField0_ |= 0x00000001;
            }
         }
         /**
          * <code>repeated string registers = 4;</code>
+         * @return A list containing the registers.
          */
         public com.google.protobuf.ProtocolStringList
             getRegistersList() {
@@ -1065,18 +1121,23 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 4;</code>
+         * @return The count of registers.
          */
         public int getRegistersCount() {
           return registers_.size();
         }
         /**
          * <code>repeated string registers = 4;</code>
+         * @param index The index of the element to return.
+         * @return The registers at the given index.
          */
         public java.lang.String getRegisters(int index) {
           return registers_.get(index);
         }
         /**
          * <code>repeated string registers = 4;</code>
+         * @param index The index of the value to return.
+         * @return The bytes of the registers at the given index.
          */
         public com.google.protobuf.ByteString
             getRegistersBytes(int index) {
@@ -1084,6 +1145,9 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 4;</code>
+         * @param index The index to set the value at.
+         * @param value The registers to set.
+         * @return This builder for chaining.
          */
         public Builder setRegisters(
             int index, java.lang.String value) {
@@ -1097,6 +1161,8 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 4;</code>
+         * @param value The registers to add.
+         * @return This builder for chaining.
          */
         public Builder addRegisters(
             java.lang.String value) {
@@ -1110,6 +1176,8 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 4;</code>
+         * @param values The registers to add.
+         * @return This builder for chaining.
          */
         public Builder addAllRegisters(
             java.lang.Iterable<java.lang.String> values) {
@@ -1121,15 +1189,18 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 4;</code>
+         * @return This builder for chaining.
          */
         public Builder clearRegisters() {
           registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
           return this;
         }
         /**
          * <code>repeated string registers = 4;</code>
+         * @param value The bytes of the registers to add.
+         * @return This builder for chaining.
          */
         public Builder addRegistersBytes(
             com.google.protobuf.ByteString value) {
@@ -1145,7 +1216,7 @@ public final class FunctionProto {
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return super.setUnknownFields(unknownFields);
         }
 
         @java.lang.Override
@@ -1201,49 +1272,61 @@ public final class FunctionProto {
 
       /**
        * <code>string name = 1;</code>
+       * @return The name.
        */
       java.lang.String getName();
       /**
        * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
       com.google.protobuf.ByteString
           getNameBytes();
 
       /**
        * <code>string data_type = 2;</code>
+       * @return The dataType.
        */
       java.lang.String getDataType();
       /**
        * <code>string data_type = 2;</code>
+       * @return The bytes for dataType.
        */
       com.google.protobuf.ByteString
           getDataTypeBytes();
 
       /**
        * <code>uint32 length = 3;</code>
+       * @return The length.
        */
       int getLength();
 
       /**
        * <code>int32 stack_offset = 4;</code>
+       * @return The stackOffset.
        */
       int getStackOffset();
 
       /**
        * <code>repeated string registers = 5;</code>
+       * @return A list containing the registers.
        */
       java.util.List<java.lang.String>
           getRegistersList();
       /**
        * <code>repeated string registers = 5;</code>
+       * @return The count of registers.
        */
       int getRegistersCount();
       /**
        * <code>repeated string registers = 5;</code>
+       * @param index The index of the element to return.
+       * @return The registers at the given index.
        */
       java.lang.String getRegisters(int index);
       /**
        * <code>repeated string registers = 5;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the registers at the given index.
        */
       com.google.protobuf.ByteString
           getRegistersBytes(int index);
@@ -1263,9 +1346,14 @@ public final class FunctionProto {
       private VariableMessage() {
         name_ = "";
         dataType_ = "";
-        length_ = 0;
-        stackOffset_ = 0;
         registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new VariableMessage();
       }
 
       @java.lang.Override
@@ -1316,15 +1404,15 @@ public final class FunctionProto {
               }
               case 42: {
                 java.lang.String s = input.readStringRequireUtf8();
-                if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                   registers_ = new com.google.protobuf.LazyStringArrayList();
-                  mutable_bitField0_ |= 0x00000010;
+                  mutable_bitField0_ |= 0x00000001;
                 }
                 registers_.add(s);
                 break;
               }
               default: {
-                if (!parseUnknownFieldProto3(
+                if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
@@ -1338,7 +1426,7 @@ public final class FunctionProto {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((mutable_bitField0_ & 0x00000001) != 0)) {
             registers_ = registers_.getUnmodifiableView();
           }
           this.unknownFields = unknownFields.build();
@@ -1358,11 +1446,11 @@ public final class FunctionProto {
                 protoclasses.FunctionProto.FunctionMessage.VariableMessage.class, protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder.class);
       }
 
-      private int bitField0_;
       public static final int NAME_FIELD_NUMBER = 1;
       private volatile java.lang.Object name_;
       /**
        * <code>string name = 1;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -1378,6 +1466,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -1397,6 +1486,7 @@ public final class FunctionProto {
       private volatile java.lang.Object dataType_;
       /**
        * <code>string data_type = 2;</code>
+       * @return The dataType.
        */
       public java.lang.String getDataType() {
         java.lang.Object ref = dataType_;
@@ -1412,6 +1502,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string data_type = 2;</code>
+       * @return The bytes for dataType.
        */
       public com.google.protobuf.ByteString
           getDataTypeBytes() {
@@ -1431,6 +1522,7 @@ public final class FunctionProto {
       private int length_;
       /**
        * <code>uint32 length = 3;</code>
+       * @return The length.
        */
       public int getLength() {
         return length_;
@@ -1440,6 +1532,7 @@ public final class FunctionProto {
       private int stackOffset_;
       /**
        * <code>int32 stack_offset = 4;</code>
+       * @return The stackOffset.
        */
       public int getStackOffset() {
         return stackOffset_;
@@ -1449,6 +1542,7 @@ public final class FunctionProto {
       private com.google.protobuf.LazyStringList registers_;
       /**
        * <code>repeated string registers = 5;</code>
+       * @return A list containing the registers.
        */
       public com.google.protobuf.ProtocolStringList
           getRegistersList() {
@@ -1456,18 +1550,23 @@ public final class FunctionProto {
       }
       /**
        * <code>repeated string registers = 5;</code>
+       * @return The count of registers.
        */
       public int getRegistersCount() {
         return registers_.size();
       }
       /**
        * <code>repeated string registers = 5;</code>
+       * @param index The index of the element to return.
+       * @return The registers at the given index.
        */
       public java.lang.String getRegisters(int index) {
         return registers_.get(index);
       }
       /**
        * <code>repeated string registers = 5;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the registers at the given index.
        */
       public com.google.protobuf.ByteString
           getRegistersBytes(int index) {
@@ -1549,19 +1648,18 @@ public final class FunctionProto {
         }
         protoclasses.FunctionProto.FunctionMessage.VariableMessage other = (protoclasses.FunctionProto.FunctionMessage.VariableMessage) obj;
 
-        boolean result = true;
-        result = result && getName()
-            .equals(other.getName());
-        result = result && getDataType()
-            .equals(other.getDataType());
-        result = result && (getLength()
-            == other.getLength());
-        result = result && (getStackOffset()
-            == other.getStackOffset());
-        result = result && getRegistersList()
-            .equals(other.getRegistersList());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
+        if (!getName()
+            .equals(other.getName())) return false;
+        if (!getDataType()
+            .equals(other.getDataType())) return false;
+        if (getLength()
+            != other.getLength()) return false;
+        if (getStackOffset()
+            != other.getStackOffset()) return false;
+        if (!getRegistersList()
+            .equals(other.getRegistersList())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
       @java.lang.Override
@@ -1725,7 +1823,7 @@ public final class FunctionProto {
           stackOffset_ = 0;
 
           registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000001);
           return this;
         }
 
@@ -1753,52 +1851,50 @@ public final class FunctionProto {
         public protoclasses.FunctionProto.FunctionMessage.VariableMessage buildPartial() {
           protoclasses.FunctionProto.FunctionMessage.VariableMessage result = new protoclasses.FunctionProto.FunctionMessage.VariableMessage(this);
           int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
           result.name_ = name_;
           result.dataType_ = dataType_;
           result.length_ = length_;
           result.stackOffset_ = stackOffset_;
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             registers_ = registers_.getUnmodifiableView();
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.registers_ = registers_;
-          result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
         }
 
         @java.lang.Override
         public Builder clone() {
-          return (Builder) super.clone();
+          return super.clone();
         }
         @java.lang.Override
         public Builder setField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.setField(field, value);
+          return super.setField(field, value);
         }
         @java.lang.Override
         public Builder clearField(
             com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
+          return super.clearField(field);
         }
         @java.lang.Override
         public Builder clearOneof(
             com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
+          return super.clearOneof(oneof);
         }
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
+          return super.setRepeatedField(field, index, value);
         }
         @java.lang.Override
         public Builder addRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
+          return super.addRepeatedField(field, value);
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1829,7 +1925,7 @@ public final class FunctionProto {
           if (!other.registers_.isEmpty()) {
             if (registers_.isEmpty()) {
               registers_ = other.registers_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureRegistersIsMutable();
               registers_.addAll(other.registers_);
@@ -1869,6 +1965,7 @@ public final class FunctionProto {
         private java.lang.Object name_ = "";
         /**
          * <code>string name = 1;</code>
+         * @return The name.
          */
         public java.lang.String getName() {
           java.lang.Object ref = name_;
@@ -1884,6 +1981,7 @@ public final class FunctionProto {
         }
         /**
          * <code>string name = 1;</code>
+         * @return The bytes for name.
          */
         public com.google.protobuf.ByteString
             getNameBytes() {
@@ -1900,6 +1998,8 @@ public final class FunctionProto {
         }
         /**
          * <code>string name = 1;</code>
+         * @param value The name to set.
+         * @return This builder for chaining.
          */
         public Builder setName(
             java.lang.String value) {
@@ -1913,6 +2013,7 @@ public final class FunctionProto {
         }
         /**
          * <code>string name = 1;</code>
+         * @return This builder for chaining.
          */
         public Builder clearName() {
           
@@ -1922,6 +2023,8 @@ public final class FunctionProto {
         }
         /**
          * <code>string name = 1;</code>
+         * @param value The bytes for name to set.
+         * @return This builder for chaining.
          */
         public Builder setNameBytes(
             com.google.protobuf.ByteString value) {
@@ -1938,6 +2041,7 @@ public final class FunctionProto {
         private java.lang.Object dataType_ = "";
         /**
          * <code>string data_type = 2;</code>
+         * @return The dataType.
          */
         public java.lang.String getDataType() {
           java.lang.Object ref = dataType_;
@@ -1953,6 +2057,7 @@ public final class FunctionProto {
         }
         /**
          * <code>string data_type = 2;</code>
+         * @return The bytes for dataType.
          */
         public com.google.protobuf.ByteString
             getDataTypeBytes() {
@@ -1969,6 +2074,8 @@ public final class FunctionProto {
         }
         /**
          * <code>string data_type = 2;</code>
+         * @param value The dataType to set.
+         * @return This builder for chaining.
          */
         public Builder setDataType(
             java.lang.String value) {
@@ -1982,6 +2089,7 @@ public final class FunctionProto {
         }
         /**
          * <code>string data_type = 2;</code>
+         * @return This builder for chaining.
          */
         public Builder clearDataType() {
           
@@ -1991,6 +2099,8 @@ public final class FunctionProto {
         }
         /**
          * <code>string data_type = 2;</code>
+         * @param value The bytes for dataType to set.
+         * @return This builder for chaining.
          */
         public Builder setDataTypeBytes(
             com.google.protobuf.ByteString value) {
@@ -2007,12 +2117,15 @@ public final class FunctionProto {
         private int length_ ;
         /**
          * <code>uint32 length = 3;</code>
+         * @return The length.
          */
         public int getLength() {
           return length_;
         }
         /**
          * <code>uint32 length = 3;</code>
+         * @param value The length to set.
+         * @return This builder for chaining.
          */
         public Builder setLength(int value) {
           
@@ -2022,6 +2135,7 @@ public final class FunctionProto {
         }
         /**
          * <code>uint32 length = 3;</code>
+         * @return This builder for chaining.
          */
         public Builder clearLength() {
           
@@ -2033,12 +2147,15 @@ public final class FunctionProto {
         private int stackOffset_ ;
         /**
          * <code>int32 stack_offset = 4;</code>
+         * @return The stackOffset.
          */
         public int getStackOffset() {
           return stackOffset_;
         }
         /**
          * <code>int32 stack_offset = 4;</code>
+         * @param value The stackOffset to set.
+         * @return This builder for chaining.
          */
         public Builder setStackOffset(int value) {
           
@@ -2048,6 +2165,7 @@ public final class FunctionProto {
         }
         /**
          * <code>int32 stack_offset = 4;</code>
+         * @return This builder for chaining.
          */
         public Builder clearStackOffset() {
           
@@ -2058,13 +2176,14 @@ public final class FunctionProto {
 
         private com.google.protobuf.LazyStringList registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         private void ensureRegistersIsMutable() {
-          if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (!((bitField0_ & 0x00000001) != 0)) {
             registers_ = new com.google.protobuf.LazyStringArrayList(registers_);
-            bitField0_ |= 0x00000010;
+            bitField0_ |= 0x00000001;
            }
         }
         /**
          * <code>repeated string registers = 5;</code>
+         * @return A list containing the registers.
          */
         public com.google.protobuf.ProtocolStringList
             getRegistersList() {
@@ -2072,18 +2191,23 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 5;</code>
+         * @return The count of registers.
          */
         public int getRegistersCount() {
           return registers_.size();
         }
         /**
          * <code>repeated string registers = 5;</code>
+         * @param index The index of the element to return.
+         * @return The registers at the given index.
          */
         public java.lang.String getRegisters(int index) {
           return registers_.get(index);
         }
         /**
          * <code>repeated string registers = 5;</code>
+         * @param index The index of the value to return.
+         * @return The bytes of the registers at the given index.
          */
         public com.google.protobuf.ByteString
             getRegistersBytes(int index) {
@@ -2091,6 +2215,9 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 5;</code>
+         * @param index The index to set the value at.
+         * @param value The registers to set.
+         * @return This builder for chaining.
          */
         public Builder setRegisters(
             int index, java.lang.String value) {
@@ -2104,6 +2231,8 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 5;</code>
+         * @param value The registers to add.
+         * @return This builder for chaining.
          */
         public Builder addRegisters(
             java.lang.String value) {
@@ -2117,6 +2246,8 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 5;</code>
+         * @param values The registers to add.
+         * @return This builder for chaining.
          */
         public Builder addAllRegisters(
             java.lang.Iterable<java.lang.String> values) {
@@ -2128,15 +2259,18 @@ public final class FunctionProto {
         }
         /**
          * <code>repeated string registers = 5;</code>
+         * @return This builder for chaining.
          */
         public Builder clearRegisters() {
           registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
           return this;
         }
         /**
          * <code>repeated string registers = 5;</code>
+         * @param value The bytes of the registers to add.
+         * @return This builder for chaining.
          */
         public Builder addRegistersBytes(
             com.google.protobuf.ByteString value) {
@@ -2152,7 +2286,7 @@ public final class FunctionProto {
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return super.setUnknownFields(unknownFields);
         }
 
         @java.lang.Override
@@ -2207,48 +2341,68 @@ public final class FunctionProto {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>string starting_address = 1;</code>
+       * <code>uint64 long_starting_address = 1;</code>
+       * @return The longStartingAddress.
        */
-      java.lang.String getStartingAddress();
-      /**
-       * <code>string starting_address = 1;</code>
-       */
-      com.google.protobuf.ByteString
-          getStartingAddressBytes();
+      long getLongStartingAddress();
 
       /**
-       * <code>string ending_address = 2;</code>
+       * <code>string symbolic_starting_address = 2;</code>
+       * @return The symbolicStartingAddress.
        */
-      java.lang.String getEndingAddress();
+      java.lang.String getSymbolicStartingAddress();
       /**
-       * <code>string ending_address = 2;</code>
+       * <code>string symbolic_starting_address = 2;</code>
+       * @return The bytes for symbolicStartingAddress.
        */
       com.google.protobuf.ByteString
-          getEndingAddressBytes();
+          getSymbolicStartingAddressBytes();
 
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>uint64 long_ending_address = 3;</code>
+       * @return The longEndingAddress.
+       */
+      long getLongEndingAddress();
+
+      /**
+       * <code>string symbolic_ending_address = 4;</code>
+       * @return The symbolicEndingAddress.
+       */
+      java.lang.String getSymbolicEndingAddress();
+      /**
+       * <code>string symbolic_ending_address = 4;</code>
+       * @return The bytes for symbolicEndingAddress.
+       */
+      com.google.protobuf.ByteString
+          getSymbolicEndingAddressBytes();
+
+      /**
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage> 
           getInstructionsList();
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage getInstructions(int index);
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       int getInstructionsCount();
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessageOrBuilder> 
           getInstructionsOrBuilderList();
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessageOrBuilder getInstructionsOrBuilder(
           int index);
+
+      public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.StartingAddressCase getStartingAddressCase();
+
+      public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.EndingAddressCase getEndingAddressCase();
     }
     /**
      * Protobuf type {@code protoclasses.FunctionMessage.BasicBlockMessage}
@@ -2263,9 +2417,14 @@ public final class FunctionProto {
         super(builder);
       }
       private BasicBlockMessage() {
-        startingAddress_ = "";
-        endingAddress_ = "";
         instructions_ = java.util.Collections.emptyList();
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new BasicBlockMessage();
       }
 
       @java.lang.Override
@@ -2292,29 +2451,39 @@ public final class FunctionProto {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                startingAddress_ = s;
+              case 8: {
+                startingAddressCase_ = 1;
+                startingAddress_ = input.readUInt64();
                 break;
               }
               case 18: {
                 java.lang.String s = input.readStringRequireUtf8();
-
+                startingAddressCase_ = 2;
+                startingAddress_ = s;
+                break;
+              }
+              case 24: {
+                endingAddressCase_ = 3;
+                endingAddress_ = input.readUInt64();
+                break;
+              }
+              case 34: {
+                java.lang.String s = input.readStringRequireUtf8();
+                endingAddressCase_ = 4;
                 endingAddress_ = s;
                 break;
               }
-              case 26: {
-                if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+              case 42: {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                   instructions_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage>();
-                  mutable_bitField0_ |= 0x00000004;
+                  mutable_bitField0_ |= 0x00000001;
                 }
                 instructions_.add(
                     input.readMessage(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.parser(), extensionRegistry));
                 break;
               }
               default: {
-                if (!parseUnknownFieldProto3(
+                if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
@@ -2328,7 +2497,7 @@ public final class FunctionProto {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((mutable_bitField0_ & 0x00000001) != 0)) {
             instructions_ = java.util.Collections.unmodifiableList(instructions_);
           }
           this.unknownFields = unknownFields.build();
@@ -2353,55 +2522,43 @@ public final class FunctionProto {
           com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>string instruction = 1;</code>
-         */
-        java.lang.String getInstruction();
-        /**
-         * <code>string instruction = 1;</code>
-         */
-        com.google.protobuf.ByteString
-            getInstructionBytes();
-
-        /**
-         * <code>string mnemonic = 2;</code>
+         * <code>string mnemonic = 1;</code>
+         * @return The mnemonic.
          */
         java.lang.String getMnemonic();
         /**
-         * <code>string mnemonic = 2;</code>
+         * <code>string mnemonic = 1;</code>
+         * @return The bytes for mnemonic.
          */
         com.google.protobuf.ByteString
             getMnemonicBytes();
 
         /**
-         * <code>uint32 ops_number = 3;</code>
-         */
-        int getOpsNumber();
-
-        /**
-         * <code>bool is_thumb = 4;</code>
+         * <code>bool is_thumb = 2;</code>
+         * @return The isThumb.
          */
         boolean getIsThumb();
 
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage> 
             getOperandsList();
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage getOperands(int index);
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         int getOperandsCount();
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessageOrBuilder> 
             getOperandsOrBuilderList();
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessageOrBuilder getOperandsOrBuilder(
             int index);
@@ -2419,11 +2576,15 @@ public final class FunctionProto {
           super(builder);
         }
         private InstructionMessage() {
-          instruction_ = "";
           mnemonic_ = "";
-          opsNumber_ = 0;
-          isThumb_ = false;
           operands_ = java.util.Collections.emptyList();
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new InstructionMessage();
         }
 
         @java.lang.Override
@@ -2453,36 +2614,25 @@ public final class FunctionProto {
                 case 10: {
                   java.lang.String s = input.readStringRequireUtf8();
 
-                  instruction_ = s;
-                  break;
-                }
-                case 18: {
-                  java.lang.String s = input.readStringRequireUtf8();
-
                   mnemonic_ = s;
                   break;
                 }
-                case 24: {
-
-                  opsNumber_ = input.readUInt32();
-                  break;
-                }
-                case 32: {
+                case 16: {
 
                   isThumb_ = input.readBool();
                   break;
                 }
-                case 42: {
-                  if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                case 26: {
+                  if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                     operands_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage>();
-                    mutable_bitField0_ |= 0x00000010;
+                    mutable_bitField0_ |= 0x00000001;
                   }
                   operands_.add(
                       input.readMessage(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.parser(), extensionRegistry));
                   break;
                 }
                 default: {
-                  if (!parseUnknownFieldProto3(
+                  if (!parseUnknownField(
                       input, unknownFields, extensionRegistry, tag)) {
                     done = true;
                   }
@@ -2496,7 +2646,7 @@ public final class FunctionProto {
             throw new com.google.protobuf.InvalidProtocolBufferException(
                 e).setUnfinishedMessage(this);
           } finally {
-            if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+            if (((mutable_bitField0_ & 0x00000001) != 0)) {
               operands_ = java.util.Collections.unmodifiableList(operands_);
             }
             this.unknownFields = unknownFields.build();
@@ -2522,37 +2672,32 @@ public final class FunctionProto {
 
           /**
            * <code>string name = 1;</code>
+           * @return The name.
            */
           java.lang.String getName();
           /**
            * <code>string name = 1;</code>
+           * @return The bytes for name.
            */
           com.google.protobuf.ByteString
               getNameBytes();
 
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+           * <code>repeated int32 reference_id = 2;</code>
+           * @return A list containing the referenceId.
            */
-          java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference> 
-              getReferencesList();
+          java.util.List<java.lang.Integer> getReferenceIdList();
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+           * <code>repeated int32 reference_id = 2;</code>
+           * @return The count of referenceId.
            */
-          protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference getReferences(int index);
+          int getReferenceIdCount();
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+           * <code>repeated int32 reference_id = 2;</code>
+           * @param index The index of the element to return.
+           * @return The referenceId at the given index.
            */
-          int getReferencesCount();
-          /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-           */
-          java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder> 
-              getReferencesOrBuilderList();
-          /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-           */
-          protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder getReferencesOrBuilder(
-              int index);
+          int getReferenceId(int index);
 
           /**
            * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject op_objects = 3;</code>
@@ -2592,8 +2737,15 @@ public final class FunctionProto {
           }
           private OperandMessage() {
             name_ = "";
-            references_ = java.util.Collections.emptyList();
+            referenceId_ = emptyIntList();
             opObjects_ = java.util.Collections.emptyList();
+          }
+
+          @java.lang.Override
+          @SuppressWarnings({"unused"})
+          protected java.lang.Object newInstance(
+              UnusedPrivateParameter unused) {
+            return new OperandMessage();
           }
 
           @java.lang.Override
@@ -2626,26 +2778,38 @@ public final class FunctionProto {
                     name_ = s;
                     break;
                   }
-                  case 18: {
-                    if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                      references_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference>();
-                      mutable_bitField0_ |= 0x00000002;
+                  case 16: {
+                    if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                      referenceId_ = newIntList();
+                      mutable_bitField0_ |= 0x00000001;
                     }
-                    references_.add(
-                        input.readMessage(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.parser(), extensionRegistry));
+                    referenceId_.addInt(input.readInt32());
+                    break;
+                  }
+                  case 18: {
+                    int length = input.readRawVarint32();
+                    int limit = input.pushLimit(length);
+                    if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+                      referenceId_ = newIntList();
+                      mutable_bitField0_ |= 0x00000001;
+                    }
+                    while (input.getBytesUntilLimit() > 0) {
+                      referenceId_.addInt(input.readInt32());
+                    }
+                    input.popLimit(limit);
                     break;
                   }
                   case 26: {
-                    if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                    if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                       opObjects_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject>();
-                      mutable_bitField0_ |= 0x00000004;
+                      mutable_bitField0_ |= 0x00000002;
                     }
                     opObjects_.add(
                         input.readMessage(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.parser(), extensionRegistry));
                     break;
                   }
                   default: {
-                    if (!parseUnknownFieldProto3(
+                    if (!parseUnknownField(
                         input, unknownFields, extensionRegistry, tag)) {
                       done = true;
                     }
@@ -2659,10 +2823,10 @@ public final class FunctionProto {
               throw new com.google.protobuf.InvalidProtocolBufferException(
                   e).setUnfinishedMessage(this);
             } finally {
-              if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                references_ = java.util.Collections.unmodifiableList(references_);
+              if (((mutable_bitField0_ & 0x00000001) != 0)) {
+                referenceId_.makeImmutable(); // C
               }
-              if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+              if (((mutable_bitField0_ & 0x00000002) != 0)) {
                 opObjects_ = java.util.Collections.unmodifiableList(opObjects_);
               }
               this.unknownFields = unknownFields.build();
@@ -2688,23 +2852,26 @@ public final class FunctionProto {
 
             /**
              * <code>string name = 1;</code>
+             * @return The name.
              */
             java.lang.String getName();
             /**
              * <code>string name = 1;</code>
+             * @return The bytes for name.
              */
             com.google.protobuf.ByteString
                 getNameBytes();
 
             /**
-             * <code>string type = 2;</code>
+             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+             * @return The enum numeric value on the wire for type.
              */
-            java.lang.String getType();
+            int getTypeValue();
             /**
-             * <code>string type = 2;</code>
+             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+             * @return The type.
              */
-            com.google.protobuf.ByteString
-                getTypeBytes();
+            protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type getType();
           }
           /**
            * Protobuf type {@code protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject}
@@ -2720,7 +2887,14 @@ public final class FunctionProto {
             }
             private OperandObject() {
               name_ = "";
-              type_ = "";
+              type_ = 0;
+            }
+
+            @java.lang.Override
+            @SuppressWarnings({"unused"})
+            protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+              return new OperandObject();
             }
 
             @java.lang.Override
@@ -2736,7 +2910,6 @@ public final class FunctionProto {
               if (extensionRegistry == null) {
                 throw new java.lang.NullPointerException();
               }
-              int mutable_bitField0_ = 0;
               com.google.protobuf.UnknownFieldSet.Builder unknownFields =
                   com.google.protobuf.UnknownFieldSet.newBuilder();
               try {
@@ -2753,14 +2926,14 @@ public final class FunctionProto {
                       name_ = s;
                       break;
                     }
-                    case 18: {
-                      java.lang.String s = input.readStringRequireUtf8();
+                    case 16: {
+                      int rawValue = input.readEnum();
 
-                      type_ = s;
+                      type_ = rawValue;
                       break;
                     }
                     default: {
-                      if (!parseUnknownFieldProto3(
+                      if (!parseUnknownField(
                           input, unknownFields, extensionRegistry, tag)) {
                         done = true;
                       }
@@ -2791,10 +2964,133 @@ public final class FunctionProto {
                       protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.class, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Builder.class);
             }
 
+            /**
+             * Protobuf enum {@code protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type}
+             */
+            public enum Type
+                implements com.google.protobuf.ProtocolMessageEnum {
+              /**
+               * <code>NULL = 0;</code>
+               */
+              NULL(0),
+              /**
+               * <code>REGISTER = 1;</code>
+               */
+              REGISTER(1),
+              /**
+               * <code>SCALAR = 2;</code>
+               */
+              SCALAR(2),
+              /**
+               * <code>ADDRESS = 3;</code>
+               */
+              ADDRESS(3),
+              UNRECOGNIZED(-1),
+              ;
+
+              /**
+               * <code>NULL = 0;</code>
+               */
+              public static final int NULL_VALUE = 0;
+              /**
+               * <code>REGISTER = 1;</code>
+               */
+              public static final int REGISTER_VALUE = 1;
+              /**
+               * <code>SCALAR = 2;</code>
+               */
+              public static final int SCALAR_VALUE = 2;
+              /**
+               * <code>ADDRESS = 3;</code>
+               */
+              public static final int ADDRESS_VALUE = 3;
+
+
+              public final int getNumber() {
+                if (this == UNRECOGNIZED) {
+                  throw new java.lang.IllegalArgumentException(
+                      "Can't get the number of an unknown enum value.");
+                }
+                return value;
+              }
+
+              /**
+               * @param value The numeric wire value of the corresponding enum entry.
+               * @return The enum associated with the given numeric wire value.
+               * @deprecated Use {@link #forNumber(int)} instead.
+               */
+              @java.lang.Deprecated
+              public static Type valueOf(int value) {
+                return forNumber(value);
+              }
+
+              /**
+               * @param value The numeric wire value of the corresponding enum entry.
+               * @return The enum associated with the given numeric wire value.
+               */
+              public static Type forNumber(int value) {
+                switch (value) {
+                  case 0: return NULL;
+                  case 1: return REGISTER;
+                  case 2: return SCALAR;
+                  case 3: return ADDRESS;
+                  default: return null;
+                }
+              }
+
+              public static com.google.protobuf.Internal.EnumLiteMap<Type>
+                  internalGetValueMap() {
+                return internalValueMap;
+              }
+              private static final com.google.protobuf.Internal.EnumLiteMap<
+                  Type> internalValueMap =
+                    new com.google.protobuf.Internal.EnumLiteMap<Type>() {
+                      public Type findValueByNumber(int number) {
+                        return Type.forNumber(number);
+                      }
+                    };
+
+              public final com.google.protobuf.Descriptors.EnumValueDescriptor
+                  getValueDescriptor() {
+                return getDescriptor().getValues().get(ordinal());
+              }
+              public final com.google.protobuf.Descriptors.EnumDescriptor
+                  getDescriptorForType() {
+                return getDescriptor();
+              }
+              public static final com.google.protobuf.Descriptors.EnumDescriptor
+                  getDescriptor() {
+                return protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.getDescriptor().getEnumTypes().get(0);
+              }
+
+              private static final Type[] VALUES = values();
+
+              public static Type valueOf(
+                  com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+                if (desc.getType() != getDescriptor()) {
+                  throw new java.lang.IllegalArgumentException(
+                    "EnumValueDescriptor is not for this type.");
+                }
+                if (desc.getIndex() == -1) {
+                  return UNRECOGNIZED;
+                }
+                return VALUES[desc.getIndex()];
+              }
+
+              private final int value;
+
+              private Type(int value) {
+                this.value = value;
+              }
+
+              // @@protoc_insertion_point(enum_scope:protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type)
+            }
+
             public static final int NAME_FIELD_NUMBER = 1;
             private volatile java.lang.Object name_;
             /**
              * <code>string name = 1;</code>
+             * @return The name.
              */
             public java.lang.String getName() {
               java.lang.Object ref = name_;
@@ -2810,6 +3106,7 @@ public final class FunctionProto {
             }
             /**
              * <code>string name = 1;</code>
+             * @return The bytes for name.
              */
             public com.google.protobuf.ByteString
                 getNameBytes() {
@@ -2826,37 +3123,22 @@ public final class FunctionProto {
             }
 
             public static final int TYPE_FIELD_NUMBER = 2;
-            private volatile java.lang.Object type_;
+            private int type_;
             /**
-             * <code>string type = 2;</code>
+             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+             * @return The enum numeric value on the wire for type.
              */
-            public java.lang.String getType() {
-              java.lang.Object ref = type_;
-              if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-              } else {
-                com.google.protobuf.ByteString bs = 
-                    (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                type_ = s;
-                return s;
-              }
+            public int getTypeValue() {
+              return type_;
             }
             /**
-             * <code>string type = 2;</code>
+             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+             * @return The type.
              */
-            public com.google.protobuf.ByteString
-                getTypeBytes() {
-              java.lang.Object ref = type_;
-              if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b = 
-                    com.google.protobuf.ByteString.copyFromUtf8(
-                        (java.lang.String) ref);
-                type_ = b;
-                return b;
-              } else {
-                return (com.google.protobuf.ByteString) ref;
-              }
+            public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type getType() {
+              @SuppressWarnings("deprecation")
+              protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type result = protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type.valueOf(type_);
+              return result == null ? protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type.UNRECOGNIZED : result;
             }
 
             private byte memoizedIsInitialized = -1;
@@ -2876,8 +3158,8 @@ public final class FunctionProto {
               if (!getNameBytes().isEmpty()) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
               }
-              if (!getTypeBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
+              if (type_ != protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type.NULL.getNumber()) {
+                output.writeEnum(2, type_);
               }
               unknownFields.writeTo(output);
             }
@@ -2891,8 +3173,9 @@ public final class FunctionProto {
               if (!getNameBytes().isEmpty()) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
               }
-              if (!getTypeBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
+              if (type_ != protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type.NULL.getNumber()) {
+                size += com.google.protobuf.CodedOutputStream
+                  .computeEnumSize(2, type_);
               }
               size += unknownFields.getSerializedSize();
               memoizedSize = size;
@@ -2909,13 +3192,11 @@ public final class FunctionProto {
               }
               protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject other = (protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject) obj;
 
-              boolean result = true;
-              result = result && getName()
-                  .equals(other.getName());
-              result = result && getType()
-                  .equals(other.getType());
-              result = result && unknownFields.equals(other.unknownFields);
-              return result;
+              if (!getName()
+                  .equals(other.getName())) return false;
+              if (type_ != other.type_) return false;
+              if (!unknownFields.equals(other.unknownFields)) return false;
+              return true;
             }
 
             @java.lang.Override
@@ -2928,7 +3209,7 @@ public final class FunctionProto {
               hash = (37 * hash) + NAME_FIELD_NUMBER;
               hash = (53 * hash) + getName().hashCode();
               hash = (37 * hash) + TYPE_FIELD_NUMBER;
-              hash = (53 * hash) + getType().hashCode();
+              hash = (53 * hash) + type_;
               hash = (29 * hash) + unknownFields.hashCode();
               memoizedHashCode = hash;
               return hash;
@@ -3064,7 +3345,7 @@ public final class FunctionProto {
                 super.clear();
                 name_ = "";
 
-                type_ = "";
+                type_ = 0;
 
                 return this;
               }
@@ -3100,35 +3381,35 @@ public final class FunctionProto {
 
               @java.lang.Override
               public Builder clone() {
-                return (Builder) super.clone();
+                return super.clone();
               }
               @java.lang.Override
               public Builder setField(
                   com.google.protobuf.Descriptors.FieldDescriptor field,
                   java.lang.Object value) {
-                return (Builder) super.setField(field, value);
+                return super.setField(field, value);
               }
               @java.lang.Override
               public Builder clearField(
                   com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return (Builder) super.clearField(field);
+                return super.clearField(field);
               }
               @java.lang.Override
               public Builder clearOneof(
                   com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return (Builder) super.clearOneof(oneof);
+                return super.clearOneof(oneof);
               }
               @java.lang.Override
               public Builder setRepeatedField(
                   com.google.protobuf.Descriptors.FieldDescriptor field,
                   int index, java.lang.Object value) {
-                return (Builder) super.setRepeatedField(field, index, value);
+                return super.setRepeatedField(field, index, value);
               }
               @java.lang.Override
               public Builder addRepeatedField(
                   com.google.protobuf.Descriptors.FieldDescriptor field,
                   java.lang.Object value) {
-                return (Builder) super.addRepeatedField(field, value);
+                return super.addRepeatedField(field, value);
               }
               @java.lang.Override
               public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -3146,9 +3427,8 @@ public final class FunctionProto {
                   name_ = other.name_;
                   onChanged();
                 }
-                if (!other.getType().isEmpty()) {
-                  type_ = other.type_;
-                  onChanged();
+                if (other.type_ != 0) {
+                  setTypeValue(other.getTypeValue());
                 }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
@@ -3182,6 +3462,7 @@ public final class FunctionProto {
               private java.lang.Object name_ = "";
               /**
                * <code>string name = 1;</code>
+               * @return The name.
                */
               public java.lang.String getName() {
                 java.lang.Object ref = name_;
@@ -3197,6 +3478,7 @@ public final class FunctionProto {
               }
               /**
                * <code>string name = 1;</code>
+               * @return The bytes for name.
                */
               public com.google.protobuf.ByteString
                   getNameBytes() {
@@ -3213,6 +3495,8 @@ public final class FunctionProto {
               }
               /**
                * <code>string name = 1;</code>
+               * @param value The name to set.
+               * @return This builder for chaining.
                */
               public Builder setName(
                   java.lang.String value) {
@@ -3226,6 +3510,7 @@ public final class FunctionProto {
               }
               /**
                * <code>string name = 1;</code>
+               * @return This builder for chaining.
                */
               public Builder clearName() {
                 
@@ -3235,6 +3520,8 @@ public final class FunctionProto {
               }
               /**
                * <code>string name = 1;</code>
+               * @param value The bytes for name to set.
+               * @return This builder for chaining.
                */
               public Builder setNameBytes(
                   com.google.protobuf.ByteString value) {
@@ -3248,78 +3535,61 @@ public final class FunctionProto {
                 return this;
               }
 
-              private java.lang.Object type_ = "";
+              private int type_ = 0;
               /**
-               * <code>string type = 2;</code>
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * @return The enum numeric value on the wire for type.
                */
-              public java.lang.String getType() {
-                java.lang.Object ref = type_;
-                if (!(ref instanceof java.lang.String)) {
-                  com.google.protobuf.ByteString bs =
-                      (com.google.protobuf.ByteString) ref;
-                  java.lang.String s = bs.toStringUtf8();
-                  type_ = s;
-                  return s;
-                } else {
-                  return (java.lang.String) ref;
-                }
+              public int getTypeValue() {
+                return type_;
               }
               /**
-               * <code>string type = 2;</code>
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * @param value The enum numeric value on the wire for type to set.
+               * @return This builder for chaining.
                */
-              public com.google.protobuf.ByteString
-                  getTypeBytes() {
-                java.lang.Object ref = type_;
-                if (ref instanceof String) {
-                  com.google.protobuf.ByteString b = 
-                      com.google.protobuf.ByteString.copyFromUtf8(
-                          (java.lang.String) ref);
-                  type_ = b;
-                  return b;
-                } else {
-                  return (com.google.protobuf.ByteString) ref;
-                }
-              }
-              /**
-               * <code>string type = 2;</code>
-               */
-              public Builder setType(
-                  java.lang.String value) {
-                if (value == null) {
-    throw new NullPointerException();
-  }
-  
+              public Builder setTypeValue(int value) {
                 type_ = value;
                 onChanged();
                 return this;
               }
               /**
-               * <code>string type = 2;</code>
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * @return The type.
+               */
+              public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type getType() {
+                @SuppressWarnings("deprecation")
+                protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type result = protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type.valueOf(type_);
+                return result == null ? protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type.UNRECOGNIZED : result;
+              }
+              /**
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * @param value The type to set.
+               * @return This builder for chaining.
+               */
+              public Builder setType(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type value) {
+                if (value == null) {
+                  throw new NullPointerException();
+                }
+                
+                type_ = value.getNumber();
+                onChanged();
+                return this;
+              }
+              /**
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * @return This builder for chaining.
                */
               public Builder clearType() {
                 
-                type_ = getDefaultInstance().getType();
-                onChanged();
-                return this;
-              }
-              /**
-               * <code>string type = 2;</code>
-               */
-              public Builder setTypeBytes(
-                  com.google.protobuf.ByteString value) {
-                if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-                
-                type_ = value;
+                type_ = 0;
                 onChanged();
                 return this;
               }
               @java.lang.Override
               public final Builder setUnknownFields(
                   final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return super.setUnknownFieldsProto3(unknownFields);
+                return super.setUnknownFields(unknownFields);
               }
 
               @java.lang.Override
@@ -3369,901 +3639,11 @@ public final class FunctionProto {
 
           }
 
-          public interface ReferenceOrBuilder extends
-              // @@protoc_insertion_point(interface_extends:protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference)
-              com.google.protobuf.MessageOrBuilder {
-
-            /**
-             * <code>string from_address = 1;</code>
-             */
-            java.lang.String getFromAddress();
-            /**
-             * <code>string from_address = 1;</code>
-             */
-            com.google.protobuf.ByteString
-                getFromAddressBytes();
-
-            /**
-             * <code>string to_address = 2;</code>
-             */
-            java.lang.String getToAddress();
-            /**
-             * <code>string to_address = 2;</code>
-             */
-            com.google.protobuf.ByteString
-                getToAddressBytes();
-
-            /**
-             * <code>string reference_type = 3;</code>
-             */
-            java.lang.String getReferenceType();
-            /**
-             * <code>string reference_type = 3;</code>
-             */
-            com.google.protobuf.ByteString
-                getReferenceTypeBytes();
-
-            /**
-             * <code>bytes reference_value = 4;</code>
-             */
-            com.google.protobuf.ByteString getReferenceValue();
-          }
-          /**
-           * Protobuf type {@code protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference}
-           */
-          public  static final class Reference extends
-              com.google.protobuf.GeneratedMessageV3 implements
-              // @@protoc_insertion_point(message_implements:protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference)
-              ReferenceOrBuilder {
-          private static final long serialVersionUID = 0L;
-            // Use Reference.newBuilder() to construct.
-            private Reference(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-              super(builder);
-            }
-            private Reference() {
-              fromAddress_ = "";
-              toAddress_ = "";
-              referenceType_ = "";
-              referenceValue_ = com.google.protobuf.ByteString.EMPTY;
-            }
-
-            @java.lang.Override
-            public final com.google.protobuf.UnknownFieldSet
-            getUnknownFields() {
-              return this.unknownFields;
-            }
-            private Reference(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              this();
-              if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-              }
-              int mutable_bitField0_ = 0;
-              com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                  com.google.protobuf.UnknownFieldSet.newBuilder();
-              try {
-                boolean done = false;
-                while (!done) {
-                  int tag = input.readTag();
-                  switch (tag) {
-                    case 0:
-                      done = true;
-                      break;
-                    case 10: {
-                      java.lang.String s = input.readStringRequireUtf8();
-
-                      fromAddress_ = s;
-                      break;
-                    }
-                    case 18: {
-                      java.lang.String s = input.readStringRequireUtf8();
-
-                      toAddress_ = s;
-                      break;
-                    }
-                    case 26: {
-                      java.lang.String s = input.readStringRequireUtf8();
-
-                      referenceType_ = s;
-                      break;
-                    }
-                    case 34: {
-
-                      referenceValue_ = input.readBytes();
-                      break;
-                    }
-                    default: {
-                      if (!parseUnknownFieldProto3(
-                          input, unknownFields, extensionRegistry, tag)) {
-                        done = true;
-                      }
-                      break;
-                    }
-                  }
-                }
-              } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-              } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(
-                    e).setUnfinishedMessage(this);
-              } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-              }
-            }
-            public static final com.google.protobuf.Descriptors.Descriptor
-                getDescriptor() {
-              return protoclasses.FunctionProto.internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_descriptor;
-            }
-
-            @java.lang.Override
-            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-                internalGetFieldAccessorTable() {
-              return protoclasses.FunctionProto.internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_fieldAccessorTable
-                  .ensureFieldAccessorsInitialized(
-                      protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.class, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder.class);
-            }
-
-            public static final int FROM_ADDRESS_FIELD_NUMBER = 1;
-            private volatile java.lang.Object fromAddress_;
-            /**
-             * <code>string from_address = 1;</code>
-             */
-            public java.lang.String getFromAddress() {
-              java.lang.Object ref = fromAddress_;
-              if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-              } else {
-                com.google.protobuf.ByteString bs = 
-                    (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                fromAddress_ = s;
-                return s;
-              }
-            }
-            /**
-             * <code>string from_address = 1;</code>
-             */
-            public com.google.protobuf.ByteString
-                getFromAddressBytes() {
-              java.lang.Object ref = fromAddress_;
-              if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b = 
-                    com.google.protobuf.ByteString.copyFromUtf8(
-                        (java.lang.String) ref);
-                fromAddress_ = b;
-                return b;
-              } else {
-                return (com.google.protobuf.ByteString) ref;
-              }
-            }
-
-            public static final int TO_ADDRESS_FIELD_NUMBER = 2;
-            private volatile java.lang.Object toAddress_;
-            /**
-             * <code>string to_address = 2;</code>
-             */
-            public java.lang.String getToAddress() {
-              java.lang.Object ref = toAddress_;
-              if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-              } else {
-                com.google.protobuf.ByteString bs = 
-                    (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                toAddress_ = s;
-                return s;
-              }
-            }
-            /**
-             * <code>string to_address = 2;</code>
-             */
-            public com.google.protobuf.ByteString
-                getToAddressBytes() {
-              java.lang.Object ref = toAddress_;
-              if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b = 
-                    com.google.protobuf.ByteString.copyFromUtf8(
-                        (java.lang.String) ref);
-                toAddress_ = b;
-                return b;
-              } else {
-                return (com.google.protobuf.ByteString) ref;
-              }
-            }
-
-            public static final int REFERENCE_TYPE_FIELD_NUMBER = 3;
-            private volatile java.lang.Object referenceType_;
-            /**
-             * <code>string reference_type = 3;</code>
-             */
-            public java.lang.String getReferenceType() {
-              java.lang.Object ref = referenceType_;
-              if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-              } else {
-                com.google.protobuf.ByteString bs = 
-                    (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                referenceType_ = s;
-                return s;
-              }
-            }
-            /**
-             * <code>string reference_type = 3;</code>
-             */
-            public com.google.protobuf.ByteString
-                getReferenceTypeBytes() {
-              java.lang.Object ref = referenceType_;
-              if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b = 
-                    com.google.protobuf.ByteString.copyFromUtf8(
-                        (java.lang.String) ref);
-                referenceType_ = b;
-                return b;
-              } else {
-                return (com.google.protobuf.ByteString) ref;
-              }
-            }
-
-            public static final int REFERENCE_VALUE_FIELD_NUMBER = 4;
-            private com.google.protobuf.ByteString referenceValue_;
-            /**
-             * <code>bytes reference_value = 4;</code>
-             */
-            public com.google.protobuf.ByteString getReferenceValue() {
-              return referenceValue_;
-            }
-
-            private byte memoizedIsInitialized = -1;
-            @java.lang.Override
-            public final boolean isInitialized() {
-              byte isInitialized = memoizedIsInitialized;
-              if (isInitialized == 1) return true;
-              if (isInitialized == 0) return false;
-
-              memoizedIsInitialized = 1;
-              return true;
-            }
-
-            @java.lang.Override
-            public void writeTo(com.google.protobuf.CodedOutputStream output)
-                                throws java.io.IOException {
-              if (!getFromAddressBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, fromAddress_);
-              }
-              if (!getToAddressBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, toAddress_);
-              }
-              if (!getReferenceTypeBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessageV3.writeString(output, 3, referenceType_);
-              }
-              if (!referenceValue_.isEmpty()) {
-                output.writeBytes(4, referenceValue_);
-              }
-              unknownFields.writeTo(output);
-            }
-
-            @java.lang.Override
-            public int getSerializedSize() {
-              int size = memoizedSize;
-              if (size != -1) return size;
-
-              size = 0;
-              if (!getFromAddressBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, fromAddress_);
-              }
-              if (!getToAddressBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, toAddress_);
-              }
-              if (!getReferenceTypeBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, referenceType_);
-              }
-              if (!referenceValue_.isEmpty()) {
-                size += com.google.protobuf.CodedOutputStream
-                  .computeBytesSize(4, referenceValue_);
-              }
-              size += unknownFields.getSerializedSize();
-              memoizedSize = size;
-              return size;
-            }
-
-            @java.lang.Override
-            public boolean equals(final java.lang.Object obj) {
-              if (obj == this) {
-               return true;
-              }
-              if (!(obj instanceof protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference)) {
-                return super.equals(obj);
-              }
-              protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference other = (protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference) obj;
-
-              boolean result = true;
-              result = result && getFromAddress()
-                  .equals(other.getFromAddress());
-              result = result && getToAddress()
-                  .equals(other.getToAddress());
-              result = result && getReferenceType()
-                  .equals(other.getReferenceType());
-              result = result && getReferenceValue()
-                  .equals(other.getReferenceValue());
-              result = result && unknownFields.equals(other.unknownFields);
-              return result;
-            }
-
-            @java.lang.Override
-            public int hashCode() {
-              if (memoizedHashCode != 0) {
-                return memoizedHashCode;
-              }
-              int hash = 41;
-              hash = (19 * hash) + getDescriptor().hashCode();
-              hash = (37 * hash) + FROM_ADDRESS_FIELD_NUMBER;
-              hash = (53 * hash) + getFromAddress().hashCode();
-              hash = (37 * hash) + TO_ADDRESS_FIELD_NUMBER;
-              hash = (53 * hash) + getToAddress().hashCode();
-              hash = (37 * hash) + REFERENCE_TYPE_FIELD_NUMBER;
-              hash = (53 * hash) + getReferenceType().hashCode();
-              hash = (37 * hash) + REFERENCE_VALUE_FIELD_NUMBER;
-              hash = (53 * hash) + getReferenceValue().hashCode();
-              hash = (29 * hash) + unknownFields.hashCode();
-              memoizedHashCode = hash;
-              return hash;
-            }
-
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(
-                java.nio.ByteBuffer data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              return PARSER.parseFrom(data);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(
-                java.nio.ByteBuffer data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              return PARSER.parseFrom(data, extensionRegistry);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(
-                com.google.protobuf.ByteString data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              return PARSER.parseFrom(data);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              return PARSER.parseFrom(data, extensionRegistry);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(byte[] data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              return PARSER.parseFrom(data);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              return PARSER.parseFrom(data, extensionRegistry);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(java.io.InputStream input)
-                throws java.io.IOException {
-              return com.google.protobuf.GeneratedMessageV3
-                  .parseWithIOException(PARSER, input);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-              return com.google.protobuf.GeneratedMessageV3
-                  .parseWithIOException(PARSER, input, extensionRegistry);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseDelimitedFrom(java.io.InputStream input)
-                throws java.io.IOException {
-              return com.google.protobuf.GeneratedMessageV3
-                  .parseDelimitedWithIOException(PARSER, input);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseDelimitedFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-              return com.google.protobuf.GeneratedMessageV3
-                  .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(
-                com.google.protobuf.CodedInputStream input)
-                throws java.io.IOException {
-              return com.google.protobuf.GeneratedMessageV3
-                  .parseWithIOException(PARSER, input);
-            }
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-              return com.google.protobuf.GeneratedMessageV3
-                  .parseWithIOException(PARSER, input, extensionRegistry);
-            }
-
-            @java.lang.Override
-            public Builder newBuilderForType() { return newBuilder(); }
-            public static Builder newBuilder() {
-              return DEFAULT_INSTANCE.toBuilder();
-            }
-            public static Builder newBuilder(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference prototype) {
-              return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-            }
-            @java.lang.Override
-            public Builder toBuilder() {
-              return this == DEFAULT_INSTANCE
-                  ? new Builder() : new Builder().mergeFrom(this);
-            }
-
-            @java.lang.Override
-            protected Builder newBuilderForType(
-                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-              Builder builder = new Builder(parent);
-              return builder;
-            }
-            /**
-             * Protobuf type {@code protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference}
-             */
-            public static final class Builder extends
-                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference)
-                protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder {
-              public static final com.google.protobuf.Descriptors.Descriptor
-                  getDescriptor() {
-                return protoclasses.FunctionProto.internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_descriptor;
-              }
-
-              @java.lang.Override
-              protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-                  internalGetFieldAccessorTable() {
-                return protoclasses.FunctionProto.internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_fieldAccessorTable
-                    .ensureFieldAccessorsInitialized(
-                        protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.class, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder.class);
-              }
-
-              // Construct using protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.newBuilder()
-              private Builder() {
-                maybeForceBuilderInitialization();
-              }
-
-              private Builder(
-                  com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-                super(parent);
-                maybeForceBuilderInitialization();
-              }
-              private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3
-                        .alwaysUseFieldBuilders) {
-                }
-              }
-              @java.lang.Override
-              public Builder clear() {
-                super.clear();
-                fromAddress_ = "";
-
-                toAddress_ = "";
-
-                referenceType_ = "";
-
-                referenceValue_ = com.google.protobuf.ByteString.EMPTY;
-
-                return this;
-              }
-
-              @java.lang.Override
-              public com.google.protobuf.Descriptors.Descriptor
-                  getDescriptorForType() {
-                return protoclasses.FunctionProto.internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_descriptor;
-              }
-
-              @java.lang.Override
-              public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference getDefaultInstanceForType() {
-                return protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.getDefaultInstance();
-              }
-
-              @java.lang.Override
-              public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference build() {
-                protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference result = buildPartial();
-                if (!result.isInitialized()) {
-                  throw newUninitializedMessageException(result);
-                }
-                return result;
-              }
-
-              @java.lang.Override
-              public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference buildPartial() {
-                protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference result = new protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference(this);
-                result.fromAddress_ = fromAddress_;
-                result.toAddress_ = toAddress_;
-                result.referenceType_ = referenceType_;
-                result.referenceValue_ = referenceValue_;
-                onBuilt();
-                return result;
-              }
-
-              @java.lang.Override
-              public Builder clone() {
-                return (Builder) super.clone();
-              }
-              @java.lang.Override
-              public Builder setField(
-                  com.google.protobuf.Descriptors.FieldDescriptor field,
-                  java.lang.Object value) {
-                return (Builder) super.setField(field, value);
-              }
-              @java.lang.Override
-              public Builder clearField(
-                  com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return (Builder) super.clearField(field);
-              }
-              @java.lang.Override
-              public Builder clearOneof(
-                  com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return (Builder) super.clearOneof(oneof);
-              }
-              @java.lang.Override
-              public Builder setRepeatedField(
-                  com.google.protobuf.Descriptors.FieldDescriptor field,
-                  int index, java.lang.Object value) {
-                return (Builder) super.setRepeatedField(field, index, value);
-              }
-              @java.lang.Override
-              public Builder addRepeatedField(
-                  com.google.protobuf.Descriptors.FieldDescriptor field,
-                  java.lang.Object value) {
-                return (Builder) super.addRepeatedField(field, value);
-              }
-              @java.lang.Override
-              public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference) {
-                  return mergeFrom((protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference)other);
-                } else {
-                  super.mergeFrom(other);
-                  return this;
-                }
-              }
-
-              public Builder mergeFrom(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference other) {
-                if (other == protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.getDefaultInstance()) return this;
-                if (!other.getFromAddress().isEmpty()) {
-                  fromAddress_ = other.fromAddress_;
-                  onChanged();
-                }
-                if (!other.getToAddress().isEmpty()) {
-                  toAddress_ = other.toAddress_;
-                  onChanged();
-                }
-                if (!other.getReferenceType().isEmpty()) {
-                  referenceType_ = other.referenceType_;
-                  onChanged();
-                }
-                if (other.getReferenceValue() != com.google.protobuf.ByteString.EMPTY) {
-                  setReferenceValue(other.getReferenceValue());
-                }
-                this.mergeUnknownFields(other.unknownFields);
-                onChanged();
-                return this;
-              }
-
-              @java.lang.Override
-              public final boolean isInitialized() {
-                return true;
-              }
-
-              @java.lang.Override
-              public Builder mergeFrom(
-                  com.google.protobuf.CodedInputStream input,
-                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                  throws java.io.IOException {
-                protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference parsedMessage = null;
-                try {
-                  parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                  parsedMessage = (protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference) e.getUnfinishedMessage();
-                  throw e.unwrapIOException();
-                } finally {
-                  if (parsedMessage != null) {
-                    mergeFrom(parsedMessage);
-                  }
-                }
-                return this;
-              }
-
-              private java.lang.Object fromAddress_ = "";
-              /**
-               * <code>string from_address = 1;</code>
-               */
-              public java.lang.String getFromAddress() {
-                java.lang.Object ref = fromAddress_;
-                if (!(ref instanceof java.lang.String)) {
-                  com.google.protobuf.ByteString bs =
-                      (com.google.protobuf.ByteString) ref;
-                  java.lang.String s = bs.toStringUtf8();
-                  fromAddress_ = s;
-                  return s;
-                } else {
-                  return (java.lang.String) ref;
-                }
-              }
-              /**
-               * <code>string from_address = 1;</code>
-               */
-              public com.google.protobuf.ByteString
-                  getFromAddressBytes() {
-                java.lang.Object ref = fromAddress_;
-                if (ref instanceof String) {
-                  com.google.protobuf.ByteString b = 
-                      com.google.protobuf.ByteString.copyFromUtf8(
-                          (java.lang.String) ref);
-                  fromAddress_ = b;
-                  return b;
-                } else {
-                  return (com.google.protobuf.ByteString) ref;
-                }
-              }
-              /**
-               * <code>string from_address = 1;</code>
-               */
-              public Builder setFromAddress(
-                  java.lang.String value) {
-                if (value == null) {
-    throw new NullPointerException();
-  }
-  
-                fromAddress_ = value;
-                onChanged();
-                return this;
-              }
-              /**
-               * <code>string from_address = 1;</code>
-               */
-              public Builder clearFromAddress() {
-                
-                fromAddress_ = getDefaultInstance().getFromAddress();
-                onChanged();
-                return this;
-              }
-              /**
-               * <code>string from_address = 1;</code>
-               */
-              public Builder setFromAddressBytes(
-                  com.google.protobuf.ByteString value) {
-                if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-                
-                fromAddress_ = value;
-                onChanged();
-                return this;
-              }
-
-              private java.lang.Object toAddress_ = "";
-              /**
-               * <code>string to_address = 2;</code>
-               */
-              public java.lang.String getToAddress() {
-                java.lang.Object ref = toAddress_;
-                if (!(ref instanceof java.lang.String)) {
-                  com.google.protobuf.ByteString bs =
-                      (com.google.protobuf.ByteString) ref;
-                  java.lang.String s = bs.toStringUtf8();
-                  toAddress_ = s;
-                  return s;
-                } else {
-                  return (java.lang.String) ref;
-                }
-              }
-              /**
-               * <code>string to_address = 2;</code>
-               */
-              public com.google.protobuf.ByteString
-                  getToAddressBytes() {
-                java.lang.Object ref = toAddress_;
-                if (ref instanceof String) {
-                  com.google.protobuf.ByteString b = 
-                      com.google.protobuf.ByteString.copyFromUtf8(
-                          (java.lang.String) ref);
-                  toAddress_ = b;
-                  return b;
-                } else {
-                  return (com.google.protobuf.ByteString) ref;
-                }
-              }
-              /**
-               * <code>string to_address = 2;</code>
-               */
-              public Builder setToAddress(
-                  java.lang.String value) {
-                if (value == null) {
-    throw new NullPointerException();
-  }
-  
-                toAddress_ = value;
-                onChanged();
-                return this;
-              }
-              /**
-               * <code>string to_address = 2;</code>
-               */
-              public Builder clearToAddress() {
-                
-                toAddress_ = getDefaultInstance().getToAddress();
-                onChanged();
-                return this;
-              }
-              /**
-               * <code>string to_address = 2;</code>
-               */
-              public Builder setToAddressBytes(
-                  com.google.protobuf.ByteString value) {
-                if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-                
-                toAddress_ = value;
-                onChanged();
-                return this;
-              }
-
-              private java.lang.Object referenceType_ = "";
-              /**
-               * <code>string reference_type = 3;</code>
-               */
-              public java.lang.String getReferenceType() {
-                java.lang.Object ref = referenceType_;
-                if (!(ref instanceof java.lang.String)) {
-                  com.google.protobuf.ByteString bs =
-                      (com.google.protobuf.ByteString) ref;
-                  java.lang.String s = bs.toStringUtf8();
-                  referenceType_ = s;
-                  return s;
-                } else {
-                  return (java.lang.String) ref;
-                }
-              }
-              /**
-               * <code>string reference_type = 3;</code>
-               */
-              public com.google.protobuf.ByteString
-                  getReferenceTypeBytes() {
-                java.lang.Object ref = referenceType_;
-                if (ref instanceof String) {
-                  com.google.protobuf.ByteString b = 
-                      com.google.protobuf.ByteString.copyFromUtf8(
-                          (java.lang.String) ref);
-                  referenceType_ = b;
-                  return b;
-                } else {
-                  return (com.google.protobuf.ByteString) ref;
-                }
-              }
-              /**
-               * <code>string reference_type = 3;</code>
-               */
-              public Builder setReferenceType(
-                  java.lang.String value) {
-                if (value == null) {
-    throw new NullPointerException();
-  }
-  
-                referenceType_ = value;
-                onChanged();
-                return this;
-              }
-              /**
-               * <code>string reference_type = 3;</code>
-               */
-              public Builder clearReferenceType() {
-                
-                referenceType_ = getDefaultInstance().getReferenceType();
-                onChanged();
-                return this;
-              }
-              /**
-               * <code>string reference_type = 3;</code>
-               */
-              public Builder setReferenceTypeBytes(
-                  com.google.protobuf.ByteString value) {
-                if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-                
-                referenceType_ = value;
-                onChanged();
-                return this;
-              }
-
-              private com.google.protobuf.ByteString referenceValue_ = com.google.protobuf.ByteString.EMPTY;
-              /**
-               * <code>bytes reference_value = 4;</code>
-               */
-              public com.google.protobuf.ByteString getReferenceValue() {
-                return referenceValue_;
-              }
-              /**
-               * <code>bytes reference_value = 4;</code>
-               */
-              public Builder setReferenceValue(com.google.protobuf.ByteString value) {
-                if (value == null) {
-    throw new NullPointerException();
-  }
-  
-                referenceValue_ = value;
-                onChanged();
-                return this;
-              }
-              /**
-               * <code>bytes reference_value = 4;</code>
-               */
-              public Builder clearReferenceValue() {
-                
-                referenceValue_ = getDefaultInstance().getReferenceValue();
-                onChanged();
-                return this;
-              }
-              @java.lang.Override
-              public final Builder setUnknownFields(
-                  final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return super.setUnknownFieldsProto3(unknownFields);
-              }
-
-              @java.lang.Override
-              public final Builder mergeUnknownFields(
-                  final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return super.mergeUnknownFields(unknownFields);
-              }
-
-
-              // @@protoc_insertion_point(builder_scope:protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference)
-            }
-
-            // @@protoc_insertion_point(class_scope:protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference)
-            private static final protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference DEFAULT_INSTANCE;
-            static {
-              DEFAULT_INSTANCE = new protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference();
-            }
-
-            public static protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference getDefaultInstance() {
-              return DEFAULT_INSTANCE;
-            }
-
-            private static final com.google.protobuf.Parser<Reference>
-                PARSER = new com.google.protobuf.AbstractParser<Reference>() {
-              @java.lang.Override
-              public Reference parsePartialFrom(
-                  com.google.protobuf.CodedInputStream input,
-                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                  throws com.google.protobuf.InvalidProtocolBufferException {
-                return new Reference(input, extensionRegistry);
-              }
-            };
-
-            public static com.google.protobuf.Parser<Reference> parser() {
-              return PARSER;
-            }
-
-            @java.lang.Override
-            public com.google.protobuf.Parser<Reference> getParserForType() {
-              return PARSER;
-            }
-
-            @java.lang.Override
-            public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference getDefaultInstanceForType() {
-              return DEFAULT_INSTANCE;
-            }
-
-          }
-
-          private int bitField0_;
           public static final int NAME_FIELD_NUMBER = 1;
           private volatile java.lang.Object name_;
           /**
            * <code>string name = 1;</code>
+           * @return The name.
            */
           public java.lang.String getName() {
             java.lang.Object ref = name_;
@@ -4279,6 +3659,7 @@ public final class FunctionProto {
           }
           /**
            * <code>string name = 1;</code>
+           * @return The bytes for name.
            */
           public com.google.protobuf.ByteString
               getNameBytes() {
@@ -4294,40 +3675,32 @@ public final class FunctionProto {
             }
           }
 
-          public static final int REFERENCES_FIELD_NUMBER = 2;
-          private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference> references_;
+          public static final int REFERENCE_ID_FIELD_NUMBER = 2;
+          private com.google.protobuf.Internal.IntList referenceId_;
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+           * <code>repeated int32 reference_id = 2;</code>
+           * @return A list containing the referenceId.
            */
-          public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference> getReferencesList() {
-            return references_;
+          public java.util.List<java.lang.Integer>
+              getReferenceIdList() {
+            return referenceId_;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+           * <code>repeated int32 reference_id = 2;</code>
+           * @return The count of referenceId.
            */
-          public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder> 
-              getReferencesOrBuilderList() {
-            return references_;
+          public int getReferenceIdCount() {
+            return referenceId_.size();
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+           * <code>repeated int32 reference_id = 2;</code>
+           * @param index The index of the element to return.
+           * @return The referenceId at the given index.
            */
-          public int getReferencesCount() {
-            return references_.size();
+          public int getReferenceId(int index) {
+            return referenceId_.getInt(index);
           }
-          /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-           */
-          public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference getReferences(int index) {
-            return references_.get(index);
-          }
-          /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-           */
-          public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder getReferencesOrBuilder(
-              int index) {
-            return references_.get(index);
-          }
+          private int referenceIdMemoizedSerializedSize = -1;
 
           public static final int OP_OBJECTS_FIELD_NUMBER = 3;
           private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject> opObjects_;
@@ -4378,11 +3751,16 @@ public final class FunctionProto {
           @java.lang.Override
           public void writeTo(com.google.protobuf.CodedOutputStream output)
                               throws java.io.IOException {
+            getSerializedSize();
             if (!getNameBytes().isEmpty()) {
               com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
             }
-            for (int i = 0; i < references_.size(); i++) {
-              output.writeMessage(2, references_.get(i));
+            if (getReferenceIdList().size() > 0) {
+              output.writeUInt32NoTag(18);
+              output.writeUInt32NoTag(referenceIdMemoizedSerializedSize);
+            }
+            for (int i = 0; i < referenceId_.size(); i++) {
+              output.writeInt32NoTag(referenceId_.getInt(i));
             }
             for (int i = 0; i < opObjects_.size(); i++) {
               output.writeMessage(3, opObjects_.get(i));
@@ -4399,9 +3777,19 @@ public final class FunctionProto {
             if (!getNameBytes().isEmpty()) {
               size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
             }
-            for (int i = 0; i < references_.size(); i++) {
-              size += com.google.protobuf.CodedOutputStream
-                .computeMessageSize(2, references_.get(i));
+            {
+              int dataSize = 0;
+              for (int i = 0; i < referenceId_.size(); i++) {
+                dataSize += com.google.protobuf.CodedOutputStream
+                  .computeInt32SizeNoTag(referenceId_.getInt(i));
+              }
+              size += dataSize;
+              if (!getReferenceIdList().isEmpty()) {
+                size += 1;
+                size += com.google.protobuf.CodedOutputStream
+                    .computeInt32SizeNoTag(dataSize);
+              }
+              referenceIdMemoizedSerializedSize = dataSize;
             }
             for (int i = 0; i < opObjects_.size(); i++) {
               size += com.google.protobuf.CodedOutputStream
@@ -4422,15 +3810,14 @@ public final class FunctionProto {
             }
             protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage other = (protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage) obj;
 
-            boolean result = true;
-            result = result && getName()
-                .equals(other.getName());
-            result = result && getReferencesList()
-                .equals(other.getReferencesList());
-            result = result && getOpObjectsList()
-                .equals(other.getOpObjectsList());
-            result = result && unknownFields.equals(other.unknownFields);
-            return result;
+            if (!getName()
+                .equals(other.getName())) return false;
+            if (!getReferenceIdList()
+                .equals(other.getReferenceIdList())) return false;
+            if (!getOpObjectsList()
+                .equals(other.getOpObjectsList())) return false;
+            if (!unknownFields.equals(other.unknownFields)) return false;
+            return true;
           }
 
           @java.lang.Override
@@ -4442,9 +3829,9 @@ public final class FunctionProto {
             hash = (19 * hash) + getDescriptor().hashCode();
             hash = (37 * hash) + NAME_FIELD_NUMBER;
             hash = (53 * hash) + getName().hashCode();
-            if (getReferencesCount() > 0) {
-              hash = (37 * hash) + REFERENCES_FIELD_NUMBER;
-              hash = (53 * hash) + getReferencesList().hashCode();
+            if (getReferenceIdCount() > 0) {
+              hash = (37 * hash) + REFERENCE_ID_FIELD_NUMBER;
+              hash = (53 * hash) + getReferenceIdList().hashCode();
             }
             if (getOpObjectsCount() > 0) {
               hash = (37 * hash) + OP_OBJECTS_FIELD_NUMBER;
@@ -4578,7 +3965,6 @@ public final class FunctionProto {
             private void maybeForceBuilderInitialization() {
               if (com.google.protobuf.GeneratedMessageV3
                       .alwaysUseFieldBuilders) {
-                getReferencesFieldBuilder();
                 getOpObjectsFieldBuilder();
               }
             }
@@ -4587,15 +3973,11 @@ public final class FunctionProto {
               super.clear();
               name_ = "";
 
-              if (referencesBuilder_ == null) {
-                references_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000002);
-              } else {
-                referencesBuilder_.clear();
-              }
+              referenceId_ = emptyIntList();
+              bitField0_ = (bitField0_ & ~0x00000001);
               if (opObjectsBuilder_ == null) {
                 opObjects_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00000002);
               } else {
                 opObjectsBuilder_.clear();
               }
@@ -4626,62 +4008,56 @@ public final class FunctionProto {
             public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage buildPartial() {
               protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage result = new protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage(this);
               int from_bitField0_ = bitField0_;
-              int to_bitField0_ = 0;
               result.name_ = name_;
-              if (referencesBuilder_ == null) {
-                if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                  references_ = java.util.Collections.unmodifiableList(references_);
-                  bitField0_ = (bitField0_ & ~0x00000002);
-                }
-                result.references_ = references_;
-              } else {
-                result.references_ = referencesBuilder_.build();
+              if (((bitField0_ & 0x00000001) != 0)) {
+                referenceId_.makeImmutable();
+                bitField0_ = (bitField0_ & ~0x00000001);
               }
+              result.referenceId_ = referenceId_;
               if (opObjectsBuilder_ == null) {
-                if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                if (((bitField0_ & 0x00000002) != 0)) {
                   opObjects_ = java.util.Collections.unmodifiableList(opObjects_);
-                  bitField0_ = (bitField0_ & ~0x00000004);
+                  bitField0_ = (bitField0_ & ~0x00000002);
                 }
                 result.opObjects_ = opObjects_;
               } else {
                 result.opObjects_ = opObjectsBuilder_.build();
               }
-              result.bitField0_ = to_bitField0_;
               onBuilt();
               return result;
             }
 
             @java.lang.Override
             public Builder clone() {
-              return (Builder) super.clone();
+              return super.clone();
             }
             @java.lang.Override
             public Builder setField(
                 com.google.protobuf.Descriptors.FieldDescriptor field,
                 java.lang.Object value) {
-              return (Builder) super.setField(field, value);
+              return super.setField(field, value);
             }
             @java.lang.Override
             public Builder clearField(
                 com.google.protobuf.Descriptors.FieldDescriptor field) {
-              return (Builder) super.clearField(field);
+              return super.clearField(field);
             }
             @java.lang.Override
             public Builder clearOneof(
                 com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-              return (Builder) super.clearOneof(oneof);
+              return super.clearOneof(oneof);
             }
             @java.lang.Override
             public Builder setRepeatedField(
                 com.google.protobuf.Descriptors.FieldDescriptor field,
                 int index, java.lang.Object value) {
-              return (Builder) super.setRepeatedField(field, index, value);
+              return super.setRepeatedField(field, index, value);
             }
             @java.lang.Override
             public Builder addRepeatedField(
                 com.google.protobuf.Descriptors.FieldDescriptor field,
                 java.lang.Object value) {
-              return (Builder) super.addRepeatedField(field, value);
+              return super.addRepeatedField(field, value);
             }
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -4699,37 +4075,21 @@ public final class FunctionProto {
                 name_ = other.name_;
                 onChanged();
               }
-              if (referencesBuilder_ == null) {
-                if (!other.references_.isEmpty()) {
-                  if (references_.isEmpty()) {
-                    references_ = other.references_;
-                    bitField0_ = (bitField0_ & ~0x00000002);
-                  } else {
-                    ensureReferencesIsMutable();
-                    references_.addAll(other.references_);
-                  }
-                  onChanged();
+              if (!other.referenceId_.isEmpty()) {
+                if (referenceId_.isEmpty()) {
+                  referenceId_ = other.referenceId_;
+                  bitField0_ = (bitField0_ & ~0x00000001);
+                } else {
+                  ensureReferenceIdIsMutable();
+                  referenceId_.addAll(other.referenceId_);
                 }
-              } else {
-                if (!other.references_.isEmpty()) {
-                  if (referencesBuilder_.isEmpty()) {
-                    referencesBuilder_.dispose();
-                    referencesBuilder_ = null;
-                    references_ = other.references_;
-                    bitField0_ = (bitField0_ & ~0x00000002);
-                    referencesBuilder_ = 
-                      com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                         getReferencesFieldBuilder() : null;
-                  } else {
-                    referencesBuilder_.addAllMessages(other.references_);
-                  }
-                }
+                onChanged();
               }
               if (opObjectsBuilder_ == null) {
                 if (!other.opObjects_.isEmpty()) {
                   if (opObjects_.isEmpty()) {
                     opObjects_ = other.opObjects_;
-                    bitField0_ = (bitField0_ & ~0x00000004);
+                    bitField0_ = (bitField0_ & ~0x00000002);
                   } else {
                     ensureOpObjectsIsMutable();
                     opObjects_.addAll(other.opObjects_);
@@ -4742,7 +4102,7 @@ public final class FunctionProto {
                     opObjectsBuilder_.dispose();
                     opObjectsBuilder_ = null;
                     opObjects_ = other.opObjects_;
-                    bitField0_ = (bitField0_ & ~0x00000004);
+                    bitField0_ = (bitField0_ & ~0x00000002);
                     opObjectsBuilder_ = 
                       com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                          getOpObjectsFieldBuilder() : null;
@@ -4784,6 +4144,7 @@ public final class FunctionProto {
             private java.lang.Object name_ = "";
             /**
              * <code>string name = 1;</code>
+             * @return The name.
              */
             public java.lang.String getName() {
               java.lang.Object ref = name_;
@@ -4799,6 +4160,7 @@ public final class FunctionProto {
             }
             /**
              * <code>string name = 1;</code>
+             * @return The bytes for name.
              */
             public com.google.protobuf.ByteString
                 getNameBytes() {
@@ -4815,6 +4177,8 @@ public final class FunctionProto {
             }
             /**
              * <code>string name = 1;</code>
+             * @param value The name to set.
+             * @return This builder for chaining.
              */
             public Builder setName(
                 java.lang.String value) {
@@ -4828,6 +4192,7 @@ public final class FunctionProto {
             }
             /**
              * <code>string name = 1;</code>
+             * @return This builder for chaining.
              */
             public Builder clearName() {
               
@@ -4837,6 +4202,8 @@ public final class FunctionProto {
             }
             /**
              * <code>string name = 1;</code>
+             * @param value The bytes for name to set.
+             * @return This builder for chaining.
              */
             public Builder setNameBytes(
                 com.google.protobuf.ByteString value) {
@@ -4850,252 +4217,91 @@ public final class FunctionProto {
               return this;
             }
 
-            private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference> references_ =
-              java.util.Collections.emptyList();
-            private void ensureReferencesIsMutable() {
-              if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-                references_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference>(references_);
-                bitField0_ |= 0x00000002;
+            private com.google.protobuf.Internal.IntList referenceId_ = emptyIntList();
+            private void ensureReferenceIdIsMutable() {
+              if (!((bitField0_ & 0x00000001) != 0)) {
+                referenceId_ = mutableCopy(referenceId_);
+                bitField0_ |= 0x00000001;
                }
             }
-
-            private com.google.protobuf.RepeatedFieldBuilderV3<
-                protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder> referencesBuilder_;
-
             /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+             * <code>repeated int32 reference_id = 2;</code>
+             * @return A list containing the referenceId.
              */
-            public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference> getReferencesList() {
-              if (referencesBuilder_ == null) {
-                return java.util.Collections.unmodifiableList(references_);
-              } else {
-                return referencesBuilder_.getMessageList();
-              }
+            public java.util.List<java.lang.Integer>
+                getReferenceIdList() {
+              return ((bitField0_ & 0x00000001) != 0) ?
+                       java.util.Collections.unmodifiableList(referenceId_) : referenceId_;
             }
             /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+             * <code>repeated int32 reference_id = 2;</code>
+             * @return The count of referenceId.
              */
-            public int getReferencesCount() {
-              if (referencesBuilder_ == null) {
-                return references_.size();
-              } else {
-                return referencesBuilder_.getCount();
-              }
+            public int getReferenceIdCount() {
+              return referenceId_.size();
             }
             /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+             * <code>repeated int32 reference_id = 2;</code>
+             * @param index The index of the element to return.
+             * @return The referenceId at the given index.
              */
-            public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference getReferences(int index) {
-              if (referencesBuilder_ == null) {
-                return references_.get(index);
-              } else {
-                return referencesBuilder_.getMessage(index);
-              }
+            public int getReferenceId(int index) {
+              return referenceId_.getInt(index);
             }
             /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+             * <code>repeated int32 reference_id = 2;</code>
+             * @param index The index to set the value at.
+             * @param value The referenceId to set.
+             * @return This builder for chaining.
              */
-            public Builder setReferences(
-                int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference value) {
-              if (referencesBuilder_ == null) {
-                if (value == null) {
-                  throw new NullPointerException();
-                }
-                ensureReferencesIsMutable();
-                references_.set(index, value);
-                onChanged();
-              } else {
-                referencesBuilder_.setMessage(index, value);
-              }
+            public Builder setReferenceId(
+                int index, int value) {
+              ensureReferenceIdIsMutable();
+              referenceId_.setInt(index, value);
+              onChanged();
               return this;
             }
             /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+             * <code>repeated int32 reference_id = 2;</code>
+             * @param value The referenceId to add.
+             * @return This builder for chaining.
              */
-            public Builder setReferences(
-                int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder builderForValue) {
-              if (referencesBuilder_ == null) {
-                ensureReferencesIsMutable();
-                references_.set(index, builderForValue.build());
-                onChanged();
-              } else {
-                referencesBuilder_.setMessage(index, builderForValue.build());
-              }
+            public Builder addReferenceId(int value) {
+              ensureReferenceIdIsMutable();
+              referenceId_.addInt(value);
+              onChanged();
               return this;
             }
             /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+             * <code>repeated int32 reference_id = 2;</code>
+             * @param values The referenceId to add.
+             * @return This builder for chaining.
              */
-            public Builder addReferences(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference value) {
-              if (referencesBuilder_ == null) {
-                if (value == null) {
-                  throw new NullPointerException();
-                }
-                ensureReferencesIsMutable();
-                references_.add(value);
-                onChanged();
-              } else {
-                referencesBuilder_.addMessage(value);
-              }
+            public Builder addAllReferenceId(
+                java.lang.Iterable<? extends java.lang.Integer> values) {
+              ensureReferenceIdIsMutable();
+              com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                  values, referenceId_);
+              onChanged();
               return this;
             }
             /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
+             * <code>repeated int32 reference_id = 2;</code>
+             * @return This builder for chaining.
              */
-            public Builder addReferences(
-                int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference value) {
-              if (referencesBuilder_ == null) {
-                if (value == null) {
-                  throw new NullPointerException();
-                }
-                ensureReferencesIsMutable();
-                references_.add(index, value);
-                onChanged();
-              } else {
-                referencesBuilder_.addMessage(index, value);
-              }
+            public Builder clearReferenceId() {
+              referenceId_ = emptyIntList();
+              bitField0_ = (bitField0_ & ~0x00000001);
+              onChanged();
               return this;
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public Builder addReferences(
-                protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder builderForValue) {
-              if (referencesBuilder_ == null) {
-                ensureReferencesIsMutable();
-                references_.add(builderForValue.build());
-                onChanged();
-              } else {
-                referencesBuilder_.addMessage(builderForValue.build());
-              }
-              return this;
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public Builder addReferences(
-                int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder builderForValue) {
-              if (referencesBuilder_ == null) {
-                ensureReferencesIsMutable();
-                references_.add(index, builderForValue.build());
-                onChanged();
-              } else {
-                referencesBuilder_.addMessage(index, builderForValue.build());
-              }
-              return this;
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public Builder addAllReferences(
-                java.lang.Iterable<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference> values) {
-              if (referencesBuilder_ == null) {
-                ensureReferencesIsMutable();
-                com.google.protobuf.AbstractMessageLite.Builder.addAll(
-                    values, references_);
-                onChanged();
-              } else {
-                referencesBuilder_.addAllMessages(values);
-              }
-              return this;
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public Builder clearReferences() {
-              if (referencesBuilder_ == null) {
-                references_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000002);
-                onChanged();
-              } else {
-                referencesBuilder_.clear();
-              }
-              return this;
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public Builder removeReferences(int index) {
-              if (referencesBuilder_ == null) {
-                ensureReferencesIsMutable();
-                references_.remove(index);
-                onChanged();
-              } else {
-                referencesBuilder_.remove(index);
-              }
-              return this;
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder getReferencesBuilder(
-                int index) {
-              return getReferencesFieldBuilder().getBuilder(index);
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder getReferencesOrBuilder(
-                int index) {
-              if (referencesBuilder_ == null) {
-                return references_.get(index);  } else {
-                return referencesBuilder_.getMessageOrBuilder(index);
-              }
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder> 
-                 getReferencesOrBuilderList() {
-              if (referencesBuilder_ != null) {
-                return referencesBuilder_.getMessageOrBuilderList();
-              } else {
-                return java.util.Collections.unmodifiableList(references_);
-              }
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder addReferencesBuilder() {
-              return getReferencesFieldBuilder().addBuilder(
-                  protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.getDefaultInstance());
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder addReferencesBuilder(
-                int index) {
-              return getReferencesFieldBuilder().addBuilder(
-                  index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.getDefaultInstance());
-            }
-            /**
-             * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference references = 2;</code>
-             */
-            public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder> 
-                 getReferencesBuilderList() {
-              return getReferencesFieldBuilder().getBuilderList();
-            }
-            private com.google.protobuf.RepeatedFieldBuilderV3<
-                protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder> 
-                getReferencesFieldBuilder() {
-              if (referencesBuilder_ == null) {
-                referencesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                    protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Reference.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.ReferenceOrBuilder>(
-                        references_,
-                        ((bitField0_ & 0x00000002) == 0x00000002),
-                        getParentForChildren(),
-                        isClean());
-                references_ = null;
-              }
-              return referencesBuilder_;
             }
 
             private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject> opObjects_ =
               java.util.Collections.emptyList();
             private void ensureOpObjectsIsMutable() {
-              if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (!((bitField0_ & 0x00000002) != 0)) {
                 opObjects_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject>(opObjects_);
-                bitField0_ |= 0x00000004;
+                bitField0_ |= 0x00000002;
                }
             }
 
@@ -5245,7 +4451,7 @@ public final class FunctionProto {
             public Builder clearOpObjects() {
               if (opObjectsBuilder_ == null) {
                 opObjects_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
               } else {
                 opObjectsBuilder_.clear();
@@ -5322,7 +4528,7 @@ public final class FunctionProto {
                 opObjectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
                     protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObjectOrBuilder>(
                         opObjects_,
-                        ((bitField0_ & 0x00000004) == 0x00000004),
+                        ((bitField0_ & 0x00000002) != 0),
                         getParentForChildren(),
                         isClean());
                 opObjects_ = null;
@@ -5332,7 +4538,7 @@ public final class FunctionProto {
             @java.lang.Override
             public final Builder setUnknownFields(
                 final com.google.protobuf.UnknownFieldSet unknownFields) {
-              return super.setUnknownFieldsProto3(unknownFields);
+              return super.setUnknownFields(unknownFields);
             }
 
             @java.lang.Override
@@ -5382,45 +4588,11 @@ public final class FunctionProto {
 
         }
 
-        private int bitField0_;
-        public static final int INSTRUCTION_FIELD_NUMBER = 1;
-        private volatile java.lang.Object instruction_;
-        /**
-         * <code>string instruction = 1;</code>
-         */
-        public java.lang.String getInstruction() {
-          java.lang.Object ref = instruction_;
-          if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-          } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            instruction_ = s;
-            return s;
-          }
-        }
-        /**
-         * <code>string instruction = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-            getInstructionBytes() {
-          java.lang.Object ref = instruction_;
-          if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            instruction_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-
-        public static final int MNEMONIC_FIELD_NUMBER = 2;
+        public static final int MNEMONIC_FIELD_NUMBER = 1;
         private volatile java.lang.Object mnemonic_;
         /**
-         * <code>string mnemonic = 2;</code>
+         * <code>string mnemonic = 1;</code>
+         * @return The mnemonic.
          */
         public java.lang.String getMnemonic() {
           java.lang.Object ref = mnemonic_;
@@ -5435,7 +4607,8 @@ public final class FunctionProto {
           }
         }
         /**
-         * <code>string mnemonic = 2;</code>
+         * <code>string mnemonic = 1;</code>
+         * @return The bytes for mnemonic.
          */
         public com.google.protobuf.ByteString
             getMnemonicBytes() {
@@ -5451,53 +4624,45 @@ public final class FunctionProto {
           }
         }
 
-        public static final int OPS_NUMBER_FIELD_NUMBER = 3;
-        private int opsNumber_;
-        /**
-         * <code>uint32 ops_number = 3;</code>
-         */
-        public int getOpsNumber() {
-          return opsNumber_;
-        }
-
-        public static final int IS_THUMB_FIELD_NUMBER = 4;
+        public static final int IS_THUMB_FIELD_NUMBER = 2;
         private boolean isThumb_;
         /**
-         * <code>bool is_thumb = 4;</code>
+         * <code>bool is_thumb = 2;</code>
+         * @return The isThumb.
          */
         public boolean getIsThumb() {
           return isThumb_;
         }
 
-        public static final int OPERANDS_FIELD_NUMBER = 5;
+        public static final int OPERANDS_FIELD_NUMBER = 3;
         private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage> operands_;
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage> getOperandsList() {
           return operands_;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessageOrBuilder> 
             getOperandsOrBuilderList() {
           return operands_;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         public int getOperandsCount() {
           return operands_.size();
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage getOperands(int index) {
           return operands_.get(index);
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
          */
         public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessageOrBuilder getOperandsOrBuilder(
             int index) {
@@ -5518,20 +4683,14 @@ public final class FunctionProto {
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                             throws java.io.IOException {
-          if (!getInstructionBytes().isEmpty()) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, instruction_);
-          }
           if (!getMnemonicBytes().isEmpty()) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 2, mnemonic_);
-          }
-          if (opsNumber_ != 0) {
-            output.writeUInt32(3, opsNumber_);
+            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, mnemonic_);
           }
           if (isThumb_ != false) {
-            output.writeBool(4, isThumb_);
+            output.writeBool(2, isThumb_);
           }
           for (int i = 0; i < operands_.size(); i++) {
-            output.writeMessage(5, operands_.get(i));
+            output.writeMessage(3, operands_.get(i));
           }
           unknownFields.writeTo(output);
         }
@@ -5542,23 +4701,16 @@ public final class FunctionProto {
           if (size != -1) return size;
 
           size = 0;
-          if (!getInstructionBytes().isEmpty()) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, instruction_);
-          }
           if (!getMnemonicBytes().isEmpty()) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, mnemonic_);
-          }
-          if (opsNumber_ != 0) {
-            size += com.google.protobuf.CodedOutputStream
-              .computeUInt32Size(3, opsNumber_);
+            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, mnemonic_);
           }
           if (isThumb_ != false) {
             size += com.google.protobuf.CodedOutputStream
-              .computeBoolSize(4, isThumb_);
+              .computeBoolSize(2, isThumb_);
           }
           for (int i = 0; i < operands_.size(); i++) {
             size += com.google.protobuf.CodedOutputStream
-              .computeMessageSize(5, operands_.get(i));
+              .computeMessageSize(3, operands_.get(i));
           }
           size += unknownFields.getSerializedSize();
           memoizedSize = size;
@@ -5575,19 +4727,14 @@ public final class FunctionProto {
           }
           protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage other = (protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage) obj;
 
-          boolean result = true;
-          result = result && getInstruction()
-              .equals(other.getInstruction());
-          result = result && getMnemonic()
-              .equals(other.getMnemonic());
-          result = result && (getOpsNumber()
-              == other.getOpsNumber());
-          result = result && (getIsThumb()
-              == other.getIsThumb());
-          result = result && getOperandsList()
-              .equals(other.getOperandsList());
-          result = result && unknownFields.equals(other.unknownFields);
-          return result;
+          if (!getMnemonic()
+              .equals(other.getMnemonic())) return false;
+          if (getIsThumb()
+              != other.getIsThumb()) return false;
+          if (!getOperandsList()
+              .equals(other.getOperandsList())) return false;
+          if (!unknownFields.equals(other.unknownFields)) return false;
+          return true;
         }
 
         @java.lang.Override
@@ -5597,12 +4744,8 @@ public final class FunctionProto {
           }
           int hash = 41;
           hash = (19 * hash) + getDescriptor().hashCode();
-          hash = (37 * hash) + INSTRUCTION_FIELD_NUMBER;
-          hash = (53 * hash) + getInstruction().hashCode();
           hash = (37 * hash) + MNEMONIC_FIELD_NUMBER;
           hash = (53 * hash) + getMnemonic().hashCode();
-          hash = (37 * hash) + OPS_NUMBER_FIELD_NUMBER;
-          hash = (53 * hash) + getOpsNumber();
           hash = (37 * hash) + IS_THUMB_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
               getIsThumb());
@@ -5744,17 +4887,13 @@ public final class FunctionProto {
           @java.lang.Override
           public Builder clear() {
             super.clear();
-            instruction_ = "";
-
             mnemonic_ = "";
-
-            opsNumber_ = 0;
 
             isThumb_ = false;
 
             if (operandsBuilder_ == null) {
               operands_ = java.util.Collections.emptyList();
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               operandsBuilder_.clear();
             }
@@ -5785,56 +4924,52 @@ public final class FunctionProto {
           public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage buildPartial() {
             protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage result = new protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage(this);
             int from_bitField0_ = bitField0_;
-            int to_bitField0_ = 0;
-            result.instruction_ = instruction_;
             result.mnemonic_ = mnemonic_;
-            result.opsNumber_ = opsNumber_;
             result.isThumb_ = isThumb_;
             if (operandsBuilder_ == null) {
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+              if (((bitField0_ & 0x00000001) != 0)) {
                 operands_ = java.util.Collections.unmodifiableList(operands_);
-                bitField0_ = (bitField0_ & ~0x00000010);
+                bitField0_ = (bitField0_ & ~0x00000001);
               }
               result.operands_ = operands_;
             } else {
               result.operands_ = operandsBuilder_.build();
             }
-            result.bitField0_ = to_bitField0_;
             onBuilt();
             return result;
           }
 
           @java.lang.Override
           public Builder clone() {
-            return (Builder) super.clone();
+            return super.clone();
           }
           @java.lang.Override
           public Builder setField(
               com.google.protobuf.Descriptors.FieldDescriptor field,
               java.lang.Object value) {
-            return (Builder) super.setField(field, value);
+            return super.setField(field, value);
           }
           @java.lang.Override
           public Builder clearField(
               com.google.protobuf.Descriptors.FieldDescriptor field) {
-            return (Builder) super.clearField(field);
+            return super.clearField(field);
           }
           @java.lang.Override
           public Builder clearOneof(
               com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-            return (Builder) super.clearOneof(oneof);
+            return super.clearOneof(oneof);
           }
           @java.lang.Override
           public Builder setRepeatedField(
               com.google.protobuf.Descriptors.FieldDescriptor field,
               int index, java.lang.Object value) {
-            return (Builder) super.setRepeatedField(field, index, value);
+            return super.setRepeatedField(field, index, value);
           }
           @java.lang.Override
           public Builder addRepeatedField(
               com.google.protobuf.Descriptors.FieldDescriptor field,
               java.lang.Object value) {
-            return (Builder) super.addRepeatedField(field, value);
+            return super.addRepeatedField(field, value);
           }
           @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -5848,16 +4983,9 @@ public final class FunctionProto {
 
           public Builder mergeFrom(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage other) {
             if (other == protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.getDefaultInstance()) return this;
-            if (!other.getInstruction().isEmpty()) {
-              instruction_ = other.instruction_;
-              onChanged();
-            }
             if (!other.getMnemonic().isEmpty()) {
               mnemonic_ = other.mnemonic_;
               onChanged();
-            }
-            if (other.getOpsNumber() != 0) {
-              setOpsNumber(other.getOpsNumber());
             }
             if (other.getIsThumb() != false) {
               setIsThumb(other.getIsThumb());
@@ -5866,7 +4994,7 @@ public final class FunctionProto {
               if (!other.operands_.isEmpty()) {
                 if (operands_.isEmpty()) {
                   operands_ = other.operands_;
-                  bitField0_ = (bitField0_ & ~0x00000010);
+                  bitField0_ = (bitField0_ & ~0x00000001);
                 } else {
                   ensureOperandsIsMutable();
                   operands_.addAll(other.operands_);
@@ -5879,7 +5007,7 @@ public final class FunctionProto {
                   operandsBuilder_.dispose();
                   operandsBuilder_ = null;
                   operands_ = other.operands_;
-                  bitField0_ = (bitField0_ & ~0x00000010);
+                  bitField0_ = (bitField0_ & ~0x00000001);
                   operandsBuilder_ = 
                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                        getOperandsFieldBuilder() : null;
@@ -5918,78 +5046,10 @@ public final class FunctionProto {
           }
           private int bitField0_;
 
-          private java.lang.Object instruction_ = "";
-          /**
-           * <code>string instruction = 1;</code>
-           */
-          public java.lang.String getInstruction() {
-            java.lang.Object ref = instruction_;
-            if (!(ref instanceof java.lang.String)) {
-              com.google.protobuf.ByteString bs =
-                  (com.google.protobuf.ByteString) ref;
-              java.lang.String s = bs.toStringUtf8();
-              instruction_ = s;
-              return s;
-            } else {
-              return (java.lang.String) ref;
-            }
-          }
-          /**
-           * <code>string instruction = 1;</code>
-           */
-          public com.google.protobuf.ByteString
-              getInstructionBytes() {
-            java.lang.Object ref = instruction_;
-            if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (java.lang.String) ref);
-              instruction_ = b;
-              return b;
-            } else {
-              return (com.google.protobuf.ByteString) ref;
-            }
-          }
-          /**
-           * <code>string instruction = 1;</code>
-           */
-          public Builder setInstruction(
-              java.lang.String value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  
-            instruction_ = value;
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>string instruction = 1;</code>
-           */
-          public Builder clearInstruction() {
-            
-            instruction_ = getDefaultInstance().getInstruction();
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>string instruction = 1;</code>
-           */
-          public Builder setInstructionBytes(
-              com.google.protobuf.ByteString value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-            
-            instruction_ = value;
-            onChanged();
-            return this;
-          }
-
           private java.lang.Object mnemonic_ = "";
           /**
-           * <code>string mnemonic = 2;</code>
+           * <code>string mnemonic = 1;</code>
+           * @return The mnemonic.
            */
           public java.lang.String getMnemonic() {
             java.lang.Object ref = mnemonic_;
@@ -6004,7 +5064,8 @@ public final class FunctionProto {
             }
           }
           /**
-           * <code>string mnemonic = 2;</code>
+           * <code>string mnemonic = 1;</code>
+           * @return The bytes for mnemonic.
            */
           public com.google.protobuf.ByteString
               getMnemonicBytes() {
@@ -6020,7 +5081,9 @@ public final class FunctionProto {
             }
           }
           /**
-           * <code>string mnemonic = 2;</code>
+           * <code>string mnemonic = 1;</code>
+           * @param value The mnemonic to set.
+           * @return This builder for chaining.
            */
           public Builder setMnemonic(
               java.lang.String value) {
@@ -6033,7 +5096,8 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>string mnemonic = 2;</code>
+           * <code>string mnemonic = 1;</code>
+           * @return This builder for chaining.
            */
           public Builder clearMnemonic() {
             
@@ -6042,7 +5106,9 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>string mnemonic = 2;</code>
+           * <code>string mnemonic = 1;</code>
+           * @param value The bytes for mnemonic to set.
+           * @return This builder for chaining.
            */
           public Builder setMnemonicBytes(
               com.google.protobuf.ByteString value) {
@@ -6056,41 +5122,18 @@ public final class FunctionProto {
             return this;
           }
 
-          private int opsNumber_ ;
-          /**
-           * <code>uint32 ops_number = 3;</code>
-           */
-          public int getOpsNumber() {
-            return opsNumber_;
-          }
-          /**
-           * <code>uint32 ops_number = 3;</code>
-           */
-          public Builder setOpsNumber(int value) {
-            
-            opsNumber_ = value;
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>uint32 ops_number = 3;</code>
-           */
-          public Builder clearOpsNumber() {
-            
-            opsNumber_ = 0;
-            onChanged();
-            return this;
-          }
-
           private boolean isThumb_ ;
           /**
-           * <code>bool is_thumb = 4;</code>
+           * <code>bool is_thumb = 2;</code>
+           * @return The isThumb.
            */
           public boolean getIsThumb() {
             return isThumb_;
           }
           /**
-           * <code>bool is_thumb = 4;</code>
+           * <code>bool is_thumb = 2;</code>
+           * @param value The isThumb to set.
+           * @return This builder for chaining.
            */
           public Builder setIsThumb(boolean value) {
             
@@ -6099,7 +5142,8 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>bool is_thumb = 4;</code>
+           * <code>bool is_thumb = 2;</code>
+           * @return This builder for chaining.
            */
           public Builder clearIsThumb() {
             
@@ -6111,9 +5155,9 @@ public final class FunctionProto {
           private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage> operands_ =
             java.util.Collections.emptyList();
           private void ensureOperandsIsMutable() {
-            if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+            if (!((bitField0_ & 0x00000001) != 0)) {
               operands_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage>(operands_);
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000001;
              }
           }
 
@@ -6121,7 +5165,7 @@ public final class FunctionProto {
               protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessageOrBuilder> operandsBuilder_;
 
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage> getOperandsList() {
             if (operandsBuilder_ == null) {
@@ -6131,7 +5175,7 @@ public final class FunctionProto {
             }
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public int getOperandsCount() {
             if (operandsBuilder_ == null) {
@@ -6141,7 +5185,7 @@ public final class FunctionProto {
             }
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage getOperands(int index) {
             if (operandsBuilder_ == null) {
@@ -6151,7 +5195,7 @@ public final class FunctionProto {
             }
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public Builder setOperands(
               int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage value) {
@@ -6168,7 +5212,7 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public Builder setOperands(
               int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Builder builderForValue) {
@@ -6182,7 +5226,7 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public Builder addOperands(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage value) {
             if (operandsBuilder_ == null) {
@@ -6198,7 +5242,7 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public Builder addOperands(
               int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage value) {
@@ -6215,7 +5259,7 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public Builder addOperands(
               protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Builder builderForValue) {
@@ -6229,7 +5273,7 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public Builder addOperands(
               int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Builder builderForValue) {
@@ -6243,7 +5287,7 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public Builder addAllOperands(
               java.lang.Iterable<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage> values) {
@@ -6258,12 +5302,12 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public Builder clearOperands() {
             if (operandsBuilder_ == null) {
               operands_ = java.util.Collections.emptyList();
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000001);
               onChanged();
             } else {
               operandsBuilder_.clear();
@@ -6271,7 +5315,7 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public Builder removeOperands(int index) {
             if (operandsBuilder_ == null) {
@@ -6284,14 +5328,14 @@ public final class FunctionProto {
             return this;
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Builder getOperandsBuilder(
               int index) {
             return getOperandsFieldBuilder().getBuilder(index);
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessageOrBuilder getOperandsOrBuilder(
               int index) {
@@ -6301,7 +5345,7 @@ public final class FunctionProto {
             }
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessageOrBuilder> 
                getOperandsOrBuilderList() {
@@ -6312,14 +5356,14 @@ public final class FunctionProto {
             }
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Builder addOperandsBuilder() {
             return getOperandsFieldBuilder().addBuilder(
                 protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.getDefaultInstance());
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Builder addOperandsBuilder(
               int index) {
@@ -6327,7 +5371,7 @@ public final class FunctionProto {
                 index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.getDefaultInstance());
           }
           /**
-           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 5;</code>
+           * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage operands = 3;</code>
            */
           public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Builder> 
                getOperandsBuilderList() {
@@ -6340,7 +5384,7 @@ public final class FunctionProto {
               operandsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
                   protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessageOrBuilder>(
                       operands_,
-                      ((bitField0_ & 0x00000010) == 0x00000010),
+                      ((bitField0_ & 0x00000001) != 0),
                       getParentForChildren(),
                       isClean());
               operands_ = null;
@@ -6350,7 +5394,7 @@ public final class FunctionProto {
           @java.lang.Override
           public final Builder setUnknownFields(
               final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.setUnknownFieldsProto3(unknownFields);
+            return super.setUnknownFields(unknownFields);
           }
 
           @java.lang.Override
@@ -6400,104 +5444,231 @@ public final class FunctionProto {
 
       }
 
-      private int bitField0_;
-      public static final int STARTING_ADDRESS_FIELD_NUMBER = 1;
-      private volatile java.lang.Object startingAddress_;
+      private int startingAddressCase_ = 0;
+      private java.lang.Object startingAddress_;
+      public enum StartingAddressCase
+          implements com.google.protobuf.Internal.EnumLite,
+              com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+        LONG_STARTING_ADDRESS(1),
+        SYMBOLIC_STARTING_ADDRESS(2),
+        STARTINGADDRESS_NOT_SET(0);
+        private final int value;
+        private StartingAddressCase(int value) {
+          this.value = value;
+        }
+        /**
+         * @param value The number of the enum to look for.
+         * @return The enum associated with the given number.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static StartingAddressCase valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static StartingAddressCase forNumber(int value) {
+          switch (value) {
+            case 1: return LONG_STARTING_ADDRESS;
+            case 2: return SYMBOLIC_STARTING_ADDRESS;
+            case 0: return STARTINGADDRESS_NOT_SET;
+            default: return null;
+          }
+        }
+        public int getNumber() {
+          return this.value;
+        }
+      };
+
+      public StartingAddressCase
+      getStartingAddressCase() {
+        return StartingAddressCase.forNumber(
+            startingAddressCase_);
+      }
+
+      private int endingAddressCase_ = 0;
+      private java.lang.Object endingAddress_;
+      public enum EndingAddressCase
+          implements com.google.protobuf.Internal.EnumLite,
+              com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+        LONG_ENDING_ADDRESS(3),
+        SYMBOLIC_ENDING_ADDRESS(4),
+        ENDINGADDRESS_NOT_SET(0);
+        private final int value;
+        private EndingAddressCase(int value) {
+          this.value = value;
+        }
+        /**
+         * @param value The number of the enum to look for.
+         * @return The enum associated with the given number.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static EndingAddressCase valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static EndingAddressCase forNumber(int value) {
+          switch (value) {
+            case 3: return LONG_ENDING_ADDRESS;
+            case 4: return SYMBOLIC_ENDING_ADDRESS;
+            case 0: return ENDINGADDRESS_NOT_SET;
+            default: return null;
+          }
+        }
+        public int getNumber() {
+          return this.value;
+        }
+      };
+
+      public EndingAddressCase
+      getEndingAddressCase() {
+        return EndingAddressCase.forNumber(
+            endingAddressCase_);
+      }
+
+      public static final int LONG_STARTING_ADDRESS_FIELD_NUMBER = 1;
       /**
-       * <code>string starting_address = 1;</code>
+       * <code>uint64 long_starting_address = 1;</code>
+       * @return The longStartingAddress.
        */
-      public java.lang.String getStartingAddress() {
-        java.lang.Object ref = startingAddress_;
+      public long getLongStartingAddress() {
+        if (startingAddressCase_ == 1) {
+          return (java.lang.Long) startingAddress_;
+        }
+        return 0L;
+      }
+
+      public static final int SYMBOLIC_STARTING_ADDRESS_FIELD_NUMBER = 2;
+      /**
+       * <code>string symbolic_starting_address = 2;</code>
+       * @return The symbolicStartingAddress.
+       */
+      public java.lang.String getSymbolicStartingAddress() {
+        java.lang.Object ref = "";
+        if (startingAddressCase_ == 2) {
+          ref = startingAddress_;
+        }
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
           com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          startingAddress_ = s;
+          if (startingAddressCase_ == 2) {
+            startingAddress_ = s;
+          }
           return s;
         }
       }
       /**
-       * <code>string starting_address = 1;</code>
+       * <code>string symbolic_starting_address = 2;</code>
+       * @return The bytes for symbolicStartingAddress.
        */
       public com.google.protobuf.ByteString
-          getStartingAddressBytes() {
-        java.lang.Object ref = startingAddress_;
+          getSymbolicStartingAddressBytes() {
+        java.lang.Object ref = "";
+        if (startingAddressCase_ == 2) {
+          ref = startingAddress_;
+        }
         if (ref instanceof java.lang.String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          startingAddress_ = b;
+          if (startingAddressCase_ == 2) {
+            startingAddress_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
 
-      public static final int ENDING_ADDRESS_FIELD_NUMBER = 2;
-      private volatile java.lang.Object endingAddress_;
+      public static final int LONG_ENDING_ADDRESS_FIELD_NUMBER = 3;
       /**
-       * <code>string ending_address = 2;</code>
+       * <code>uint64 long_ending_address = 3;</code>
+       * @return The longEndingAddress.
        */
-      public java.lang.String getEndingAddress() {
-        java.lang.Object ref = endingAddress_;
+      public long getLongEndingAddress() {
+        if (endingAddressCase_ == 3) {
+          return (java.lang.Long) endingAddress_;
+        }
+        return 0L;
+      }
+
+      public static final int SYMBOLIC_ENDING_ADDRESS_FIELD_NUMBER = 4;
+      /**
+       * <code>string symbolic_ending_address = 4;</code>
+       * @return The symbolicEndingAddress.
+       */
+      public java.lang.String getSymbolicEndingAddress() {
+        java.lang.Object ref = "";
+        if (endingAddressCase_ == 4) {
+          ref = endingAddress_;
+        }
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
           com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          endingAddress_ = s;
+          if (endingAddressCase_ == 4) {
+            endingAddress_ = s;
+          }
           return s;
         }
       }
       /**
-       * <code>string ending_address = 2;</code>
+       * <code>string symbolic_ending_address = 4;</code>
+       * @return The bytes for symbolicEndingAddress.
        */
       public com.google.protobuf.ByteString
-          getEndingAddressBytes() {
-        java.lang.Object ref = endingAddress_;
+          getSymbolicEndingAddressBytes() {
+        java.lang.Object ref = "";
+        if (endingAddressCase_ == 4) {
+          ref = endingAddress_;
+        }
         if (ref instanceof java.lang.String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          endingAddress_ = b;
+          if (endingAddressCase_ == 4) {
+            endingAddress_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
 
-      public static final int INSTRUCTIONS_FIELD_NUMBER = 3;
+      public static final int INSTRUCTIONS_FIELD_NUMBER = 5;
       private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage> instructions_;
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage> getInstructionsList() {
         return instructions_;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessageOrBuilder> 
           getInstructionsOrBuilderList() {
         return instructions_;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       public int getInstructionsCount() {
         return instructions_.size();
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage getInstructions(int index) {
         return instructions_.get(index);
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessageOrBuilder getInstructionsOrBuilder(
           int index) {
@@ -6518,14 +5689,22 @@ public final class FunctionProto {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (!getStartingAddressBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, startingAddress_);
+        if (startingAddressCase_ == 1) {
+          output.writeUInt64(
+              1, (long)((java.lang.Long) startingAddress_));
         }
-        if (!getEndingAddressBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, endingAddress_);
+        if (startingAddressCase_ == 2) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, startingAddress_);
+        }
+        if (endingAddressCase_ == 3) {
+          output.writeUInt64(
+              3, (long)((java.lang.Long) endingAddress_));
+        }
+        if (endingAddressCase_ == 4) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, endingAddress_);
         }
         for (int i = 0; i < instructions_.size(); i++) {
-          output.writeMessage(3, instructions_.get(i));
+          output.writeMessage(5, instructions_.get(i));
         }
         unknownFields.writeTo(output);
       }
@@ -6536,15 +5715,25 @@ public final class FunctionProto {
         if (size != -1) return size;
 
         size = 0;
-        if (!getStartingAddressBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, startingAddress_);
+        if (startingAddressCase_ == 1) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt64Size(
+                1, (long)((java.lang.Long) startingAddress_));
         }
-        if (!getEndingAddressBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, endingAddress_);
+        if (startingAddressCase_ == 2) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, startingAddress_);
+        }
+        if (endingAddressCase_ == 3) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt64Size(
+                3, (long)((java.lang.Long) endingAddress_));
+        }
+        if (endingAddressCase_ == 4) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, endingAddress_);
         }
         for (int i = 0; i < instructions_.size(); i++) {
           size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(3, instructions_.get(i));
+            .computeMessageSize(5, instructions_.get(i));
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -6561,15 +5750,36 @@ public final class FunctionProto {
         }
         protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage other = (protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage) obj;
 
-        boolean result = true;
-        result = result && getStartingAddress()
-            .equals(other.getStartingAddress());
-        result = result && getEndingAddress()
-            .equals(other.getEndingAddress());
-        result = result && getInstructionsList()
-            .equals(other.getInstructionsList());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
+        if (!getInstructionsList()
+            .equals(other.getInstructionsList())) return false;
+        if (!getStartingAddressCase().equals(other.getStartingAddressCase())) return false;
+        switch (startingAddressCase_) {
+          case 1:
+            if (getLongStartingAddress()
+                != other.getLongStartingAddress()) return false;
+            break;
+          case 2:
+            if (!getSymbolicStartingAddress()
+                .equals(other.getSymbolicStartingAddress())) return false;
+            break;
+          case 0:
+          default:
+        }
+        if (!getEndingAddressCase().equals(other.getEndingAddressCase())) return false;
+        switch (endingAddressCase_) {
+          case 3:
+            if (getLongEndingAddress()
+                != other.getLongEndingAddress()) return false;
+            break;
+          case 4:
+            if (!getSymbolicEndingAddress()
+                .equals(other.getSymbolicEndingAddress())) return false;
+            break;
+          case 0:
+          default:
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
       @java.lang.Override
@@ -6579,13 +5789,35 @@ public final class FunctionProto {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + STARTING_ADDRESS_FIELD_NUMBER;
-        hash = (53 * hash) + getStartingAddress().hashCode();
-        hash = (37 * hash) + ENDING_ADDRESS_FIELD_NUMBER;
-        hash = (53 * hash) + getEndingAddress().hashCode();
         if (getInstructionsCount() > 0) {
           hash = (37 * hash) + INSTRUCTIONS_FIELD_NUMBER;
           hash = (53 * hash) + getInstructionsList().hashCode();
+        }
+        switch (startingAddressCase_) {
+          case 1:
+            hash = (37 * hash) + LONG_STARTING_ADDRESS_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                getLongStartingAddress());
+            break;
+          case 2:
+            hash = (37 * hash) + SYMBOLIC_STARTING_ADDRESS_FIELD_NUMBER;
+            hash = (53 * hash) + getSymbolicStartingAddress().hashCode();
+            break;
+          case 0:
+          default:
+        }
+        switch (endingAddressCase_) {
+          case 3:
+            hash = (37 * hash) + LONG_ENDING_ADDRESS_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                getLongEndingAddress());
+            break;
+          case 4:
+            hash = (37 * hash) + SYMBOLIC_ENDING_ADDRESS_FIELD_NUMBER;
+            hash = (53 * hash) + getSymbolicEndingAddress().hashCode();
+            break;
+          case 0:
+          default:
         }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
@@ -6721,16 +5953,16 @@ public final class FunctionProto {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          startingAddress_ = "";
-
-          endingAddress_ = "";
-
           if (instructionsBuilder_ == null) {
             instructions_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             instructionsBuilder_.clear();
           }
+          startingAddressCase_ = 0;
+          startingAddress_ = null;
+          endingAddressCase_ = 0;
+          endingAddress_ = null;
           return this;
         }
 
@@ -6758,54 +5990,64 @@ public final class FunctionProto {
         public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage buildPartial() {
           protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage result = new protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage(this);
           int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          result.startingAddress_ = startingAddress_;
-          result.endingAddress_ = endingAddress_;
+          if (startingAddressCase_ == 1) {
+            result.startingAddress_ = startingAddress_;
+          }
+          if (startingAddressCase_ == 2) {
+            result.startingAddress_ = startingAddress_;
+          }
+          if (endingAddressCase_ == 3) {
+            result.endingAddress_ = endingAddress_;
+          }
+          if (endingAddressCase_ == 4) {
+            result.endingAddress_ = endingAddress_;
+          }
           if (instructionsBuilder_ == null) {
-            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            if (((bitField0_ & 0x00000001) != 0)) {
               instructions_ = java.util.Collections.unmodifiableList(instructions_);
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000001);
             }
             result.instructions_ = instructions_;
           } else {
             result.instructions_ = instructionsBuilder_.build();
           }
-          result.bitField0_ = to_bitField0_;
+          result.startingAddressCase_ = startingAddressCase_;
+          result.endingAddressCase_ = endingAddressCase_;
           onBuilt();
           return result;
         }
 
         @java.lang.Override
         public Builder clone() {
-          return (Builder) super.clone();
+          return super.clone();
         }
         @java.lang.Override
         public Builder setField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.setField(field, value);
+          return super.setField(field, value);
         }
         @java.lang.Override
         public Builder clearField(
             com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
+          return super.clearField(field);
         }
         @java.lang.Override
         public Builder clearOneof(
             com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
+          return super.clearOneof(oneof);
         }
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
+          return super.setRepeatedField(field, index, value);
         }
         @java.lang.Override
         public Builder addRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
+          return super.addRepeatedField(field, value);
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -6819,19 +6061,11 @@ public final class FunctionProto {
 
         public Builder mergeFrom(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage other) {
           if (other == protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.getDefaultInstance()) return this;
-          if (!other.getStartingAddress().isEmpty()) {
-            startingAddress_ = other.startingAddress_;
-            onChanged();
-          }
-          if (!other.getEndingAddress().isEmpty()) {
-            endingAddress_ = other.endingAddress_;
-            onChanged();
-          }
           if (instructionsBuilder_ == null) {
             if (!other.instructions_.isEmpty()) {
               if (instructions_.isEmpty()) {
                 instructions_ = other.instructions_;
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00000001);
               } else {
                 ensureInstructionsIsMutable();
                 instructions_.addAll(other.instructions_);
@@ -6844,13 +6078,43 @@ public final class FunctionProto {
                 instructionsBuilder_.dispose();
                 instructionsBuilder_ = null;
                 instructions_ = other.instructions_;
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00000001);
                 instructionsBuilder_ = 
                   com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                      getInstructionsFieldBuilder() : null;
               } else {
                 instructionsBuilder_.addAllMessages(other.instructions_);
               }
+            }
+          }
+          switch (other.getStartingAddressCase()) {
+            case LONG_STARTING_ADDRESS: {
+              setLongStartingAddress(other.getLongStartingAddress());
+              break;
+            }
+            case SYMBOLIC_STARTING_ADDRESS: {
+              startingAddressCase_ = 2;
+              startingAddress_ = other.startingAddress_;
+              onChanged();
+              break;
+            }
+            case STARTINGADDRESS_NOT_SET: {
+              break;
+            }
+          }
+          switch (other.getEndingAddressCase()) {
+            case LONG_ENDING_ADDRESS: {
+              setLongEndingAddress(other.getLongEndingAddress());
+              break;
+            }
+            case SYMBOLIC_ENDING_ADDRESS: {
+              endingAddressCase_ = 4;
+              endingAddress_ = other.endingAddress_;
+              onChanged();
+              break;
+            }
+            case ENDINGADDRESS_NOT_SET: {
+              break;
             }
           }
           this.mergeUnknownFields(other.unknownFields);
@@ -6881,141 +6145,275 @@ public final class FunctionProto {
           }
           return this;
         }
+        private int startingAddressCase_ = 0;
+        private java.lang.Object startingAddress_;
+        public StartingAddressCase
+            getStartingAddressCase() {
+          return StartingAddressCase.forNumber(
+              startingAddressCase_);
+        }
+
+        public Builder clearStartingAddress() {
+          startingAddressCase_ = 0;
+          startingAddress_ = null;
+          onChanged();
+          return this;
+        }
+
+        private int endingAddressCase_ = 0;
+        private java.lang.Object endingAddress_;
+        public EndingAddressCase
+            getEndingAddressCase() {
+          return EndingAddressCase.forNumber(
+              endingAddressCase_);
+        }
+
+        public Builder clearEndingAddress() {
+          endingAddressCase_ = 0;
+          endingAddress_ = null;
+          onChanged();
+          return this;
+        }
+
         private int bitField0_;
 
-        private java.lang.Object startingAddress_ = "";
         /**
-         * <code>string starting_address = 1;</code>
+         * <code>uint64 long_starting_address = 1;</code>
+         * @return The longStartingAddress.
          */
-        public java.lang.String getStartingAddress() {
-          java.lang.Object ref = startingAddress_;
+        public long getLongStartingAddress() {
+          if (startingAddressCase_ == 1) {
+            return (java.lang.Long) startingAddress_;
+          }
+          return 0L;
+        }
+        /**
+         * <code>uint64 long_starting_address = 1;</code>
+         * @param value The longStartingAddress to set.
+         * @return This builder for chaining.
+         */
+        public Builder setLongStartingAddress(long value) {
+          startingAddressCase_ = 1;
+          startingAddress_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>uint64 long_starting_address = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearLongStartingAddress() {
+          if (startingAddressCase_ == 1) {
+            startingAddressCase_ = 0;
+            startingAddress_ = null;
+            onChanged();
+          }
+          return this;
+        }
+
+        /**
+         * <code>string symbolic_starting_address = 2;</code>
+         * @return The symbolicStartingAddress.
+         */
+        public java.lang.String getSymbolicStartingAddress() {
+          java.lang.Object ref = "";
+          if (startingAddressCase_ == 2) {
+            ref = startingAddress_;
+          }
           if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
                 (com.google.protobuf.ByteString) ref;
             java.lang.String s = bs.toStringUtf8();
-            startingAddress_ = s;
+            if (startingAddressCase_ == 2) {
+              startingAddress_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
           }
         }
         /**
-         * <code>string starting_address = 1;</code>
+         * <code>string symbolic_starting_address = 2;</code>
+         * @return The bytes for symbolicStartingAddress.
          */
         public com.google.protobuf.ByteString
-            getStartingAddressBytes() {
-          java.lang.Object ref = startingAddress_;
+            getSymbolicStartingAddressBytes() {
+          java.lang.Object ref = "";
+          if (startingAddressCase_ == 2) {
+            ref = startingAddress_;
+          }
           if (ref instanceof String) {
             com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
-            startingAddress_ = b;
+            if (startingAddressCase_ == 2) {
+              startingAddress_ = b;
+            }
             return b;
           } else {
             return (com.google.protobuf.ByteString) ref;
           }
         }
         /**
-         * <code>string starting_address = 1;</code>
+         * <code>string symbolic_starting_address = 2;</code>
+         * @param value The symbolicStartingAddress to set.
+         * @return This builder for chaining.
          */
-        public Builder setStartingAddress(
+        public Builder setSymbolicStartingAddress(
             java.lang.String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-  
+  startingAddressCase_ = 2;
           startingAddress_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>string starting_address = 1;</code>
+         * <code>string symbolic_starting_address = 2;</code>
+         * @return This builder for chaining.
          */
-        public Builder clearStartingAddress() {
-          
-          startingAddress_ = getDefaultInstance().getStartingAddress();
-          onChanged();
+        public Builder clearSymbolicStartingAddress() {
+          if (startingAddressCase_ == 2) {
+            startingAddressCase_ = 0;
+            startingAddress_ = null;
+            onChanged();
+          }
           return this;
         }
         /**
-         * <code>string starting_address = 1;</code>
+         * <code>string symbolic_starting_address = 2;</code>
+         * @param value The bytes for symbolicStartingAddress to set.
+         * @return This builder for chaining.
          */
-        public Builder setStartingAddressBytes(
+        public Builder setSymbolicStartingAddressBytes(
             com.google.protobuf.ByteString value) {
           if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-          
+          startingAddressCase_ = 2;
           startingAddress_ = value;
           onChanged();
           return this;
         }
 
-        private java.lang.Object endingAddress_ = "";
         /**
-         * <code>string ending_address = 2;</code>
+         * <code>uint64 long_ending_address = 3;</code>
+         * @return The longEndingAddress.
          */
-        public java.lang.String getEndingAddress() {
-          java.lang.Object ref = endingAddress_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            endingAddress_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
+        public long getLongEndingAddress() {
+          if (endingAddressCase_ == 3) {
+            return (java.lang.Long) endingAddress_;
           }
+          return 0L;
         }
         /**
-         * <code>string ending_address = 2;</code>
+         * <code>uint64 long_ending_address = 3;</code>
+         * @param value The longEndingAddress to set.
+         * @return This builder for chaining.
          */
-        public com.google.protobuf.ByteString
-            getEndingAddressBytes() {
-          java.lang.Object ref = endingAddress_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            endingAddress_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>string ending_address = 2;</code>
-         */
-        public Builder setEndingAddress(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        public Builder setLongEndingAddress(long value) {
+          endingAddressCase_ = 3;
           endingAddress_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>string ending_address = 2;</code>
+         * <code>uint64 long_ending_address = 3;</code>
+         * @return This builder for chaining.
          */
-        public Builder clearEndingAddress() {
-          
-          endingAddress_ = getDefaultInstance().getEndingAddress();
+        public Builder clearLongEndingAddress() {
+          if (endingAddressCase_ == 3) {
+            endingAddressCase_ = 0;
+            endingAddress_ = null;
+            onChanged();
+          }
+          return this;
+        }
+
+        /**
+         * <code>string symbolic_ending_address = 4;</code>
+         * @return The symbolicEndingAddress.
+         */
+        public java.lang.String getSymbolicEndingAddress() {
+          java.lang.Object ref = "";
+          if (endingAddressCase_ == 4) {
+            ref = endingAddress_;
+          }
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (endingAddressCase_ == 4) {
+              endingAddress_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string symbolic_ending_address = 4;</code>
+         * @return The bytes for symbolicEndingAddress.
+         */
+        public com.google.protobuf.ByteString
+            getSymbolicEndingAddressBytes() {
+          java.lang.Object ref = "";
+          if (endingAddressCase_ == 4) {
+            ref = endingAddress_;
+          }
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            if (endingAddressCase_ == 4) {
+              endingAddress_ = b;
+            }
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string symbolic_ending_address = 4;</code>
+         * @param value The symbolicEndingAddress to set.
+         * @return This builder for chaining.
+         */
+        public Builder setSymbolicEndingAddress(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  endingAddressCase_ = 4;
+          endingAddress_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>string ending_address = 2;</code>
+         * <code>string symbolic_ending_address = 4;</code>
+         * @return This builder for chaining.
          */
-        public Builder setEndingAddressBytes(
+        public Builder clearSymbolicEndingAddress() {
+          if (endingAddressCase_ == 4) {
+            endingAddressCase_ = 0;
+            endingAddress_ = null;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>string symbolic_ending_address = 4;</code>
+         * @param value The bytes for symbolicEndingAddress to set.
+         * @return This builder for chaining.
+         */
+        public Builder setSymbolicEndingAddressBytes(
             com.google.protobuf.ByteString value) {
           if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-          
+          endingAddressCase_ = 4;
           endingAddress_ = value;
           onChanged();
           return this;
@@ -7024,9 +6422,9 @@ public final class FunctionProto {
         private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage> instructions_ =
           java.util.Collections.emptyList();
         private void ensureInstructionsIsMutable() {
-          if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (!((bitField0_ & 0x00000001) != 0)) {
             instructions_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage>(instructions_);
-            bitField0_ |= 0x00000004;
+            bitField0_ |= 0x00000001;
            }
         }
 
@@ -7034,7 +6432,7 @@ public final class FunctionProto {
             protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessageOrBuilder> instructionsBuilder_;
 
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage> getInstructionsList() {
           if (instructionsBuilder_ == null) {
@@ -7044,7 +6442,7 @@ public final class FunctionProto {
           }
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public int getInstructionsCount() {
           if (instructionsBuilder_ == null) {
@@ -7054,7 +6452,7 @@ public final class FunctionProto {
           }
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage getInstructions(int index) {
           if (instructionsBuilder_ == null) {
@@ -7064,7 +6462,7 @@ public final class FunctionProto {
           }
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public Builder setInstructions(
             int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage value) {
@@ -7081,7 +6479,7 @@ public final class FunctionProto {
           return this;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public Builder setInstructions(
             int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.Builder builderForValue) {
@@ -7095,7 +6493,7 @@ public final class FunctionProto {
           return this;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public Builder addInstructions(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage value) {
           if (instructionsBuilder_ == null) {
@@ -7111,7 +6509,7 @@ public final class FunctionProto {
           return this;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public Builder addInstructions(
             int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage value) {
@@ -7128,7 +6526,7 @@ public final class FunctionProto {
           return this;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public Builder addInstructions(
             protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.Builder builderForValue) {
@@ -7142,7 +6540,7 @@ public final class FunctionProto {
           return this;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public Builder addInstructions(
             int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.Builder builderForValue) {
@@ -7156,7 +6554,7 @@ public final class FunctionProto {
           return this;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public Builder addAllInstructions(
             java.lang.Iterable<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage> values) {
@@ -7171,12 +6569,12 @@ public final class FunctionProto {
           return this;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public Builder clearInstructions() {
           if (instructionsBuilder_ == null) {
             instructions_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000001);
             onChanged();
           } else {
             instructionsBuilder_.clear();
@@ -7184,7 +6582,7 @@ public final class FunctionProto {
           return this;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public Builder removeInstructions(int index) {
           if (instructionsBuilder_ == null) {
@@ -7197,14 +6595,14 @@ public final class FunctionProto {
           return this;
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.Builder getInstructionsBuilder(
             int index) {
           return getInstructionsFieldBuilder().getBuilder(index);
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessageOrBuilder getInstructionsOrBuilder(
             int index) {
@@ -7214,7 +6612,7 @@ public final class FunctionProto {
           }
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessageOrBuilder> 
              getInstructionsOrBuilderList() {
@@ -7225,14 +6623,14 @@ public final class FunctionProto {
           }
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.Builder addInstructionsBuilder() {
           return getInstructionsFieldBuilder().addBuilder(
               protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.getDefaultInstance());
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.Builder addInstructionsBuilder(
             int index) {
@@ -7240,7 +6638,7 @@ public final class FunctionProto {
               index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.getDefaultInstance());
         }
         /**
-         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 3;</code>
+         * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage instructions = 5;</code>
          */
         public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.Builder> 
              getInstructionsBuilderList() {
@@ -7253,7 +6651,7 @@ public final class FunctionProto {
             instructionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
                 protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessageOrBuilder>(
                     instructions_,
-                    ((bitField0_ & 0x00000004) == 0x00000004),
+                    ((bitField0_ & 0x00000001) != 0),
                     getParentForChildren(),
                     isClean());
             instructions_ = null;
@@ -7263,7 +6661,7 @@ public final class FunctionProto {
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return super.setUnknownFields(unknownFields);
         }
 
         @java.lang.Override
@@ -7313,11 +6711,11 @@ public final class FunctionProto {
 
     }
 
-    private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -7333,6 +6731,7 @@ public final class FunctionProto {
     }
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -7352,6 +6751,7 @@ public final class FunctionProto {
     private volatile java.lang.Object entryPoint_;
     /**
      * <code>string entry_point = 2;</code>
+     * @return The entryPoint.
      */
     public java.lang.String getEntryPoint() {
       java.lang.Object ref = entryPoint_;
@@ -7367,6 +6767,7 @@ public final class FunctionProto {
     }
     /**
      * <code>string entry_point = 2;</code>
+     * @return The bytes for entryPoint.
      */
     public com.google.protobuf.ByteString
         getEntryPointBytes() {
@@ -7386,6 +6787,7 @@ public final class FunctionProto {
     private volatile java.lang.Object decompiled_;
     /**
      * <code>string decompiled = 3;</code>
+     * @return The decompiled.
      */
     public java.lang.String getDecompiled() {
       java.lang.Object ref = decompiled_;
@@ -7401,6 +6803,7 @@ public final class FunctionProto {
     }
     /**
      * <code>string decompiled = 3;</code>
+     * @return The bytes for decompiled.
      */
     public com.google.protobuf.ByteString
         getDecompiledBytes() {
@@ -7598,21 +7001,20 @@ public final class FunctionProto {
       }
       protoclasses.FunctionProto.FunctionMessage other = (protoclasses.FunctionProto.FunctionMessage) obj;
 
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && getEntryPoint()
-          .equals(other.getEntryPoint());
-      result = result && getDecompiled()
-          .equals(other.getDecompiled());
-      result = result && getParametersList()
-          .equals(other.getParametersList());
-      result = result && getVariablesList()
-          .equals(other.getVariablesList());
-      result = result && getBasicBlocksList()
-          .equals(other.getBasicBlocksList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getEntryPoint()
+          .equals(other.getEntryPoint())) return false;
+      if (!getDecompiled()
+          .equals(other.getDecompiled())) return false;
+      if (!getParametersList()
+          .equals(other.getParametersList())) return false;
+      if (!getVariablesList()
+          .equals(other.getVariablesList())) return false;
+      if (!getBasicBlocksList()
+          .equals(other.getBasicBlocksList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -7784,19 +7186,19 @@ public final class FunctionProto {
 
         if (parametersBuilder_ == null) {
           parameters_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           parametersBuilder_.clear();
         }
         if (variablesBuilder_ == null) {
           variables_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           variablesBuilder_.clear();
         }
         if (basicBlocksBuilder_ == null) {
           basicBlocks_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           basicBlocksBuilder_.clear();
         }
@@ -7827,73 +7229,71 @@ public final class FunctionProto {
       public protoclasses.FunctionProto.FunctionMessage buildPartial() {
         protoclasses.FunctionProto.FunctionMessage result = new protoclasses.FunctionProto.FunctionMessage(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.name_ = name_;
         result.entryPoint_ = entryPoint_;
         result.decompiled_ = decompiled_;
         if (parametersBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             parameters_ = java.util.Collections.unmodifiableList(parameters_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.parameters_ = parameters_;
         } else {
           result.parameters_ = parametersBuilder_.build();
         }
         if (variablesBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000002) != 0)) {
             variables_ = java.util.Collections.unmodifiableList(variables_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.variables_ = variables_;
         } else {
           result.variables_ = variablesBuilder_.build();
         }
         if (basicBlocksBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          if (((bitField0_ & 0x00000004) != 0)) {
             basicBlocks_ = java.util.Collections.unmodifiableList(basicBlocks_);
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.basicBlocks_ = basicBlocks_;
         } else {
           result.basicBlocks_ = basicBlocksBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -7923,7 +7323,7 @@ public final class FunctionProto {
           if (!other.parameters_.isEmpty()) {
             if (parameters_.isEmpty()) {
               parameters_ = other.parameters_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureParametersIsMutable();
               parameters_.addAll(other.parameters_);
@@ -7936,7 +7336,7 @@ public final class FunctionProto {
               parametersBuilder_.dispose();
               parametersBuilder_ = null;
               parameters_ = other.parameters_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000001);
               parametersBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getParametersFieldBuilder() : null;
@@ -7949,7 +7349,7 @@ public final class FunctionProto {
           if (!other.variables_.isEmpty()) {
             if (variables_.isEmpty()) {
               variables_ = other.variables_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureVariablesIsMutable();
               variables_.addAll(other.variables_);
@@ -7962,7 +7362,7 @@ public final class FunctionProto {
               variablesBuilder_.dispose();
               variablesBuilder_ = null;
               variables_ = other.variables_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000002);
               variablesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getVariablesFieldBuilder() : null;
@@ -7975,7 +7375,7 @@ public final class FunctionProto {
           if (!other.basicBlocks_.isEmpty()) {
             if (basicBlocks_.isEmpty()) {
               basicBlocks_ = other.basicBlocks_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureBasicBlocksIsMutable();
               basicBlocks_.addAll(other.basicBlocks_);
@@ -7988,7 +7388,7 @@ public final class FunctionProto {
               basicBlocksBuilder_.dispose();
               basicBlocksBuilder_ = null;
               basicBlocks_ = other.basicBlocks_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000004);
               basicBlocksBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getBasicBlocksFieldBuilder() : null;
@@ -8030,6 +7430,7 @@ public final class FunctionProto {
       private java.lang.Object name_ = "";
       /**
        * <code>string name = 1;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -8045,6 +7446,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -8061,6 +7463,8 @@ public final class FunctionProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
        */
       public Builder setName(
           java.lang.String value) {
@@ -8074,6 +7478,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearName() {
         
@@ -8083,6 +7488,8 @@ public final class FunctionProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -8099,6 +7506,7 @@ public final class FunctionProto {
       private java.lang.Object entryPoint_ = "";
       /**
        * <code>string entry_point = 2;</code>
+       * @return The entryPoint.
        */
       public java.lang.String getEntryPoint() {
         java.lang.Object ref = entryPoint_;
@@ -8114,6 +7522,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string entry_point = 2;</code>
+       * @return The bytes for entryPoint.
        */
       public com.google.protobuf.ByteString
           getEntryPointBytes() {
@@ -8130,6 +7539,8 @@ public final class FunctionProto {
       }
       /**
        * <code>string entry_point = 2;</code>
+       * @param value The entryPoint to set.
+       * @return This builder for chaining.
        */
       public Builder setEntryPoint(
           java.lang.String value) {
@@ -8143,6 +7554,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string entry_point = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearEntryPoint() {
         
@@ -8152,6 +7564,8 @@ public final class FunctionProto {
       }
       /**
        * <code>string entry_point = 2;</code>
+       * @param value The bytes for entryPoint to set.
+       * @return This builder for chaining.
        */
       public Builder setEntryPointBytes(
           com.google.protobuf.ByteString value) {
@@ -8168,6 +7582,7 @@ public final class FunctionProto {
       private java.lang.Object decompiled_ = "";
       /**
        * <code>string decompiled = 3;</code>
+       * @return The decompiled.
        */
       public java.lang.String getDecompiled() {
         java.lang.Object ref = decompiled_;
@@ -8183,6 +7598,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string decompiled = 3;</code>
+       * @return The bytes for decompiled.
        */
       public com.google.protobuf.ByteString
           getDecompiledBytes() {
@@ -8199,6 +7615,8 @@ public final class FunctionProto {
       }
       /**
        * <code>string decompiled = 3;</code>
+       * @param value The decompiled to set.
+       * @return This builder for chaining.
        */
       public Builder setDecompiled(
           java.lang.String value) {
@@ -8212,6 +7630,7 @@ public final class FunctionProto {
       }
       /**
        * <code>string decompiled = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearDecompiled() {
         
@@ -8221,6 +7640,8 @@ public final class FunctionProto {
       }
       /**
        * <code>string decompiled = 3;</code>
+       * @param value The bytes for decompiled to set.
+       * @return This builder for chaining.
        */
       public Builder setDecompiledBytes(
           com.google.protobuf.ByteString value) {
@@ -8237,9 +7658,9 @@ public final class FunctionProto {
       private java.util.List<protoclasses.FunctionProto.FunctionMessage.ParameterMessage> parameters_ =
         java.util.Collections.emptyList();
       private void ensureParametersIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           parameters_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.ParameterMessage>(parameters_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -8389,7 +7810,7 @@ public final class FunctionProto {
       public Builder clearParameters() {
         if (parametersBuilder_ == null) {
           parameters_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           parametersBuilder_.clear();
@@ -8466,7 +7887,7 @@ public final class FunctionProto {
           parametersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               protoclasses.FunctionProto.FunctionMessage.ParameterMessage, protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder, protoclasses.FunctionProto.FunctionMessage.ParameterMessageOrBuilder>(
                   parameters_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           parameters_ = null;
@@ -8477,9 +7898,9 @@ public final class FunctionProto {
       private java.util.List<protoclasses.FunctionProto.FunctionMessage.VariableMessage> variables_ =
         java.util.Collections.emptyList();
       private void ensureVariablesIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000002) != 0)) {
           variables_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.VariableMessage>(variables_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -8629,7 +8050,7 @@ public final class FunctionProto {
       public Builder clearVariables() {
         if (variablesBuilder_ == null) {
           variables_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           variablesBuilder_.clear();
@@ -8706,7 +8127,7 @@ public final class FunctionProto {
           variablesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               protoclasses.FunctionProto.FunctionMessage.VariableMessage, protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder, protoclasses.FunctionProto.FunctionMessage.VariableMessageOrBuilder>(
                   variables_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
           variables_ = null;
@@ -8717,9 +8138,9 @@ public final class FunctionProto {
       private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage> basicBlocks_ =
         java.util.Collections.emptyList();
       private void ensureBasicBlocksIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField0_ & 0x00000004) != 0)) {
           basicBlocks_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage>(basicBlocks_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -8869,7 +8290,7 @@ public final class FunctionProto {
       public Builder clearBasicBlocks() {
         if (basicBlocksBuilder_ == null) {
           basicBlocks_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           basicBlocksBuilder_.clear();
@@ -8946,7 +8367,7 @@ public final class FunctionProto {
           basicBlocksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessageOrBuilder>(
                   basicBlocks_,
-                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  ((bitField0_ & 0x00000004) != 0),
                   getParentForChildren(),
                   isClean());
           basicBlocks_ = null;
@@ -8956,7 +8377,7 @@ public final class FunctionProto {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -9051,6 +8472,13 @@ public final class FunctionProto {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FunctionsList();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -9075,7 +8503,7 @@ public final class FunctionProto {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 functions_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage>();
                 mutable_bitField0_ |= 0x00000001;
               }
@@ -9084,7 +8512,7 @@ public final class FunctionProto {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -9098,7 +8526,7 @@ public final class FunctionProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           functions_ = java.util.Collections.unmodifiableList(functions_);
         }
         this.unknownFields = unknownFields.build();
@@ -9198,11 +8626,10 @@ public final class FunctionProto {
       }
       protoclasses.FunctionProto.FunctionsList other = (protoclasses.FunctionProto.FunctionsList) obj;
 
-      boolean result = true;
-      result = result && getFunctionsList()
-          .equals(other.getFunctionsList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getFunctionsList()
+          .equals(other.getFunctionsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -9384,7 +8811,7 @@ public final class FunctionProto {
         protoclasses.FunctionProto.FunctionsList result = new protoclasses.FunctionProto.FunctionsList(this);
         int from_bitField0_ = bitField0_;
         if (functionsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             functions_ = java.util.Collections.unmodifiableList(functions_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -9398,35 +8825,35 @@ public final class FunctionProto {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -9499,7 +8926,7 @@ public final class FunctionProto {
       private java.util.List<protoclasses.FunctionProto.FunctionMessage> functions_ =
         java.util.Collections.emptyList();
       private void ensureFunctionsIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           functions_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage>(functions_);
           bitField0_ |= 0x00000001;
          }
@@ -9728,7 +9155,7 @@ public final class FunctionProto {
           functionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               protoclasses.FunctionProto.FunctionMessage, protoclasses.FunctionProto.FunctionMessage.Builder, protoclasses.FunctionProto.FunctionMessageOrBuilder>(
                   functions_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           functions_ = null;
@@ -9738,7 +9165,7 @@ public final class FunctionProto {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -9824,11 +9251,6 @@ public final class FunctionProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_OperandObject_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protoclasses_FunctionsList_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -9842,7 +9264,7 @@ public final class FunctionProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016function.proto\022\014protoclasses\"\341\t\n\017Funct" +
+      "\n\016function.proto\022\014protoclasses\"\221\n\n\017Funct" +
       "ionMessage\022\014\n\004name\030\001 \001(\t\022\023\n\013entry_point\030" +
       "\002 \001(\t\022\022\n\ndecompiled\030\003 \001(\t\022B\n\nparameters\030" +
       "\004 \003(\0132..protoclasses.FunctionMessage.Par" +
@@ -9854,42 +9276,35 @@ public final class FunctionProto {
       "\001(\t\022\016\n\006length\030\003 \001(\r\022\021\n\tregisters\030\004 \003(\t\032k" +
       "\n\017VariableMessage\022\014\n\004name\030\001 \001(\t\022\021\n\tdata_" +
       "type\030\002 \001(\t\022\016\n\006length\030\003 \001(\r\022\024\n\014stack_offs" +
-      "et\030\004 \001(\005\022\021\n\tregisters\030\005 \003(\t\032\204\006\n\021BasicBlo" +
-      "ckMessage\022\030\n\020starting_address\030\001 \001(\t\022\026\n\016e" +
-      "nding_address\030\002 \001(\t\022X\n\014instructions\030\003 \003(" +
-      "\0132B.protoclasses.FunctionMessage.BasicBl" +
-      "ockMessage.InstructionMessage\032\342\004\n\022Instru" +
-      "ctionMessage\022\023\n\013instruction\030\001 \001(\t\022\020\n\010mne" +
-      "monic\030\002 \001(\t\022\022\n\nops_number\030\003 \001(\r\022\020\n\010is_th" +
-      "umb\030\004 \001(\010\022c\n\010operands\030\005 \003(\0132Q.protoclass" +
-      "es.FunctionMessage.BasicBlockMessage.Ins" +
-      "tructionMessage.OperandMessage\032\231\003\n\016Opera" +
-      "ndMessage\022\014\n\004name\030\001 \001(\t\022o\n\nreferences\030\002 " +
-      "\003(\0132[.protoclasses.FunctionMessage.Basic" +
-      "BlockMessage.InstructionMessage.OperandM" +
-      "essage.Reference\022s\n\nop_objects\030\003 \003(\0132_.p" +
-      "rotoclasses.FunctionMessage.BasicBlockMe" +
-      "ssage.InstructionMessage.OperandMessage." +
-      "OperandObject\032+\n\rOperandObject\022\014\n\004name\030\001" +
-      " \001(\t\022\014\n\004type\030\002 \001(\t\032f\n\tReference\022\024\n\014from_" +
-      "address\030\001 \001(\t\022\022\n\nto_address\030\002 \001(\t\022\026\n\016ref" +
-      "erence_type\030\003 \001(\t\022\027\n\017reference_value\030\004 \001" +
-      "(\014\"A\n\rFunctionsList\0220\n\tfunctions\030\001 \003(\0132\035" +
-      ".protoclasses.FunctionMessageB\017B\rFunctio" +
-      "nProtob\006proto3"
+      "et\030\004 \001(\005\022\021\n\tregisters\030\005 \003(\t\032\264\006\n\021BasicBlo" +
+      "ckMessage\022\037\n\025long_starting_address\030\001 \001(\004" +
+      "H\000\022#\n\031symbolic_starting_address\030\002 \001(\tH\000\022" +
+      "\035\n\023long_ending_address\030\003 \001(\004H\001\022!\n\027symbol" +
+      "ic_ending_address\030\004 \001(\tH\001\022X\n\014instruction" +
+      "s\030\005 \003(\0132B.protoclasses.FunctionMessage.B" +
+      "asicBlockMessage.InstructionMessage\032\226\004\n\022" +
+      "InstructionMessage\022\020\n\010mnemonic\030\001 \001(\t\022\020\n\010" +
+      "is_thumb\030\002 \001(\010\022c\n\010operands\030\003 \003(\0132Q.proto" +
+      "classes.FunctionMessage.BasicBlockMessag" +
+      "e.InstructionMessage.OperandMessage\032\366\002\n\016" +
+      "OperandMessage\022\014\n\004name\030\001 \001(\t\022\024\n\014referenc" +
+      "e_id\030\002 \003(\005\022s\n\nop_objects\030\003 \003(\0132_.protocl" +
+      "asses.FunctionMessage.BasicBlockMessage." +
+      "InstructionMessage.OperandMessage.Operan" +
+      "dObject\032\312\001\n\rOperandObject\022\014\n\004name\030\001 \001(\t\022" +
+      "r\n\004type\030\002 \001(\0162d.protoclasses.FunctionMes" +
+      "sage.BasicBlockMessage.InstructionMessag" +
+      "e.OperandMessage.OperandObject.Type\"7\n\004T" +
+      "ype\022\010\n\004NULL\020\000\022\014\n\010REGISTER\020\001\022\n\n\006SCALAR\020\002\022" +
+      "\013\n\007ADDRESS\020\003B\022\n\020starting_addressB\020\n\016endi" +
+      "ng_address\"A\n\rFunctionsList\0220\n\tfunctions" +
+      "\030\001 \003(\0132\035.protoclasses.FunctionMessageB\017B" +
+      "\rFunctionProtob\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_protoclasses_FunctionMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_protoclasses_FunctionMessage_fieldAccessorTable = new
@@ -9913,31 +9328,25 @@ public final class FunctionProto {
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_BasicBlockMessage_descriptor,
-        new java.lang.String[] { "StartingAddress", "EndingAddress", "Instructions", });
+        new java.lang.String[] { "LongStartingAddress", "SymbolicStartingAddress", "LongEndingAddress", "SymbolicEndingAddress", "Instructions", "StartingAddress", "EndingAddress", });
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_descriptor =
       internal_static_protoclasses_FunctionMessage_BasicBlockMessage_descriptor.getNestedTypes().get(0);
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_descriptor,
-        new java.lang.String[] { "Instruction", "Mnemonic", "OpsNumber", "IsThumb", "Operands", });
+        new java.lang.String[] { "Mnemonic", "IsThumb", "Operands", });
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_descriptor =
       internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_descriptor.getNestedTypes().get(0);
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_descriptor,
-        new java.lang.String[] { "Name", "References", "OpObjects", });
+        new java.lang.String[] { "Name", "ReferenceId", "OpObjects", });
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_OperandObject_descriptor =
       internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_descriptor.getNestedTypes().get(0);
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_OperandObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_OperandObject_descriptor,
         new java.lang.String[] { "Name", "Type", });
-    internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_descriptor =
-      internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_descriptor.getNestedTypes().get(1);
-    internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_Reference_descriptor,
-        new java.lang.String[] { "FromAddress", "ToAddress", "ReferenceType", "ReferenceValue", });
     internal_static_protoclasses_FunctionsList_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protoclasses_FunctionsList_fieldAccessorTable = new

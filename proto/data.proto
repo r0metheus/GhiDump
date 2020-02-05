@@ -7,12 +7,16 @@ import "kindofdata.proto";
 option java_outer_classname = "DataProto";
 
 message DataMessage {
-  string address = 1;
-  string data_type = 2;
-  uint32 length = 3;
+  oneof address {
+    uint64 long_address = 1;
+    string symbolic_address = 2;
+  }
+
+  string data_type = 3;
+  uint32 length = 4;
   
-  repeated Kind kind = 4;
-  bytes value = 5;
+  repeated DataKind kind = 5;
+  bytes value = 6;
 }
 
 message DataList {

@@ -15,9 +15,9 @@ public final class KindOfData {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * Protobuf enum {@code protoclasses.Kind}
+   * Protobuf enum {@code protoclasses.DataKind}
    */
-  public enum Kind
+  public enum DataKind
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>DEFINED = 0;</code>
@@ -105,14 +105,20 @@ public final class KindOfData {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static Kind valueOf(int value) {
+    public static DataKind valueOf(int value) {
       return forNumber(value);
     }
 
-    public static Kind forNumber(int value) {
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static DataKind forNumber(int value) {
       switch (value) {
         case 0: return DEFINED;
         case 1: return STRING;
@@ -127,15 +133,15 @@ public final class KindOfData {
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<Kind>
+    public static com.google.protobuf.Internal.EnumLiteMap<DataKind>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        Kind> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<Kind>() {
-            public Kind findValueByNumber(int number) {
-              return Kind.forNumber(number);
+        DataKind> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DataKind>() {
+            public DataKind findValueByNumber(int number) {
+              return DataKind.forNumber(number);
             }
           };
 
@@ -152,9 +158,9 @@ public final class KindOfData {
       return protoclasses.KindOfData.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final Kind[] VALUES = values();
+    private static final DataKind[] VALUES = values();
 
-    public static Kind valueOf(
+    public static DataKind valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -168,11 +174,11 @@ public final class KindOfData {
 
     private final int value;
 
-    private Kind(int value) {
+    private DataKind(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:protoclasses.Kind)
+    // @@protoc_insertion_point(enum_scope:protoclasses.DataKind)
   }
 
 
@@ -184,24 +190,16 @@ public final class KindOfData {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020kindofdata.proto\022\014protoclasses*z\n\004Kind" +
-      "\022\013\n\007DEFINED\020\000\022\n\n\006STRING\020\001\022\t\n\005ARRAY\020\002\022\014\n\010" +
-      "CONSTANT\020\003\022\013\n\007DYNAMIC\020\004\022\013\n\007POINTER\020\005\022\r\n\t" +
-      "STRUCTURE\020\006\022\t\n\005UNION\020\007\022\014\n\010VOLATILE\020\010B\014B\n" +
-      "KindOfDatab\006proto3"
+      "\n\020kindofdata.proto\022\014protoclasses*~\n\010Data" +
+      "Kind\022\013\n\007DEFINED\020\000\022\n\n\006STRING\020\001\022\t\n\005ARRAY\020\002" +
+      "\022\014\n\010CONSTANT\020\003\022\013\n\007DYNAMIC\020\004\022\013\n\007POINTER\020\005" +
+      "\022\r\n\tSTRUCTURE\020\006\022\t\n\005UNION\020\007\022\014\n\010VOLATILE\020\010" +
+      "B\014B\nKindOfDatab\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

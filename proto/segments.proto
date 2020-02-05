@@ -6,9 +6,18 @@ option java_outer_classname = "SegmentsProto";
 
 message SegmentMessage {
   string name = 1;
-  string starting_address = 2;
-  string ending_address = 3;
-  uint32 length = 4;
+  
+  oneof starting_address {
+    uint64 long_starting_address = 2;
+    string symbolic_starting_address = 3;
+  }
+  
+  oneof ending_address {
+    uint64 long_ending_address = 4;
+    string symbolic_ending_address = 5;
+  }
+
+  uint32 length = 6;
 }
 
 message SegmentList {

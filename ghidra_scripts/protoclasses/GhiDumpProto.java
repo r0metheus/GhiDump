@@ -20,10 +20,12 @@ public final class GhiDumpProto {
 
     /**
      * <code>.protoclasses.MetaList metadata = 1;</code>
+     * @return Whether the metadata field is set.
      */
     boolean hasMetadata();
     /**
      * <code>.protoclasses.MetaList metadata = 1;</code>
+     * @return The metadata.
      */
     protoclasses.MetadataProto.MetaList getMetadata();
     /**
@@ -33,10 +35,12 @@ public final class GhiDumpProto {
 
     /**
      * <code>.protoclasses.SegmentList segments = 2;</code>
+     * @return Whether the segments field is set.
      */
     boolean hasSegments();
     /**
      * <code>.protoclasses.SegmentList segments = 2;</code>
+     * @return The segments.
      */
     protoclasses.SegmentsProto.SegmentList getSegments();
     /**
@@ -46,10 +50,12 @@ public final class GhiDumpProto {
 
     /**
      * <code>.protoclasses.SymbolsList symbols = 3;</code>
+     * @return Whether the symbols field is set.
      */
     boolean hasSymbols();
     /**
      * <code>.protoclasses.SymbolsList symbols = 3;</code>
+     * @return The symbols.
      */
     protoclasses.SymbolsProto.SymbolsList getSymbols();
     /**
@@ -59,10 +65,12 @@ public final class GhiDumpProto {
 
     /**
      * <code>.protoclasses.DataList data = 4;</code>
+     * @return Whether the data field is set.
      */
     boolean hasData();
     /**
      * <code>.protoclasses.DataList data = 4;</code>
+     * @return The data.
      */
     protoclasses.DataProto.DataList getData();
     /**
@@ -72,10 +80,12 @@ public final class GhiDumpProto {
 
     /**
      * <code>.protoclasses.FunctionsList functions = 5;</code>
+     * @return Whether the functions field is set.
      */
     boolean hasFunctions();
     /**
      * <code>.protoclasses.FunctionsList functions = 5;</code>
+     * @return The functions.
      */
     protoclasses.FunctionProto.FunctionsList getFunctions();
     /**
@@ -99,6 +109,13 @@ public final class GhiDumpProto {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GhiDumpMessage();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -111,7 +128,6 @@ public final class GhiDumpProto {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -188,7 +204,7 @@ public final class GhiDumpProto {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -223,12 +239,14 @@ public final class GhiDumpProto {
     private protoclasses.MetadataProto.MetaList metadata_;
     /**
      * <code>.protoclasses.MetaList metadata = 1;</code>
+     * @return Whether the metadata field is set.
      */
     public boolean hasMetadata() {
       return metadata_ != null;
     }
     /**
      * <code>.protoclasses.MetaList metadata = 1;</code>
+     * @return The metadata.
      */
     public protoclasses.MetadataProto.MetaList getMetadata() {
       return metadata_ == null ? protoclasses.MetadataProto.MetaList.getDefaultInstance() : metadata_;
@@ -244,12 +262,14 @@ public final class GhiDumpProto {
     private protoclasses.SegmentsProto.SegmentList segments_;
     /**
      * <code>.protoclasses.SegmentList segments = 2;</code>
+     * @return Whether the segments field is set.
      */
     public boolean hasSegments() {
       return segments_ != null;
     }
     /**
      * <code>.protoclasses.SegmentList segments = 2;</code>
+     * @return The segments.
      */
     public protoclasses.SegmentsProto.SegmentList getSegments() {
       return segments_ == null ? protoclasses.SegmentsProto.SegmentList.getDefaultInstance() : segments_;
@@ -265,12 +285,14 @@ public final class GhiDumpProto {
     private protoclasses.SymbolsProto.SymbolsList symbols_;
     /**
      * <code>.protoclasses.SymbolsList symbols = 3;</code>
+     * @return Whether the symbols field is set.
      */
     public boolean hasSymbols() {
       return symbols_ != null;
     }
     /**
      * <code>.protoclasses.SymbolsList symbols = 3;</code>
+     * @return The symbols.
      */
     public protoclasses.SymbolsProto.SymbolsList getSymbols() {
       return symbols_ == null ? protoclasses.SymbolsProto.SymbolsList.getDefaultInstance() : symbols_;
@@ -286,12 +308,14 @@ public final class GhiDumpProto {
     private protoclasses.DataProto.DataList data_;
     /**
      * <code>.protoclasses.DataList data = 4;</code>
+     * @return Whether the data field is set.
      */
     public boolean hasData() {
       return data_ != null;
     }
     /**
      * <code>.protoclasses.DataList data = 4;</code>
+     * @return The data.
      */
     public protoclasses.DataProto.DataList getData() {
       return data_ == null ? protoclasses.DataProto.DataList.getDefaultInstance() : data_;
@@ -307,12 +331,14 @@ public final class GhiDumpProto {
     private protoclasses.FunctionProto.FunctionsList functions_;
     /**
      * <code>.protoclasses.FunctionsList functions = 5;</code>
+     * @return Whether the functions field is set.
      */
     public boolean hasFunctions() {
       return functions_ != null;
     }
     /**
      * <code>.protoclasses.FunctionsList functions = 5;</code>
+     * @return The functions.
      */
     public protoclasses.FunctionProto.FunctionsList getFunctions() {
       return functions_ == null ? protoclasses.FunctionProto.FunctionsList.getDefaultInstance() : functions_;
@@ -397,34 +423,33 @@ public final class GhiDumpProto {
       }
       protoclasses.GhiDumpProto.GhiDumpMessage other = (protoclasses.GhiDumpProto.GhiDumpMessage) obj;
 
-      boolean result = true;
-      result = result && (hasMetadata() == other.hasMetadata());
+      if (hasMetadata() != other.hasMetadata()) return false;
       if (hasMetadata()) {
-        result = result && getMetadata()
-            .equals(other.getMetadata());
+        if (!getMetadata()
+            .equals(other.getMetadata())) return false;
       }
-      result = result && (hasSegments() == other.hasSegments());
+      if (hasSegments() != other.hasSegments()) return false;
       if (hasSegments()) {
-        result = result && getSegments()
-            .equals(other.getSegments());
+        if (!getSegments()
+            .equals(other.getSegments())) return false;
       }
-      result = result && (hasSymbols() == other.hasSymbols());
+      if (hasSymbols() != other.hasSymbols()) return false;
       if (hasSymbols()) {
-        result = result && getSymbols()
-            .equals(other.getSymbols());
+        if (!getSymbols()
+            .equals(other.getSymbols())) return false;
       }
-      result = result && (hasData() == other.hasData());
+      if (hasData() != other.hasData()) return false;
       if (hasData()) {
-        result = result && getData()
-            .equals(other.getData());
+        if (!getData()
+            .equals(other.getData())) return false;
       }
-      result = result && (hasFunctions() == other.hasFunctions());
+      if (hasFunctions() != other.hasFunctions()) return false;
       if (hasFunctions()) {
-        result = result && getFunctions()
-            .equals(other.getFunctions());
+        if (!getFunctions()
+            .equals(other.getFunctions())) return false;
       }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -674,35 +699,35 @@ public final class GhiDumpProto {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -760,17 +785,19 @@ public final class GhiDumpProto {
         return this;
       }
 
-      private protoclasses.MetadataProto.MetaList metadata_ = null;
+      private protoclasses.MetadataProto.MetaList metadata_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protoclasses.MetadataProto.MetaList, protoclasses.MetadataProto.MetaList.Builder, protoclasses.MetadataProto.MetaListOrBuilder> metadataBuilder_;
       /**
        * <code>.protoclasses.MetaList metadata = 1;</code>
+       * @return Whether the metadata field is set.
        */
       public boolean hasMetadata() {
         return metadataBuilder_ != null || metadata_ != null;
       }
       /**
        * <code>.protoclasses.MetaList metadata = 1;</code>
+       * @return The metadata.
        */
       public protoclasses.MetadataProto.MetaList getMetadata() {
         if (metadataBuilder_ == null) {
@@ -877,17 +904,19 @@ public final class GhiDumpProto {
         return metadataBuilder_;
       }
 
-      private protoclasses.SegmentsProto.SegmentList segments_ = null;
+      private protoclasses.SegmentsProto.SegmentList segments_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protoclasses.SegmentsProto.SegmentList, protoclasses.SegmentsProto.SegmentList.Builder, protoclasses.SegmentsProto.SegmentListOrBuilder> segmentsBuilder_;
       /**
        * <code>.protoclasses.SegmentList segments = 2;</code>
+       * @return Whether the segments field is set.
        */
       public boolean hasSegments() {
         return segmentsBuilder_ != null || segments_ != null;
       }
       /**
        * <code>.protoclasses.SegmentList segments = 2;</code>
+       * @return The segments.
        */
       public protoclasses.SegmentsProto.SegmentList getSegments() {
         if (segmentsBuilder_ == null) {
@@ -994,17 +1023,19 @@ public final class GhiDumpProto {
         return segmentsBuilder_;
       }
 
-      private protoclasses.SymbolsProto.SymbolsList symbols_ = null;
+      private protoclasses.SymbolsProto.SymbolsList symbols_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protoclasses.SymbolsProto.SymbolsList, protoclasses.SymbolsProto.SymbolsList.Builder, protoclasses.SymbolsProto.SymbolsListOrBuilder> symbolsBuilder_;
       /**
        * <code>.protoclasses.SymbolsList symbols = 3;</code>
+       * @return Whether the symbols field is set.
        */
       public boolean hasSymbols() {
         return symbolsBuilder_ != null || symbols_ != null;
       }
       /**
        * <code>.protoclasses.SymbolsList symbols = 3;</code>
+       * @return The symbols.
        */
       public protoclasses.SymbolsProto.SymbolsList getSymbols() {
         if (symbolsBuilder_ == null) {
@@ -1111,17 +1142,19 @@ public final class GhiDumpProto {
         return symbolsBuilder_;
       }
 
-      private protoclasses.DataProto.DataList data_ = null;
+      private protoclasses.DataProto.DataList data_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protoclasses.DataProto.DataList, protoclasses.DataProto.DataList.Builder, protoclasses.DataProto.DataListOrBuilder> dataBuilder_;
       /**
        * <code>.protoclasses.DataList data = 4;</code>
+       * @return Whether the data field is set.
        */
       public boolean hasData() {
         return dataBuilder_ != null || data_ != null;
       }
       /**
        * <code>.protoclasses.DataList data = 4;</code>
+       * @return The data.
        */
       public protoclasses.DataProto.DataList getData() {
         if (dataBuilder_ == null) {
@@ -1228,17 +1261,19 @@ public final class GhiDumpProto {
         return dataBuilder_;
       }
 
-      private protoclasses.FunctionProto.FunctionsList functions_ = null;
+      private protoclasses.FunctionProto.FunctionsList functions_;
       private com.google.protobuf.SingleFieldBuilderV3<
           protoclasses.FunctionProto.FunctionsList, protoclasses.FunctionProto.FunctionsList.Builder, protoclasses.FunctionProto.FunctionsListOrBuilder> functionsBuilder_;
       /**
        * <code>.protoclasses.FunctionsList functions = 5;</code>
+       * @return Whether the functions field is set.
        */
       public boolean hasFunctions() {
         return functionsBuilder_ != null || functions_ != null;
       }
       /**
        * <code>.protoclasses.FunctionsList functions = 5;</code>
+       * @return The functions.
        */
       public protoclasses.FunctionProto.FunctionsList getFunctions() {
         if (functionsBuilder_ == null) {
@@ -1347,7 +1382,7 @@ public final class GhiDumpProto {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1422,15 +1457,7 @@ public final class GhiDumpProto {
       "lasses.FunctionsListB\016B\014GhiDumpProtob\006pr" +
       "oto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           protoclasses.MetadataProto.getDescriptor(),
@@ -1438,7 +1465,7 @@ public final class GhiDumpProto {
           protoclasses.SymbolsProto.getDescriptor(),
           protoclasses.DataProto.getDescriptor(),
           protoclasses.FunctionProto.getDescriptor(),
-        }, assigner);
+        });
     internal_static_protoclasses_GhiDumpMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_protoclasses_GhiDumpMessage_fieldAccessorTable = new

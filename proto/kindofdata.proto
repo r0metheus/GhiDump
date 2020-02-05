@@ -4,7 +4,7 @@ package protoclasses;
 
 option java_outer_classname = "KindOfData";
 
-enum Kind{
+enum DataKind{
     DEFINED = 0;
     STRING = 1;
     ARRAY = 2;

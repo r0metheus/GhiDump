@@ -20,80 +20,86 @@ public final class SymbolsProto {
 
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
     java.lang.String getName();
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>string address = 2;</code>
+     * <code>uint64 long_address = 2;</code>
+     * @return The longAddress.
      */
-    java.lang.String getAddress();
-    /**
-     * <code>string address = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getAddressBytes();
+    long getLongAddress();
 
     /**
-     * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 3;</code>
+     * <code>string symbolic_address = 3;</code>
+     * @return The symbolicAddress.
+     */
+    java.lang.String getSymbolicAddress();
+    /**
+     * <code>string symbolic_address = 3;</code>
+     * @return The bytes for symbolicAddress.
+     */
+    com.google.protobuf.ByteString
+        getSymbolicAddressBytes();
+
+    /**
+     * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 4;</code>
+     * @return The enum numeric value on the wire for type.
      */
     int getTypeValue();
     /**
-     * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 3;</code>
+     * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 4;</code>
+     * @return The type.
      */
     protoclasses.SymbolsProto.SymbolMessage.SymbolMessageType getType();
 
     /**
-     * <code>string namespace = 4;</code>
+     * <code>string namespace = 5;</code>
+     * @return The namespace.
      */
     java.lang.String getNamespace();
     /**
-     * <code>string namespace = 4;</code>
+     * <code>string namespace = 5;</code>
+     * @return The bytes for namespace.
      */
     com.google.protobuf.ByteString
         getNamespaceBytes();
 
     /**
-     * <code>.protoclasses.SymbolMessage.SourceType source = 5;</code>
+     * <code>.protoclasses.SymbolMessage.SourceType source = 6;</code>
+     * @return The enum numeric value on the wire for source.
      */
     int getSourceValue();
     /**
-     * <code>.protoclasses.SymbolMessage.SourceType source = 5;</code>
+     * <code>.protoclasses.SymbolMessage.SourceType source = 6;</code>
+     * @return The source.
      */
     protoclasses.SymbolsProto.SymbolMessage.SourceType getSource();
 
     /**
-     * <code>uint32 ref_count = 6;</code>
+     * <code>repeated int32 reference_id = 8;</code>
+     * @return A list containing the referenceId.
      */
-    int getRefCount();
+    java.util.List<java.lang.Integer> getReferenceIdList();
+    /**
+     * <code>repeated int32 reference_id = 8;</code>
+     * @return The count of referenceId.
+     */
+    int getReferenceIdCount();
+    /**
+     * <code>repeated int32 reference_id = 8;</code>
+     * @param index The index of the element to return.
+     * @return The referenceId at the given index.
+     */
+    int getReferenceId(int index);
 
-    /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-     */
-    java.util.List<protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage> 
-        getReferencesList();
-    /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-     */
-    protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage getReferences(int index);
-    /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-     */
-    int getReferencesCount();
-    /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-     */
-    java.util.List<? extends protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder> 
-        getReferencesOrBuilderList();
-    /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-     */
-    protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder getReferencesOrBuilder(
-        int index);
+    public protoclasses.SymbolsProto.SymbolMessage.AddressCase getAddressCase();
   }
   /**
    * Protobuf type {@code protoclasses.SymbolMessage}
@@ -109,12 +115,17 @@ public final class SymbolsProto {
     }
     private SymbolMessage() {
       name_ = "";
-      address_ = "";
       type_ = 0;
       namespace_ = "";
       source_ = 0;
-      refCount_ = 0;
-      references_ = java.util.Collections.emptyList();
+      referenceId_ = emptyIntList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SymbolMessage();
     }
 
     @java.lang.Override
@@ -147,46 +158,58 @@ public final class SymbolsProto {
               name_ = s;
               break;
             }
-            case 18: {
+            case 16: {
+              addressCase_ = 2;
+              address_ = input.readUInt64();
+              break;
+            }
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
-
+              addressCase_ = 3;
               address_ = s;
               break;
             }
-            case 24: {
+            case 32: {
               int rawValue = input.readEnum();
 
               type_ = rawValue;
               break;
             }
-            case 34: {
+            case 42: {
               java.lang.String s = input.readStringRequireUtf8();
 
               namespace_ = s;
               break;
             }
-            case 40: {
+            case 48: {
               int rawValue = input.readEnum();
 
               source_ = rawValue;
               break;
             }
-            case 48: {
-
-              refCount_ = input.readUInt32();
+            case 64: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                referenceId_ = newIntList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              referenceId_.addInt(input.readInt32());
               break;
             }
-            case 58: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-                references_ = new java.util.ArrayList<protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage>();
-                mutable_bitField0_ |= 0x00000040;
+            case 66: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+                referenceId_ = newIntList();
+                mutable_bitField0_ |= 0x00000001;
               }
-              references_.add(
-                  input.readMessage(protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.parser(), extensionRegistry));
+              while (input.getBytesUntilLimit() > 0) {
+                referenceId_.addInt(input.readInt32());
+              }
+              input.popLimit(limit);
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -200,8 +223,8 @@ public final class SymbolsProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-          references_ = java.util.Collections.unmodifiableList(references_);
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          referenceId_.makeImmutable(); // C
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -311,6 +334,8 @@ public final class SymbolsProto {
       }
 
       /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
@@ -318,6 +343,10 @@ public final class SymbolsProto {
         return forNumber(value);
       }
 
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
       public static SymbolMessageType forNumber(int value) {
         switch (value) {
           case 0: return NULL;
@@ -432,6 +461,8 @@ public final class SymbolsProto {
       }
 
       /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
@@ -439,6 +470,10 @@ public final class SymbolsProto {
         return forNumber(value);
       }
 
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
       public static SourceType forNumber(int value) {
         switch (value) {
           case 0: return DEFAULT;
@@ -497,1999 +532,52 @@ public final class SymbolsProto {
       // @@protoc_insertion_point(enum_scope:protoclasses.SymbolMessage.SourceType)
     }
 
-    public interface ReferenceMessageOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:protoclasses.SymbolMessage.ReferenceMessage)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <code>string from_address = 1;</code>
-       */
-      java.lang.String getFromAddress();
-      /**
-       * <code>string from_address = 1;</code>
-       */
-      com.google.protobuf.ByteString
-          getFromAddressBytes();
-
-      /**
-       * <code>string reference_type = 2;</code>
-       */
-      java.lang.String getReferenceType();
-      /**
-       * <code>string reference_type = 2;</code>
-       */
-      com.google.protobuf.ByteString
-          getReferenceTypeBytes();
-
-      /**
-       * <code>.protoclasses.SymbolMessage.SourceType source = 3;</code>
-       */
-      int getSourceValue();
-      /**
-       * <code>.protoclasses.SymbolMessage.SourceType source = 3;</code>
-       */
-      protoclasses.SymbolsProto.SymbolMessage.SourceType getSource();
-
-      /**
-       * <code>string instruction = 4;</code>
-       */
-      java.lang.String getInstruction();
-      /**
-       * <code>string instruction = 4;</code>
-       */
-      com.google.protobuf.ByteString
-          getInstructionBytes();
-
-      /**
-       * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-       */
-      boolean hasReferred();
-      /**
-       * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-       */
-      protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage getReferred();
-      /**
-       * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-       */
-      protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessageOrBuilder getReferredOrBuilder();
-    }
-    /**
-     * Protobuf type {@code protoclasses.SymbolMessage.ReferenceMessage}
-     */
-    public  static final class ReferenceMessage extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:protoclasses.SymbolMessage.ReferenceMessage)
-        ReferenceMessageOrBuilder {
-    private static final long serialVersionUID = 0L;
-      // Use ReferenceMessage.newBuilder() to construct.
-      private ReferenceMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-        super(builder);
-      }
-      private ReferenceMessage() {
-        fromAddress_ = "";
-        referenceType_ = "";
-        source_ = 0;
-        instruction_ = "";
-      }
-
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
-      private ReferenceMessage(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        this();
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                fromAddress_ = s;
-                break;
-              }
-              case 18: {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                referenceType_ = s;
-                break;
-              }
-              case 24: {
-                int rawValue = input.readEnum();
-
-                source_ = rawValue;
-                break;
-              }
-              case 34: {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                instruction_ = s;
-                break;
-              }
-              case 42: {
-                protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.Builder subBuilder = null;
-                if (referred_ != null) {
-                  subBuilder = referred_.toBuilder();
-                }
-                referred_ = input.readMessage(protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.parser(), extensionRegistry);
-                if (subBuilder != null) {
-                  subBuilder.mergeFrom(referred_);
-                  referred_ = subBuilder.buildPartial();
-                }
-
-                break;
-              }
-              default: {
-                if (!parseUnknownFieldProto3(
-                    input, unknownFields, extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.class, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder.class);
-      }
-
-      public interface DataMessageOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:protoclasses.SymbolMessage.ReferenceMessage.DataMessage)
-          com.google.protobuf.MessageOrBuilder {
-
-        /**
-         * <code>string data_type = 1;</code>
-         */
-        java.lang.String getDataType();
-        /**
-         * <code>string data_type = 1;</code>
-         */
-        com.google.protobuf.ByteString
-            getDataTypeBytes();
-
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        java.util.List<protoclasses.KindOfData.Kind> getKindList();
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        int getKindCount();
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        protoclasses.KindOfData.Kind getKind(int index);
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        java.util.List<java.lang.Integer>
-        getKindValueList();
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        int getKindValue(int index);
-
-        /**
-         * <code>bytes value = 3;</code>
-         */
-        com.google.protobuf.ByteString getValue();
+    private int addressCase_ = 0;
+    private java.lang.Object address_;
+    public enum AddressCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      LONG_ADDRESS(2),
+      SYMBOLIC_ADDRESS(3),
+      ADDRESS_NOT_SET(0);
+      private final int value;
+      private AddressCase(int value) {
+        this.value = value;
       }
       /**
-       * Protobuf type {@code protoclasses.SymbolMessage.ReferenceMessage.DataMessage}
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
        */
-      public  static final class DataMessage extends
-          com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:protoclasses.SymbolMessage.ReferenceMessage.DataMessage)
-          DataMessageOrBuilder {
-      private static final long serialVersionUID = 0L;
-        // Use DataMessage.newBuilder() to construct.
-        private DataMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-          super(builder);
-        }
-        private DataMessage() {
-          dataType_ = "";
-          kind_ = java.util.Collections.emptyList();
-          value_ = com.google.protobuf.ByteString.EMPTY;
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-          return this.unknownFields;
-        }
-        private DataMessage(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          this();
-          if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-          }
-          int mutable_bitField0_ = 0;
-          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-              com.google.protobuf.UnknownFieldSet.newBuilder();
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                case 10: {
-                  java.lang.String s = input.readStringRequireUtf8();
-
-                  dataType_ = s;
-                  break;
-                }
-                case 16: {
-                  int rawValue = input.readEnum();
-                  if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                    kind_ = new java.util.ArrayList<java.lang.Integer>();
-                    mutable_bitField0_ |= 0x00000002;
-                  }
-                  kind_.add(rawValue);
-                  break;
-                }
-                case 18: {
-                  int length = input.readRawVarint32();
-                  int oldLimit = input.pushLimit(length);
-                  while(input.getBytesUntilLimit() > 0) {
-                    int rawValue = input.readEnum();
-                    if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                      kind_ = new java.util.ArrayList<java.lang.Integer>();
-                      mutable_bitField0_ |= 0x00000002;
-                    }
-                    kind_.add(rawValue);
-                  }
-                  input.popLimit(oldLimit);
-                  break;
-                }
-                case 26: {
-
-                  value_ = input.readBytes();
-                  break;
-                }
-                default: {
-                  if (!parseUnknownFieldProto3(
-                      input, unknownFields, extensionRegistry, tag)) {
-                    done = true;
-                  }
-                  break;
-                }
-              }
-            }
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(this);
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(
-                e).setUnfinishedMessage(this);
-          } finally {
-            if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-              kind_ = java.util.Collections.unmodifiableList(kind_);
-            }
-            this.unknownFields = unknownFields.build();
-            makeExtensionsImmutable();
-          }
-        }
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.class, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.Builder.class);
-        }
-
-        private int bitField0_;
-        public static final int DATA_TYPE_FIELD_NUMBER = 1;
-        private volatile java.lang.Object dataType_;
-        /**
-         * <code>string data_type = 1;</code>
-         */
-        public java.lang.String getDataType() {
-          java.lang.Object ref = dataType_;
-          if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-          } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            dataType_ = s;
-            return s;
-          }
-        }
-        /**
-         * <code>string data_type = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-            getDataTypeBytes() {
-          java.lang.Object ref = dataType_;
-          if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            dataType_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-
-        public static final int KIND_FIELD_NUMBER = 2;
-        private java.util.List<java.lang.Integer> kind_;
-        private static final com.google.protobuf.Internal.ListAdapter.Converter<
-            java.lang.Integer, protoclasses.KindOfData.Kind> kind_converter_ =
-                new com.google.protobuf.Internal.ListAdapter.Converter<
-                    java.lang.Integer, protoclasses.KindOfData.Kind>() {
-                  public protoclasses.KindOfData.Kind convert(java.lang.Integer from) {
-                    @SuppressWarnings("deprecation")
-                    protoclasses.KindOfData.Kind result = protoclasses.KindOfData.Kind.valueOf(from);
-                    return result == null ? protoclasses.KindOfData.Kind.UNRECOGNIZED : result;
-                  }
-                };
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        public java.util.List<protoclasses.KindOfData.Kind> getKindList() {
-          return new com.google.protobuf.Internal.ListAdapter<
-              java.lang.Integer, protoclasses.KindOfData.Kind>(kind_, kind_converter_);
-        }
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        public int getKindCount() {
-          return kind_.size();
-        }
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        public protoclasses.KindOfData.Kind getKind(int index) {
-          return kind_converter_.convert(kind_.get(index));
-        }
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        public java.util.List<java.lang.Integer>
-        getKindValueList() {
-          return kind_;
-        }
-        /**
-         * <code>repeated .protoclasses.Kind kind = 2;</code>
-         */
-        public int getKindValue(int index) {
-          return kind_.get(index);
-        }
-        private int kindMemoizedSerializedSize;
-
-        public static final int VALUE_FIELD_NUMBER = 3;
-        private com.google.protobuf.ByteString value_;
-        /**
-         * <code>bytes value = 3;</code>
-         */
-        public com.google.protobuf.ByteString getValue() {
-          return value_;
-        }
-
-        private byte memoizedIsInitialized = -1;
-        @java.lang.Override
-        public final boolean isInitialized() {
-          byte isInitialized = memoizedIsInitialized;
-          if (isInitialized == 1) return true;
-          if (isInitialized == 0) return false;
-
-          memoizedIsInitialized = 1;
-          return true;
-        }
-
-        @java.lang.Override
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                            throws java.io.IOException {
-          getSerializedSize();
-          if (!getDataTypeBytes().isEmpty()) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, dataType_);
-          }
-          if (getKindList().size() > 0) {
-            output.writeUInt32NoTag(18);
-            output.writeUInt32NoTag(kindMemoizedSerializedSize);
-          }
-          for (int i = 0; i < kind_.size(); i++) {
-            output.writeEnumNoTag(kind_.get(i));
-          }
-          if (!value_.isEmpty()) {
-            output.writeBytes(3, value_);
-          }
-          unknownFields.writeTo(output);
-        }
-
-        @java.lang.Override
-        public int getSerializedSize() {
-          int size = memoizedSize;
-          if (size != -1) return size;
-
-          size = 0;
-          if (!getDataTypeBytes().isEmpty()) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, dataType_);
-          }
-          {
-            int dataSize = 0;
-            for (int i = 0; i < kind_.size(); i++) {
-              dataSize += com.google.protobuf.CodedOutputStream
-                .computeEnumSizeNoTag(kind_.get(i));
-            }
-            size += dataSize;
-            if (!getKindList().isEmpty()) {  size += 1;
-              size += com.google.protobuf.CodedOutputStream
-                .computeUInt32SizeNoTag(dataSize);
-            }kindMemoizedSerializedSize = dataSize;
-          }
-          if (!value_.isEmpty()) {
-            size += com.google.protobuf.CodedOutputStream
-              .computeBytesSize(3, value_);
-          }
-          size += unknownFields.getSerializedSize();
-          memoizedSize = size;
-          return size;
-        }
-
-        @java.lang.Override
-        public boolean equals(final java.lang.Object obj) {
-          if (obj == this) {
-           return true;
-          }
-          if (!(obj instanceof protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage)) {
-            return super.equals(obj);
-          }
-          protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage other = (protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage) obj;
-
-          boolean result = true;
-          result = result && getDataType()
-              .equals(other.getDataType());
-          result = result && kind_.equals(other.kind_);
-          result = result && getValue()
-              .equals(other.getValue());
-          result = result && unknownFields.equals(other.unknownFields);
-          return result;
-        }
-
-        @java.lang.Override
-        public int hashCode() {
-          if (memoizedHashCode != 0) {
-            return memoizedHashCode;
-          }
-          int hash = 41;
-          hash = (19 * hash) + getDescriptor().hashCode();
-          hash = (37 * hash) + DATA_TYPE_FIELD_NUMBER;
-          hash = (53 * hash) + getDataType().hashCode();
-          if (getKindCount() > 0) {
-            hash = (37 * hash) + KIND_FIELD_NUMBER;
-            hash = (53 * hash) + kind_.hashCode();
-          }
-          hash = (37 * hash) + VALUE_FIELD_NUMBER;
-          hash = (53 * hash) + getValue().hashCode();
-          hash = (29 * hash) + unknownFields.hashCode();
-          memoizedHashCode = hash;
-          return hash;
-        }
-
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(
-            java.nio.ByteBuffer data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(
-            java.nio.ByteBuffer data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(
-            com.google.protobuf.ByteString data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(
-            byte[] data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input, extensionRegistry);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseDelimitedWithIOException(PARSER, input);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseDelimitedFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input);
-        }
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parseFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input, extensionRegistry);
-        }
-
-        @java.lang.Override
-        public Builder newBuilderForType() { return newBuilder(); }
-        public static Builder newBuilder() {
-          return DEFAULT_INSTANCE.toBuilder();
-        }
-        public static Builder newBuilder(protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage prototype) {
-          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-        }
-        @java.lang.Override
-        public Builder toBuilder() {
-          return this == DEFAULT_INSTANCE
-              ? new Builder() : new Builder().mergeFrom(this);
-        }
-
-        @java.lang.Override
-        protected Builder newBuilderForType(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          Builder builder = new Builder(parent);
-          return builder;
-        }
-        /**
-         * Protobuf type {@code protoclasses.SymbolMessage.ReferenceMessage.DataMessage}
-         */
-        public static final class Builder extends
-            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:protoclasses.SymbolMessage.ReferenceMessage.DataMessage)
-            protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessageOrBuilder {
-          public static final com.google.protobuf.Descriptors.Descriptor
-              getDescriptor() {
-            return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_descriptor;
-          }
-
-          @java.lang.Override
-          protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-              internalGetFieldAccessorTable() {
-            return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_fieldAccessorTable
-                .ensureFieldAccessorsInitialized(
-                    protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.class, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.Builder.class);
-          }
-
-          // Construct using protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.newBuilder()
-          private Builder() {
-            maybeForceBuilderInitialization();
-          }
-
-          private Builder(
-              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-            super(parent);
-            maybeForceBuilderInitialization();
-          }
-          private void maybeForceBuilderInitialization() {
-            if (com.google.protobuf.GeneratedMessageV3
-                    .alwaysUseFieldBuilders) {
-            }
-          }
-          @java.lang.Override
-          public Builder clear() {
-            super.clear();
-            dataType_ = "";
-
-            kind_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000002);
-            value_ = com.google.protobuf.ByteString.EMPTY;
-
-            return this;
-          }
-
-          @java.lang.Override
-          public com.google.protobuf.Descriptors.Descriptor
-              getDescriptorForType() {
-            return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_descriptor;
-          }
-
-          @java.lang.Override
-          public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage getDefaultInstanceForType() {
-            return protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.getDefaultInstance();
-          }
-
-          @java.lang.Override
-          public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage build() {
-            protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage result = buildPartial();
-            if (!result.isInitialized()) {
-              throw newUninitializedMessageException(result);
-            }
-            return result;
-          }
-
-          @java.lang.Override
-          public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage buildPartial() {
-            protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage result = new protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage(this);
-            int from_bitField0_ = bitField0_;
-            int to_bitField0_ = 0;
-            result.dataType_ = dataType_;
-            if (((bitField0_ & 0x00000002) == 0x00000002)) {
-              kind_ = java.util.Collections.unmodifiableList(kind_);
-              bitField0_ = (bitField0_ & ~0x00000002);
-            }
-            result.kind_ = kind_;
-            result.value_ = value_;
-            result.bitField0_ = to_bitField0_;
-            onBuilt();
-            return result;
-          }
-
-          @java.lang.Override
-          public Builder clone() {
-            return (Builder) super.clone();
-          }
-          @java.lang.Override
-          public Builder setField(
-              com.google.protobuf.Descriptors.FieldDescriptor field,
-              java.lang.Object value) {
-            return (Builder) super.setField(field, value);
-          }
-          @java.lang.Override
-          public Builder clearField(
-              com.google.protobuf.Descriptors.FieldDescriptor field) {
-            return (Builder) super.clearField(field);
-          }
-          @java.lang.Override
-          public Builder clearOneof(
-              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-            return (Builder) super.clearOneof(oneof);
-          }
-          @java.lang.Override
-          public Builder setRepeatedField(
-              com.google.protobuf.Descriptors.FieldDescriptor field,
-              int index, java.lang.Object value) {
-            return (Builder) super.setRepeatedField(field, index, value);
-          }
-          @java.lang.Override
-          public Builder addRepeatedField(
-              com.google.protobuf.Descriptors.FieldDescriptor field,
-              java.lang.Object value) {
-            return (Builder) super.addRepeatedField(field, value);
-          }
-          @java.lang.Override
-          public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage) {
-              return mergeFrom((protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage)other);
-            } else {
-              super.mergeFrom(other);
-              return this;
-            }
-          }
-
-          public Builder mergeFrom(protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage other) {
-            if (other == protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.getDefaultInstance()) return this;
-            if (!other.getDataType().isEmpty()) {
-              dataType_ = other.dataType_;
-              onChanged();
-            }
-            if (!other.kind_.isEmpty()) {
-              if (kind_.isEmpty()) {
-                kind_ = other.kind_;
-                bitField0_ = (bitField0_ & ~0x00000002);
-              } else {
-                ensureKindIsMutable();
-                kind_.addAll(other.kind_);
-              }
-              onChanged();
-            }
-            if (other.getValue() != com.google.protobuf.ByteString.EMPTY) {
-              setValue(other.getValue());
-            }
-            this.mergeUnknownFields(other.unknownFields);
-            onChanged();
-            return this;
-          }
-
-          @java.lang.Override
-          public final boolean isInitialized() {
-            return true;
-          }
-
-          @java.lang.Override
-          public Builder mergeFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-            protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage parsedMessage = null;
-            try {
-              parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage) e.getUnfinishedMessage();
-              throw e.unwrapIOException();
-            } finally {
-              if (parsedMessage != null) {
-                mergeFrom(parsedMessage);
-              }
-            }
-            return this;
-          }
-          private int bitField0_;
-
-          private java.lang.Object dataType_ = "";
-          /**
-           * <code>string data_type = 1;</code>
-           */
-          public java.lang.String getDataType() {
-            java.lang.Object ref = dataType_;
-            if (!(ref instanceof java.lang.String)) {
-              com.google.protobuf.ByteString bs =
-                  (com.google.protobuf.ByteString) ref;
-              java.lang.String s = bs.toStringUtf8();
-              dataType_ = s;
-              return s;
-            } else {
-              return (java.lang.String) ref;
-            }
-          }
-          /**
-           * <code>string data_type = 1;</code>
-           */
-          public com.google.protobuf.ByteString
-              getDataTypeBytes() {
-            java.lang.Object ref = dataType_;
-            if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (java.lang.String) ref);
-              dataType_ = b;
-              return b;
-            } else {
-              return (com.google.protobuf.ByteString) ref;
-            }
-          }
-          /**
-           * <code>string data_type = 1;</code>
-           */
-          public Builder setDataType(
-              java.lang.String value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  
-            dataType_ = value;
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>string data_type = 1;</code>
-           */
-          public Builder clearDataType() {
-            
-            dataType_ = getDefaultInstance().getDataType();
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>string data_type = 1;</code>
-           */
-          public Builder setDataTypeBytes(
-              com.google.protobuf.ByteString value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-            
-            dataType_ = value;
-            onChanged();
-            return this;
-          }
-
-          private java.util.List<java.lang.Integer> kind_ =
-            java.util.Collections.emptyList();
-          private void ensureKindIsMutable() {
-            if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-              kind_ = new java.util.ArrayList<java.lang.Integer>(kind_);
-              bitField0_ |= 0x00000002;
-            }
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public java.util.List<protoclasses.KindOfData.Kind> getKindList() {
-            return new com.google.protobuf.Internal.ListAdapter<
-                java.lang.Integer, protoclasses.KindOfData.Kind>(kind_, kind_converter_);
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public int getKindCount() {
-            return kind_.size();
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public protoclasses.KindOfData.Kind getKind(int index) {
-            return kind_converter_.convert(kind_.get(index));
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public Builder setKind(
-              int index, protoclasses.KindOfData.Kind value) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureKindIsMutable();
-            kind_.set(index, value.getNumber());
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public Builder addKind(protoclasses.KindOfData.Kind value) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureKindIsMutable();
-            kind_.add(value.getNumber());
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public Builder addAllKind(
-              java.lang.Iterable<? extends protoclasses.KindOfData.Kind> values) {
-            ensureKindIsMutable();
-            for (protoclasses.KindOfData.Kind value : values) {
-              kind_.add(value.getNumber());
-            }
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public Builder clearKind() {
-            kind_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000002);
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public java.util.List<java.lang.Integer>
-          getKindValueList() {
-            return java.util.Collections.unmodifiableList(kind_);
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public int getKindValue(int index) {
-            return kind_.get(index);
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public Builder setKindValue(
-              int index, int value) {
-            ensureKindIsMutable();
-            kind_.set(index, value);
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public Builder addKindValue(int value) {
-            ensureKindIsMutable();
-            kind_.add(value);
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>repeated .protoclasses.Kind kind = 2;</code>
-           */
-          public Builder addAllKindValue(
-              java.lang.Iterable<java.lang.Integer> values) {
-            ensureKindIsMutable();
-            for (int value : values) {
-              kind_.add(value);
-            }
-            onChanged();
-            return this;
-          }
-
-          private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
-          /**
-           * <code>bytes value = 3;</code>
-           */
-          public com.google.protobuf.ByteString getValue() {
-            return value_;
-          }
-          /**
-           * <code>bytes value = 3;</code>
-           */
-          public Builder setValue(com.google.protobuf.ByteString value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  
-            value_ = value;
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>bytes value = 3;</code>
-           */
-          public Builder clearValue() {
-            
-            value_ = getDefaultInstance().getValue();
-            onChanged();
-            return this;
-          }
-          @java.lang.Override
-          public final Builder setUnknownFields(
-              final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.setUnknownFieldsProto3(unknownFields);
-          }
-
-          @java.lang.Override
-          public final Builder mergeUnknownFields(
-              final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.mergeUnknownFields(unknownFields);
-          }
-
-
-          // @@protoc_insertion_point(builder_scope:protoclasses.SymbolMessage.ReferenceMessage.DataMessage)
-        }
-
-        // @@protoc_insertion_point(class_scope:protoclasses.SymbolMessage.ReferenceMessage.DataMessage)
-        private static final protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage DEFAULT_INSTANCE;
-        static {
-          DEFAULT_INSTANCE = new protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage();
-        }
-
-        public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage getDefaultInstance() {
-          return DEFAULT_INSTANCE;
-        }
-
-        private static final com.google.protobuf.Parser<DataMessage>
-            PARSER = new com.google.protobuf.AbstractParser<DataMessage>() {
-          @java.lang.Override
-          public DataMessage parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-            return new DataMessage(input, extensionRegistry);
-          }
-        };
-
-        public static com.google.protobuf.Parser<DataMessage> parser() {
-          return PARSER;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Parser<DataMessage> getParserForType() {
-          return PARSER;
-        }
-
-        @java.lang.Override
-        public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage getDefaultInstanceForType() {
-          return DEFAULT_INSTANCE;
-        }
-
+      @java.lang.Deprecated
+      public static AddressCase valueOf(int value) {
+        return forNumber(value);
       }
 
-      public static final int FROM_ADDRESS_FIELD_NUMBER = 1;
-      private volatile java.lang.Object fromAddress_;
-      /**
-       * <code>string from_address = 1;</code>
-       */
-      public java.lang.String getFromAddress() {
-        java.lang.Object ref = fromAddress_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          fromAddress_ = s;
-          return s;
+      public static AddressCase forNumber(int value) {
+        switch (value) {
+          case 2: return LONG_ADDRESS;
+          case 3: return SYMBOLIC_ADDRESS;
+          case 0: return ADDRESS_NOT_SET;
+          default: return null;
         }
       }
-      /**
-       * <code>string from_address = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getFromAddressBytes() {
-        java.lang.Object ref = fromAddress_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          fromAddress_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+      public int getNumber() {
+        return this.value;
       }
+    };
 
-      public static final int REFERENCE_TYPE_FIELD_NUMBER = 2;
-      private volatile java.lang.Object referenceType_;
-      /**
-       * <code>string reference_type = 2;</code>
-       */
-      public java.lang.String getReferenceType() {
-        java.lang.Object ref = referenceType_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          referenceType_ = s;
-          return s;
-        }
-      }
-      /**
-       * <code>string reference_type = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getReferenceTypeBytes() {
-        java.lang.Object ref = referenceType_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          referenceType_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      public static final int SOURCE_FIELD_NUMBER = 3;
-      private int source_;
-      /**
-       * <code>.protoclasses.SymbolMessage.SourceType source = 3;</code>
-       */
-      public int getSourceValue() {
-        return source_;
-      }
-      /**
-       * <code>.protoclasses.SymbolMessage.SourceType source = 3;</code>
-       */
-      public protoclasses.SymbolsProto.SymbolMessage.SourceType getSource() {
-        @SuppressWarnings("deprecation")
-        protoclasses.SymbolsProto.SymbolMessage.SourceType result = protoclasses.SymbolsProto.SymbolMessage.SourceType.valueOf(source_);
-        return result == null ? protoclasses.SymbolsProto.SymbolMessage.SourceType.UNRECOGNIZED : result;
-      }
-
-      public static final int INSTRUCTION_FIELD_NUMBER = 4;
-      private volatile java.lang.Object instruction_;
-      /**
-       * <code>string instruction = 4;</code>
-       */
-      public java.lang.String getInstruction() {
-        java.lang.Object ref = instruction_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          instruction_ = s;
-          return s;
-        }
-      }
-      /**
-       * <code>string instruction = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getInstructionBytes() {
-        java.lang.Object ref = instruction_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          instruction_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      public static final int REFERRED_FIELD_NUMBER = 5;
-      private protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage referred_;
-      /**
-       * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-       */
-      public boolean hasReferred() {
-        return referred_ != null;
-      }
-      /**
-       * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-       */
-      public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage getReferred() {
-        return referred_ == null ? protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.getDefaultInstance() : referred_;
-      }
-      /**
-       * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-       */
-      public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessageOrBuilder getReferredOrBuilder() {
-        return getReferred();
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        if (!getFromAddressBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, fromAddress_);
-        }
-        if (!getReferenceTypeBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, referenceType_);
-        }
-        if (source_ != protoclasses.SymbolsProto.SymbolMessage.SourceType.DEFAULT.getNumber()) {
-          output.writeEnum(3, source_);
-        }
-        if (!getInstructionBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, instruction_);
-        }
-        if (referred_ != null) {
-          output.writeMessage(5, getReferred());
-        }
-        unknownFields.writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (!getFromAddressBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, fromAddress_);
-        }
-        if (!getReferenceTypeBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, referenceType_);
-        }
-        if (source_ != protoclasses.SymbolsProto.SymbolMessage.SourceType.DEFAULT.getNumber()) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(3, source_);
-        }
-        if (!getInstructionBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, instruction_);
-        }
-        if (referred_ != null) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(5, getReferred());
-        }
-        size += unknownFields.getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage)) {
-          return super.equals(obj);
-        }
-        protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage other = (protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage) obj;
-
-        boolean result = true;
-        result = result && getFromAddress()
-            .equals(other.getFromAddress());
-        result = result && getReferenceType()
-            .equals(other.getReferenceType());
-        result = result && source_ == other.source_;
-        result = result && getInstruction()
-            .equals(other.getInstruction());
-        result = result && (hasReferred() == other.hasReferred());
-        if (hasReferred()) {
-          result = result && getReferred()
-              .equals(other.getReferred());
-        }
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + FROM_ADDRESS_FIELD_NUMBER;
-        hash = (53 * hash) + getFromAddress().hashCode();
-        hash = (37 * hash) + REFERENCE_TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + getReferenceType().hashCode();
-        hash = (37 * hash) + SOURCE_FIELD_NUMBER;
-        hash = (53 * hash) + source_;
-        hash = (37 * hash) + INSTRUCTION_FIELD_NUMBER;
-        hash = (53 * hash) + getInstruction().hashCode();
-        if (hasReferred()) {
-          hash = (37 * hash) + REFERRED_FIELD_NUMBER;
-          hash = (53 * hash) + getReferred().hashCode();
-        }
-        hash = (29 * hash) + unknownFields.hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code protoclasses.SymbolMessage.ReferenceMessage}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:protoclasses.SymbolMessage.ReferenceMessage)
-          protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.class, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder.class);
-        }
-
-        // Construct using protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-          }
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          fromAddress_ = "";
-
-          referenceType_ = "";
-
-          source_ = 0;
-
-          instruction_ = "";
-
-          if (referredBuilder_ == null) {
-            referred_ = null;
-          } else {
-            referred_ = null;
-            referredBuilder_ = null;
-          }
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return protoclasses.SymbolsProto.internal_static_protoclasses_SymbolMessage_ReferenceMessage_descriptor;
-        }
-
-        @java.lang.Override
-        public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage getDefaultInstanceForType() {
-          return protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage build() {
-          protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage buildPartial() {
-          protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage result = new protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage(this);
-          result.fromAddress_ = fromAddress_;
-          result.referenceType_ = referenceType_;
-          result.source_ = source_;
-          result.instruction_ = instruction_;
-          if (referredBuilder_ == null) {
-            result.referred_ = referred_;
-          } else {
-            result.referred_ = referredBuilder_.build();
-          }
-          onBuilt();
-          return result;
-        }
-
-        @java.lang.Override
-        public Builder clone() {
-          return (Builder) super.clone();
-        }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return (Builder) super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage) {
-            return mergeFrom((protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage other) {
-          if (other == protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.getDefaultInstance()) return this;
-          if (!other.getFromAddress().isEmpty()) {
-            fromAddress_ = other.fromAddress_;
-            onChanged();
-          }
-          if (!other.getReferenceType().isEmpty()) {
-            referenceType_ = other.referenceType_;
-            onChanged();
-          }
-          if (other.source_ != 0) {
-            setSourceValue(other.getSourceValue());
-          }
-          if (!other.getInstruction().isEmpty()) {
-            instruction_ = other.instruction_;
-            onChanged();
-          }
-          if (other.hasReferred()) {
-            mergeReferred(other.getReferred());
-          }
-          this.mergeUnknownFields(other.unknownFields);
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage) e.getUnfinishedMessage();
-            throw e.unwrapIOException();
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-
-        private java.lang.Object fromAddress_ = "";
-        /**
-         * <code>string from_address = 1;</code>
-         */
-        public java.lang.String getFromAddress() {
-          java.lang.Object ref = fromAddress_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            fromAddress_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>string from_address = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-            getFromAddressBytes() {
-          java.lang.Object ref = fromAddress_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            fromAddress_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>string from_address = 1;</code>
-         */
-        public Builder setFromAddress(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
-          fromAddress_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string from_address = 1;</code>
-         */
-        public Builder clearFromAddress() {
-          
-          fromAddress_ = getDefaultInstance().getFromAddress();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string from_address = 1;</code>
-         */
-        public Builder setFromAddressBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          
-          fromAddress_ = value;
-          onChanged();
-          return this;
-        }
-
-        private java.lang.Object referenceType_ = "";
-        /**
-         * <code>string reference_type = 2;</code>
-         */
-        public java.lang.String getReferenceType() {
-          java.lang.Object ref = referenceType_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            referenceType_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>string reference_type = 2;</code>
-         */
-        public com.google.protobuf.ByteString
-            getReferenceTypeBytes() {
-          java.lang.Object ref = referenceType_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            referenceType_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>string reference_type = 2;</code>
-         */
-        public Builder setReferenceType(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
-          referenceType_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string reference_type = 2;</code>
-         */
-        public Builder clearReferenceType() {
-          
-          referenceType_ = getDefaultInstance().getReferenceType();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string reference_type = 2;</code>
-         */
-        public Builder setReferenceTypeBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          
-          referenceType_ = value;
-          onChanged();
-          return this;
-        }
-
-        private int source_ = 0;
-        /**
-         * <code>.protoclasses.SymbolMessage.SourceType source = 3;</code>
-         */
-        public int getSourceValue() {
-          return source_;
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.SourceType source = 3;</code>
-         */
-        public Builder setSourceValue(int value) {
-          source_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.SourceType source = 3;</code>
-         */
-        public protoclasses.SymbolsProto.SymbolMessage.SourceType getSource() {
-          @SuppressWarnings("deprecation")
-          protoclasses.SymbolsProto.SymbolMessage.SourceType result = protoclasses.SymbolsProto.SymbolMessage.SourceType.valueOf(source_);
-          return result == null ? protoclasses.SymbolsProto.SymbolMessage.SourceType.UNRECOGNIZED : result;
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.SourceType source = 3;</code>
-         */
-        public Builder setSource(protoclasses.SymbolsProto.SymbolMessage.SourceType value) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          
-          source_ = value.getNumber();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.SourceType source = 3;</code>
-         */
-        public Builder clearSource() {
-          
-          source_ = 0;
-          onChanged();
-          return this;
-        }
-
-        private java.lang.Object instruction_ = "";
-        /**
-         * <code>string instruction = 4;</code>
-         */
-        public java.lang.String getInstruction() {
-          java.lang.Object ref = instruction_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            instruction_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>string instruction = 4;</code>
-         */
-        public com.google.protobuf.ByteString
-            getInstructionBytes() {
-          java.lang.Object ref = instruction_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            instruction_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>string instruction = 4;</code>
-         */
-        public Builder setInstruction(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
-          instruction_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string instruction = 4;</code>
-         */
-        public Builder clearInstruction() {
-          
-          instruction_ = getDefaultInstance().getInstruction();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string instruction = 4;</code>
-         */
-        public Builder setInstructionBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          
-          instruction_ = value;
-          onChanged();
-          return this;
-        }
-
-        private protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage referred_ = null;
-        private com.google.protobuf.SingleFieldBuilderV3<
-            protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.Builder, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessageOrBuilder> referredBuilder_;
-        /**
-         * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-         */
-        public boolean hasReferred() {
-          return referredBuilder_ != null || referred_ != null;
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-         */
-        public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage getReferred() {
-          if (referredBuilder_ == null) {
-            return referred_ == null ? protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.getDefaultInstance() : referred_;
-          } else {
-            return referredBuilder_.getMessage();
-          }
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-         */
-        public Builder setReferred(protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage value) {
-          if (referredBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            referred_ = value;
-            onChanged();
-          } else {
-            referredBuilder_.setMessage(value);
-          }
-
-          return this;
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-         */
-        public Builder setReferred(
-            protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.Builder builderForValue) {
-          if (referredBuilder_ == null) {
-            referred_ = builderForValue.build();
-            onChanged();
-          } else {
-            referredBuilder_.setMessage(builderForValue.build());
-          }
-
-          return this;
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-         */
-        public Builder mergeReferred(protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage value) {
-          if (referredBuilder_ == null) {
-            if (referred_ != null) {
-              referred_ =
-                protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.newBuilder(referred_).mergeFrom(value).buildPartial();
-            } else {
-              referred_ = value;
-            }
-            onChanged();
-          } else {
-            referredBuilder_.mergeFrom(value);
-          }
-
-          return this;
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-         */
-        public Builder clearReferred() {
-          if (referredBuilder_ == null) {
-            referred_ = null;
-            onChanged();
-          } else {
-            referred_ = null;
-            referredBuilder_ = null;
-          }
-
-          return this;
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-         */
-        public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.Builder getReferredBuilder() {
-          
-          onChanged();
-          return getReferredFieldBuilder().getBuilder();
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-         */
-        public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessageOrBuilder getReferredOrBuilder() {
-          if (referredBuilder_ != null) {
-            return referredBuilder_.getMessageOrBuilder();
-          } else {
-            return referred_ == null ?
-                protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.getDefaultInstance() : referred_;
-          }
-        }
-        /**
-         * <code>.protoclasses.SymbolMessage.ReferenceMessage.DataMessage referred = 5;</code>
-         */
-        private com.google.protobuf.SingleFieldBuilderV3<
-            protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.Builder, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessageOrBuilder> 
-            getReferredFieldBuilder() {
-          if (referredBuilder_ == null) {
-            referredBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessage.Builder, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.DataMessageOrBuilder>(
-                    getReferred(),
-                    getParentForChildren(),
-                    isClean());
-            referred_ = null;
-          }
-          return referredBuilder_;
-        }
-        @java.lang.Override
-        public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
-        }
-
-        @java.lang.Override
-        public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.mergeUnknownFields(unknownFields);
-        }
-
-
-        // @@protoc_insertion_point(builder_scope:protoclasses.SymbolMessage.ReferenceMessage)
-      }
-
-      // @@protoc_insertion_point(class_scope:protoclasses.SymbolMessage.ReferenceMessage)
-      private static final protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage();
-      }
-
-      public static protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<ReferenceMessage>
-          PARSER = new com.google.protobuf.AbstractParser<ReferenceMessage>() {
-        @java.lang.Override
-        public ReferenceMessage parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ReferenceMessage(input, extensionRegistry);
-        }
-      };
-
-      public static com.google.protobuf.Parser<ReferenceMessage> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<ReferenceMessage> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
+    public AddressCase
+    getAddressCase() {
+      return AddressCase.forNumber(
+          addressCase_);
     }
 
-    private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -2505,6 +593,7 @@ public final class SymbolsProto {
     }
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -2520,50 +609,75 @@ public final class SymbolsProto {
       }
     }
 
-    public static final int ADDRESS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object address_;
+    public static final int LONG_ADDRESS_FIELD_NUMBER = 2;
     /**
-     * <code>string address = 2;</code>
+     * <code>uint64 long_address = 2;</code>
+     * @return The longAddress.
      */
-    public java.lang.String getAddress() {
-      java.lang.Object ref = address_;
+    public long getLongAddress() {
+      if (addressCase_ == 2) {
+        return (java.lang.Long) address_;
+      }
+      return 0L;
+    }
+
+    public static final int SYMBOLIC_ADDRESS_FIELD_NUMBER = 3;
+    /**
+     * <code>string symbolic_address = 3;</code>
+     * @return The symbolicAddress.
+     */
+    public java.lang.String getSymbolicAddress() {
+      java.lang.Object ref = "";
+      if (addressCase_ == 3) {
+        ref = address_;
+      }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        address_ = s;
+        if (addressCase_ == 3) {
+          address_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string address = 2;</code>
+     * <code>string symbolic_address = 3;</code>
+     * @return The bytes for symbolicAddress.
      */
     public com.google.protobuf.ByteString
-        getAddressBytes() {
-      java.lang.Object ref = address_;
+        getSymbolicAddressBytes() {
+      java.lang.Object ref = "";
+      if (addressCase_ == 3) {
+        ref = address_;
+      }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        address_ = b;
+        if (addressCase_ == 3) {
+          address_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int TYPE_FIELD_NUMBER = 3;
+    public static final int TYPE_FIELD_NUMBER = 4;
     private int type_;
     /**
-     * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 3;</code>
+     * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 4;</code>
+     * @return The enum numeric value on the wire for type.
      */
     public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 3;</code>
+     * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 4;</code>
+     * @return The type.
      */
     public protoclasses.SymbolsProto.SymbolMessage.SymbolMessageType getType() {
       @SuppressWarnings("deprecation")
@@ -2571,10 +685,11 @@ public final class SymbolsProto {
       return result == null ? protoclasses.SymbolsProto.SymbolMessage.SymbolMessageType.UNRECOGNIZED : result;
     }
 
-    public static final int NAMESPACE_FIELD_NUMBER = 4;
+    public static final int NAMESPACE_FIELD_NUMBER = 5;
     private volatile java.lang.Object namespace_;
     /**
-     * <code>string namespace = 4;</code>
+     * <code>string namespace = 5;</code>
+     * @return The namespace.
      */
     public java.lang.String getNamespace() {
       java.lang.Object ref = namespace_;
@@ -2589,7 +704,8 @@ public final class SymbolsProto {
       }
     }
     /**
-     * <code>string namespace = 4;</code>
+     * <code>string namespace = 5;</code>
+     * @return The bytes for namespace.
      */
     public com.google.protobuf.ByteString
         getNamespaceBytes() {
@@ -2605,16 +721,18 @@ public final class SymbolsProto {
       }
     }
 
-    public static final int SOURCE_FIELD_NUMBER = 5;
+    public static final int SOURCE_FIELD_NUMBER = 6;
     private int source_;
     /**
-     * <code>.protoclasses.SymbolMessage.SourceType source = 5;</code>
+     * <code>.protoclasses.SymbolMessage.SourceType source = 6;</code>
+     * @return The enum numeric value on the wire for source.
      */
     public int getSourceValue() {
       return source_;
     }
     /**
-     * <code>.protoclasses.SymbolMessage.SourceType source = 5;</code>
+     * <code>.protoclasses.SymbolMessage.SourceType source = 6;</code>
+     * @return The source.
      */
     public protoclasses.SymbolsProto.SymbolMessage.SourceType getSource() {
       @SuppressWarnings("deprecation")
@@ -2622,49 +740,32 @@ public final class SymbolsProto {
       return result == null ? protoclasses.SymbolsProto.SymbolMessage.SourceType.UNRECOGNIZED : result;
     }
 
-    public static final int REF_COUNT_FIELD_NUMBER = 6;
-    private int refCount_;
+    public static final int REFERENCE_ID_FIELD_NUMBER = 8;
+    private com.google.protobuf.Internal.IntList referenceId_;
     /**
-     * <code>uint32 ref_count = 6;</code>
+     * <code>repeated int32 reference_id = 8;</code>
+     * @return A list containing the referenceId.
      */
-    public int getRefCount() {
-      return refCount_;
-    }
-
-    public static final int REFERENCES_FIELD_NUMBER = 7;
-    private java.util.List<protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage> references_;
-    /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-     */
-    public java.util.List<protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage> getReferencesList() {
-      return references_;
+    public java.util.List<java.lang.Integer>
+        getReferenceIdList() {
+      return referenceId_;
     }
     /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
+     * <code>repeated int32 reference_id = 8;</code>
+     * @return The count of referenceId.
      */
-    public java.util.List<? extends protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder> 
-        getReferencesOrBuilderList() {
-      return references_;
+    public int getReferenceIdCount() {
+      return referenceId_.size();
     }
     /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
+     * <code>repeated int32 reference_id = 8;</code>
+     * @param index The index of the element to return.
+     * @return The referenceId at the given index.
      */
-    public int getReferencesCount() {
-      return references_.size();
+    public int getReferenceId(int index) {
+      return referenceId_.getInt(index);
     }
-    /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-     */
-    public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage getReferences(int index) {
-      return references_.get(index);
-    }
-    /**
-     * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-     */
-    public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder getReferencesOrBuilder(
-        int index) {
-      return references_.get(index);
-    }
+    private int referenceIdMemoizedSerializedSize = -1;
 
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
@@ -2680,26 +781,32 @@ public final class SymbolsProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (!getAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, address_);
+      if (addressCase_ == 2) {
+        output.writeUInt64(
+            2, (long)((java.lang.Long) address_));
+      }
+      if (addressCase_ == 3) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, address_);
       }
       if (type_ != protoclasses.SymbolsProto.SymbolMessage.SymbolMessageType.NULL.getNumber()) {
-        output.writeEnum(3, type_);
+        output.writeEnum(4, type_);
       }
       if (!getNamespaceBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, namespace_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, namespace_);
       }
       if (source_ != protoclasses.SymbolsProto.SymbolMessage.SourceType.DEFAULT.getNumber()) {
-        output.writeEnum(5, source_);
+        output.writeEnum(6, source_);
       }
-      if (refCount_ != 0) {
-        output.writeUInt32(6, refCount_);
+      if (getReferenceIdList().size() > 0) {
+        output.writeUInt32NoTag(66);
+        output.writeUInt32NoTag(referenceIdMemoizedSerializedSize);
       }
-      for (int i = 0; i < references_.size(); i++) {
-        output.writeMessage(7, references_.get(i));
+      for (int i = 0; i < referenceId_.size(); i++) {
+        output.writeInt32NoTag(referenceId_.getInt(i));
       }
       unknownFields.writeTo(output);
     }
@@ -2713,27 +820,38 @@ public final class SymbolsProto {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      if (!getAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, address_);
+      if (addressCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(
+              2, (long)((java.lang.Long) address_));
+      }
+      if (addressCase_ == 3) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, address_);
       }
       if (type_ != protoclasses.SymbolsProto.SymbolMessage.SymbolMessageType.NULL.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, type_);
+          .computeEnumSize(4, type_);
       }
       if (!getNamespaceBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, namespace_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, namespace_);
       }
       if (source_ != protoclasses.SymbolsProto.SymbolMessage.SourceType.DEFAULT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, source_);
+          .computeEnumSize(6, source_);
       }
-      if (refCount_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(6, refCount_);
-      }
-      for (int i = 0; i < references_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, references_.get(i));
+      {
+        int dataSize = 0;
+        for (int i = 0; i < referenceId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(referenceId_.getInt(i));
+        }
+        size += dataSize;
+        if (!getReferenceIdList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        referenceIdMemoizedSerializedSize = dataSize;
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2750,21 +868,29 @@ public final class SymbolsProto {
       }
       protoclasses.SymbolsProto.SymbolMessage other = (protoclasses.SymbolsProto.SymbolMessage) obj;
 
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && getAddress()
-          .equals(other.getAddress());
-      result = result && type_ == other.type_;
-      result = result && getNamespace()
-          .equals(other.getNamespace());
-      result = result && source_ == other.source_;
-      result = result && (getRefCount()
-          == other.getRefCount());
-      result = result && getReferencesList()
-          .equals(other.getReferencesList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (type_ != other.type_) return false;
+      if (!getNamespace()
+          .equals(other.getNamespace())) return false;
+      if (source_ != other.source_) return false;
+      if (!getReferenceIdList()
+          .equals(other.getReferenceIdList())) return false;
+      if (!getAddressCase().equals(other.getAddressCase())) return false;
+      switch (addressCase_) {
+        case 2:
+          if (getLongAddress()
+              != other.getLongAddress()) return false;
+          break;
+        case 3:
+          if (!getSymbolicAddress()
+              .equals(other.getSymbolicAddress())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2776,19 +902,28 @@ public final class SymbolsProto {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-      hash = (53 * hash) + getAddress().hashCode();
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
       hash = (53 * hash) + type_;
       hash = (37 * hash) + NAMESPACE_FIELD_NUMBER;
       hash = (53 * hash) + getNamespace().hashCode();
       hash = (37 * hash) + SOURCE_FIELD_NUMBER;
       hash = (53 * hash) + source_;
-      hash = (37 * hash) + REF_COUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getRefCount();
-      if (getReferencesCount() > 0) {
-        hash = (37 * hash) + REFERENCES_FIELD_NUMBER;
-        hash = (53 * hash) + getReferencesList().hashCode();
+      if (getReferenceIdCount() > 0) {
+        hash = (37 * hash) + REFERENCE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getReferenceIdList().hashCode();
+      }
+      switch (addressCase_) {
+        case 2:
+          hash = (37 * hash) + LONG_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getLongAddress());
+          break;
+        case 3:
+          hash = (37 * hash) + SYMBOLIC_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getSymbolicAddress().hashCode();
+          break;
+        case 0:
+        default:
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2918,7 +1053,6 @@ public final class SymbolsProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getReferencesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -2926,22 +1060,16 @@ public final class SymbolsProto {
         super.clear();
         name_ = "";
 
-        address_ = "";
-
         type_ = 0;
 
         namespace_ = "";
 
         source_ = 0;
 
-        refCount_ = 0;
-
-        if (referencesBuilder_ == null) {
-          references_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
-        } else {
-          referencesBuilder_.clear();
-        }
+        referenceId_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        addressCase_ = 0;
+        address_ = null;
         return this;
       }
 
@@ -2969,58 +1097,57 @@ public final class SymbolsProto {
       public protoclasses.SymbolsProto.SymbolMessage buildPartial() {
         protoclasses.SymbolsProto.SymbolMessage result = new protoclasses.SymbolsProto.SymbolMessage(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.name_ = name_;
-        result.address_ = address_;
+        if (addressCase_ == 2) {
+          result.address_ = address_;
+        }
+        if (addressCase_ == 3) {
+          result.address_ = address_;
+        }
         result.type_ = type_;
         result.namespace_ = namespace_;
         result.source_ = source_;
-        result.refCount_ = refCount_;
-        if (referencesBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040)) {
-            references_ = java.util.Collections.unmodifiableList(references_);
-            bitField0_ = (bitField0_ & ~0x00000040);
-          }
-          result.references_ = references_;
-        } else {
-          result.references_ = referencesBuilder_.build();
+        if (((bitField0_ & 0x00000001) != 0)) {
+          referenceId_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.bitField0_ = to_bitField0_;
+        result.referenceId_ = referenceId_;
+        result.addressCase_ = addressCase_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -3038,10 +1165,6 @@ public final class SymbolsProto {
           name_ = other.name_;
           onChanged();
         }
-        if (!other.getAddress().isEmpty()) {
-          address_ = other.address_;
-          onChanged();
-        }
         if (other.type_ != 0) {
           setTypeValue(other.getTypeValue());
         }
@@ -3052,33 +1175,29 @@ public final class SymbolsProto {
         if (other.source_ != 0) {
           setSourceValue(other.getSourceValue());
         }
-        if (other.getRefCount() != 0) {
-          setRefCount(other.getRefCount());
-        }
-        if (referencesBuilder_ == null) {
-          if (!other.references_.isEmpty()) {
-            if (references_.isEmpty()) {
-              references_ = other.references_;
-              bitField0_ = (bitField0_ & ~0x00000040);
-            } else {
-              ensureReferencesIsMutable();
-              references_.addAll(other.references_);
-            }
-            onChanged();
+        if (!other.referenceId_.isEmpty()) {
+          if (referenceId_.isEmpty()) {
+            referenceId_ = other.referenceId_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureReferenceIdIsMutable();
+            referenceId_.addAll(other.referenceId_);
           }
-        } else {
-          if (!other.references_.isEmpty()) {
-            if (referencesBuilder_.isEmpty()) {
-              referencesBuilder_.dispose();
-              referencesBuilder_ = null;
-              references_ = other.references_;
-              bitField0_ = (bitField0_ & ~0x00000040);
-              referencesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getReferencesFieldBuilder() : null;
-            } else {
-              referencesBuilder_.addAllMessages(other.references_);
-            }
+          onChanged();
+        }
+        switch (other.getAddressCase()) {
+          case LONG_ADDRESS: {
+            setLongAddress(other.getLongAddress());
+            break;
+          }
+          case SYMBOLIC_ADDRESS: {
+            addressCase_ = 3;
+            address_ = other.address_;
+            onChanged();
+            break;
+          }
+          case ADDRESS_NOT_SET: {
+            break;
           }
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -3109,11 +1228,27 @@ public final class SymbolsProto {
         }
         return this;
       }
+      private int addressCase_ = 0;
+      private java.lang.Object address_;
+      public AddressCase
+          getAddressCase() {
+        return AddressCase.forNumber(
+            addressCase_);
+      }
+
+      public Builder clearAddress() {
+        addressCase_ = 0;
+        address_ = null;
+        onChanged();
+        return this;
+      }
+
       private int bitField0_;
 
       private java.lang.Object name_ = "";
       /**
        * <code>string name = 1;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -3129,6 +1264,7 @@ public final class SymbolsProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -3145,6 +1281,8 @@ public final class SymbolsProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
        */
       public Builder setName(
           java.lang.String value) {
@@ -3158,6 +1296,7 @@ public final class SymbolsProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearName() {
         
@@ -3167,6 +1306,8 @@ public final class SymbolsProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -3180,70 +1321,122 @@ public final class SymbolsProto {
         return this;
       }
 
-      private java.lang.Object address_ = "";
       /**
-       * <code>string address = 2;</code>
+       * <code>uint64 long_address = 2;</code>
+       * @return The longAddress.
        */
-      public java.lang.String getAddress() {
-        java.lang.Object ref = address_;
+      public long getLongAddress() {
+        if (addressCase_ == 2) {
+          return (java.lang.Long) address_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>uint64 long_address = 2;</code>
+       * @param value The longAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLongAddress(long value) {
+        addressCase_ = 2;
+        address_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 long_address = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLongAddress() {
+        if (addressCase_ == 2) {
+          addressCase_ = 0;
+          address_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string symbolic_address = 3;</code>
+       * @return The symbolicAddress.
+       */
+      public java.lang.String getSymbolicAddress() {
+        java.lang.Object ref = "";
+        if (addressCase_ == 3) {
+          ref = address_;
+        }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          address_ = s;
+          if (addressCase_ == 3) {
+            address_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string address = 2;</code>
+       * <code>string symbolic_address = 3;</code>
+       * @return The bytes for symbolicAddress.
        */
       public com.google.protobuf.ByteString
-          getAddressBytes() {
-        java.lang.Object ref = address_;
+          getSymbolicAddressBytes() {
+        java.lang.Object ref = "";
+        if (addressCase_ == 3) {
+          ref = address_;
+        }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          address_ = b;
+          if (addressCase_ == 3) {
+            address_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string address = 2;</code>
+       * <code>string symbolic_address = 3;</code>
+       * @param value The symbolicAddress to set.
+       * @return This builder for chaining.
        */
-      public Builder setAddress(
+      public Builder setSymbolicAddress(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  addressCase_ = 3;
         address_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string address = 2;</code>
+       * <code>string symbolic_address = 3;</code>
+       * @return This builder for chaining.
        */
-      public Builder clearAddress() {
-        
-        address_ = getDefaultInstance().getAddress();
-        onChanged();
+      public Builder clearSymbolicAddress() {
+        if (addressCase_ == 3) {
+          addressCase_ = 0;
+          address_ = null;
+          onChanged();
+        }
         return this;
       }
       /**
-       * <code>string address = 2;</code>
+       * <code>string symbolic_address = 3;</code>
+       * @param value The bytes for symbolicAddress to set.
+       * @return This builder for chaining.
        */
-      public Builder setAddressBytes(
+      public Builder setSymbolicAddressBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+        addressCase_ = 3;
         address_ = value;
         onChanged();
         return this;
@@ -3251,13 +1444,16 @@ public final class SymbolsProto {
 
       private int type_ = 0;
       /**
-       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 3;</code>
+       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 4;</code>
+       * @return The enum numeric value on the wire for type.
        */
       public int getTypeValue() {
         return type_;
       }
       /**
-       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 3;</code>
+       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 4;</code>
+       * @param value The enum numeric value on the wire for type to set.
+       * @return This builder for chaining.
        */
       public Builder setTypeValue(int value) {
         type_ = value;
@@ -3265,7 +1461,8 @@ public final class SymbolsProto {
         return this;
       }
       /**
-       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 3;</code>
+       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 4;</code>
+       * @return The type.
        */
       public protoclasses.SymbolsProto.SymbolMessage.SymbolMessageType getType() {
         @SuppressWarnings("deprecation")
@@ -3273,7 +1470,9 @@ public final class SymbolsProto {
         return result == null ? protoclasses.SymbolsProto.SymbolMessage.SymbolMessageType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 3;</code>
+       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 4;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
        */
       public Builder setType(protoclasses.SymbolsProto.SymbolMessage.SymbolMessageType value) {
         if (value == null) {
@@ -3285,7 +1484,8 @@ public final class SymbolsProto {
         return this;
       }
       /**
-       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 3;</code>
+       * <code>.protoclasses.SymbolMessage.SymbolMessageType type = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearType() {
         
@@ -3296,7 +1496,8 @@ public final class SymbolsProto {
 
       private java.lang.Object namespace_ = "";
       /**
-       * <code>string namespace = 4;</code>
+       * <code>string namespace = 5;</code>
+       * @return The namespace.
        */
       public java.lang.String getNamespace() {
         java.lang.Object ref = namespace_;
@@ -3311,7 +1512,8 @@ public final class SymbolsProto {
         }
       }
       /**
-       * <code>string namespace = 4;</code>
+       * <code>string namespace = 5;</code>
+       * @return The bytes for namespace.
        */
       public com.google.protobuf.ByteString
           getNamespaceBytes() {
@@ -3327,7 +1529,9 @@ public final class SymbolsProto {
         }
       }
       /**
-       * <code>string namespace = 4;</code>
+       * <code>string namespace = 5;</code>
+       * @param value The namespace to set.
+       * @return This builder for chaining.
        */
       public Builder setNamespace(
           java.lang.String value) {
@@ -3340,7 +1544,8 @@ public final class SymbolsProto {
         return this;
       }
       /**
-       * <code>string namespace = 4;</code>
+       * <code>string namespace = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearNamespace() {
         
@@ -3349,7 +1554,9 @@ public final class SymbolsProto {
         return this;
       }
       /**
-       * <code>string namespace = 4;</code>
+       * <code>string namespace = 5;</code>
+       * @param value The bytes for namespace to set.
+       * @return This builder for chaining.
        */
       public Builder setNamespaceBytes(
           com.google.protobuf.ByteString value) {
@@ -3365,13 +1572,16 @@ public final class SymbolsProto {
 
       private int source_ = 0;
       /**
-       * <code>.protoclasses.SymbolMessage.SourceType source = 5;</code>
+       * <code>.protoclasses.SymbolMessage.SourceType source = 6;</code>
+       * @return The enum numeric value on the wire for source.
        */
       public int getSourceValue() {
         return source_;
       }
       /**
-       * <code>.protoclasses.SymbolMessage.SourceType source = 5;</code>
+       * <code>.protoclasses.SymbolMessage.SourceType source = 6;</code>
+       * @param value The enum numeric value on the wire for source to set.
+       * @return This builder for chaining.
        */
       public Builder setSourceValue(int value) {
         source_ = value;
@@ -3379,7 +1589,8 @@ public final class SymbolsProto {
         return this;
       }
       /**
-       * <code>.protoclasses.SymbolMessage.SourceType source = 5;</code>
+       * <code>.protoclasses.SymbolMessage.SourceType source = 6;</code>
+       * @return The source.
        */
       public protoclasses.SymbolsProto.SymbolMessage.SourceType getSource() {
         @SuppressWarnings("deprecation")
@@ -3387,7 +1598,9 @@ public final class SymbolsProto {
         return result == null ? protoclasses.SymbolsProto.SymbolMessage.SourceType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.protoclasses.SymbolMessage.SourceType source = 5;</code>
+       * <code>.protoclasses.SymbolMessage.SourceType source = 6;</code>
+       * @param value The source to set.
+       * @return This builder for chaining.
        */
       public Builder setSource(protoclasses.SymbolsProto.SymbolMessage.SourceType value) {
         if (value == null) {
@@ -3399,7 +1612,8 @@ public final class SymbolsProto {
         return this;
       }
       /**
-       * <code>.protoclasses.SymbolMessage.SourceType source = 5;</code>
+       * <code>.protoclasses.SymbolMessage.SourceType source = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSource() {
         
@@ -3408,275 +1622,88 @@ public final class SymbolsProto {
         return this;
       }
 
-      private int refCount_ ;
-      /**
-       * <code>uint32 ref_count = 6;</code>
-       */
-      public int getRefCount() {
-        return refCount_;
-      }
-      /**
-       * <code>uint32 ref_count = 6;</code>
-       */
-      public Builder setRefCount(int value) {
-        
-        refCount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint32 ref_count = 6;</code>
-       */
-      public Builder clearRefCount() {
-        
-        refCount_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage> references_ =
-        java.util.Collections.emptyList();
-      private void ensureReferencesIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
-          references_ = new java.util.ArrayList<protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage>(references_);
-          bitField0_ |= 0x00000040;
+      private com.google.protobuf.Internal.IntList referenceId_ = emptyIntList();
+      private void ensureReferenceIdIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          referenceId_ = mutableCopy(referenceId_);
+          bitField0_ |= 0x00000001;
          }
       }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder> referencesBuilder_;
-
       /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
+       * <code>repeated int32 reference_id = 8;</code>
+       * @return A list containing the referenceId.
        */
-      public java.util.List<protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage> getReferencesList() {
-        if (referencesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(references_);
-        } else {
-          return referencesBuilder_.getMessageList();
-        }
+      public java.util.List<java.lang.Integer>
+          getReferenceIdList() {
+        return ((bitField0_ & 0x00000001) != 0) ?
+                 java.util.Collections.unmodifiableList(referenceId_) : referenceId_;
       }
       /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
+       * <code>repeated int32 reference_id = 8;</code>
+       * @return The count of referenceId.
        */
-      public int getReferencesCount() {
-        if (referencesBuilder_ == null) {
-          return references_.size();
-        } else {
-          return referencesBuilder_.getCount();
-        }
+      public int getReferenceIdCount() {
+        return referenceId_.size();
       }
       /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
+       * <code>repeated int32 reference_id = 8;</code>
+       * @param index The index of the element to return.
+       * @return The referenceId at the given index.
        */
-      public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage getReferences(int index) {
-        if (referencesBuilder_ == null) {
-          return references_.get(index);
-        } else {
-          return referencesBuilder_.getMessage(index);
-        }
+      public int getReferenceId(int index) {
+        return referenceId_.getInt(index);
       }
       /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
+       * <code>repeated int32 reference_id = 8;</code>
+       * @param index The index to set the value at.
+       * @param value The referenceId to set.
+       * @return This builder for chaining.
        */
-      public Builder setReferences(
-          int index, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage value) {
-        if (referencesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureReferencesIsMutable();
-          references_.set(index, value);
-          onChanged();
-        } else {
-          referencesBuilder_.setMessage(index, value);
-        }
+      public Builder setReferenceId(
+          int index, int value) {
+        ensureReferenceIdIsMutable();
+        referenceId_.setInt(index, value);
+        onChanged();
         return this;
       }
       /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
+       * <code>repeated int32 reference_id = 8;</code>
+       * @param value The referenceId to add.
+       * @return This builder for chaining.
        */
-      public Builder setReferences(
-          int index, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder builderForValue) {
-        if (referencesBuilder_ == null) {
-          ensureReferencesIsMutable();
-          references_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          referencesBuilder_.setMessage(index, builderForValue.build());
-        }
+      public Builder addReferenceId(int value) {
+        ensureReferenceIdIsMutable();
+        referenceId_.addInt(value);
+        onChanged();
         return this;
       }
       /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
+       * <code>repeated int32 reference_id = 8;</code>
+       * @param values The referenceId to add.
+       * @return This builder for chaining.
        */
-      public Builder addReferences(protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage value) {
-        if (referencesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureReferencesIsMutable();
-          references_.add(value);
-          onChanged();
-        } else {
-          referencesBuilder_.addMessage(value);
-        }
+      public Builder addAllReferenceId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureReferenceIdIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, referenceId_);
+        onChanged();
         return this;
       }
       /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
+       * <code>repeated int32 reference_id = 8;</code>
+       * @return This builder for chaining.
        */
-      public Builder addReferences(
-          int index, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage value) {
-        if (referencesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureReferencesIsMutable();
-          references_.add(index, value);
-          onChanged();
-        } else {
-          referencesBuilder_.addMessage(index, value);
-        }
+      public Builder clearReferenceId() {
+        referenceId_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
         return this;
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public Builder addReferences(
-          protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder builderForValue) {
-        if (referencesBuilder_ == null) {
-          ensureReferencesIsMutable();
-          references_.add(builderForValue.build());
-          onChanged();
-        } else {
-          referencesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public Builder addReferences(
-          int index, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder builderForValue) {
-        if (referencesBuilder_ == null) {
-          ensureReferencesIsMutable();
-          references_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          referencesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public Builder addAllReferences(
-          java.lang.Iterable<? extends protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage> values) {
-        if (referencesBuilder_ == null) {
-          ensureReferencesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, references_);
-          onChanged();
-        } else {
-          referencesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public Builder clearReferences() {
-        if (referencesBuilder_ == null) {
-          references_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
-          onChanged();
-        } else {
-          referencesBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public Builder removeReferences(int index) {
-        if (referencesBuilder_ == null) {
-          ensureReferencesIsMutable();
-          references_.remove(index);
-          onChanged();
-        } else {
-          referencesBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder getReferencesBuilder(
-          int index) {
-        return getReferencesFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder getReferencesOrBuilder(
-          int index) {
-        if (referencesBuilder_ == null) {
-          return references_.get(index);  } else {
-          return referencesBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public java.util.List<? extends protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder> 
-           getReferencesOrBuilderList() {
-        if (referencesBuilder_ != null) {
-          return referencesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(references_);
-        }
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder addReferencesBuilder() {
-        return getReferencesFieldBuilder().addBuilder(
-            protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder addReferencesBuilder(
-          int index) {
-        return getReferencesFieldBuilder().addBuilder(
-            index, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .protoclasses.SymbolMessage.ReferenceMessage references = 7;</code>
-       */
-      public java.util.List<protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder> 
-           getReferencesBuilderList() {
-        return getReferencesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder> 
-          getReferencesFieldBuilder() {
-        if (referencesBuilder_ == null) {
-          referencesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessage.Builder, protoclasses.SymbolsProto.SymbolMessage.ReferenceMessageOrBuilder>(
-                  references_,
-                  ((bitField0_ & 0x00000040) == 0x00000040),
-                  getParentForChildren(),
-                  isClean());
-          references_ = null;
-        }
-        return referencesBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -3771,6 +1798,13 @@ public final class SymbolsProto {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SymbolsList();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -3795,7 +1829,7 @@ public final class SymbolsProto {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 symbols_ = new java.util.ArrayList<protoclasses.SymbolsProto.SymbolMessage>();
                 mutable_bitField0_ |= 0x00000001;
               }
@@ -3804,7 +1838,7 @@ public final class SymbolsProto {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -3818,7 +1852,7 @@ public final class SymbolsProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           symbols_ = java.util.Collections.unmodifiableList(symbols_);
         }
         this.unknownFields = unknownFields.build();
@@ -3918,11 +1952,10 @@ public final class SymbolsProto {
       }
       protoclasses.SymbolsProto.SymbolsList other = (protoclasses.SymbolsProto.SymbolsList) obj;
 
-      boolean result = true;
-      result = result && getSymbolsList()
-          .equals(other.getSymbolsList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getSymbolsList()
+          .equals(other.getSymbolsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -4104,7 +2137,7 @@ public final class SymbolsProto {
         protoclasses.SymbolsProto.SymbolsList result = new protoclasses.SymbolsProto.SymbolsList(this);
         int from_bitField0_ = bitField0_;
         if (symbolsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             symbols_ = java.util.Collections.unmodifiableList(symbols_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -4118,35 +2151,35 @@ public final class SymbolsProto {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -4219,7 +2252,7 @@ public final class SymbolsProto {
       private java.util.List<protoclasses.SymbolsProto.SymbolMessage> symbols_ =
         java.util.Collections.emptyList();
       private void ensureSymbolsIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           symbols_ = new java.util.ArrayList<protoclasses.SymbolsProto.SymbolMessage>(symbols_);
           bitField0_ |= 0x00000001;
          }
@@ -4448,7 +2481,7 @@ public final class SymbolsProto {
           symbolsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               protoclasses.SymbolsProto.SymbolMessage, protoclasses.SymbolsProto.SymbolMessage.Builder, protoclasses.SymbolsProto.SymbolMessageOrBuilder>(
                   symbols_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           symbols_ = null;
@@ -4458,7 +2491,7 @@ public final class SymbolsProto {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -4514,16 +2547,6 @@ public final class SymbolsProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protoclasses_SymbolMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protoclasses_SymbolMessage_ReferenceMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protoclasses_SymbolMessage_ReferenceMessage_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protoclasses_SymbolsList_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -4537,68 +2560,38 @@ public final class SymbolsProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rsymbols.proto\022\014protoclasses\032\020kindofdat" +
-      "a.proto\"\221\006\n\rSymbolMessage\022\014\n\004name\030\001 \001(\t\022" +
-      "\017\n\007address\030\002 \001(\t\022;\n\004type\030\003 \001(\0162-.protocl" +
-      "asses.SymbolMessage.SymbolMessageType\022\021\n" +
-      "\tnamespace\030\004 \001(\t\0226\n\006source\030\005 \001(\0162&.proto" +
-      "classes.SymbolMessage.SourceType\022\021\n\tref_" +
-      "count\030\006 \001(\r\022@\n\nreferences\030\007 \003(\0132,.protoc" +
-      "lasses.SymbolMessage.ReferenceMessage\032\254\002" +
-      "\n\020ReferenceMessage\022\024\n\014from_address\030\001 \001(\t" +
-      "\022\026\n\016reference_type\030\002 \001(\t\0226\n\006source\030\003 \001(\016" +
-      "2&.protoclasses.SymbolMessage.SourceType" +
-      "\022\023\n\013instruction\030\004 \001(\t\022J\n\010referred\030\005 \001(\0132" +
-      "8.protoclasses.SymbolMessage.ReferenceMe" +
-      "ssage.DataMessage\032Q\n\013DataMessage\022\021\n\tdata" +
-      "_type\030\001 \001(\t\022 \n\004kind\030\002 \003(\0162\022.protoclasses" +
-      ".Kind\022\r\n\005value\030\003 \001(\014\"\213\001\n\021SymbolMessageTy" +
-      "pe\022\010\n\004NULL\020\000\022\t\n\005LABEL\020\001\022\013\n\007LIBRARY\020\002\022\r\n\t" +
-      "NAMESPACE\020\003\022\t\n\005CLASS\020\004\022\014\n\010FUNCTION\020\005\022\r\n\t" +
-      "PARAMETER\020\006\022\r\n\tLOCAL_VAR\020\007\022\016\n\nGLOBAL_VAR" +
-      "\020\010\"G\n\nSourceType\022\013\n\007DEFAULT\020\000\022\014\n\010ANALYSI" +
-      "S\020\001\022\014\n\010IMPORTED\020\002\022\020\n\014USER_DEFINED\020\003\";\n\013S" +
-      "ymbolsList\022,\n\007symbols\030\001 \003(\0132\033.protoclass" +
-      "es.SymbolMessageB\016B\014SymbolsProtob\006proto3"
+      "\n\rsymbols.proto\022\014protoclasses\"\321\003\n\rSymbol" +
+      "Message\022\014\n\004name\030\001 \001(\t\022\026\n\014long_address\030\002 " +
+      "\001(\004H\000\022\032\n\020symbolic_address\030\003 \001(\tH\000\022;\n\004typ" +
+      "e\030\004 \001(\0162-.protoclasses.SymbolMessage.Sym" +
+      "bolMessageType\022\021\n\tnamespace\030\005 \001(\t\0226\n\006sou" +
+      "rce\030\006 \001(\0162&.protoclasses.SymbolMessage.S" +
+      "ourceType\022\024\n\014reference_id\030\010 \003(\005\"\213\001\n\021Symb" +
+      "olMessageType\022\010\n\004NULL\020\000\022\t\n\005LABEL\020\001\022\013\n\007LI" +
+      "BRARY\020\002\022\r\n\tNAMESPACE\020\003\022\t\n\005CLASS\020\004\022\014\n\010FUN" +
+      "CTION\020\005\022\r\n\tPARAMETER\020\006\022\r\n\tLOCAL_VAR\020\007\022\016\n" +
+      "\nGLOBAL_VAR\020\010\"G\n\nSourceType\022\013\n\007DEFAULT\020\000" +
+      "\022\014\n\010ANALYSIS\020\001\022\014\n\010IMPORTED\020\002\022\020\n\014USER_DEF" +
+      "INED\020\003B\t\n\007address\";\n\013SymbolsList\022,\n\007symb" +
+      "ols\030\001 \003(\0132\033.protoclasses.SymbolMessageB\016" +
+      "B\014SymbolsProtob\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          protoclasses.KindOfData.getDescriptor(),
-        }, assigner);
+        });
     internal_static_protoclasses_SymbolMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_protoclasses_SymbolMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_SymbolMessage_descriptor,
-        new java.lang.String[] { "Name", "Address", "Type", "Namespace", "Source", "RefCount", "References", });
-    internal_static_protoclasses_SymbolMessage_ReferenceMessage_descriptor =
-      internal_static_protoclasses_SymbolMessage_descriptor.getNestedTypes().get(0);
-    internal_static_protoclasses_SymbolMessage_ReferenceMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protoclasses_SymbolMessage_ReferenceMessage_descriptor,
-        new java.lang.String[] { "FromAddress", "ReferenceType", "Source", "Instruction", "Referred", });
-    internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_descriptor =
-      internal_static_protoclasses_SymbolMessage_ReferenceMessage_descriptor.getNestedTypes().get(0);
-    internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protoclasses_SymbolMessage_ReferenceMessage_DataMessage_descriptor,
-        new java.lang.String[] { "DataType", "Kind", "Value", });
+        new java.lang.String[] { "Name", "LongAddress", "SymbolicAddress", "Type", "Namespace", "Source", "ReferenceId", "Address", });
     internal_static_protoclasses_SymbolsList_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protoclasses_SymbolsList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_SymbolsList_descriptor,
         new java.lang.String[] { "Symbols", });
-    protoclasses.KindOfData.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

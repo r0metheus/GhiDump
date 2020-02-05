@@ -25,38 +25,44 @@ message FunctionMessage{
   }
 
   message BasicBlockMessage{
-    string starting_address = 1;
-    string ending_address = 2;
+    oneof starting_address {
+        uint64 long_starting_address = 1;
+        string symbolic_starting_address = 2;
+    }
+    
+    oneof ending_address {
+        uint64 long_ending_address = 3;
+        string symbolic_ending_address = 4;
+    }
     
     message InstructionMessage{
-      string instruction = 1;
-      string mnemonic = 2;
-      uint32 ops_number = 3;
-      bool is_thumb = 4;
+      string mnemonic = 1;
+      bool is_thumb = 2;
       
       message OperandMessage{
         string name = 1;
         
         message OperandObject{
             string name = 1;
-            string type = 2;
+            
+            enum Type {
+                NULL = 0;
+                REGISTER = 1;
+                SCALAR = 2;
+                ADDRESS = 3;
+            }
+
+            Type type = 2;
         }
         
-        message Reference{
-            string from_address = 1;
-            string to_address = 2;
-            string reference_type = 3;
-            bytes reference_value = 4;
-        }
-        
-        repeated Reference references = 2;
+        repeated int32 reference_id = 2;
         repeated OperandObject op_objects = 3;
       }
       
-      repeated OperandMessage operands = 5;
+      repeated OperandMessage operands = 3;
     }
 
-    repeated InstructionMessage instructions = 3;
+    repeated InstructionMessage instructions = 5;
   }
 
   repeated ParameterMessage parameters = 4;

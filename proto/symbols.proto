@@ -2,14 +2,16 @@ syntax = "proto3";
 
 package protoclasses;
 
-import "kindofdata.proto";
-
 option java_outer_classname = "SymbolsProto";
 
 message SymbolMessage {
   string name = 1;
-  string address = 2;
   
+  oneof address {
+    uint64 long_address = 2;
+    string symbolic_address = 3;
+  }
+    
   enum SymbolMessageType{
     NULL = 0;
     LABEL = 1;
@@ -22,9 +24,9 @@ message SymbolMessage {
     GLOBAL_VAR = 8;
   }
   
-  SymbolMessageType type = 3;
+  SymbolMessageType type = 4;
 
-  string namespace = 4;
+  string namespace = 5;
   
   enum SourceType{
     DEFAULT = 0;
@@ -33,26 +35,8 @@ message SymbolMessage {
     USER_DEFINED = 3;
   }  
   
-  SourceType source = 5;
-  uint32 ref_count = 6;
-
-  message ReferenceMessage{
-    string from_address = 1;
-    string reference_type = 2;
-    SourceType source = 3;
-    string instruction = 4;
-
-    message DataMessage{
-      string data_type = 1;
-
-      repeated Kind kind = 2;
-      bytes value = 3;
-    }
-
-    DataMessage referred = 5;
-  }
-
-  repeated ReferenceMessage references = 7;
+  SourceType source = 6;
+  repeated int32 reference_id = 8;
 }
 
 message SymbolsList {

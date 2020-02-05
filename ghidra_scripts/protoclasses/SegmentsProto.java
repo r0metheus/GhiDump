@@ -20,38 +20,61 @@ public final class SegmentsProto {
 
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
     java.lang.String getName();
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>string starting_address = 2;</code>
+     * <code>uint64 long_starting_address = 2;</code>
+     * @return The longStartingAddress.
      */
-    java.lang.String getStartingAddress();
-    /**
-     * <code>string starting_address = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getStartingAddressBytes();
+    long getLongStartingAddress();
 
     /**
-     * <code>string ending_address = 3;</code>
+     * <code>string symbolic_starting_address = 3;</code>
+     * @return The symbolicStartingAddress.
      */
-    java.lang.String getEndingAddress();
+    java.lang.String getSymbolicStartingAddress();
     /**
-     * <code>string ending_address = 3;</code>
+     * <code>string symbolic_starting_address = 3;</code>
+     * @return The bytes for symbolicStartingAddress.
      */
     com.google.protobuf.ByteString
-        getEndingAddressBytes();
+        getSymbolicStartingAddressBytes();
 
     /**
-     * <code>uint32 length = 4;</code>
+     * <code>uint64 long_ending_address = 4;</code>
+     * @return The longEndingAddress.
+     */
+    long getLongEndingAddress();
+
+    /**
+     * <code>string symbolic_ending_address = 5;</code>
+     * @return The symbolicEndingAddress.
+     */
+    java.lang.String getSymbolicEndingAddress();
+    /**
+     * <code>string symbolic_ending_address = 5;</code>
+     * @return The bytes for symbolicEndingAddress.
+     */
+    com.google.protobuf.ByteString
+        getSymbolicEndingAddressBytes();
+
+    /**
+     * <code>uint32 length = 6;</code>
+     * @return The length.
      */
     int getLength();
+
+    public protoclasses.SegmentsProto.SegmentMessage.StartingAddressCase getStartingAddressCase();
+
+    public protoclasses.SegmentsProto.SegmentMessage.EndingAddressCase getEndingAddressCase();
   }
   /**
    * Protobuf type {@code protoclasses.SegmentMessage}
@@ -67,9 +90,13 @@ public final class SegmentsProto {
     }
     private SegmentMessage() {
       name_ = "";
-      startingAddress_ = "";
-      endingAddress_ = "";
-      length_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SegmentMessage();
     }
 
     @java.lang.Override
@@ -85,7 +112,6 @@ public final class SegmentsProto {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -102,25 +128,35 @@ public final class SegmentsProto {
               name_ = s;
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              startingAddress_ = s;
+            case 16: {
+              startingAddressCase_ = 2;
+              startingAddress_ = input.readUInt64();
               break;
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
-
-              endingAddress_ = s;
+              startingAddressCase_ = 3;
+              startingAddress_ = s;
               break;
             }
             case 32: {
+              endingAddressCase_ = 4;
+              endingAddress_ = input.readUInt64();
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+              endingAddressCase_ = 5;
+              endingAddress_ = s;
+              break;
+            }
+            case 48: {
 
               length_ = input.readUInt32();
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -151,10 +187,93 @@ public final class SegmentsProto {
               protoclasses.SegmentsProto.SegmentMessage.class, protoclasses.SegmentsProto.SegmentMessage.Builder.class);
     }
 
+    private int startingAddressCase_ = 0;
+    private java.lang.Object startingAddress_;
+    public enum StartingAddressCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      LONG_STARTING_ADDRESS(2),
+      SYMBOLIC_STARTING_ADDRESS(3),
+      STARTINGADDRESS_NOT_SET(0);
+      private final int value;
+      private StartingAddressCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static StartingAddressCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static StartingAddressCase forNumber(int value) {
+        switch (value) {
+          case 2: return LONG_STARTING_ADDRESS;
+          case 3: return SYMBOLIC_STARTING_ADDRESS;
+          case 0: return STARTINGADDRESS_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public StartingAddressCase
+    getStartingAddressCase() {
+      return StartingAddressCase.forNumber(
+          startingAddressCase_);
+    }
+
+    private int endingAddressCase_ = 0;
+    private java.lang.Object endingAddress_;
+    public enum EndingAddressCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      LONG_ENDING_ADDRESS(4),
+      SYMBOLIC_ENDING_ADDRESS(5),
+      ENDINGADDRESS_NOT_SET(0);
+      private final int value;
+      private EndingAddressCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static EndingAddressCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static EndingAddressCase forNumber(int value) {
+        switch (value) {
+          case 4: return LONG_ENDING_ADDRESS;
+          case 5: return SYMBOLIC_ENDING_ADDRESS;
+          case 0: return ENDINGADDRESS_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public EndingAddressCase
+    getEndingAddressCase() {
+      return EndingAddressCase.forNumber(
+          endingAddressCase_);
+    }
+
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -170,6 +289,7 @@ public final class SegmentsProto {
     }
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -185,78 +305,125 @@ public final class SegmentsProto {
       }
     }
 
-    public static final int STARTING_ADDRESS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object startingAddress_;
+    public static final int LONG_STARTING_ADDRESS_FIELD_NUMBER = 2;
     /**
-     * <code>string starting_address = 2;</code>
+     * <code>uint64 long_starting_address = 2;</code>
+     * @return The longStartingAddress.
      */
-    public java.lang.String getStartingAddress() {
-      java.lang.Object ref = startingAddress_;
+    public long getLongStartingAddress() {
+      if (startingAddressCase_ == 2) {
+        return (java.lang.Long) startingAddress_;
+      }
+      return 0L;
+    }
+
+    public static final int SYMBOLIC_STARTING_ADDRESS_FIELD_NUMBER = 3;
+    /**
+     * <code>string symbolic_starting_address = 3;</code>
+     * @return The symbolicStartingAddress.
+     */
+    public java.lang.String getSymbolicStartingAddress() {
+      java.lang.Object ref = "";
+      if (startingAddressCase_ == 3) {
+        ref = startingAddress_;
+      }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        startingAddress_ = s;
+        if (startingAddressCase_ == 3) {
+          startingAddress_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string starting_address = 2;</code>
+     * <code>string symbolic_starting_address = 3;</code>
+     * @return The bytes for symbolicStartingAddress.
      */
     public com.google.protobuf.ByteString
-        getStartingAddressBytes() {
-      java.lang.Object ref = startingAddress_;
+        getSymbolicStartingAddressBytes() {
+      java.lang.Object ref = "";
+      if (startingAddressCase_ == 3) {
+        ref = startingAddress_;
+      }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        startingAddress_ = b;
+        if (startingAddressCase_ == 3) {
+          startingAddress_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int ENDING_ADDRESS_FIELD_NUMBER = 3;
-    private volatile java.lang.Object endingAddress_;
+    public static final int LONG_ENDING_ADDRESS_FIELD_NUMBER = 4;
     /**
-     * <code>string ending_address = 3;</code>
+     * <code>uint64 long_ending_address = 4;</code>
+     * @return The longEndingAddress.
      */
-    public java.lang.String getEndingAddress() {
-      java.lang.Object ref = endingAddress_;
+    public long getLongEndingAddress() {
+      if (endingAddressCase_ == 4) {
+        return (java.lang.Long) endingAddress_;
+      }
+      return 0L;
+    }
+
+    public static final int SYMBOLIC_ENDING_ADDRESS_FIELD_NUMBER = 5;
+    /**
+     * <code>string symbolic_ending_address = 5;</code>
+     * @return The symbolicEndingAddress.
+     */
+    public java.lang.String getSymbolicEndingAddress() {
+      java.lang.Object ref = "";
+      if (endingAddressCase_ == 5) {
+        ref = endingAddress_;
+      }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        endingAddress_ = s;
+        if (endingAddressCase_ == 5) {
+          endingAddress_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string ending_address = 3;</code>
+     * <code>string symbolic_ending_address = 5;</code>
+     * @return The bytes for symbolicEndingAddress.
      */
     public com.google.protobuf.ByteString
-        getEndingAddressBytes() {
-      java.lang.Object ref = endingAddress_;
+        getSymbolicEndingAddressBytes() {
+      java.lang.Object ref = "";
+      if (endingAddressCase_ == 5) {
+        ref = endingAddress_;
+      }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        endingAddress_ = b;
+        if (endingAddressCase_ == 5) {
+          endingAddress_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int LENGTH_FIELD_NUMBER = 4;
+    public static final int LENGTH_FIELD_NUMBER = 6;
     private int length_;
     /**
-     * <code>uint32 length = 4;</code>
+     * <code>uint32 length = 6;</code>
+     * @return The length.
      */
     public int getLength() {
       return length_;
@@ -279,14 +446,22 @@ public final class SegmentsProto {
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (!getStartingAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, startingAddress_);
+      if (startingAddressCase_ == 2) {
+        output.writeUInt64(
+            2, (long)((java.lang.Long) startingAddress_));
       }
-      if (!getEndingAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, endingAddress_);
+      if (startingAddressCase_ == 3) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, startingAddress_);
+      }
+      if (endingAddressCase_ == 4) {
+        output.writeUInt64(
+            4, (long)((java.lang.Long) endingAddress_));
+      }
+      if (endingAddressCase_ == 5) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, endingAddress_);
       }
       if (length_ != 0) {
-        output.writeUInt32(4, length_);
+        output.writeUInt32(6, length_);
       }
       unknownFields.writeTo(output);
     }
@@ -300,15 +475,25 @@ public final class SegmentsProto {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      if (!getStartingAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, startingAddress_);
+      if (startingAddressCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(
+              2, (long)((java.lang.Long) startingAddress_));
       }
-      if (!getEndingAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, endingAddress_);
+      if (startingAddressCase_ == 3) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, startingAddress_);
+      }
+      if (endingAddressCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(
+              4, (long)((java.lang.Long) endingAddress_));
+      }
+      if (endingAddressCase_ == 5) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, endingAddress_);
       }
       if (length_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, length_);
+          .computeUInt32Size(6, length_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -325,17 +510,38 @@ public final class SegmentsProto {
       }
       protoclasses.SegmentsProto.SegmentMessage other = (protoclasses.SegmentsProto.SegmentMessage) obj;
 
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && getStartingAddress()
-          .equals(other.getStartingAddress());
-      result = result && getEndingAddress()
-          .equals(other.getEndingAddress());
-      result = result && (getLength()
-          == other.getLength());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (getLength()
+          != other.getLength()) return false;
+      if (!getStartingAddressCase().equals(other.getStartingAddressCase())) return false;
+      switch (startingAddressCase_) {
+        case 2:
+          if (getLongStartingAddress()
+              != other.getLongStartingAddress()) return false;
+          break;
+        case 3:
+          if (!getSymbolicStartingAddress()
+              .equals(other.getSymbolicStartingAddress())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!getEndingAddressCase().equals(other.getEndingAddressCase())) return false;
+      switch (endingAddressCase_) {
+        case 4:
+          if (getLongEndingAddress()
+              != other.getLongEndingAddress()) return false;
+          break;
+        case 5:
+          if (!getSymbolicEndingAddress()
+              .equals(other.getSymbolicEndingAddress())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -347,12 +553,34 @@ public final class SegmentsProto {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + STARTING_ADDRESS_FIELD_NUMBER;
-      hash = (53 * hash) + getStartingAddress().hashCode();
-      hash = (37 * hash) + ENDING_ADDRESS_FIELD_NUMBER;
-      hash = (53 * hash) + getEndingAddress().hashCode();
       hash = (37 * hash) + LENGTH_FIELD_NUMBER;
       hash = (53 * hash) + getLength();
+      switch (startingAddressCase_) {
+        case 2:
+          hash = (37 * hash) + LONG_STARTING_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getLongStartingAddress());
+          break;
+        case 3:
+          hash = (37 * hash) + SYMBOLIC_STARTING_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getSymbolicStartingAddress().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      switch (endingAddressCase_) {
+        case 4:
+          hash = (37 * hash) + LONG_ENDING_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getLongEndingAddress());
+          break;
+        case 5:
+          hash = (37 * hash) + SYMBOLIC_ENDING_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getSymbolicEndingAddress().hashCode();
+          break;
+        case 0:
+        default:
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -488,12 +716,12 @@ public final class SegmentsProto {
         super.clear();
         name_ = "";
 
-        startingAddress_ = "";
-
-        endingAddress_ = "";
-
         length_ = 0;
 
+        startingAddressCase_ = 0;
+        startingAddress_ = null;
+        endingAddressCase_ = 0;
+        endingAddress_ = null;
         return this;
       }
 
@@ -521,44 +749,56 @@ public final class SegmentsProto {
       public protoclasses.SegmentsProto.SegmentMessage buildPartial() {
         protoclasses.SegmentsProto.SegmentMessage result = new protoclasses.SegmentsProto.SegmentMessage(this);
         result.name_ = name_;
-        result.startingAddress_ = startingAddress_;
-        result.endingAddress_ = endingAddress_;
+        if (startingAddressCase_ == 2) {
+          result.startingAddress_ = startingAddress_;
+        }
+        if (startingAddressCase_ == 3) {
+          result.startingAddress_ = startingAddress_;
+        }
+        if (endingAddressCase_ == 4) {
+          result.endingAddress_ = endingAddress_;
+        }
+        if (endingAddressCase_ == 5) {
+          result.endingAddress_ = endingAddress_;
+        }
         result.length_ = length_;
+        result.startingAddressCase_ = startingAddressCase_;
+        result.endingAddressCase_ = endingAddressCase_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -576,16 +816,38 @@ public final class SegmentsProto {
           name_ = other.name_;
           onChanged();
         }
-        if (!other.getStartingAddress().isEmpty()) {
-          startingAddress_ = other.startingAddress_;
-          onChanged();
-        }
-        if (!other.getEndingAddress().isEmpty()) {
-          endingAddress_ = other.endingAddress_;
-          onChanged();
-        }
         if (other.getLength() != 0) {
           setLength(other.getLength());
+        }
+        switch (other.getStartingAddressCase()) {
+          case LONG_STARTING_ADDRESS: {
+            setLongStartingAddress(other.getLongStartingAddress());
+            break;
+          }
+          case SYMBOLIC_STARTING_ADDRESS: {
+            startingAddressCase_ = 3;
+            startingAddress_ = other.startingAddress_;
+            onChanged();
+            break;
+          }
+          case STARTINGADDRESS_NOT_SET: {
+            break;
+          }
+        }
+        switch (other.getEndingAddressCase()) {
+          case LONG_ENDING_ADDRESS: {
+            setLongEndingAddress(other.getLongEndingAddress());
+            break;
+          }
+          case SYMBOLIC_ENDING_ADDRESS: {
+            endingAddressCase_ = 5;
+            endingAddress_ = other.endingAddress_;
+            onChanged();
+            break;
+          }
+          case ENDINGADDRESS_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -615,10 +877,41 @@ public final class SegmentsProto {
         }
         return this;
       }
+      private int startingAddressCase_ = 0;
+      private java.lang.Object startingAddress_;
+      public StartingAddressCase
+          getStartingAddressCase() {
+        return StartingAddressCase.forNumber(
+            startingAddressCase_);
+      }
+
+      public Builder clearStartingAddress() {
+        startingAddressCase_ = 0;
+        startingAddress_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int endingAddressCase_ = 0;
+      private java.lang.Object endingAddress_;
+      public EndingAddressCase
+          getEndingAddressCase() {
+        return EndingAddressCase.forNumber(
+            endingAddressCase_);
+      }
+
+      public Builder clearEndingAddress() {
+        endingAddressCase_ = 0;
+        endingAddress_ = null;
+        onChanged();
+        return this;
+      }
+
 
       private java.lang.Object name_ = "";
       /**
        * <code>string name = 1;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -634,6 +927,7 @@ public final class SegmentsProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -650,6 +944,8 @@ public final class SegmentsProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
        */
       public Builder setName(
           java.lang.String value) {
@@ -663,6 +959,7 @@ public final class SegmentsProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearName() {
         
@@ -672,6 +969,8 @@ public final class SegmentsProto {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -685,139 +984,243 @@ public final class SegmentsProto {
         return this;
       }
 
-      private java.lang.Object startingAddress_ = "";
       /**
-       * <code>string starting_address = 2;</code>
+       * <code>uint64 long_starting_address = 2;</code>
+       * @return The longStartingAddress.
        */
-      public java.lang.String getStartingAddress() {
-        java.lang.Object ref = startingAddress_;
+      public long getLongStartingAddress() {
+        if (startingAddressCase_ == 2) {
+          return (java.lang.Long) startingAddress_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>uint64 long_starting_address = 2;</code>
+       * @param value The longStartingAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLongStartingAddress(long value) {
+        startingAddressCase_ = 2;
+        startingAddress_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 long_starting_address = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLongStartingAddress() {
+        if (startingAddressCase_ == 2) {
+          startingAddressCase_ = 0;
+          startingAddress_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string symbolic_starting_address = 3;</code>
+       * @return The symbolicStartingAddress.
+       */
+      public java.lang.String getSymbolicStartingAddress() {
+        java.lang.Object ref = "";
+        if (startingAddressCase_ == 3) {
+          ref = startingAddress_;
+        }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          startingAddress_ = s;
+          if (startingAddressCase_ == 3) {
+            startingAddress_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string starting_address = 2;</code>
+       * <code>string symbolic_starting_address = 3;</code>
+       * @return The bytes for symbolicStartingAddress.
        */
       public com.google.protobuf.ByteString
-          getStartingAddressBytes() {
-        java.lang.Object ref = startingAddress_;
+          getSymbolicStartingAddressBytes() {
+        java.lang.Object ref = "";
+        if (startingAddressCase_ == 3) {
+          ref = startingAddress_;
+        }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          startingAddress_ = b;
+          if (startingAddressCase_ == 3) {
+            startingAddress_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string starting_address = 2;</code>
+       * <code>string symbolic_starting_address = 3;</code>
+       * @param value The symbolicStartingAddress to set.
+       * @return This builder for chaining.
        */
-      public Builder setStartingAddress(
+      public Builder setSymbolicStartingAddress(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  startingAddressCase_ = 3;
         startingAddress_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string starting_address = 2;</code>
+       * <code>string symbolic_starting_address = 3;</code>
+       * @return This builder for chaining.
        */
-      public Builder clearStartingAddress() {
-        
-        startingAddress_ = getDefaultInstance().getStartingAddress();
-        onChanged();
+      public Builder clearSymbolicStartingAddress() {
+        if (startingAddressCase_ == 3) {
+          startingAddressCase_ = 0;
+          startingAddress_ = null;
+          onChanged();
+        }
         return this;
       }
       /**
-       * <code>string starting_address = 2;</code>
+       * <code>string symbolic_starting_address = 3;</code>
+       * @param value The bytes for symbolicStartingAddress to set.
+       * @return This builder for chaining.
        */
-      public Builder setStartingAddressBytes(
+      public Builder setSymbolicStartingAddressBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+        startingAddressCase_ = 3;
         startingAddress_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object endingAddress_ = "";
       /**
-       * <code>string ending_address = 3;</code>
+       * <code>uint64 long_ending_address = 4;</code>
+       * @return The longEndingAddress.
        */
-      public java.lang.String getEndingAddress() {
-        java.lang.Object ref = endingAddress_;
+      public long getLongEndingAddress() {
+        if (endingAddressCase_ == 4) {
+          return (java.lang.Long) endingAddress_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>uint64 long_ending_address = 4;</code>
+       * @param value The longEndingAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLongEndingAddress(long value) {
+        endingAddressCase_ = 4;
+        endingAddress_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 long_ending_address = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLongEndingAddress() {
+        if (endingAddressCase_ == 4) {
+          endingAddressCase_ = 0;
+          endingAddress_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string symbolic_ending_address = 5;</code>
+       * @return The symbolicEndingAddress.
+       */
+      public java.lang.String getSymbolicEndingAddress() {
+        java.lang.Object ref = "";
+        if (endingAddressCase_ == 5) {
+          ref = endingAddress_;
+        }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          endingAddress_ = s;
+          if (endingAddressCase_ == 5) {
+            endingAddress_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string ending_address = 3;</code>
+       * <code>string symbolic_ending_address = 5;</code>
+       * @return The bytes for symbolicEndingAddress.
        */
       public com.google.protobuf.ByteString
-          getEndingAddressBytes() {
-        java.lang.Object ref = endingAddress_;
+          getSymbolicEndingAddressBytes() {
+        java.lang.Object ref = "";
+        if (endingAddressCase_ == 5) {
+          ref = endingAddress_;
+        }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          endingAddress_ = b;
+          if (endingAddressCase_ == 5) {
+            endingAddress_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string ending_address = 3;</code>
+       * <code>string symbolic_ending_address = 5;</code>
+       * @param value The symbolicEndingAddress to set.
+       * @return This builder for chaining.
        */
-      public Builder setEndingAddress(
+      public Builder setSymbolicEndingAddress(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  endingAddressCase_ = 5;
         endingAddress_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string ending_address = 3;</code>
+       * <code>string symbolic_ending_address = 5;</code>
+       * @return This builder for chaining.
        */
-      public Builder clearEndingAddress() {
-        
-        endingAddress_ = getDefaultInstance().getEndingAddress();
-        onChanged();
+      public Builder clearSymbolicEndingAddress() {
+        if (endingAddressCase_ == 5) {
+          endingAddressCase_ = 0;
+          endingAddress_ = null;
+          onChanged();
+        }
         return this;
       }
       /**
-       * <code>string ending_address = 3;</code>
+       * <code>string symbolic_ending_address = 5;</code>
+       * @param value The bytes for symbolicEndingAddress to set.
+       * @return This builder for chaining.
        */
-      public Builder setEndingAddressBytes(
+      public Builder setSymbolicEndingAddressBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+        endingAddressCase_ = 5;
         endingAddress_ = value;
         onChanged();
         return this;
@@ -825,13 +1228,16 @@ public final class SegmentsProto {
 
       private int length_ ;
       /**
-       * <code>uint32 length = 4;</code>
+       * <code>uint32 length = 6;</code>
+       * @return The length.
        */
       public int getLength() {
         return length_;
       }
       /**
-       * <code>uint32 length = 4;</code>
+       * <code>uint32 length = 6;</code>
+       * @param value The length to set.
+       * @return This builder for chaining.
        */
       public Builder setLength(int value) {
         
@@ -840,7 +1246,8 @@ public final class SegmentsProto {
         return this;
       }
       /**
-       * <code>uint32 length = 4;</code>
+       * <code>uint32 length = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLength() {
         
@@ -851,7 +1258,7 @@ public final class SegmentsProto {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -946,6 +1353,13 @@ public final class SegmentsProto {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SegmentList();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -970,7 +1384,7 @@ public final class SegmentsProto {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 segments_ = new java.util.ArrayList<protoclasses.SegmentsProto.SegmentMessage>();
                 mutable_bitField0_ |= 0x00000001;
               }
@@ -979,7 +1393,7 @@ public final class SegmentsProto {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -993,7 +1407,7 @@ public final class SegmentsProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           segments_ = java.util.Collections.unmodifiableList(segments_);
         }
         this.unknownFields = unknownFields.build();
@@ -1093,11 +1507,10 @@ public final class SegmentsProto {
       }
       protoclasses.SegmentsProto.SegmentList other = (protoclasses.SegmentsProto.SegmentList) obj;
 
-      boolean result = true;
-      result = result && getSegmentsList()
-          .equals(other.getSegmentsList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getSegmentsList()
+          .equals(other.getSegmentsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1279,7 +1692,7 @@ public final class SegmentsProto {
         protoclasses.SegmentsProto.SegmentList result = new protoclasses.SegmentsProto.SegmentList(this);
         int from_bitField0_ = bitField0_;
         if (segmentsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             segments_ = java.util.Collections.unmodifiableList(segments_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -1293,35 +1706,35 @@ public final class SegmentsProto {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1394,7 +1807,7 @@ public final class SegmentsProto {
       private java.util.List<protoclasses.SegmentsProto.SegmentMessage> segments_ =
         java.util.Collections.emptyList();
       private void ensureSegmentsIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           segments_ = new java.util.ArrayList<protoclasses.SegmentsProto.SegmentMessage>(segments_);
           bitField0_ |= 0x00000001;
          }
@@ -1623,7 +2036,7 @@ public final class SegmentsProto {
           segmentsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               protoclasses.SegmentsProto.SegmentMessage, protoclasses.SegmentsProto.SegmentMessage.Builder, protoclasses.SegmentsProto.SegmentMessageOrBuilder>(
                   segments_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           segments_ = null;
@@ -1633,7 +2046,7 @@ public final class SegmentsProto {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1702,31 +2115,26 @@ public final class SegmentsProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016segments.proto\022\014protoclasses\"`\n\016Segmen" +
-      "tMessage\022\014\n\004name\030\001 \001(\t\022\030\n\020starting_addre" +
-      "ss\030\002 \001(\t\022\026\n\016ending_address\030\003 \001(\t\022\016\n\006leng" +
-      "th\030\004 \001(\r\"=\n\013SegmentList\022.\n\010segments\030\001 \003(" +
-      "\0132\034.protoclasses.SegmentMessageB\017B\rSegme" +
-      "ntsProtob\006proto3"
+      "\n\016segments.proto\022\014protoclasses\"\334\001\n\016Segme" +
+      "ntMessage\022\014\n\004name\030\001 \001(\t\022\037\n\025long_starting" +
+      "_address\030\002 \001(\004H\000\022#\n\031symbolic_starting_ad" +
+      "dress\030\003 \001(\tH\000\022\035\n\023long_ending_address\030\004 \001" +
+      "(\004H\001\022!\n\027symbolic_ending_address\030\005 \001(\tH\001\022" +
+      "\016\n\006length\030\006 \001(\rB\022\n\020starting_addressB\020\n\016e" +
+      "nding_address\"=\n\013SegmentList\022.\n\010segments" +
+      "\030\001 \003(\0132\034.protoclasses.SegmentMessageB\017B\r" +
+      "SegmentsProtob\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_protoclasses_SegmentMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_protoclasses_SegmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_SegmentMessage_descriptor,
-        new java.lang.String[] { "Name", "StartingAddress", "EndingAddress", "Length", });
+        new java.lang.String[] { "Name", "LongStartingAddress", "SymbolicStartingAddress", "LongEndingAddress", "SymbolicEndingAddress", "Length", "StartingAddress", "EndingAddress", });
     internal_static_protoclasses_SegmentList_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protoclasses_SegmentList_fieldAccessorTable = new

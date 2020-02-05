@@ -19,56 +19,77 @@ public final class DataProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string address = 1;</code>
+     * <code>uint64 long_address = 1;</code>
+     * @return The longAddress.
      */
-    java.lang.String getAddress();
-    /**
-     * <code>string address = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getAddressBytes();
+    long getLongAddress();
 
     /**
-     * <code>string data_type = 2;</code>
+     * <code>string symbolic_address = 2;</code>
+     * @return The symbolicAddress.
+     */
+    java.lang.String getSymbolicAddress();
+    /**
+     * <code>string symbolic_address = 2;</code>
+     * @return The bytes for symbolicAddress.
+     */
+    com.google.protobuf.ByteString
+        getSymbolicAddressBytes();
+
+    /**
+     * <code>string data_type = 3;</code>
+     * @return The dataType.
      */
     java.lang.String getDataType();
     /**
-     * <code>string data_type = 2;</code>
+     * <code>string data_type = 3;</code>
+     * @return The bytes for dataType.
      */
     com.google.protobuf.ByteString
         getDataTypeBytes();
 
     /**
-     * <code>uint32 length = 3;</code>
+     * <code>uint32 length = 4;</code>
+     * @return The length.
      */
     int getLength();
 
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @return A list containing the kind.
      */
-    java.util.List<protoclasses.KindOfData.Kind> getKindList();
+    java.util.List<protoclasses.KindOfData.DataKind> getKindList();
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @return The count of kind.
      */
     int getKindCount();
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @param index The index of the element to return.
+     * @return The kind at the given index.
      */
-    protoclasses.KindOfData.Kind getKind(int index);
+    protoclasses.KindOfData.DataKind getKind(int index);
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @return A list containing the enum numeric values on the wire for kind.
      */
     java.util.List<java.lang.Integer>
     getKindValueList();
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of kind at the given index.
      */
     int getKindValue(int index);
 
     /**
-     * <code>bytes value = 5;</code>
+     * <code>bytes value = 6;</code>
+     * @return The value.
      */
     com.google.protobuf.ByteString getValue();
+
+    public protoclasses.DataProto.DataMessage.AddressCase getAddressCase();
   }
   /**
    * Protobuf type {@code protoclasses.DataMessage}
@@ -83,11 +104,16 @@ public final class DataProto {
       super(builder);
     }
     private DataMessage() {
-      address_ = "";
       dataType_ = "";
-      length_ = 0;
       kind_ = java.util.Collections.emptyList();
       value_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DataMessage();
     }
 
     @java.lang.Override
@@ -114,53 +140,58 @@ public final class DataProto {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              address_ = s;
+            case 8: {
+              addressCase_ = 1;
+              address_ = input.readUInt64();
               break;
             }
             case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+              addressCase_ = 2;
+              address_ = s;
+              break;
+            }
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               dataType_ = s;
               break;
             }
-            case 24: {
+            case 32: {
 
               length_ = input.readUInt32();
               break;
             }
-            case 32: {
+            case 40: {
               int rawValue = input.readEnum();
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 kind_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000001;
               }
               kind_.add(rawValue);
               break;
             }
-            case 34: {
+            case 42: {
               int length = input.readRawVarint32();
               int oldLimit = input.pushLimit(length);
               while(input.getBytesUntilLimit() > 0) {
                 int rawValue = input.readEnum();
-                if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                   kind_ = new java.util.ArrayList<java.lang.Integer>();
-                  mutable_bitField0_ |= 0x00000008;
+                  mutable_bitField0_ |= 0x00000001;
                 }
                 kind_.add(rawValue);
               }
               input.popLimit(oldLimit);
               break;
             }
-            case 42: {
+            case 50: {
 
               value_ = input.readBytes();
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -174,7 +205,7 @@ public final class DataProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           kind_ = java.util.Collections.unmodifiableList(kind_);
         }
         this.unknownFields = unknownFields.build();
@@ -194,45 +225,109 @@ public final class DataProto {
               protoclasses.DataProto.DataMessage.class, protoclasses.DataProto.DataMessage.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int ADDRESS_FIELD_NUMBER = 1;
-    private volatile java.lang.Object address_;
+    private int addressCase_ = 0;
+    private java.lang.Object address_;
+    public enum AddressCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      LONG_ADDRESS(1),
+      SYMBOLIC_ADDRESS(2),
+      ADDRESS_NOT_SET(0);
+      private final int value;
+      private AddressCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static AddressCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static AddressCase forNumber(int value) {
+        switch (value) {
+          case 1: return LONG_ADDRESS;
+          case 2: return SYMBOLIC_ADDRESS;
+          case 0: return ADDRESS_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public AddressCase
+    getAddressCase() {
+      return AddressCase.forNumber(
+          addressCase_);
+    }
+
+    public static final int LONG_ADDRESS_FIELD_NUMBER = 1;
     /**
-     * <code>string address = 1;</code>
+     * <code>uint64 long_address = 1;</code>
+     * @return The longAddress.
      */
-    public java.lang.String getAddress() {
-      java.lang.Object ref = address_;
+    public long getLongAddress() {
+      if (addressCase_ == 1) {
+        return (java.lang.Long) address_;
+      }
+      return 0L;
+    }
+
+    public static final int SYMBOLIC_ADDRESS_FIELD_NUMBER = 2;
+    /**
+     * <code>string symbolic_address = 2;</code>
+     * @return The symbolicAddress.
+     */
+    public java.lang.String getSymbolicAddress() {
+      java.lang.Object ref = "";
+      if (addressCase_ == 2) {
+        ref = address_;
+      }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        address_ = s;
+        if (addressCase_ == 2) {
+          address_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string address = 1;</code>
+     * <code>string symbolic_address = 2;</code>
+     * @return The bytes for symbolicAddress.
      */
     public com.google.protobuf.ByteString
-        getAddressBytes() {
-      java.lang.Object ref = address_;
+        getSymbolicAddressBytes() {
+      java.lang.Object ref = "";
+      if (addressCase_ == 2) {
+        ref = address_;
+      }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        address_ = b;
+        if (addressCase_ == 2) {
+          address_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int DATA_TYPE_FIELD_NUMBER = 2;
+    public static final int DATA_TYPE_FIELD_NUMBER = 3;
     private volatile java.lang.Object dataType_;
     /**
-     * <code>string data_type = 2;</code>
+     * <code>string data_type = 3;</code>
+     * @return The dataType.
      */
     public java.lang.String getDataType() {
       java.lang.Object ref = dataType_;
@@ -247,7 +342,8 @@ public final class DataProto {
       }
     }
     /**
-     * <code>string data_type = 2;</code>
+     * <code>string data_type = 3;</code>
+     * @return The bytes for dataType.
      */
     public com.google.protobuf.ByteString
         getDataTypeBytes() {
@@ -263,65 +359,74 @@ public final class DataProto {
       }
     }
 
-    public static final int LENGTH_FIELD_NUMBER = 3;
+    public static final int LENGTH_FIELD_NUMBER = 4;
     private int length_;
     /**
-     * <code>uint32 length = 3;</code>
+     * <code>uint32 length = 4;</code>
+     * @return The length.
      */
     public int getLength() {
       return length_;
     }
 
-    public static final int KIND_FIELD_NUMBER = 4;
+    public static final int KIND_FIELD_NUMBER = 5;
     private java.util.List<java.lang.Integer> kind_;
     private static final com.google.protobuf.Internal.ListAdapter.Converter<
-        java.lang.Integer, protoclasses.KindOfData.Kind> kind_converter_ =
+        java.lang.Integer, protoclasses.KindOfData.DataKind> kind_converter_ =
             new com.google.protobuf.Internal.ListAdapter.Converter<
-                java.lang.Integer, protoclasses.KindOfData.Kind>() {
-              public protoclasses.KindOfData.Kind convert(java.lang.Integer from) {
+                java.lang.Integer, protoclasses.KindOfData.DataKind>() {
+              public protoclasses.KindOfData.DataKind convert(java.lang.Integer from) {
                 @SuppressWarnings("deprecation")
-                protoclasses.KindOfData.Kind result = protoclasses.KindOfData.Kind.valueOf(from);
-                return result == null ? protoclasses.KindOfData.Kind.UNRECOGNIZED : result;
+                protoclasses.KindOfData.DataKind result = protoclasses.KindOfData.DataKind.valueOf(from);
+                return result == null ? protoclasses.KindOfData.DataKind.UNRECOGNIZED : result;
               }
             };
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @return A list containing the kind.
      */
-    public java.util.List<protoclasses.KindOfData.Kind> getKindList() {
+    public java.util.List<protoclasses.KindOfData.DataKind> getKindList() {
       return new com.google.protobuf.Internal.ListAdapter<
-          java.lang.Integer, protoclasses.KindOfData.Kind>(kind_, kind_converter_);
+          java.lang.Integer, protoclasses.KindOfData.DataKind>(kind_, kind_converter_);
     }
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @return The count of kind.
      */
     public int getKindCount() {
       return kind_.size();
     }
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @param index The index of the element to return.
+     * @return The kind at the given index.
      */
-    public protoclasses.KindOfData.Kind getKind(int index) {
+    public protoclasses.KindOfData.DataKind getKind(int index) {
       return kind_converter_.convert(kind_.get(index));
     }
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @return A list containing the enum numeric values on the wire for kind.
      */
     public java.util.List<java.lang.Integer>
     getKindValueList() {
       return kind_;
     }
     /**
-     * <code>repeated .protoclasses.Kind kind = 4;</code>
+     * <code>repeated .protoclasses.DataKind kind = 5;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of kind at the given index.
      */
     public int getKindValue(int index) {
       return kind_.get(index);
     }
     private int kindMemoizedSerializedSize;
 
-    public static final int VALUE_FIELD_NUMBER = 5;
+    public static final int VALUE_FIELD_NUMBER = 6;
     private com.google.protobuf.ByteString value_;
     /**
-     * <code>bytes value = 5;</code>
+     * <code>bytes value = 6;</code>
+     * @return The value.
      */
     public com.google.protobuf.ByteString getValue() {
       return value_;
@@ -342,24 +447,28 @@ public final class DataProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (!getAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, address_);
+      if (addressCase_ == 1) {
+        output.writeUInt64(
+            1, (long)((java.lang.Long) address_));
+      }
+      if (addressCase_ == 2) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, address_);
       }
       if (!getDataTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, dataType_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, dataType_);
       }
       if (length_ != 0) {
-        output.writeUInt32(3, length_);
+        output.writeUInt32(4, length_);
       }
       if (getKindList().size() > 0) {
-        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(42);
         output.writeUInt32NoTag(kindMemoizedSerializedSize);
       }
       for (int i = 0; i < kind_.size(); i++) {
         output.writeEnumNoTag(kind_.get(i));
       }
       if (!value_.isEmpty()) {
-        output.writeBytes(5, value_);
+        output.writeBytes(6, value_);
       }
       unknownFields.writeTo(output);
     }
@@ -370,15 +479,20 @@ public final class DataProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!getAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, address_);
+      if (addressCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(
+              1, (long)((java.lang.Long) address_));
+      }
+      if (addressCase_ == 2) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, address_);
       }
       if (!getDataTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, dataType_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, dataType_);
       }
       if (length_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, length_);
+          .computeUInt32Size(4, length_);
       }
       {
         int dataSize = 0;
@@ -394,7 +508,7 @@ public final class DataProto {
       }
       if (!value_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, value_);
+          .computeBytesSize(6, value_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -411,18 +525,28 @@ public final class DataProto {
       }
       protoclasses.DataProto.DataMessage other = (protoclasses.DataProto.DataMessage) obj;
 
-      boolean result = true;
-      result = result && getAddress()
-          .equals(other.getAddress());
-      result = result && getDataType()
-          .equals(other.getDataType());
-      result = result && (getLength()
-          == other.getLength());
-      result = result && kind_.equals(other.kind_);
-      result = result && getValue()
-          .equals(other.getValue());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getDataType()
+          .equals(other.getDataType())) return false;
+      if (getLength()
+          != other.getLength()) return false;
+      if (!kind_.equals(other.kind_)) return false;
+      if (!getValue()
+          .equals(other.getValue())) return false;
+      if (!getAddressCase().equals(other.getAddressCase())) return false;
+      switch (addressCase_) {
+        case 1:
+          if (getLongAddress()
+              != other.getLongAddress()) return false;
+          break;
+        case 2:
+          if (!getSymbolicAddress()
+              .equals(other.getSymbolicAddress())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -432,8 +556,6 @@ public final class DataProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-      hash = (53 * hash) + getAddress().hashCode();
       hash = (37 * hash) + DATA_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + getDataType().hashCode();
       hash = (37 * hash) + LENGTH_FIELD_NUMBER;
@@ -444,6 +566,19 @@ public final class DataProto {
       }
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
       hash = (53 * hash) + getValue().hashCode();
+      switch (addressCase_) {
+        case 1:
+          hash = (37 * hash) + LONG_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getLongAddress());
+          break;
+        case 2:
+          hash = (37 * hash) + SYMBOLIC_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getSymbolicAddress().hashCode();
+          break;
+        case 0:
+        default:
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -577,16 +712,16 @@ public final class DataProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        address_ = "";
-
         dataType_ = "";
 
         length_ = 0;
 
         kind_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000001);
         value_ = com.google.protobuf.ByteString.EMPTY;
 
+        addressCase_ = 0;
+        address_ = null;
         return this;
       }
 
@@ -614,52 +749,56 @@ public final class DataProto {
       public protoclasses.DataProto.DataMessage buildPartial() {
         protoclasses.DataProto.DataMessage result = new protoclasses.DataProto.DataMessage(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        result.address_ = address_;
+        if (addressCase_ == 1) {
+          result.address_ = address_;
+        }
+        if (addressCase_ == 2) {
+          result.address_ = address_;
+        }
         result.dataType_ = dataType_;
         result.length_ = length_;
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((bitField0_ & 0x00000001) != 0)) {
           kind_ = java.util.Collections.unmodifiableList(kind_);
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.kind_ = kind_;
         result.value_ = value_;
-        result.bitField0_ = to_bitField0_;
+        result.addressCase_ = addressCase_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -673,10 +812,6 @@ public final class DataProto {
 
       public Builder mergeFrom(protoclasses.DataProto.DataMessage other) {
         if (other == protoclasses.DataProto.DataMessage.getDefaultInstance()) return this;
-        if (!other.getAddress().isEmpty()) {
-          address_ = other.address_;
-          onChanged();
-        }
         if (!other.getDataType().isEmpty()) {
           dataType_ = other.dataType_;
           onChanged();
@@ -687,7 +822,7 @@ public final class DataProto {
         if (!other.kind_.isEmpty()) {
           if (kind_.isEmpty()) {
             kind_ = other.kind_;
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureKindIsMutable();
             kind_.addAll(other.kind_);
@@ -696,6 +831,21 @@ public final class DataProto {
         }
         if (other.getValue() != com.google.protobuf.ByteString.EMPTY) {
           setValue(other.getValue());
+        }
+        switch (other.getAddressCase()) {
+          case LONG_ADDRESS: {
+            setLongAddress(other.getLongAddress());
+            break;
+          }
+          case SYMBOLIC_ADDRESS: {
+            addressCase_ = 2;
+            address_ = other.address_;
+            onChanged();
+            break;
+          }
+          case ADDRESS_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -725,72 +875,139 @@ public final class DataProto {
         }
         return this;
       }
+      private int addressCase_ = 0;
+      private java.lang.Object address_;
+      public AddressCase
+          getAddressCase() {
+        return AddressCase.forNumber(
+            addressCase_);
+      }
+
+      public Builder clearAddress() {
+        addressCase_ = 0;
+        address_ = null;
+        onChanged();
+        return this;
+      }
+
       private int bitField0_;
 
-      private java.lang.Object address_ = "";
       /**
-       * <code>string address = 1;</code>
+       * <code>uint64 long_address = 1;</code>
+       * @return The longAddress.
        */
-      public java.lang.String getAddress() {
-        java.lang.Object ref = address_;
+      public long getLongAddress() {
+        if (addressCase_ == 1) {
+          return (java.lang.Long) address_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>uint64 long_address = 1;</code>
+       * @param value The longAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLongAddress(long value) {
+        addressCase_ = 1;
+        address_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 long_address = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLongAddress() {
+        if (addressCase_ == 1) {
+          addressCase_ = 0;
+          address_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string symbolic_address = 2;</code>
+       * @return The symbolicAddress.
+       */
+      public java.lang.String getSymbolicAddress() {
+        java.lang.Object ref = "";
+        if (addressCase_ == 2) {
+          ref = address_;
+        }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          address_ = s;
+          if (addressCase_ == 2) {
+            address_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string address = 1;</code>
+       * <code>string symbolic_address = 2;</code>
+       * @return The bytes for symbolicAddress.
        */
       public com.google.protobuf.ByteString
-          getAddressBytes() {
-        java.lang.Object ref = address_;
+          getSymbolicAddressBytes() {
+        java.lang.Object ref = "";
+        if (addressCase_ == 2) {
+          ref = address_;
+        }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          address_ = b;
+          if (addressCase_ == 2) {
+            address_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string address = 1;</code>
+       * <code>string symbolic_address = 2;</code>
+       * @param value The symbolicAddress to set.
+       * @return This builder for chaining.
        */
-      public Builder setAddress(
+      public Builder setSymbolicAddress(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  addressCase_ = 2;
         address_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string address = 1;</code>
+       * <code>string symbolic_address = 2;</code>
+       * @return This builder for chaining.
        */
-      public Builder clearAddress() {
-        
-        address_ = getDefaultInstance().getAddress();
-        onChanged();
+      public Builder clearSymbolicAddress() {
+        if (addressCase_ == 2) {
+          addressCase_ = 0;
+          address_ = null;
+          onChanged();
+        }
         return this;
       }
       /**
-       * <code>string address = 1;</code>
+       * <code>string symbolic_address = 2;</code>
+       * @param value The bytes for symbolicAddress to set.
+       * @return This builder for chaining.
        */
-      public Builder setAddressBytes(
+      public Builder setSymbolicAddressBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+        addressCase_ = 2;
         address_ = value;
         onChanged();
         return this;
@@ -798,7 +1015,8 @@ public final class DataProto {
 
       private java.lang.Object dataType_ = "";
       /**
-       * <code>string data_type = 2;</code>
+       * <code>string data_type = 3;</code>
+       * @return The dataType.
        */
       public java.lang.String getDataType() {
         java.lang.Object ref = dataType_;
@@ -813,7 +1031,8 @@ public final class DataProto {
         }
       }
       /**
-       * <code>string data_type = 2;</code>
+       * <code>string data_type = 3;</code>
+       * @return The bytes for dataType.
        */
       public com.google.protobuf.ByteString
           getDataTypeBytes() {
@@ -829,7 +1048,9 @@ public final class DataProto {
         }
       }
       /**
-       * <code>string data_type = 2;</code>
+       * <code>string data_type = 3;</code>
+       * @param value The dataType to set.
+       * @return This builder for chaining.
        */
       public Builder setDataType(
           java.lang.String value) {
@@ -842,7 +1063,8 @@ public final class DataProto {
         return this;
       }
       /**
-       * <code>string data_type = 2;</code>
+       * <code>string data_type = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearDataType() {
         
@@ -851,7 +1073,9 @@ public final class DataProto {
         return this;
       }
       /**
-       * <code>string data_type = 2;</code>
+       * <code>string data_type = 3;</code>
+       * @param value The bytes for dataType to set.
+       * @return This builder for chaining.
        */
       public Builder setDataTypeBytes(
           com.google.protobuf.ByteString value) {
@@ -867,13 +1091,16 @@ public final class DataProto {
 
       private int length_ ;
       /**
-       * <code>uint32 length = 3;</code>
+       * <code>uint32 length = 4;</code>
+       * @return The length.
        */
       public int getLength() {
         return length_;
       }
       /**
-       * <code>uint32 length = 3;</code>
+       * <code>uint32 length = 4;</code>
+       * @param value The length to set.
+       * @return This builder for chaining.
        */
       public Builder setLength(int value) {
         
@@ -882,7 +1109,8 @@ public final class DataProto {
         return this;
       }
       /**
-       * <code>uint32 length = 3;</code>
+       * <code>uint32 length = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearLength() {
         
@@ -894,35 +1122,42 @@ public final class DataProto {
       private java.util.List<java.lang.Integer> kind_ =
         java.util.Collections.emptyList();
       private void ensureKindIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           kind_ = new java.util.ArrayList<java.lang.Integer>(kind_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000001;
         }
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @return A list containing the kind.
        */
-      public java.util.List<protoclasses.KindOfData.Kind> getKindList() {
+      public java.util.List<protoclasses.KindOfData.DataKind> getKindList() {
         return new com.google.protobuf.Internal.ListAdapter<
-            java.lang.Integer, protoclasses.KindOfData.Kind>(kind_, kind_converter_);
+            java.lang.Integer, protoclasses.KindOfData.DataKind>(kind_, kind_converter_);
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @return The count of kind.
        */
       public int getKindCount() {
         return kind_.size();
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @param index The index of the element to return.
+       * @return The kind at the given index.
        */
-      public protoclasses.KindOfData.Kind getKind(int index) {
+      public protoclasses.KindOfData.DataKind getKind(int index) {
         return kind_converter_.convert(kind_.get(index));
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @param index The index to set the value at.
+       * @param value The kind to set.
+       * @return This builder for chaining.
        */
       public Builder setKind(
-          int index, protoclasses.KindOfData.Kind value) {
+          int index, protoclasses.KindOfData.DataKind value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -932,9 +1167,11 @@ public final class DataProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @param value The kind to add.
+       * @return This builder for chaining.
        */
-      public Builder addKind(protoclasses.KindOfData.Kind value) {
+      public Builder addKind(protoclasses.KindOfData.DataKind value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -944,41 +1181,50 @@ public final class DataProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @param values The kind to add.
+       * @return This builder for chaining.
        */
       public Builder addAllKind(
-          java.lang.Iterable<? extends protoclasses.KindOfData.Kind> values) {
+          java.lang.Iterable<? extends protoclasses.KindOfData.DataKind> values) {
         ensureKindIsMutable();
-        for (protoclasses.KindOfData.Kind value : values) {
+        for (protoclasses.KindOfData.DataKind value : values) {
           kind_.add(value.getNumber());
         }
         onChanged();
         return this;
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearKind() {
         kind_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @return A list containing the enum numeric values on the wire for kind.
        */
       public java.util.List<java.lang.Integer>
       getKindValueList() {
         return java.util.Collections.unmodifiableList(kind_);
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @param index The index of the value to return.
+       * @return The enum numeric value on the wire of kind at the given index.
        */
       public int getKindValue(int index) {
         return kind_.get(index);
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @param index The index of the value to return.
+       * @return The enum numeric value on the wire of kind at the given index.
+       * @return This builder for chaining.
        */
       public Builder setKindValue(
           int index, int value) {
@@ -988,7 +1234,9 @@ public final class DataProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @param value The enum numeric value on the wire for kind to add.
+       * @return This builder for chaining.
        */
       public Builder addKindValue(int value) {
         ensureKindIsMutable();
@@ -997,7 +1245,9 @@ public final class DataProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.Kind kind = 4;</code>
+       * <code>repeated .protoclasses.DataKind kind = 5;</code>
+       * @param values The enum numeric values on the wire for kind to add.
+       * @return This builder for chaining.
        */
       public Builder addAllKindValue(
           java.lang.Iterable<java.lang.Integer> values) {
@@ -1011,13 +1261,16 @@ public final class DataProto {
 
       private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes value = 5;</code>
+       * <code>bytes value = 6;</code>
+       * @return The value.
        */
       public com.google.protobuf.ByteString getValue() {
         return value_;
       }
       /**
-       * <code>bytes value = 5;</code>
+       * <code>bytes value = 6;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1029,7 +1282,8 @@ public final class DataProto {
         return this;
       }
       /**
-       * <code>bytes value = 5;</code>
+       * <code>bytes value = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         
@@ -1040,7 +1294,7 @@ public final class DataProto {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1135,6 +1389,13 @@ public final class DataProto {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DataList();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1159,7 +1420,7 @@ public final class DataProto {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 data_ = new java.util.ArrayList<protoclasses.DataProto.DataMessage>();
                 mutable_bitField0_ |= 0x00000001;
               }
@@ -1168,7 +1429,7 @@ public final class DataProto {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -1182,7 +1443,7 @@ public final class DataProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
@@ -1282,11 +1543,10 @@ public final class DataProto {
       }
       protoclasses.DataProto.DataList other = (protoclasses.DataProto.DataList) obj;
 
-      boolean result = true;
-      result = result && getDataList()
-          .equals(other.getDataList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getDataList()
+          .equals(other.getDataList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1468,7 +1728,7 @@ public final class DataProto {
         protoclasses.DataProto.DataList result = new protoclasses.DataProto.DataList(this);
         int from_bitField0_ = bitField0_;
         if (dataBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -1482,35 +1742,35 @@ public final class DataProto {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1583,7 +1843,7 @@ public final class DataProto {
       private java.util.List<protoclasses.DataProto.DataMessage> data_ =
         java.util.Collections.emptyList();
       private void ensureDataIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           data_ = new java.util.ArrayList<protoclasses.DataProto.DataMessage>(data_);
           bitField0_ |= 0x00000001;
          }
@@ -1812,7 +2072,7 @@ public final class DataProto {
           dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               protoclasses.DataProto.DataMessage, protoclasses.DataProto.DataMessage.Builder, protoclasses.DataProto.DataMessageOrBuilder>(
                   data_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           data_ = null;
@@ -1822,7 +2082,7 @@ public final class DataProto {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1892,31 +2152,25 @@ public final class DataProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\ndata.proto\022\014protoclasses\032\020kindofdata.p" +
-      "roto\"r\n\013DataMessage\022\017\n\007address\030\001 \001(\t\022\021\n\t" +
-      "data_type\030\002 \001(\t\022\016\n\006length\030\003 \001(\r\022 \n\004kind\030" +
-      "\004 \003(\0162\022.protoclasses.Kind\022\r\n\005value\030\005 \001(\014" +
-      "\"3\n\010DataList\022\'\n\004data\030\001 \003(\0132\031.protoclasse" +
-      "s.DataMessageB\013B\tDataProtob\006proto3"
+      "roto\"\244\001\n\013DataMessage\022\026\n\014long_address\030\001 \001" +
+      "(\004H\000\022\032\n\020symbolic_address\030\002 \001(\tH\000\022\021\n\tdata" +
+      "_type\030\003 \001(\t\022\016\n\006length\030\004 \001(\r\022$\n\004kind\030\005 \003(" +
+      "\0162\026.protoclasses.DataKind\022\r\n\005value\030\006 \001(\014" +
+      "B\t\n\007address\"3\n\010DataList\022\'\n\004data\030\001 \003(\0132\031." +
+      "protoclasses.DataMessageB\013B\tDataProtob\006p" +
+      "roto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           protoclasses.KindOfData.getDescriptor(),
-        }, assigner);
+        });
     internal_static_protoclasses_DataMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_protoclasses_DataMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_DataMessage_descriptor,
-        new java.lang.String[] { "Address", "DataType", "Length", "Kind", "Value", });
+        new java.lang.String[] { "LongAddress", "SymbolicAddress", "DataType", "Length", "Kind", "Value", "Address", });
     internal_static_protoclasses_DataList_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protoclasses_DataList_fieldAccessorTable = new

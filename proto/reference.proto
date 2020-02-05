@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package protoclasses;
+
+import "data.proto";
+
+option java_outer_classname = "ReferenceProto";
+
+message ReferenceMessage {
+  int32 reference_id = 1;
+  string to_address = 2;
+  string from_address = 3;
+    
+  enum ReferenceType {
+    THUNK = 0;
+    CALL_OVERRIDE_UNCONDITIONAL = 1;
+    CALL_TERMINATOR = 2;
+    CALLOTHER_OVERRIDE_CALL = 3;
+    CALLOTHER_OVERRIDE_JUMP = 4;
+    COMPUTED_CALL = 5;
+    COMPUTED_CALL_TERMINATOR = 6;
+    COMPUTED_JUMP = 7;
+    CONDITIONAL_CALL = 8;
+    CONDITIONAL_CALL_TERMINATOR = 9;
+    CONDITIONAL_COMPUTED_CALL = 10;
+    CONDITIONAL_COMPUTED_JUMP = 11;
+    CONDITIONAL_JUMP = 12;
+    CONDITIONAL_TERMINATOR = 13;
+    DATA = 14;
+    DATA_IND = 15; 
+    EXTERNAL_REF = 16;
+    FALL_THROUGH = 17;
+    FLOW = 18;
+    INDIRECTION = 19;
+    INVALID = 20;
+    JUMP_OVERRIDE_UNCONDITIONAL = 21;
+    JUMP_TERMINATOR = 22;
+    PARAM = 23;
+    READ = 24;
+    READ_IND = 25;
+    READ_WRITE = 26;
+    READ_WRITE_IND = 27;
+    TERMINATOR = 28;
+    UNCONDITIONAL_CALL = 29;
+    UNCONDITIONAL_JUMP = 30;
+    WRITE = 31;
+    WRITE_IND = 32;
+  }
+  
+  ReferenceType ref_type = 6;
+
+  enum SourceType{
+    DEFAULT = 0;
+    ANALYSIS = 1;
+    IMPORTED = 2;
+    USER_DEFINED = 3;
+  }
+  
+  SourceType source = 7;
+  DataMessage ref_data = 8;
+}
+
+message ReferencesMap{
+  map<int32, ReferenceMessage> references = 1;
+}
+
+
