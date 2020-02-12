@@ -8,6 +8,10 @@
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,11 +20,27 @@ import com.google.protobuf.Message;
 
 import ghidra.app.decompiler.DecompileResults;
 import ghidra.app.decompiler.flatapi.FlatDecompilerAPI;
+import ghidra.app.plugin.processors.sleigh.Constructor;
+import ghidra.app.plugin.processors.sleigh.ParserWalker;
+import ghidra.app.plugin.processors.sleigh.SleighDebugLogger;
+import ghidra.app.plugin.processors.sleigh.SleighDebugLogger.SleighDebugMode;
+import ghidra.app.plugin.processors.sleigh.SleighInstructionPrototype;
+import ghidra.app.plugin.processors.sleigh.SleighParserContext;
+import ghidra.app.plugin.processors.sleigh.symbol.EndSymbol;
+import ghidra.app.plugin.processors.sleigh.symbol.NameSymbol;
+import ghidra.app.plugin.processors.sleigh.symbol.OperandSymbol;
+import ghidra.app.plugin.processors.sleigh.symbol.SubtableSymbol;
+import ghidra.app.plugin.processors.sleigh.symbol.TripleSymbol;
+import ghidra.app.plugin.processors.sleigh.symbol.VarnodeSymbol;
 import ghidra.app.script.GhidraScript;
 import ghidra.app.util.bin.format.objectiveC.ObjectiveC1_Utilities;
 import ghidra.program.flatapi.FlatProgramAPI;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.address.AddressSet;
+import ghidra.program.model.lang.InstructionContext;
+import ghidra.program.model.lang.InstructionPrototype;
+import ghidra.program.model.lang.OperandType;
+import ghidra.program.model.lang.ParserContext;
 import ghidra.program.model.lang.Register;
 import ghidra.program.model.listing.Data;
 import ghidra.program.model.listing.DataIterator;
@@ -38,6 +58,7 @@ import ghidra.program.model.pcode.PcodeBlockBasic;
 import ghidra.program.model.symbol.Reference;
 import ghidra.program.model.symbol.Symbol;
 import ghidra.program.model.symbol.SymbolIterator;
+import ghidra.program.util.InstructionUtils;
 import protoclasses.DataProto.DataList;
 import protoclasses.DataProto.DataMessage;
 import protoclasses.FunctionProto.FunctionMessage;
@@ -53,10 +74,14 @@ import protoclasses.GhiDumpProto.GhiDumpMessage;
 import protoclasses.KindOfData.DataKind;
 import protoclasses.MetadataProto.MetaList;
 import protoclasses.MetadataProto.MetadataMessage;
+import protoclasses.MnemonicProto.MnemonicMessage;
+import protoclasses.MnemonicProto.MnemonicsList;
+import protoclasses.ReferenceProto.ReferenceList;
 import protoclasses.ReferenceProto.ReferenceMessage;
 import protoclasses.ReferenceProto.ReferenceMessage.ReferenceType;
 import protoclasses.ReferenceProto.ReferenceMessage.SourceType;
-import protoclasses.ReferenceProto.ReferencesMap;
+import protoclasses.RegisterProto.RegisterMessage;
+import protoclasses.RegisterProto.RegistersList;
 import protoclasses.SegmentsProto.SegmentList;
 import protoclasses.SegmentsProto.SegmentMessage;
 import protoclasses.SymbolsProto.SymbolMessage;
@@ -65,7 +90,10 @@ import protoclasses.SymbolsProto.SymbolsList;
 
 public class GhiDump extends GhidraScript {
 	
-	static ReferencesMap.Builder references = ReferencesMap.newBuilder();
+	static ReferenceList.Builder references = ReferenceList.newBuilder();
+	static Map<ReferenceKey, Integer> referenceMap = new HashMap<ReferenceKey, Integer>(); 
+	static Map<String, Integer> registers = new HashMap<String, Integer>();
+	static Map<String, Integer> mnemonics = new HashMap<String, Integer>();
 
 	private FunctionsList dumpFunctions(FlatDecompilerAPI decompilerAPI, Listing listing) {
 		FunctionIterator fooIter = listing.getFunctions(true);
@@ -74,12 +102,17 @@ public class GhiDump extends GhidraScript {
 
 		while (fooIter.hasNext()) {
 			Function foo = fooIter.next();
+			String entrypoint = foo.getEntryPoint().toString();
 
 			FunctionMessage.Builder function = FunctionMessage.newBuilder();
 
 			function.setName(foo.getName());
-			function.setEntryPoint(foo.getEntryPoint().toString());
-
+			
+			if(!entrypoint.matches("-?[0-9a-f]+"))
+				function.setSymbolicEntryPoint(entrypoint);
+			else
+				function.setEntryPoint(Long.parseLong(entrypoint, 16));
+	
 			// PARAMETERS
 			for (Parameter p : foo.getParameters()) {
 				ParameterMessage.Builder parameter = ParameterMessage.newBuilder();
@@ -89,8 +122,10 @@ public class GhiDump extends GhidraScript {
 				parameter.setLength(p.getLength());
 
 				if (p.getRegisters() != null)
-					for (Register r : p.getRegisters())
-						parameter.addRegisters(r.getName());
+					for (Register reg : p.getRegisters()) 
+						if(registers.containsKey(reg.getName()))
+							parameter.addRegisterId(registers.get(reg.getName()));
+					
 
 				function.addParameters(parameter.build());
 			}
@@ -107,8 +142,9 @@ public class GhiDump extends GhidraScript {
 					variable.setStackOffset(v.getStackOffset());
 
 				if (v.getRegisters() != null)
-					for (Register r : v.getRegisters())
-						variable.addRegisters(r.getName());
+					for (Register reg : v.getRegisters())
+						if(registers.containsKey(reg.getName()))
+							variable.addRegisterId(registers.get(reg.getName()));
 
 				function.addVariables(variable.build());
 			}
@@ -134,15 +170,15 @@ public class GhiDump extends GhidraScript {
 					Address start = bb.getStart();
 					Address end = bb.getStop();
 
-					if(!start.toString().matches("-?[0-9a-fA-F]+"))
+					if(!start.toString().matches("-?[0-9a-f]+"))
 						basicblock.setSymbolicStartingAddress(start.toString());
 					else
-						basicblock.setLongStartingAddress(Long.parseLong(start.toString(), 16));
+						basicblock.setStartingAddress(Long.parseLong(start.toString(), 16));
 					
-					if(!end.toString().matches("-?[0-9a-fA-F]+"))
+					if(!end.toString().matches("-?[0-9a-f]+"))
 						basicblock.setSymbolicEndingAddress(end.toString());
 					else
-						basicblock.setLongEndingAddress(Long.parseLong(end.toString(), 16));
+						basicblock.setEndingAddress(Long.parseLong(end.toString(), 16));
 
 					InstructionIterator instrIter = listing.getInstructions(new AddressSet(currentProgram, start, end), true);
 
@@ -154,47 +190,62 @@ public class GhiDump extends GhidraScript {
 
 						InstructionMessage.Builder instruction = InstructionMessage.newBuilder();
 						int opsNum = instr.getNumOperands();
+						String mnemonic = instr.getMnemonicString();
+						
+						if(mnemonics.containsKey(mnemonic))
+							instruction.setMnemonicId(mnemonics.get(mnemonic));
+						else {
+							mnemonics.put(mnemonic, mnemonics.size());
+							instruction.setMnemonicId(mnemonics.size()-1);
+						}
 
-						instruction.setMnemonic(instr.getMnemonicString());
 						instruction.setIsThumb(ObjectiveC1_Utilities.isThumb(currentProgram, instr.getAddress()));
 
 						// OPERAND
 						for (int i = 0; i < opsNum; i++) {
 							OperandMessage.Builder operand = OperandMessage.newBuilder();
-
-							operand.setName(instr.getDefaultOperandRepresentation(i));
+							
+							//if(instr.getDefaultOperandRepresentation(i).contains(" "))
+								operand.setName(instr.getDefaultOperandRepresentation(i));
 
 							for (Object o : instr.getOpObjects(i)) {
 								OperandObject.Builder opobject = OperandObject.newBuilder();
 
 								String opClass = o.getClass().toString();
+								String value = o.toString();
 								String type = opClass.substring(opClass.lastIndexOf('.') + 1);
 
-								opobject.setName(o.toString());
 								
-								if(type.equals("Register"))
+								if(type.equals("Register")) {
 									opobject.setType(Type.REGISTER);
-								if(type.equals("Scalar"))
+									
+									if(registers.containsKey(o.toString()))
+										opobject.setRegisterId(registers.get(value));	
+								}
+								
+								if(type.equals("Scalar")) {
 									opobject.setType(Type.SCALAR);
-								if(type.equals("GenericAddress"))
+									opobject.setConst(Long.parseLong(value.replace("0x", ""), 16));
+								}
+								
+								if(type.equals("GenericAddress")) {
 									opobject.setType(Type.ADDRESS);
+									
+									if (!value.matches("-?[0-9a-f]+"))
+										opobject.setSymbolicAddress(value);
+									else
+										opobject.setAddress(Long.parseLong(value, 16));
+								}
 
 								operand.addOpObjects(opobject.build());
 							}
 							
 							for (Reference ref: instr.getOperandReferences(i)) {
-								String fromAddress = ref.getFromAddress().toString();
-								String toAddress = ref.getToAddress().toString();
+								ReferenceKey refKey = new ReferenceKey (ref.getFromAddress().toString(), ref.getToAddress().toString());
 								
-								Map<Integer, ReferenceMessage> refs = references.getReferencesMap();
+								if(referenceMap.containsKey(refKey))
+									operand.addReferenceId(referenceMap.get(refKey));
 
-								for(Map.Entry<Integer, ReferenceMessage> entry: refs.entrySet()) {
-									ReferenceMessage rm = entry.getValue();
-																		
-									if(rm.getToAddress().equals(toAddress) && rm.getFromAddress().equals(fromAddress))
-										operand.addReferenceId(entry.getKey());
-
-								}
 							}
 
 							instruction.addOperands(operand.build());
@@ -225,14 +276,13 @@ public class GhiDump extends GhidraScript {
 	}
 
 	private SymbolsList dumpSymbols(Listing listing) {
-		SymbolIterator symbolIterator = currentProgram.getSymbolTable().getAllSymbols(true);
+		SymbolIterator symIter = currentProgram.getSymbolTable().getAllSymbols(false);
 
 		SymbolsList.Builder symbols = SymbolsList.newBuilder();
 		int reference_id = 0;
 
-		while (symbolIterator.hasNext()) {
-			
-			Symbol current = symbolIterator.next();
+		while (symIter.hasNext()) {
+			Symbol current = symIter.next();
 			String source = current.getSource().toString().toUpperCase();
 			String symbolType = current.getSymbolType().toString().toUpperCase();
 			String address = current.getAddress().toString();
@@ -240,7 +290,7 @@ public class GhiDump extends GhidraScript {
 
 			symbol.setName(current.getName());
 			
-			if(!address.matches("-?[0-9a-fA-F]+"))
+			if(!address.matches("-?[0-9a-f]+"))
 				symbol.setSymbolicAddress(address);
 			else
 				symbol.setLongAddress(Long.parseLong(address, 16));
@@ -275,7 +325,6 @@ public class GhiDump extends GhidraScript {
 			if (source.equals("USER_DEFINED"))
 				symbol.setSource(protoclasses.SymbolsProto.SymbolMessage.SourceType.USER_DEFINED);
 
-
 			for (Reference ref: current.getReferences()) {
 				ReferenceMessage.Builder reference = ReferenceMessage.newBuilder();
 
@@ -288,8 +337,17 @@ public class GhiDump extends GhidraScript {
 				// REF ID
 				reference.setReferenceId(reference_id);
 				
-				reference.setFromAddress(refFrom.toString());
-				reference.setToAddress(refTo.toString());
+				if(!refFrom.toString().matches("-?[0-9a-f]+")) 
+					reference.setSymbolicFromAddress(refFrom.toString());
+				else
+					reference.setLongFromAddress(Long.parseLong(refFrom.toString(), 16));
+				
+				if(!refTo.toString().matches("-?[0-9a-f]+")) 
+					reference.setSymbolicToAddress(refTo.toString());
+				else
+					reference.setLongToAddress(Long.parseLong(refTo.toString(), 16));
+			
+				referenceMap.put(new ReferenceKey(refFrom.toString(), refTo.toString()), reference_id);				
 				
 				// REF TYPE
 				if(refType.equals("THUNK"))
@@ -358,7 +416,6 @@ public class GhiDump extends GhidraScript {
 					reference.setRefType(ReferenceType.WRITE);
 				if(refType.equals("WRITE_IND"))
 					reference.setRefType(ReferenceType.WRITE_IND);
-				
 
 				// REF SOURCE
 				if (refSource.equals("DEFAULT"))
@@ -377,7 +434,7 @@ public class GhiDump extends GhidraScript {
 
 					data.setDataType(refData.getDataType().getName());
 					
-					if(!refFrom.toString().matches("-?[0-9a-fA-F]+"))
+					if(!refFrom.toString().matches("-?[0-9a-f]+"))
 						data.setSymbolicAddress(refFrom.toString());
 					else
 						data.setLongAddress(Long.parseLong(refFrom.toString(), 16));
@@ -402,18 +459,18 @@ public class GhiDump extends GhidraScript {
 						data.addKind(DataKind.VOLATILE);
 
 					if (refData.getValue() != null) {
-
 						try {
 							data.setValue(ByteString.copyFrom(refData.getBytes()));
 						} catch (MemoryAccessException e) {
 							Logger.getGlobal().log(Level.INFO, "Oops! Error while writing out some data values in dumpSymbols.", e);
 						}
-
-						reference.setRefData(data);
+						finally {
+							reference.setRefData(data);
+						}
 					}
 				}
 
-				references.putReferences(reference_id, reference.build());
+				references.addReferences(reference.build());
 
 				symbol.addReferenceId(reference_id);
 				reference_id++;
@@ -423,7 +480,7 @@ public class GhiDump extends GhidraScript {
 		}
 		
 		try {
-			protoWriter(references.build(), "references");
+			protoWriter(references.build(), currentProgram.getName()+"_references");
 		} catch (IOException e) {
 			Logger.getGlobal().log(Level.WARNING, "Oops! Error while writing out references in dumpSymbols.", e);
 		}
@@ -454,7 +511,7 @@ public class GhiDump extends GhidraScript {
 
 				DataMessage.Builder dataProto = DataMessage.newBuilder();
 
-				if(!dataAddress.toString().matches("-?[0-9a-fA-F]+"))
+				if(!dataAddress.toString().matches("-?[0-9a-f]+"))
 					dataProto.setSymbolicAddress(dataAddress.toString());
 				else
 					dataProto.setLongAddress(Long.parseLong(dataAddress.toString(), 16));
@@ -507,12 +564,12 @@ public class GhiDump extends GhidraScript {
 
 			segment.setName(mb.getName());
 			
-			if(!start.matches("-?[0-9a-fA-F]+"))
+			if(!start.matches("-?[0-9a-f]+"))
 				segment.setSymbolicStartingAddress(start);
 			else
 				segment.setLongStartingAddress(Long.parseLong(start, 16));
 			
-			if(!end.matches("-?[0-9a-fA-F]+"))
+			if(!end.matches("-?[0-9a-f]+"))
 				segment.setSymbolicEndingAddress(end);
 			else
 				segment.setLongEndingAddress(Long.parseLong(end, 16));
@@ -543,12 +600,111 @@ public class GhiDump extends GhidraScript {
 
 		return metadata.build();
 	}
-
+	
 	private void protoWriter(Message message, String filename) throws IOException {
 		File results = new File("GhiDumps" + File.separator + filename + ".pb");
 		FileOutputStream output = new FileOutputStream(results);
 		message.writeTo(output);
 		output.close();
+	}
+	
+	public void fillRegistersMap() {
+		int register_id = 0;
+		RegistersList.Builder reglist = RegistersList.newBuilder();		
+		
+		for(String reg : currentProgram.getProgramContext().getRegisterNames()) {
+			RegisterMessage.Builder regmsg = RegisterMessage.newBuilder().setRegister(reg).setRegisterId(register_id);
+			
+			registers.put(reg, register_id);
+			
+			reglist.addRegisters(regmsg.build());
+			
+			register_id++;
+		}
+		
+		try {
+			protoWriter(reglist.build(), currentProgram.getName()+"_registers");
+		} catch (IOException e) {
+			Logger.getGlobal().log(Level.WARNING, "Oops! Error while writing out registers protobuf.", e);
+		}
+		
+	}
+	
+	private MnemonicsList dumpMnemonics() {
+		MnemonicsList.Builder mnemolist = MnemonicsList.newBuilder();
+		
+		for (Map.Entry<String, Integer> entry : mnemonics.entrySet()) {
+			MnemonicMessage.Builder mnemo = MnemonicMessage.newBuilder();
+			
+			mnemo.setMnemonic(entry.getKey());
+			mnemo.setMnemonicId(entry.getValue());
+			
+			mnemolist.addMnemonics(mnemo.build());
+		}
+		
+		return mnemolist.build();
+	}
+	
+	private void printSleigh(ParserWalker walker, ArrayList<SleighNode> sleightree) throws MemoryAccessException {
+		Constructor ct = walker.getConstructor();
+		int numops = ct.getNumOperands();
+		
+		sleightree.add(new SleighNode(ct, numops));
+		
+		int flowthruindex = ct.getFlowthruIndex();
+		if(flowthruindex != -1) {
+			TripleSymbol sym = ct.getOperand(flowthruindex).getDefiningSymbol();
+			if(sym instanceof SubtableSymbol) {
+				walker.pushOperand(flowthruindex);
+				printSleigh(walker, sleightree);
+				walker.popOperand();
+				
+				return;
+			}
+		}
+		
+		int numOperands = ct.getNumOperands();
+		for(int i = 0; i<numOperands; i++) {
+			OperandSymbol sym = ct.getOperand(i);
+			TripleSymbol tsym = sym.getDefiningSymbol();
+			
+			if (tsym!=null) {
+				walker.pushOperand(i);
+				Constructor subct = walker.getConstructor();
+				if(subct!=null)
+					printSleigh(walker, sleightree);
+				
+				walker.popOperand();
+			}			
+		}		
+		
+		
+		return;
+	}
+	
+	private void sample() {
+		Instruction instr = getInstructionAt(currentAddress);
+		InstructionContext context = instr.getInstructionContext();
+		ArrayList<SleighNode> sleightree = new ArrayList<SleighNode>();
+
+		SleighParserContext protoContext;
+
+		try {
+			protoContext = (SleighParserContext) context.getParserContext();
+			
+			ParserWalker walker = new ParserWalker(protoContext);
+			
+			walker.baseState();
+			
+			printSleigh(walker, sleightree);
+	
+			return;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		 
 	}
 
 	@Override
@@ -572,21 +728,18 @@ public class GhiDump extends GhidraScript {
 		println("\\____/_/ /_/_/_____/\\__,_/_/ /_/ /_/ .___/ ");
 		println("                                  /_/      ");
 		println("Dumping " + programName + "...");
-
+/*
 		protoWriter(dumpMetadata(), programName+"_metadata");
 		protoWriter(dumpSegments(programAPI), programName+"_segments");
 		protoWriter(dumpSymbols(listing), programName+"_symbols");
 		protoWriter(dumpData(programAPI, listing), programName+"_data");
 		
-		
+		fillRegistersMap();
 		dumpFunctions(decompilerAPI, listing);
+		protoWriter(dumpMnemonics(), programName+"_mnemonics");
+*/
 		
-		
-		
-		
-		//protoWriter(ghimsg.build(), programName);
-
-
+		sample();
 		//protoWriter(ghimsg.build(), programName);
 		println("Dump completed.");
 	}

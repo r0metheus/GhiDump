@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protoclasses',
   syntax='proto3',
   serialized_options=b'B\016ReferenceProto',
-  serialized_pb=b'\n\x0freference.proto\x12\x0cprotoclasses\x1a\ndata.proto\"\xf6\x07\n\x10ReferenceMessage\x12\x14\n\x0creference_id\x18\x01 \x01(\x05\x12\x12\n\nto_address\x18\x02 \x01(\t\x12\x14\n\x0c\x66rom_address\x18\x03 \x01(\t\x12>\n\x08ref_type\x18\x06 \x01(\x0e\x32,.protoclasses.ReferenceMessage.ReferenceType\x12\x39\n\x06source\x18\x07 \x01(\x0e\x32).protoclasses.ReferenceMessage.SourceType\x12+\n\x08ref_data\x18\x08 \x01(\x0b\x32\x19.protoclasses.DataMessage\"\xb0\x05\n\rReferenceType\x12\t\n\x05THUNK\x10\x00\x12\x1f\n\x1b\x43\x41LL_OVERRIDE_UNCONDITIONAL\x10\x01\x12\x13\n\x0f\x43\x41LL_TERMINATOR\x10\x02\x12\x1b\n\x17\x43\x41LLOTHER_OVERRIDE_CALL\x10\x03\x12\x1b\n\x17\x43\x41LLOTHER_OVERRIDE_JUMP\x10\x04\x12\x11\n\rCOMPUTED_CALL\x10\x05\x12\x1c\n\x18\x43OMPUTED_CALL_TERMINATOR\x10\x06\x12\x11\n\rCOMPUTED_JUMP\x10\x07\x12\x14\n\x10\x43ONDITIONAL_CALL\x10\x08\x12\x1f\n\x1b\x43ONDITIONAL_CALL_TERMINATOR\x10\t\x12\x1d\n\x19\x43ONDITIONAL_COMPUTED_CALL\x10\n\x12\x1d\n\x19\x43ONDITIONAL_COMPUTED_JUMP\x10\x0b\x12\x14\n\x10\x43ONDITIONAL_JUMP\x10\x0c\x12\x1a\n\x16\x43ONDITIONAL_TERMINATOR\x10\r\x12\x08\n\x04\x44\x41TA\x10\x0e\x12\x0c\n\x08\x44\x41TA_IND\x10\x0f\x12\x10\n\x0c\x45XTERNAL_REF\x10\x10\x12\x10\n\x0c\x46\x41LL_THROUGH\x10\x11\x12\x08\n\x04\x46LOW\x10\x12\x12\x0f\n\x0bINDIRECTION\x10\x13\x12\x0b\n\x07INVALID\x10\x14\x12\x1f\n\x1bJUMP_OVERRIDE_UNCONDITIONAL\x10\x15\x12\x13\n\x0fJUMP_TERMINATOR\x10\x16\x12\t\n\x05PARAM\x10\x17\x12\x08\n\x04READ\x10\x18\x12\x0c\n\x08READ_IND\x10\x19\x12\x0e\n\nREAD_WRITE\x10\x1a\x12\x12\n\x0eREAD_WRITE_IND\x10\x1b\x12\x0e\n\nTERMINATOR\x10\x1c\x12\x16\n\x12UNCONDITIONAL_CALL\x10\x1d\x12\x16\n\x12UNCONDITIONAL_JUMP\x10\x1e\x12\t\n\x05WRITE\x10\x1f\x12\r\n\tWRITE_IND\x10 \"G\n\nSourceType\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\x0c\n\x08\x41NALYSIS\x10\x01\x12\x0c\n\x08IMPORTED\x10\x02\x12\x10\n\x0cUSER_DEFINED\x10\x03\"\xa3\x01\n\rReferencesMap\x12?\n\nreferences\x18\x01 \x03(\x0b\x32+.protoclasses.ReferencesMap.ReferencesEntry\x1aQ\n\x0fReferencesEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12-\n\x05value\x18\x02 \x01(\x0b\x32\x1e.protoclasses.ReferenceMessage:\x02\x38\x01\x42\x10\x42\x0eReferenceProtob\x06proto3'
+  serialized_pb=b'\n\x0freference.proto\x12\x0cprotoclasses\x1a\ndata.proto\"\xe2\x08\n\x10ReferenceMessage\x12\x14\n\x0creference_id\x18\x01 \x01(\x05\x12\x19\n\x0flong_to_address\x18\x02 \x01(\x04H\x00\x12\x1d\n\x13symbolic_to_address\x18\x03 \x01(\tH\x00\x12\x1b\n\x11long_from_address\x18\x04 \x01(\x04H\x01\x12\x1f\n\x15symbolic_from_address\x18\x05 \x01(\tH\x01\x12>\n\x08ref_type\x18\x06 \x01(\x0e\x32,.protoclasses.ReferenceMessage.ReferenceType\x12\x39\n\x06source\x18\x07 \x01(\x0e\x32).protoclasses.ReferenceMessage.SourceType\x12+\n\x08ref_data\x18\x08 \x01(\x0b\x32\x19.protoclasses.DataMessage\"\xb0\x05\n\rReferenceType\x12\t\n\x05THUNK\x10\x00\x12\x1f\n\x1b\x43\x41LL_OVERRIDE_UNCONDITIONAL\x10\x01\x12\x13\n\x0f\x43\x41LL_TERMINATOR\x10\x02\x12\x1b\n\x17\x43\x41LLOTHER_OVERRIDE_CALL\x10\x03\x12\x1b\n\x17\x43\x41LLOTHER_OVERRIDE_JUMP\x10\x04\x12\x11\n\rCOMPUTED_CALL\x10\x05\x12\x1c\n\x18\x43OMPUTED_CALL_TERMINATOR\x10\x06\x12\x11\n\rCOMPUTED_JUMP\x10\x07\x12\x14\n\x10\x43ONDITIONAL_CALL\x10\x08\x12\x1f\n\x1b\x43ONDITIONAL_CALL_TERMINATOR\x10\t\x12\x1d\n\x19\x43ONDITIONAL_COMPUTED_CALL\x10\n\x12\x1d\n\x19\x43ONDITIONAL_COMPUTED_JUMP\x10\x0b\x12\x14\n\x10\x43ONDITIONAL_JUMP\x10\x0c\x12\x1a\n\x16\x43ONDITIONAL_TERMINATOR\x10\r\x12\x08\n\x04\x44\x41TA\x10\x0e\x12\x0c\n\x08\x44\x41TA_IND\x10\x0f\x12\x10\n\x0c\x45XTERNAL_REF\x10\x10\x12\x10\n\x0c\x46\x41LL_THROUGH\x10\x11\x12\x08\n\x04\x46LOW\x10\x12\x12\x0f\n\x0bINDIRECTION\x10\x13\x12\x0b\n\x07INVALID\x10\x14\x12\x1f\n\x1bJUMP_OVERRIDE_UNCONDITIONAL\x10\x15\x12\x13\n\x0fJUMP_TERMINATOR\x10\x16\x12\t\n\x05PARAM\x10\x17\x12\x08\n\x04READ\x10\x18\x12\x0c\n\x08READ_IND\x10\x19\x12\x0e\n\nREAD_WRITE\x10\x1a\x12\x12\n\x0eREAD_WRITE_IND\x10\x1b\x12\x0e\n\nTERMINATOR\x10\x1c\x12\x16\n\x12UNCONDITIONAL_CALL\x10\x1d\x12\x16\n\x12UNCONDITIONAL_JUMP\x10\x1e\x12\t\n\x05WRITE\x10\x1f\x12\r\n\tWRITE_IND\x10 \"G\n\nSourceType\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\x0c\n\x08\x41NALYSIS\x10\x01\x12\x0c\n\x08IMPORTED\x10\x02\x12\x10\n\x0cUSER_DEFINED\x10\x03\x42\x0c\n\nto_addressB\x0e\n\x0c\x66rom_address\"C\n\rReferenceList\x12\x32\n\nreferences\x18\x01 \x03(\x0b\x32\x1e.protoclasses.ReferenceMessageB\x10\x42\x0eReferenceProtob\x06proto3'
   ,
   dependencies=[data__pb2.DESCRIPTOR,])
 
@@ -166,8 +166,8 @@ _REFERENCEMESSAGE_REFERENCETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=299,
-  serialized_end=987,
+  serialized_start=377,
+  serialized_end=1065,
 )
 _sym_db.RegisterEnumDescriptor(_REFERENCEMESSAGE_REFERENCETYPE)
 
@@ -196,8 +196,8 @@ _REFERENCEMESSAGE_SOURCETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=989,
-  serialized_end=1060,
+  serialized_start=1067,
+  serialized_end=1138,
 )
 _sym_db.RegisterEnumDescriptor(_REFERENCEMESSAGE_SOURCETYPE)
 
@@ -217,35 +217,49 @@ _REFERENCEMESSAGE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='to_address', full_name='protoclasses.ReferenceMessage.to_address', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='long_to_address', full_name='protoclasses.ReferenceMessage.long_to_address', index=1,
+      number=2, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='from_address', full_name='protoclasses.ReferenceMessage.from_address', index=2,
+      name='symbolic_to_address', full_name='protoclasses.ReferenceMessage.symbolic_to_address', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='ref_type', full_name='protoclasses.ReferenceMessage.ref_type', index=3,
+      name='long_from_address', full_name='protoclasses.ReferenceMessage.long_from_address', index=3,
+      number=4, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='symbolic_from_address', full_name='protoclasses.ReferenceMessage.symbolic_from_address', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ref_type', full_name='protoclasses.ReferenceMessage.ref_type', index=5,
       number=6, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='source', full_name='protoclasses.ReferenceMessage.source', index=4,
+      name='source', full_name='protoclasses.ReferenceMessage.source', index=6,
       number=7, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='ref_data', full_name='protoclasses.ReferenceMessage.ref_data', index=5,
+      name='ref_data', full_name='protoclasses.ReferenceMessage.ref_data', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -264,30 +278,29 @@ _REFERENCEMESSAGE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='to_address', full_name='protoclasses.ReferenceMessage.to_address',
+      index=0, containing_type=None, fields=[]),
+    _descriptor.OneofDescriptor(
+      name='from_address', full_name='protoclasses.ReferenceMessage.from_address',
+      index=1, containing_type=None, fields=[]),
   ],
   serialized_start=46,
-  serialized_end=1060,
+  serialized_end=1168,
 )
 
 
-_REFERENCESMAP_REFERENCESENTRY = _descriptor.Descriptor(
-  name='ReferencesEntry',
-  full_name='protoclasses.ReferencesMap.ReferencesEntry',
+_REFERENCELIST = _descriptor.Descriptor(
+  name='ReferenceList',
+  full_name='protoclasses.ReferenceList',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='protoclasses.ReferencesMap.ReferencesEntry.key', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='protoclasses.ReferencesMap.ReferencesEntry.value', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='references', full_name='protoclasses.ReferenceList.references', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -297,44 +310,14 @@ _REFERENCESMAP_REFERENCESENTRY = _descriptor.Descriptor(
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1145,
-  serialized_end=1226,
-)
-
-_REFERENCESMAP = _descriptor.Descriptor(
-  name='ReferencesMap',
-  full_name='protoclasses.ReferencesMap',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='references', full_name='protoclasses.ReferencesMap.references', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_REFERENCESMAP_REFERENCESENTRY, ],
-  enum_types=[
-  ],
   serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1063,
-  serialized_end=1226,
+  serialized_start=1170,
+  serialized_end=1237,
 )
 
 _REFERENCEMESSAGE.fields_by_name['ref_type'].enum_type = _REFERENCEMESSAGE_REFERENCETYPE
@@ -342,11 +325,21 @@ _REFERENCEMESSAGE.fields_by_name['source'].enum_type = _REFERENCEMESSAGE_SOURCET
 _REFERENCEMESSAGE.fields_by_name['ref_data'].message_type = data__pb2._DATAMESSAGE
 _REFERENCEMESSAGE_REFERENCETYPE.containing_type = _REFERENCEMESSAGE
 _REFERENCEMESSAGE_SOURCETYPE.containing_type = _REFERENCEMESSAGE
-_REFERENCESMAP_REFERENCESENTRY.fields_by_name['value'].message_type = _REFERENCEMESSAGE
-_REFERENCESMAP_REFERENCESENTRY.containing_type = _REFERENCESMAP
-_REFERENCESMAP.fields_by_name['references'].message_type = _REFERENCESMAP_REFERENCESENTRY
+_REFERENCEMESSAGE.oneofs_by_name['to_address'].fields.append(
+  _REFERENCEMESSAGE.fields_by_name['long_to_address'])
+_REFERENCEMESSAGE.fields_by_name['long_to_address'].containing_oneof = _REFERENCEMESSAGE.oneofs_by_name['to_address']
+_REFERENCEMESSAGE.oneofs_by_name['to_address'].fields.append(
+  _REFERENCEMESSAGE.fields_by_name['symbolic_to_address'])
+_REFERENCEMESSAGE.fields_by_name['symbolic_to_address'].containing_oneof = _REFERENCEMESSAGE.oneofs_by_name['to_address']
+_REFERENCEMESSAGE.oneofs_by_name['from_address'].fields.append(
+  _REFERENCEMESSAGE.fields_by_name['long_from_address'])
+_REFERENCEMESSAGE.fields_by_name['long_from_address'].containing_oneof = _REFERENCEMESSAGE.oneofs_by_name['from_address']
+_REFERENCEMESSAGE.oneofs_by_name['from_address'].fields.append(
+  _REFERENCEMESSAGE.fields_by_name['symbolic_from_address'])
+_REFERENCEMESSAGE.fields_by_name['symbolic_from_address'].containing_oneof = _REFERENCEMESSAGE.oneofs_by_name['from_address']
+_REFERENCELIST.fields_by_name['references'].message_type = _REFERENCEMESSAGE
 DESCRIPTOR.message_types_by_name['ReferenceMessage'] = _REFERENCEMESSAGE
-DESCRIPTOR.message_types_by_name['ReferencesMap'] = _REFERENCESMAP
+DESCRIPTOR.message_types_by_name['ReferenceList'] = _REFERENCELIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ReferenceMessage = _reflection.GeneratedProtocolMessageType('ReferenceMessage', (_message.Message,), {
@@ -356,22 +349,13 @@ ReferenceMessage = _reflection.GeneratedProtocolMessageType('ReferenceMessage', 
   })
 _sym_db.RegisterMessage(ReferenceMessage)
 
-ReferencesMap = _reflection.GeneratedProtocolMessageType('ReferencesMap', (_message.Message,), {
-
-  'ReferencesEntry' : _reflection.GeneratedProtocolMessageType('ReferencesEntry', (_message.Message,), {
-    'DESCRIPTOR' : _REFERENCESMAP_REFERENCESENTRY,
-    '__module__' : 'reference_pb2'
-    # @@protoc_insertion_point(class_scope:protoclasses.ReferencesMap.ReferencesEntry)
-    })
-  ,
-  'DESCRIPTOR' : _REFERENCESMAP,
+ReferenceList = _reflection.GeneratedProtocolMessageType('ReferenceList', (_message.Message,), {
+  'DESCRIPTOR' : _REFERENCELIST,
   '__module__' : 'reference_pb2'
-  # @@protoc_insertion_point(class_scope:protoclasses.ReferencesMap)
+  # @@protoc_insertion_point(class_scope:protoclasses.ReferenceList)
   })
-_sym_db.RegisterMessage(ReferencesMap)
-_sym_db.RegisterMessage(ReferencesMap.ReferencesEntry)
+_sym_db.RegisterMessage(ReferenceList)
 
 
 DESCRIPTOR._options = None
-_REFERENCESMAP_REFERENCESENTRY._options = None
 # @@protoc_insertion_point(module_scope)

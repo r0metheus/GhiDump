@@ -6,14 +6,19 @@ option java_outer_classname = "FunctionProto";
 
 message FunctionMessage{
   string name = 1;
-  string entry_point = 2;
-  string decompiled = 3;
+
+  oneof entry_point_address {
+    uint64 entry_point = 2;
+    string symbolic_entry_point = 3;
+  }
+  
+  string decompiled = 4;
 
   message ParameterMessage{
     string name = 1;
     string data_type = 2;
     uint32 length = 3;
-    repeated string registers = 4;
+    repeated int32 register_id = 4;
   }
 
   message VariableMessage{
@@ -21,29 +26,35 @@ message FunctionMessage{
     string data_type = 2;
     uint32 length = 3;
     int32 stack_offset = 4;
-    repeated string registers = 5;
+    repeated int32 register_id = 5;
   }
 
   message BasicBlockMessage{
-    oneof starting_address {
-        uint64 long_starting_address = 1;
+    oneof starting_address_value {
+        uint64 starting_address = 1;
         string symbolic_starting_address = 2;
     }
     
-    oneof ending_address {
-        uint64 long_ending_address = 3;
+    oneof ending_address_value {
+        uint64 ending_address = 3;
         string symbolic_ending_address = 4;
     }
     
     message InstructionMessage{
-      string mnemonic = 1;
+      int32 mnemonic_id = 1;
       bool is_thumb = 2;
       
       message OperandMessage{
         string name = 1;
         
         message OperandObject{
-            string name = 1;
+            
+            oneof value {
+                int32 register_id = 1;
+                int64 const = 2;
+                uint64 address = 3;
+                string symbolic_address = 4;
+            }
             
             enum Type {
                 NULL = 0;
@@ -52,7 +63,7 @@ message FunctionMessage{
                 ADDRESS = 3;
             }
 
-            Type type = 2;
+            Type type = 5;
         }
         
         repeated int32 reference_id = 2;
@@ -65,9 +76,9 @@ message FunctionMessage{
     repeated InstructionMessage instructions = 5;
   }
 
-  repeated ParameterMessage parameters = 4;
-  repeated VariableMessage variables = 5;
-  repeated BasicBlockMessage basic_blocks = 6;
+  repeated ParameterMessage parameters = 5;
+  repeated VariableMessage variables = 6;
+  repeated BasicBlockMessage basic_blocks = 7;
 }
 
 message FunctionsList{

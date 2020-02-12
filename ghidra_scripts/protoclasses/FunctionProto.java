@@ -31,100 +31,108 @@ public final class FunctionProto {
         getNameBytes();
 
     /**
-     * <code>string entry_point = 2;</code>
+     * <code>uint64 entry_point = 2;</code>
      * @return The entryPoint.
      */
-    java.lang.String getEntryPoint();
-    /**
-     * <code>string entry_point = 2;</code>
-     * @return The bytes for entryPoint.
-     */
-    com.google.protobuf.ByteString
-        getEntryPointBytes();
+    long getEntryPoint();
 
     /**
-     * <code>string decompiled = 3;</code>
+     * <code>string symbolic_entry_point = 3;</code>
+     * @return The symbolicEntryPoint.
+     */
+    java.lang.String getSymbolicEntryPoint();
+    /**
+     * <code>string symbolic_entry_point = 3;</code>
+     * @return The bytes for symbolicEntryPoint.
+     */
+    com.google.protobuf.ByteString
+        getSymbolicEntryPointBytes();
+
+    /**
+     * <code>string decompiled = 4;</code>
      * @return The decompiled.
      */
     java.lang.String getDecompiled();
     /**
-     * <code>string decompiled = 3;</code>
+     * <code>string decompiled = 4;</code>
      * @return The bytes for decompiled.
      */
     com.google.protobuf.ByteString
         getDecompiledBytes();
 
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     java.util.List<protoclasses.FunctionProto.FunctionMessage.ParameterMessage> 
         getParametersList();
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     protoclasses.FunctionProto.FunctionMessage.ParameterMessage getParameters(int index);
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     int getParametersCount();
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.ParameterMessageOrBuilder> 
         getParametersOrBuilderList();
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     protoclasses.FunctionProto.FunctionMessage.ParameterMessageOrBuilder getParametersOrBuilder(
         int index);
 
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     java.util.List<protoclasses.FunctionProto.FunctionMessage.VariableMessage> 
         getVariablesList();
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     protoclasses.FunctionProto.FunctionMessage.VariableMessage getVariables(int index);
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     int getVariablesCount();
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.VariableMessageOrBuilder> 
         getVariablesOrBuilderList();
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     protoclasses.FunctionProto.FunctionMessage.VariableMessageOrBuilder getVariablesOrBuilder(
         int index);
 
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage> 
         getBasicBlocksList();
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage getBasicBlocks(int index);
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     int getBasicBlocksCount();
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessageOrBuilder> 
         getBasicBlocksOrBuilderList();
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     protoclasses.FunctionProto.FunctionMessage.BasicBlockMessageOrBuilder getBasicBlocksOrBuilder(
         int index);
+
+    public protoclasses.FunctionProto.FunctionMessage.EntryPointAddressCase getEntryPointAddressCase();
   }
   /**
    * Protobuf type {@code protoclasses.FunctionMessage}
@@ -140,7 +148,6 @@ public final class FunctionProto {
     }
     private FunctionMessage() {
       name_ = "";
-      entryPoint_ = "";
       decompiled_ = "";
       parameters_ = java.util.Collections.emptyList();
       variables_ = java.util.Collections.emptyList();
@@ -184,19 +191,24 @@ public final class FunctionProto {
               name_ = s;
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              entryPoint_ = s;
+            case 16: {
+              entryPointAddressCase_ = 2;
+              entryPointAddress_ = input.readUInt64();
               break;
             }
             case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+              entryPointAddressCase_ = 3;
+              entryPointAddress_ = s;
+              break;
+            }
+            case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
               decompiled_ = s;
               break;
             }
-            case 34: {
+            case 42: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 parameters_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.ParameterMessage>();
                 mutable_bitField0_ |= 0x00000001;
@@ -205,7 +217,7 @@ public final class FunctionProto {
                   input.readMessage(protoclasses.FunctionProto.FunctionMessage.ParameterMessage.parser(), extensionRegistry));
               break;
             }
-            case 42: {
+            case 50: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 variables_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.VariableMessage>();
                 mutable_bitField0_ |= 0x00000002;
@@ -214,7 +226,7 @@ public final class FunctionProto {
                   input.readMessage(protoclasses.FunctionProto.FunctionMessage.VariableMessage.parser(), extensionRegistry));
               break;
             }
-            case 50: {
+            case 58: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                 basicBlocks_ = new java.util.ArrayList<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage>();
                 mutable_bitField0_ |= 0x00000004;
@@ -299,29 +311,21 @@ public final class FunctionProto {
       int getLength();
 
       /**
-       * <code>repeated string registers = 4;</code>
-       * @return A list containing the registers.
+       * <code>repeated int32 register_id = 4;</code>
+       * @return A list containing the registerId.
        */
-      java.util.List<java.lang.String>
-          getRegistersList();
+      java.util.List<java.lang.Integer> getRegisterIdList();
       /**
-       * <code>repeated string registers = 4;</code>
-       * @return The count of registers.
+       * <code>repeated int32 register_id = 4;</code>
+       * @return The count of registerId.
        */
-      int getRegistersCount();
+      int getRegisterIdCount();
       /**
-       * <code>repeated string registers = 4;</code>
+       * <code>repeated int32 register_id = 4;</code>
        * @param index The index of the element to return.
-       * @return The registers at the given index.
+       * @return The registerId at the given index.
        */
-      java.lang.String getRegisters(int index);
-      /**
-       * <code>repeated string registers = 4;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the registers at the given index.
-       */
-      com.google.protobuf.ByteString
-          getRegistersBytes(int index);
+      int getRegisterId(int index);
     }
     /**
      * Protobuf type {@code protoclasses.FunctionMessage.ParameterMessage}
@@ -338,7 +342,7 @@ public final class FunctionProto {
       private ParameterMessage() {
         name_ = "";
         dataType_ = "";
-        registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        registerId_ = emptyIntList();
       }
 
       @java.lang.Override
@@ -389,13 +393,25 @@ public final class FunctionProto {
                 length_ = input.readUInt32();
                 break;
               }
-              case 34: {
-                java.lang.String s = input.readStringRequireUtf8();
+              case 32: {
                 if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                  registers_ = new com.google.protobuf.LazyStringArrayList();
+                  registerId_ = newIntList();
                   mutable_bitField0_ |= 0x00000001;
                 }
-                registers_.add(s);
+                registerId_.addInt(input.readInt32());
+                break;
+              }
+              case 34: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+                  registerId_ = newIntList();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                while (input.getBytesUntilLimit() > 0) {
+                  registerId_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
                 break;
               }
               default: {
@@ -414,7 +430,7 @@ public final class FunctionProto {
               e).setUnfinishedMessage(this);
         } finally {
           if (((mutable_bitField0_ & 0x00000001) != 0)) {
-            registers_ = registers_.getUnmodifiableView();
+            registerId_.makeImmutable(); // C
           }
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
@@ -515,40 +531,32 @@ public final class FunctionProto {
         return length_;
       }
 
-      public static final int REGISTERS_FIELD_NUMBER = 4;
-      private com.google.protobuf.LazyStringList registers_;
+      public static final int REGISTER_ID_FIELD_NUMBER = 4;
+      private com.google.protobuf.Internal.IntList registerId_;
       /**
-       * <code>repeated string registers = 4;</code>
-       * @return A list containing the registers.
+       * <code>repeated int32 register_id = 4;</code>
+       * @return A list containing the registerId.
        */
-      public com.google.protobuf.ProtocolStringList
-          getRegistersList() {
-        return registers_;
+      public java.util.List<java.lang.Integer>
+          getRegisterIdList() {
+        return registerId_;
       }
       /**
-       * <code>repeated string registers = 4;</code>
-       * @return The count of registers.
+       * <code>repeated int32 register_id = 4;</code>
+       * @return The count of registerId.
        */
-      public int getRegistersCount() {
-        return registers_.size();
+      public int getRegisterIdCount() {
+        return registerId_.size();
       }
       /**
-       * <code>repeated string registers = 4;</code>
+       * <code>repeated int32 register_id = 4;</code>
        * @param index The index of the element to return.
-       * @return The registers at the given index.
+       * @return The registerId at the given index.
        */
-      public java.lang.String getRegisters(int index) {
-        return registers_.get(index);
+      public int getRegisterId(int index) {
+        return registerId_.getInt(index);
       }
-      /**
-       * <code>repeated string registers = 4;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the registers at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getRegistersBytes(int index) {
-        return registers_.getByteString(index);
-      }
+      private int registerIdMemoizedSerializedSize = -1;
 
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
@@ -564,6 +572,7 @@ public final class FunctionProto {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
+        getSerializedSize();
         if (!getNameBytes().isEmpty()) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
         }
@@ -573,8 +582,12 @@ public final class FunctionProto {
         if (length_ != 0) {
           output.writeUInt32(3, length_);
         }
-        for (int i = 0; i < registers_.size(); i++) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, registers_.getRaw(i));
+        if (getRegisterIdList().size() > 0) {
+          output.writeUInt32NoTag(34);
+          output.writeUInt32NoTag(registerIdMemoizedSerializedSize);
+        }
+        for (int i = 0; i < registerId_.size(); i++) {
+          output.writeInt32NoTag(registerId_.getInt(i));
         }
         unknownFields.writeTo(output);
       }
@@ -597,11 +610,17 @@ public final class FunctionProto {
         }
         {
           int dataSize = 0;
-          for (int i = 0; i < registers_.size(); i++) {
-            dataSize += computeStringSizeNoTag(registers_.getRaw(i));
+          for (int i = 0; i < registerId_.size(); i++) {
+            dataSize += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(registerId_.getInt(i));
           }
           size += dataSize;
-          size += 1 * getRegistersList().size();
+          if (!getRegisterIdList().isEmpty()) {
+            size += 1;
+            size += com.google.protobuf.CodedOutputStream
+                .computeInt32SizeNoTag(dataSize);
+          }
+          registerIdMemoizedSerializedSize = dataSize;
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -624,8 +643,8 @@ public final class FunctionProto {
             .equals(other.getDataType())) return false;
         if (getLength()
             != other.getLength()) return false;
-        if (!getRegistersList()
-            .equals(other.getRegistersList())) return false;
+        if (!getRegisterIdList()
+            .equals(other.getRegisterIdList())) return false;
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
       }
@@ -643,9 +662,9 @@ public final class FunctionProto {
         hash = (53 * hash) + getDataType().hashCode();
         hash = (37 * hash) + LENGTH_FIELD_NUMBER;
         hash = (53 * hash) + getLength();
-        if (getRegistersCount() > 0) {
-          hash = (37 * hash) + REGISTERS_FIELD_NUMBER;
-          hash = (53 * hash) + getRegistersList().hashCode();
+        if (getRegisterIdCount() > 0) {
+          hash = (37 * hash) + REGISTER_ID_FIELD_NUMBER;
+          hash = (53 * hash) + getRegisterIdList().hashCode();
         }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
@@ -786,7 +805,7 @@ public final class FunctionProto {
 
           length_ = 0;
 
-          registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+          registerId_ = emptyIntList();
           bitField0_ = (bitField0_ & ~0x00000001);
           return this;
         }
@@ -819,10 +838,10 @@ public final class FunctionProto {
           result.dataType_ = dataType_;
           result.length_ = length_;
           if (((bitField0_ & 0x00000001) != 0)) {
-            registers_ = registers_.getUnmodifiableView();
+            registerId_.makeImmutable();
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.registers_ = registers_;
+          result.registerId_ = registerId_;
           onBuilt();
           return result;
         }
@@ -882,13 +901,13 @@ public final class FunctionProto {
           if (other.getLength() != 0) {
             setLength(other.getLength());
           }
-          if (!other.registers_.isEmpty()) {
-            if (registers_.isEmpty()) {
-              registers_ = other.registers_;
+          if (!other.registerId_.isEmpty()) {
+            if (registerId_.isEmpty()) {
+              registerId_ = other.registerId_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureRegistersIsMutable();
-              registers_.addAll(other.registers_);
+              ensureRegisterIdIsMutable();
+              registerId_.addAll(other.registerId_);
             }
             onChanged();
           }
@@ -1104,112 +1123,81 @@ public final class FunctionProto {
           return this;
         }
 
-        private com.google.protobuf.LazyStringList registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        private void ensureRegistersIsMutable() {
+        private com.google.protobuf.Internal.IntList registerId_ = emptyIntList();
+        private void ensureRegisterIdIsMutable() {
           if (!((bitField0_ & 0x00000001) != 0)) {
-            registers_ = new com.google.protobuf.LazyStringArrayList(registers_);
+            registerId_ = mutableCopy(registerId_);
             bitField0_ |= 0x00000001;
            }
         }
         /**
-         * <code>repeated string registers = 4;</code>
-         * @return A list containing the registers.
+         * <code>repeated int32 register_id = 4;</code>
+         * @return A list containing the registerId.
          */
-        public com.google.protobuf.ProtocolStringList
-            getRegistersList() {
-          return registers_.getUnmodifiableView();
+        public java.util.List<java.lang.Integer>
+            getRegisterIdList() {
+          return ((bitField0_ & 0x00000001) != 0) ?
+                   java.util.Collections.unmodifiableList(registerId_) : registerId_;
         }
         /**
-         * <code>repeated string registers = 4;</code>
-         * @return The count of registers.
+         * <code>repeated int32 register_id = 4;</code>
+         * @return The count of registerId.
          */
-        public int getRegistersCount() {
-          return registers_.size();
+        public int getRegisterIdCount() {
+          return registerId_.size();
         }
         /**
-         * <code>repeated string registers = 4;</code>
+         * <code>repeated int32 register_id = 4;</code>
          * @param index The index of the element to return.
-         * @return The registers at the given index.
+         * @return The registerId at the given index.
          */
-        public java.lang.String getRegisters(int index) {
-          return registers_.get(index);
+        public int getRegisterId(int index) {
+          return registerId_.getInt(index);
         }
         /**
-         * <code>repeated string registers = 4;</code>
-         * @param index The index of the value to return.
-         * @return The bytes of the registers at the given index.
-         */
-        public com.google.protobuf.ByteString
-            getRegistersBytes(int index) {
-          return registers_.getByteString(index);
-        }
-        /**
-         * <code>repeated string registers = 4;</code>
+         * <code>repeated int32 register_id = 4;</code>
          * @param index The index to set the value at.
-         * @param value The registers to set.
+         * @param value The registerId to set.
          * @return This builder for chaining.
          */
-        public Builder setRegisters(
-            int index, java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureRegistersIsMutable();
-          registers_.set(index, value);
+        public Builder setRegisterId(
+            int index, int value) {
+          ensureRegisterIdIsMutable();
+          registerId_.setInt(index, value);
           onChanged();
           return this;
         }
         /**
-         * <code>repeated string registers = 4;</code>
-         * @param value The registers to add.
+         * <code>repeated int32 register_id = 4;</code>
+         * @param value The registerId to add.
          * @return This builder for chaining.
          */
-        public Builder addRegisters(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureRegistersIsMutable();
-          registers_.add(value);
+        public Builder addRegisterId(int value) {
+          ensureRegisterIdIsMutable();
+          registerId_.addInt(value);
           onChanged();
           return this;
         }
         /**
-         * <code>repeated string registers = 4;</code>
-         * @param values The registers to add.
+         * <code>repeated int32 register_id = 4;</code>
+         * @param values The registerId to add.
          * @return This builder for chaining.
          */
-        public Builder addAllRegisters(
-            java.lang.Iterable<java.lang.String> values) {
-          ensureRegistersIsMutable();
+        public Builder addAllRegisterId(
+            java.lang.Iterable<? extends java.lang.Integer> values) {
+          ensureRegisterIdIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, registers_);
+              values, registerId_);
           onChanged();
           return this;
         }
         /**
-         * <code>repeated string registers = 4;</code>
+         * <code>repeated int32 register_id = 4;</code>
          * @return This builder for chaining.
          */
-        public Builder clearRegisters() {
-          registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        public Builder clearRegisterId() {
+          registerId_ = emptyIntList();
           bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string registers = 4;</code>
-         * @param value The bytes of the registers to add.
-         * @return This builder for chaining.
-         */
-        public Builder addRegistersBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          ensureRegistersIsMutable();
-          registers_.add(value);
           onChanged();
           return this;
         }
@@ -1307,29 +1295,21 @@ public final class FunctionProto {
       int getStackOffset();
 
       /**
-       * <code>repeated string registers = 5;</code>
-       * @return A list containing the registers.
+       * <code>repeated int32 register_id = 5;</code>
+       * @return A list containing the registerId.
        */
-      java.util.List<java.lang.String>
-          getRegistersList();
+      java.util.List<java.lang.Integer> getRegisterIdList();
       /**
-       * <code>repeated string registers = 5;</code>
-       * @return The count of registers.
+       * <code>repeated int32 register_id = 5;</code>
+       * @return The count of registerId.
        */
-      int getRegistersCount();
+      int getRegisterIdCount();
       /**
-       * <code>repeated string registers = 5;</code>
+       * <code>repeated int32 register_id = 5;</code>
        * @param index The index of the element to return.
-       * @return The registers at the given index.
+       * @return The registerId at the given index.
        */
-      java.lang.String getRegisters(int index);
-      /**
-       * <code>repeated string registers = 5;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the registers at the given index.
-       */
-      com.google.protobuf.ByteString
-          getRegistersBytes(int index);
+      int getRegisterId(int index);
     }
     /**
      * Protobuf type {@code protoclasses.FunctionMessage.VariableMessage}
@@ -1346,7 +1326,7 @@ public final class FunctionProto {
       private VariableMessage() {
         name_ = "";
         dataType_ = "";
-        registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        registerId_ = emptyIntList();
       }
 
       @java.lang.Override
@@ -1402,13 +1382,25 @@ public final class FunctionProto {
                 stackOffset_ = input.readInt32();
                 break;
               }
-              case 42: {
-                java.lang.String s = input.readStringRequireUtf8();
+              case 40: {
                 if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                  registers_ = new com.google.protobuf.LazyStringArrayList();
+                  registerId_ = newIntList();
                   mutable_bitField0_ |= 0x00000001;
                 }
-                registers_.add(s);
+                registerId_.addInt(input.readInt32());
+                break;
+              }
+              case 42: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+                  registerId_ = newIntList();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                while (input.getBytesUntilLimit() > 0) {
+                  registerId_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
                 break;
               }
               default: {
@@ -1427,7 +1419,7 @@ public final class FunctionProto {
               e).setUnfinishedMessage(this);
         } finally {
           if (((mutable_bitField0_ & 0x00000001) != 0)) {
-            registers_ = registers_.getUnmodifiableView();
+            registerId_.makeImmutable(); // C
           }
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
@@ -1538,40 +1530,32 @@ public final class FunctionProto {
         return stackOffset_;
       }
 
-      public static final int REGISTERS_FIELD_NUMBER = 5;
-      private com.google.protobuf.LazyStringList registers_;
+      public static final int REGISTER_ID_FIELD_NUMBER = 5;
+      private com.google.protobuf.Internal.IntList registerId_;
       /**
-       * <code>repeated string registers = 5;</code>
-       * @return A list containing the registers.
+       * <code>repeated int32 register_id = 5;</code>
+       * @return A list containing the registerId.
        */
-      public com.google.protobuf.ProtocolStringList
-          getRegistersList() {
-        return registers_;
+      public java.util.List<java.lang.Integer>
+          getRegisterIdList() {
+        return registerId_;
       }
       /**
-       * <code>repeated string registers = 5;</code>
-       * @return The count of registers.
+       * <code>repeated int32 register_id = 5;</code>
+       * @return The count of registerId.
        */
-      public int getRegistersCount() {
-        return registers_.size();
+      public int getRegisterIdCount() {
+        return registerId_.size();
       }
       /**
-       * <code>repeated string registers = 5;</code>
+       * <code>repeated int32 register_id = 5;</code>
        * @param index The index of the element to return.
-       * @return The registers at the given index.
+       * @return The registerId at the given index.
        */
-      public java.lang.String getRegisters(int index) {
-        return registers_.get(index);
+      public int getRegisterId(int index) {
+        return registerId_.getInt(index);
       }
-      /**
-       * <code>repeated string registers = 5;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the registers at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getRegistersBytes(int index) {
-        return registers_.getByteString(index);
-      }
+      private int registerIdMemoizedSerializedSize = -1;
 
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
@@ -1587,6 +1571,7 @@ public final class FunctionProto {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
+        getSerializedSize();
         if (!getNameBytes().isEmpty()) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
         }
@@ -1599,8 +1584,12 @@ public final class FunctionProto {
         if (stackOffset_ != 0) {
           output.writeInt32(4, stackOffset_);
         }
-        for (int i = 0; i < registers_.size(); i++) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 5, registers_.getRaw(i));
+        if (getRegisterIdList().size() > 0) {
+          output.writeUInt32NoTag(42);
+          output.writeUInt32NoTag(registerIdMemoizedSerializedSize);
+        }
+        for (int i = 0; i < registerId_.size(); i++) {
+          output.writeInt32NoTag(registerId_.getInt(i));
         }
         unknownFields.writeTo(output);
       }
@@ -1627,11 +1616,17 @@ public final class FunctionProto {
         }
         {
           int dataSize = 0;
-          for (int i = 0; i < registers_.size(); i++) {
-            dataSize += computeStringSizeNoTag(registers_.getRaw(i));
+          for (int i = 0; i < registerId_.size(); i++) {
+            dataSize += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(registerId_.getInt(i));
           }
           size += dataSize;
-          size += 1 * getRegistersList().size();
+          if (!getRegisterIdList().isEmpty()) {
+            size += 1;
+            size += com.google.protobuf.CodedOutputStream
+                .computeInt32SizeNoTag(dataSize);
+          }
+          registerIdMemoizedSerializedSize = dataSize;
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -1656,8 +1651,8 @@ public final class FunctionProto {
             != other.getLength()) return false;
         if (getStackOffset()
             != other.getStackOffset()) return false;
-        if (!getRegistersList()
-            .equals(other.getRegistersList())) return false;
+        if (!getRegisterIdList()
+            .equals(other.getRegisterIdList())) return false;
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
       }
@@ -1677,9 +1672,9 @@ public final class FunctionProto {
         hash = (53 * hash) + getLength();
         hash = (37 * hash) + STACK_OFFSET_FIELD_NUMBER;
         hash = (53 * hash) + getStackOffset();
-        if (getRegistersCount() > 0) {
-          hash = (37 * hash) + REGISTERS_FIELD_NUMBER;
-          hash = (53 * hash) + getRegistersList().hashCode();
+        if (getRegisterIdCount() > 0) {
+          hash = (37 * hash) + REGISTER_ID_FIELD_NUMBER;
+          hash = (53 * hash) + getRegisterIdList().hashCode();
         }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
@@ -1822,7 +1817,7 @@ public final class FunctionProto {
 
           stackOffset_ = 0;
 
-          registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+          registerId_ = emptyIntList();
           bitField0_ = (bitField0_ & ~0x00000001);
           return this;
         }
@@ -1856,10 +1851,10 @@ public final class FunctionProto {
           result.length_ = length_;
           result.stackOffset_ = stackOffset_;
           if (((bitField0_ & 0x00000001) != 0)) {
-            registers_ = registers_.getUnmodifiableView();
+            registerId_.makeImmutable();
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.registers_ = registers_;
+          result.registerId_ = registerId_;
           onBuilt();
           return result;
         }
@@ -1922,13 +1917,13 @@ public final class FunctionProto {
           if (other.getStackOffset() != 0) {
             setStackOffset(other.getStackOffset());
           }
-          if (!other.registers_.isEmpty()) {
-            if (registers_.isEmpty()) {
-              registers_ = other.registers_;
+          if (!other.registerId_.isEmpty()) {
+            if (registerId_.isEmpty()) {
+              registerId_ = other.registerId_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureRegistersIsMutable();
-              registers_.addAll(other.registers_);
+              ensureRegisterIdIsMutable();
+              registerId_.addAll(other.registerId_);
             }
             onChanged();
           }
@@ -2174,112 +2169,81 @@ public final class FunctionProto {
           return this;
         }
 
-        private com.google.protobuf.LazyStringList registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        private void ensureRegistersIsMutable() {
+        private com.google.protobuf.Internal.IntList registerId_ = emptyIntList();
+        private void ensureRegisterIdIsMutable() {
           if (!((bitField0_ & 0x00000001) != 0)) {
-            registers_ = new com.google.protobuf.LazyStringArrayList(registers_);
+            registerId_ = mutableCopy(registerId_);
             bitField0_ |= 0x00000001;
            }
         }
         /**
-         * <code>repeated string registers = 5;</code>
-         * @return A list containing the registers.
+         * <code>repeated int32 register_id = 5;</code>
+         * @return A list containing the registerId.
          */
-        public com.google.protobuf.ProtocolStringList
-            getRegistersList() {
-          return registers_.getUnmodifiableView();
+        public java.util.List<java.lang.Integer>
+            getRegisterIdList() {
+          return ((bitField0_ & 0x00000001) != 0) ?
+                   java.util.Collections.unmodifiableList(registerId_) : registerId_;
         }
         /**
-         * <code>repeated string registers = 5;</code>
-         * @return The count of registers.
+         * <code>repeated int32 register_id = 5;</code>
+         * @return The count of registerId.
          */
-        public int getRegistersCount() {
-          return registers_.size();
+        public int getRegisterIdCount() {
+          return registerId_.size();
         }
         /**
-         * <code>repeated string registers = 5;</code>
+         * <code>repeated int32 register_id = 5;</code>
          * @param index The index of the element to return.
-         * @return The registers at the given index.
+         * @return The registerId at the given index.
          */
-        public java.lang.String getRegisters(int index) {
-          return registers_.get(index);
+        public int getRegisterId(int index) {
+          return registerId_.getInt(index);
         }
         /**
-         * <code>repeated string registers = 5;</code>
-         * @param index The index of the value to return.
-         * @return The bytes of the registers at the given index.
-         */
-        public com.google.protobuf.ByteString
-            getRegistersBytes(int index) {
-          return registers_.getByteString(index);
-        }
-        /**
-         * <code>repeated string registers = 5;</code>
+         * <code>repeated int32 register_id = 5;</code>
          * @param index The index to set the value at.
-         * @param value The registers to set.
+         * @param value The registerId to set.
          * @return This builder for chaining.
          */
-        public Builder setRegisters(
-            int index, java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureRegistersIsMutable();
-          registers_.set(index, value);
+        public Builder setRegisterId(
+            int index, int value) {
+          ensureRegisterIdIsMutable();
+          registerId_.setInt(index, value);
           onChanged();
           return this;
         }
         /**
-         * <code>repeated string registers = 5;</code>
-         * @param value The registers to add.
+         * <code>repeated int32 register_id = 5;</code>
+         * @param value The registerId to add.
          * @return This builder for chaining.
          */
-        public Builder addRegisters(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureRegistersIsMutable();
-          registers_.add(value);
+        public Builder addRegisterId(int value) {
+          ensureRegisterIdIsMutable();
+          registerId_.addInt(value);
           onChanged();
           return this;
         }
         /**
-         * <code>repeated string registers = 5;</code>
-         * @param values The registers to add.
+         * <code>repeated int32 register_id = 5;</code>
+         * @param values The registerId to add.
          * @return This builder for chaining.
          */
-        public Builder addAllRegisters(
-            java.lang.Iterable<java.lang.String> values) {
-          ensureRegistersIsMutable();
+        public Builder addAllRegisterId(
+            java.lang.Iterable<? extends java.lang.Integer> values) {
+          ensureRegisterIdIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, registers_);
+              values, registerId_);
           onChanged();
           return this;
         }
         /**
-         * <code>repeated string registers = 5;</code>
+         * <code>repeated int32 register_id = 5;</code>
          * @return This builder for chaining.
          */
-        public Builder clearRegisters() {
-          registers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        public Builder clearRegisterId() {
+          registerId_ = emptyIntList();
           bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string registers = 5;</code>
-         * @param value The bytes of the registers to add.
-         * @return This builder for chaining.
-         */
-        public Builder addRegistersBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          ensureRegistersIsMutable();
-          registers_.add(value);
           onChanged();
           return this;
         }
@@ -2341,10 +2305,10 @@ public final class FunctionProto {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>uint64 long_starting_address = 1;</code>
-       * @return The longStartingAddress.
+       * <code>uint64 starting_address = 1;</code>
+       * @return The startingAddress.
        */
-      long getLongStartingAddress();
+      long getStartingAddress();
 
       /**
        * <code>string symbolic_starting_address = 2;</code>
@@ -2359,10 +2323,10 @@ public final class FunctionProto {
           getSymbolicStartingAddressBytes();
 
       /**
-       * <code>uint64 long_ending_address = 3;</code>
-       * @return The longEndingAddress.
+       * <code>uint64 ending_address = 3;</code>
+       * @return The endingAddress.
        */
-      long getLongEndingAddress();
+      long getEndingAddress();
 
       /**
        * <code>string symbolic_ending_address = 4;</code>
@@ -2400,9 +2364,9 @@ public final class FunctionProto {
       protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessageOrBuilder getInstructionsOrBuilder(
           int index);
 
-      public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.StartingAddressCase getStartingAddressCase();
+      public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.StartingAddressValueCase getStartingAddressValueCase();
 
-      public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.EndingAddressCase getEndingAddressCase();
+      public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.EndingAddressValueCase getEndingAddressValueCase();
     }
     /**
      * Protobuf type {@code protoclasses.FunctionMessage.BasicBlockMessage}
@@ -2452,25 +2416,25 @@ public final class FunctionProto {
                 done = true;
                 break;
               case 8: {
-                startingAddressCase_ = 1;
-                startingAddress_ = input.readUInt64();
+                startingAddressValueCase_ = 1;
+                startingAddressValue_ = input.readUInt64();
                 break;
               }
               case 18: {
                 java.lang.String s = input.readStringRequireUtf8();
-                startingAddressCase_ = 2;
-                startingAddress_ = s;
+                startingAddressValueCase_ = 2;
+                startingAddressValue_ = s;
                 break;
               }
               case 24: {
-                endingAddressCase_ = 3;
-                endingAddress_ = input.readUInt64();
+                endingAddressValueCase_ = 3;
+                endingAddressValue_ = input.readUInt64();
                 break;
               }
               case 34: {
                 java.lang.String s = input.readStringRequireUtf8();
-                endingAddressCase_ = 4;
-                endingAddress_ = s;
+                endingAddressValueCase_ = 4;
+                endingAddressValue_ = s;
                 break;
               }
               case 42: {
@@ -2522,16 +2486,10 @@ public final class FunctionProto {
           com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>string mnemonic = 1;</code>
-         * @return The mnemonic.
+         * <code>int32 mnemonic_id = 1;</code>
+         * @return The mnemonicId.
          */
-        java.lang.String getMnemonic();
-        /**
-         * <code>string mnemonic = 1;</code>
-         * @return The bytes for mnemonic.
-         */
-        com.google.protobuf.ByteString
-            getMnemonicBytes();
+        int getMnemonicId();
 
         /**
          * <code>bool is_thumb = 2;</code>
@@ -2576,7 +2534,6 @@ public final class FunctionProto {
           super(builder);
         }
         private InstructionMessage() {
-          mnemonic_ = "";
           operands_ = java.util.Collections.emptyList();
         }
 
@@ -2611,10 +2568,9 @@ public final class FunctionProto {
                 case 0:
                   done = true;
                   break;
-                case 10: {
-                  java.lang.String s = input.readStringRequireUtf8();
+                case 8: {
 
-                  mnemonic_ = s;
+                  mnemonicId_ = input.readInt32();
                   break;
                 }
                 case 16: {
@@ -2851,27 +2807,47 @@ public final class FunctionProto {
               com.google.protobuf.MessageOrBuilder {
 
             /**
-             * <code>string name = 1;</code>
-             * @return The name.
+             * <code>int32 register_id = 1;</code>
+             * @return The registerId.
              */
-            java.lang.String getName();
-            /**
-             * <code>string name = 1;</code>
-             * @return The bytes for name.
-             */
-            com.google.protobuf.ByteString
-                getNameBytes();
+            int getRegisterId();
 
             /**
-             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+             * <code>int64 const = 2;</code>
+             * @return The const.
+             */
+            long getConst();
+
+            /**
+             * <code>uint64 address = 3;</code>
+             * @return The address.
+             */
+            long getAddress();
+
+            /**
+             * <code>string symbolic_address = 4;</code>
+             * @return The symbolicAddress.
+             */
+            java.lang.String getSymbolicAddress();
+            /**
+             * <code>string symbolic_address = 4;</code>
+             * @return The bytes for symbolicAddress.
+             */
+            com.google.protobuf.ByteString
+                getSymbolicAddressBytes();
+
+            /**
+             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 5;</code>
              * @return The enum numeric value on the wire for type.
              */
             int getTypeValue();
             /**
-             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 5;</code>
              * @return The type.
              */
             protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type getType();
+
+            public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.ValueCase getValueCase();
           }
           /**
            * Protobuf type {@code protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject}
@@ -2886,7 +2862,6 @@ public final class FunctionProto {
               super(builder);
             }
             private OperandObject() {
-              name_ = "";
               type_ = 0;
             }
 
@@ -2920,13 +2895,28 @@ public final class FunctionProto {
                     case 0:
                       done = true;
                       break;
-                    case 10: {
-                      java.lang.String s = input.readStringRequireUtf8();
-
-                      name_ = s;
+                    case 8: {
+                      valueCase_ = 1;
+                      value_ = input.readInt32();
                       break;
                     }
                     case 16: {
+                      valueCase_ = 2;
+                      value_ = input.readInt64();
+                      break;
+                    }
+                    case 24: {
+                      valueCase_ = 3;
+                      value_ = input.readUInt64();
+                      break;
+                    }
+                    case 34: {
+                      java.lang.String s = input.readStringRequireUtf8();
+                      valueCase_ = 4;
+                      value_ = s;
+                      break;
+                    }
+                    case 40: {
                       int rawValue = input.readEnum();
 
                       type_ = rawValue;
@@ -3086,53 +3076,143 @@ public final class FunctionProto {
               // @@protoc_insertion_point(enum_scope:protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type)
             }
 
-            public static final int NAME_FIELD_NUMBER = 1;
-            private volatile java.lang.Object name_;
+            private int valueCase_ = 0;
+            private java.lang.Object value_;
+            public enum ValueCase
+                implements com.google.protobuf.Internal.EnumLite,
+                    com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+              REGISTER_ID(1),
+              CONST(2),
+              ADDRESS(3),
+              SYMBOLIC_ADDRESS(4),
+              VALUE_NOT_SET(0);
+              private final int value;
+              private ValueCase(int value) {
+                this.value = value;
+              }
+              /**
+               * @param value The number of the enum to look for.
+               * @return The enum associated with the given number.
+               * @deprecated Use {@link #forNumber(int)} instead.
+               */
+              @java.lang.Deprecated
+              public static ValueCase valueOf(int value) {
+                return forNumber(value);
+              }
+
+              public static ValueCase forNumber(int value) {
+                switch (value) {
+                  case 1: return REGISTER_ID;
+                  case 2: return CONST;
+                  case 3: return ADDRESS;
+                  case 4: return SYMBOLIC_ADDRESS;
+                  case 0: return VALUE_NOT_SET;
+                  default: return null;
+                }
+              }
+              public int getNumber() {
+                return this.value;
+              }
+            };
+
+            public ValueCase
+            getValueCase() {
+              return ValueCase.forNumber(
+                  valueCase_);
+            }
+
+            public static final int REGISTER_ID_FIELD_NUMBER = 1;
             /**
-             * <code>string name = 1;</code>
-             * @return The name.
+             * <code>int32 register_id = 1;</code>
+             * @return The registerId.
              */
-            public java.lang.String getName() {
-              java.lang.Object ref = name_;
+            public int getRegisterId() {
+              if (valueCase_ == 1) {
+                return (java.lang.Integer) value_;
+              }
+              return 0;
+            }
+
+            public static final int CONST_FIELD_NUMBER = 2;
+            /**
+             * <code>int64 const = 2;</code>
+             * @return The const.
+             */
+            public long getConst() {
+              if (valueCase_ == 2) {
+                return (java.lang.Long) value_;
+              }
+              return 0L;
+            }
+
+            public static final int ADDRESS_FIELD_NUMBER = 3;
+            /**
+             * <code>uint64 address = 3;</code>
+             * @return The address.
+             */
+            public long getAddress() {
+              if (valueCase_ == 3) {
+                return (java.lang.Long) value_;
+              }
+              return 0L;
+            }
+
+            public static final int SYMBOLIC_ADDRESS_FIELD_NUMBER = 4;
+            /**
+             * <code>string symbolic_address = 4;</code>
+             * @return The symbolicAddress.
+             */
+            public java.lang.String getSymbolicAddress() {
+              java.lang.Object ref = "";
+              if (valueCase_ == 4) {
+                ref = value_;
+              }
               if (ref instanceof java.lang.String) {
                 return (java.lang.String) ref;
               } else {
                 com.google.protobuf.ByteString bs = 
                     (com.google.protobuf.ByteString) ref;
                 java.lang.String s = bs.toStringUtf8();
-                name_ = s;
+                if (valueCase_ == 4) {
+                  value_ = s;
+                }
                 return s;
               }
             }
             /**
-             * <code>string name = 1;</code>
-             * @return The bytes for name.
+             * <code>string symbolic_address = 4;</code>
+             * @return The bytes for symbolicAddress.
              */
             public com.google.protobuf.ByteString
-                getNameBytes() {
-              java.lang.Object ref = name_;
+                getSymbolicAddressBytes() {
+              java.lang.Object ref = "";
+              if (valueCase_ == 4) {
+                ref = value_;
+              }
               if (ref instanceof java.lang.String) {
                 com.google.protobuf.ByteString b = 
                     com.google.protobuf.ByteString.copyFromUtf8(
                         (java.lang.String) ref);
-                name_ = b;
+                if (valueCase_ == 4) {
+                  value_ = b;
+                }
                 return b;
               } else {
                 return (com.google.protobuf.ByteString) ref;
               }
             }
 
-            public static final int TYPE_FIELD_NUMBER = 2;
+            public static final int TYPE_FIELD_NUMBER = 5;
             private int type_;
             /**
-             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 5;</code>
              * @return The enum numeric value on the wire for type.
              */
             public int getTypeValue() {
               return type_;
             }
             /**
-             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+             * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 5;</code>
              * @return The type.
              */
             public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type getType() {
@@ -3155,11 +3235,23 @@ public final class FunctionProto {
             @java.lang.Override
             public void writeTo(com.google.protobuf.CodedOutputStream output)
                                 throws java.io.IOException {
-              if (!getNameBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+              if (valueCase_ == 1) {
+                output.writeInt32(
+                    1, (int)((java.lang.Integer) value_));
+              }
+              if (valueCase_ == 2) {
+                output.writeInt64(
+                    2, (long)((java.lang.Long) value_));
+              }
+              if (valueCase_ == 3) {
+                output.writeUInt64(
+                    3, (long)((java.lang.Long) value_));
+              }
+              if (valueCase_ == 4) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 4, value_);
               }
               if (type_ != protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type.NULL.getNumber()) {
-                output.writeEnum(2, type_);
+                output.writeEnum(5, type_);
               }
               unknownFields.writeTo(output);
             }
@@ -3170,12 +3262,27 @@ public final class FunctionProto {
               if (size != -1) return size;
 
               size = 0;
-              if (!getNameBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+              if (valueCase_ == 1) {
+                size += com.google.protobuf.CodedOutputStream
+                  .computeInt32Size(
+                      1, (int)((java.lang.Integer) value_));
+              }
+              if (valueCase_ == 2) {
+                size += com.google.protobuf.CodedOutputStream
+                  .computeInt64Size(
+                      2, (long)((java.lang.Long) value_));
+              }
+              if (valueCase_ == 3) {
+                size += com.google.protobuf.CodedOutputStream
+                  .computeUInt64Size(
+                      3, (long)((java.lang.Long) value_));
+              }
+              if (valueCase_ == 4) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, value_);
               }
               if (type_ != protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type.NULL.getNumber()) {
                 size += com.google.protobuf.CodedOutputStream
-                  .computeEnumSize(2, type_);
+                  .computeEnumSize(5, type_);
               }
               size += unknownFields.getSerializedSize();
               memoizedSize = size;
@@ -3192,9 +3299,28 @@ public final class FunctionProto {
               }
               protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject other = (protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject) obj;
 
-              if (!getName()
-                  .equals(other.getName())) return false;
               if (type_ != other.type_) return false;
+              if (!getValueCase().equals(other.getValueCase())) return false;
+              switch (valueCase_) {
+                case 1:
+                  if (getRegisterId()
+                      != other.getRegisterId()) return false;
+                  break;
+                case 2:
+                  if (getConst()
+                      != other.getConst()) return false;
+                  break;
+                case 3:
+                  if (getAddress()
+                      != other.getAddress()) return false;
+                  break;
+                case 4:
+                  if (!getSymbolicAddress()
+                      .equals(other.getSymbolicAddress())) return false;
+                  break;
+                case 0:
+                default:
+              }
               if (!unknownFields.equals(other.unknownFields)) return false;
               return true;
             }
@@ -3206,10 +3332,30 @@ public final class FunctionProto {
               }
               int hash = 41;
               hash = (19 * hash) + getDescriptor().hashCode();
-              hash = (37 * hash) + NAME_FIELD_NUMBER;
-              hash = (53 * hash) + getName().hashCode();
               hash = (37 * hash) + TYPE_FIELD_NUMBER;
               hash = (53 * hash) + type_;
+              switch (valueCase_) {
+                case 1:
+                  hash = (37 * hash) + REGISTER_ID_FIELD_NUMBER;
+                  hash = (53 * hash) + getRegisterId();
+                  break;
+                case 2:
+                  hash = (37 * hash) + CONST_FIELD_NUMBER;
+                  hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                      getConst());
+                  break;
+                case 3:
+                  hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+                  hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                      getAddress());
+                  break;
+                case 4:
+                  hash = (37 * hash) + SYMBOLIC_ADDRESS_FIELD_NUMBER;
+                  hash = (53 * hash) + getSymbolicAddress().hashCode();
+                  break;
+                case 0:
+                default:
+              }
               hash = (29 * hash) + unknownFields.hashCode();
               memoizedHashCode = hash;
               return hash;
@@ -3343,10 +3489,10 @@ public final class FunctionProto {
               @java.lang.Override
               public Builder clear() {
                 super.clear();
-                name_ = "";
-
                 type_ = 0;
 
+                valueCase_ = 0;
+                value_ = null;
                 return this;
               }
 
@@ -3373,8 +3519,20 @@ public final class FunctionProto {
               @java.lang.Override
               public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject buildPartial() {
                 protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject result = new protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject(this);
-                result.name_ = name_;
+                if (valueCase_ == 1) {
+                  result.value_ = value_;
+                }
+                if (valueCase_ == 2) {
+                  result.value_ = value_;
+                }
+                if (valueCase_ == 3) {
+                  result.value_ = value_;
+                }
+                if (valueCase_ == 4) {
+                  result.value_ = value_;
+                }
                 result.type_ = type_;
+                result.valueCase_ = valueCase_;
                 onBuilt();
                 return result;
               }
@@ -3423,12 +3581,31 @@ public final class FunctionProto {
 
               public Builder mergeFrom(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject other) {
                 if (other == protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.getDefaultInstance()) return this;
-                if (!other.getName().isEmpty()) {
-                  name_ = other.name_;
-                  onChanged();
-                }
                 if (other.type_ != 0) {
                   setTypeValue(other.getTypeValue());
+                }
+                switch (other.getValueCase()) {
+                  case REGISTER_ID: {
+                    setRegisterId(other.getRegisterId());
+                    break;
+                  }
+                  case CONST: {
+                    setConst(other.getConst());
+                    break;
+                  }
+                  case ADDRESS: {
+                    setAddress(other.getAddress());
+                    break;
+                  }
+                  case SYMBOLIC_ADDRESS: {
+                    valueCase_ = 4;
+                    value_ = other.value_;
+                    onChanged();
+                    break;
+                  }
+                  case VALUE_NOT_SET: {
+                    break;
+                  }
                 }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
@@ -3458,93 +3635,221 @@ public final class FunctionProto {
                 }
                 return this;
               }
+              private int valueCase_ = 0;
+              private java.lang.Object value_;
+              public ValueCase
+                  getValueCase() {
+                return ValueCase.forNumber(
+                    valueCase_);
+              }
 
-              private java.lang.Object name_ = "";
+              public Builder clearValue() {
+                valueCase_ = 0;
+                value_ = null;
+                onChanged();
+                return this;
+              }
+
+
               /**
-               * <code>string name = 1;</code>
-               * @return The name.
+               * <code>int32 register_id = 1;</code>
+               * @return The registerId.
                */
-              public java.lang.String getName() {
-                java.lang.Object ref = name_;
+              public int getRegisterId() {
+                if (valueCase_ == 1) {
+                  return (java.lang.Integer) value_;
+                }
+                return 0;
+              }
+              /**
+               * <code>int32 register_id = 1;</code>
+               * @param value The registerId to set.
+               * @return This builder for chaining.
+               */
+              public Builder setRegisterId(int value) {
+                valueCase_ = 1;
+                value_ = value;
+                onChanged();
+                return this;
+              }
+              /**
+               * <code>int32 register_id = 1;</code>
+               * @return This builder for chaining.
+               */
+              public Builder clearRegisterId() {
+                if (valueCase_ == 1) {
+                  valueCase_ = 0;
+                  value_ = null;
+                  onChanged();
+                }
+                return this;
+              }
+
+              /**
+               * <code>int64 const = 2;</code>
+               * @return The const.
+               */
+              public long getConst() {
+                if (valueCase_ == 2) {
+                  return (java.lang.Long) value_;
+                }
+                return 0L;
+              }
+              /**
+               * <code>int64 const = 2;</code>
+               * @param value The const to set.
+               * @return This builder for chaining.
+               */
+              public Builder setConst(long value) {
+                valueCase_ = 2;
+                value_ = value;
+                onChanged();
+                return this;
+              }
+              /**
+               * <code>int64 const = 2;</code>
+               * @return This builder for chaining.
+               */
+              public Builder clearConst() {
+                if (valueCase_ == 2) {
+                  valueCase_ = 0;
+                  value_ = null;
+                  onChanged();
+                }
+                return this;
+              }
+
+              /**
+               * <code>uint64 address = 3;</code>
+               * @return The address.
+               */
+              public long getAddress() {
+                if (valueCase_ == 3) {
+                  return (java.lang.Long) value_;
+                }
+                return 0L;
+              }
+              /**
+               * <code>uint64 address = 3;</code>
+               * @param value The address to set.
+               * @return This builder for chaining.
+               */
+              public Builder setAddress(long value) {
+                valueCase_ = 3;
+                value_ = value;
+                onChanged();
+                return this;
+              }
+              /**
+               * <code>uint64 address = 3;</code>
+               * @return This builder for chaining.
+               */
+              public Builder clearAddress() {
+                if (valueCase_ == 3) {
+                  valueCase_ = 0;
+                  value_ = null;
+                  onChanged();
+                }
+                return this;
+              }
+
+              /**
+               * <code>string symbolic_address = 4;</code>
+               * @return The symbolicAddress.
+               */
+              public java.lang.String getSymbolicAddress() {
+                java.lang.Object ref = "";
+                if (valueCase_ == 4) {
+                  ref = value_;
+                }
                 if (!(ref instanceof java.lang.String)) {
                   com.google.protobuf.ByteString bs =
                       (com.google.protobuf.ByteString) ref;
                   java.lang.String s = bs.toStringUtf8();
-                  name_ = s;
+                  if (valueCase_ == 4) {
+                    value_ = s;
+                  }
                   return s;
                 } else {
                   return (java.lang.String) ref;
                 }
               }
               /**
-               * <code>string name = 1;</code>
-               * @return The bytes for name.
+               * <code>string symbolic_address = 4;</code>
+               * @return The bytes for symbolicAddress.
                */
               public com.google.protobuf.ByteString
-                  getNameBytes() {
-                java.lang.Object ref = name_;
+                  getSymbolicAddressBytes() {
+                java.lang.Object ref = "";
+                if (valueCase_ == 4) {
+                  ref = value_;
+                }
                 if (ref instanceof String) {
                   com.google.protobuf.ByteString b = 
                       com.google.protobuf.ByteString.copyFromUtf8(
                           (java.lang.String) ref);
-                  name_ = b;
+                  if (valueCase_ == 4) {
+                    value_ = b;
+                  }
                   return b;
                 } else {
                   return (com.google.protobuf.ByteString) ref;
                 }
               }
               /**
-               * <code>string name = 1;</code>
-               * @param value The name to set.
+               * <code>string symbolic_address = 4;</code>
+               * @param value The symbolicAddress to set.
                * @return This builder for chaining.
                */
-              public Builder setName(
+              public Builder setSymbolicAddress(
                   java.lang.String value) {
                 if (value == null) {
     throw new NullPointerException();
   }
-  
-                name_ = value;
+  valueCase_ = 4;
+                value_ = value;
                 onChanged();
                 return this;
               }
               /**
-               * <code>string name = 1;</code>
+               * <code>string symbolic_address = 4;</code>
                * @return This builder for chaining.
                */
-              public Builder clearName() {
-                
-                name_ = getDefaultInstance().getName();
-                onChanged();
+              public Builder clearSymbolicAddress() {
+                if (valueCase_ == 4) {
+                  valueCase_ = 0;
+                  value_ = null;
+                  onChanged();
+                }
                 return this;
               }
               /**
-               * <code>string name = 1;</code>
-               * @param value The bytes for name to set.
+               * <code>string symbolic_address = 4;</code>
+               * @param value The bytes for symbolicAddress to set.
                * @return This builder for chaining.
                */
-              public Builder setNameBytes(
+              public Builder setSymbolicAddressBytes(
                   com.google.protobuf.ByteString value) {
                 if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-                
-                name_ = value;
+                valueCase_ = 4;
+                value_ = value;
                 onChanged();
                 return this;
               }
 
               private int type_ = 0;
               /**
-               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 5;</code>
                * @return The enum numeric value on the wire for type.
                */
               public int getTypeValue() {
                 return type_;
               }
               /**
-               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 5;</code>
                * @param value The enum numeric value on the wire for type to set.
                * @return This builder for chaining.
                */
@@ -3554,7 +3859,7 @@ public final class FunctionProto {
                 return this;
               }
               /**
-               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 5;</code>
                * @return The type.
                */
               public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type getType() {
@@ -3563,7 +3868,7 @@ public final class FunctionProto {
                 return result == null ? protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type.UNRECOGNIZED : result;
               }
               /**
-               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 5;</code>
                * @param value The type to set.
                * @return This builder for chaining.
                */
@@ -3577,7 +3882,7 @@ public final class FunctionProto {
                 return this;
               }
               /**
-               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 2;</code>
+               * <code>.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type type = 5;</code>
                * @return This builder for chaining.
                */
               public Builder clearType() {
@@ -4588,40 +4893,14 @@ public final class FunctionProto {
 
         }
 
-        public static final int MNEMONIC_FIELD_NUMBER = 1;
-        private volatile java.lang.Object mnemonic_;
+        public static final int MNEMONIC_ID_FIELD_NUMBER = 1;
+        private int mnemonicId_;
         /**
-         * <code>string mnemonic = 1;</code>
-         * @return The mnemonic.
+         * <code>int32 mnemonic_id = 1;</code>
+         * @return The mnemonicId.
          */
-        public java.lang.String getMnemonic() {
-          java.lang.Object ref = mnemonic_;
-          if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-          } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            mnemonic_ = s;
-            return s;
-          }
-        }
-        /**
-         * <code>string mnemonic = 1;</code>
-         * @return The bytes for mnemonic.
-         */
-        public com.google.protobuf.ByteString
-            getMnemonicBytes() {
-          java.lang.Object ref = mnemonic_;
-          if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            mnemonic_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
+        public int getMnemonicId() {
+          return mnemonicId_;
         }
 
         public static final int IS_THUMB_FIELD_NUMBER = 2;
@@ -4683,8 +4962,8 @@ public final class FunctionProto {
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                             throws java.io.IOException {
-          if (!getMnemonicBytes().isEmpty()) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, mnemonic_);
+          if (mnemonicId_ != 0) {
+            output.writeInt32(1, mnemonicId_);
           }
           if (isThumb_ != false) {
             output.writeBool(2, isThumb_);
@@ -4701,8 +4980,9 @@ public final class FunctionProto {
           if (size != -1) return size;
 
           size = 0;
-          if (!getMnemonicBytes().isEmpty()) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, mnemonic_);
+          if (mnemonicId_ != 0) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeInt32Size(1, mnemonicId_);
           }
           if (isThumb_ != false) {
             size += com.google.protobuf.CodedOutputStream
@@ -4727,8 +5007,8 @@ public final class FunctionProto {
           }
           protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage other = (protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage) obj;
 
-          if (!getMnemonic()
-              .equals(other.getMnemonic())) return false;
+          if (getMnemonicId()
+              != other.getMnemonicId()) return false;
           if (getIsThumb()
               != other.getIsThumb()) return false;
           if (!getOperandsList()
@@ -4744,8 +5024,8 @@ public final class FunctionProto {
           }
           int hash = 41;
           hash = (19 * hash) + getDescriptor().hashCode();
-          hash = (37 * hash) + MNEMONIC_FIELD_NUMBER;
-          hash = (53 * hash) + getMnemonic().hashCode();
+          hash = (37 * hash) + MNEMONIC_ID_FIELD_NUMBER;
+          hash = (53 * hash) + getMnemonicId();
           hash = (37 * hash) + IS_THUMB_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
               getIsThumb());
@@ -4887,7 +5167,7 @@ public final class FunctionProto {
           @java.lang.Override
           public Builder clear() {
             super.clear();
-            mnemonic_ = "";
+            mnemonicId_ = 0;
 
             isThumb_ = false;
 
@@ -4924,7 +5204,7 @@ public final class FunctionProto {
           public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage buildPartial() {
             protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage result = new protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage(this);
             int from_bitField0_ = bitField0_;
-            result.mnemonic_ = mnemonic_;
+            result.mnemonicId_ = mnemonicId_;
             result.isThumb_ = isThumb_;
             if (operandsBuilder_ == null) {
               if (((bitField0_ & 0x00000001) != 0)) {
@@ -4983,9 +5263,8 @@ public final class FunctionProto {
 
           public Builder mergeFrom(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage other) {
             if (other == protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.InstructionMessage.getDefaultInstance()) return this;
-            if (!other.getMnemonic().isEmpty()) {
-              mnemonic_ = other.mnemonic_;
-              onChanged();
+            if (other.getMnemonicId() != 0) {
+              setMnemonicId(other.getMnemonicId());
             }
             if (other.getIsThumb() != false) {
               setIsThumb(other.getIsThumb());
@@ -5046,78 +5325,32 @@ public final class FunctionProto {
           }
           private int bitField0_;
 
-          private java.lang.Object mnemonic_ = "";
+          private int mnemonicId_ ;
           /**
-           * <code>string mnemonic = 1;</code>
-           * @return The mnemonic.
+           * <code>int32 mnemonic_id = 1;</code>
+           * @return The mnemonicId.
            */
-          public java.lang.String getMnemonic() {
-            java.lang.Object ref = mnemonic_;
-            if (!(ref instanceof java.lang.String)) {
-              com.google.protobuf.ByteString bs =
-                  (com.google.protobuf.ByteString) ref;
-              java.lang.String s = bs.toStringUtf8();
-              mnemonic_ = s;
-              return s;
-            } else {
-              return (java.lang.String) ref;
-            }
+          public int getMnemonicId() {
+            return mnemonicId_;
           }
           /**
-           * <code>string mnemonic = 1;</code>
-           * @return The bytes for mnemonic.
-           */
-          public com.google.protobuf.ByteString
-              getMnemonicBytes() {
-            java.lang.Object ref = mnemonic_;
-            if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (java.lang.String) ref);
-              mnemonic_ = b;
-              return b;
-            } else {
-              return (com.google.protobuf.ByteString) ref;
-            }
-          }
-          /**
-           * <code>string mnemonic = 1;</code>
-           * @param value The mnemonic to set.
+           * <code>int32 mnemonic_id = 1;</code>
+           * @param value The mnemonicId to set.
            * @return This builder for chaining.
            */
-          public Builder setMnemonic(
-              java.lang.String value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  
-            mnemonic_ = value;
+          public Builder setMnemonicId(int value) {
+            
+            mnemonicId_ = value;
             onChanged();
             return this;
           }
           /**
-           * <code>string mnemonic = 1;</code>
+           * <code>int32 mnemonic_id = 1;</code>
            * @return This builder for chaining.
            */
-          public Builder clearMnemonic() {
+          public Builder clearMnemonicId() {
             
-            mnemonic_ = getDefaultInstance().getMnemonic();
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>string mnemonic = 1;</code>
-           * @param value The bytes for mnemonic to set.
-           * @return This builder for chaining.
-           */
-          public Builder setMnemonicBytes(
-              com.google.protobuf.ByteString value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-            
-            mnemonic_ = value;
+            mnemonicId_ = 0;
             onChanged();
             return this;
           }
@@ -5444,16 +5677,16 @@ public final class FunctionProto {
 
       }
 
-      private int startingAddressCase_ = 0;
-      private java.lang.Object startingAddress_;
-      public enum StartingAddressCase
+      private int startingAddressValueCase_ = 0;
+      private java.lang.Object startingAddressValue_;
+      public enum StartingAddressValueCase
           implements com.google.protobuf.Internal.EnumLite,
               com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-        LONG_STARTING_ADDRESS(1),
+        STARTING_ADDRESS(1),
         SYMBOLIC_STARTING_ADDRESS(2),
-        STARTINGADDRESS_NOT_SET(0);
+        STARTINGADDRESSVALUE_NOT_SET(0);
         private final int value;
-        private StartingAddressCase(int value) {
+        private StartingAddressValueCase(int value) {
           this.value = value;
         }
         /**
@@ -5462,15 +5695,15 @@ public final class FunctionProto {
          * @deprecated Use {@link #forNumber(int)} instead.
          */
         @java.lang.Deprecated
-        public static StartingAddressCase valueOf(int value) {
+        public static StartingAddressValueCase valueOf(int value) {
           return forNumber(value);
         }
 
-        public static StartingAddressCase forNumber(int value) {
+        public static StartingAddressValueCase forNumber(int value) {
           switch (value) {
-            case 1: return LONG_STARTING_ADDRESS;
+            case 1: return STARTING_ADDRESS;
             case 2: return SYMBOLIC_STARTING_ADDRESS;
-            case 0: return STARTINGADDRESS_NOT_SET;
+            case 0: return STARTINGADDRESSVALUE_NOT_SET;
             default: return null;
           }
         }
@@ -5479,22 +5712,22 @@ public final class FunctionProto {
         }
       };
 
-      public StartingAddressCase
-      getStartingAddressCase() {
-        return StartingAddressCase.forNumber(
-            startingAddressCase_);
+      public StartingAddressValueCase
+      getStartingAddressValueCase() {
+        return StartingAddressValueCase.forNumber(
+            startingAddressValueCase_);
       }
 
-      private int endingAddressCase_ = 0;
-      private java.lang.Object endingAddress_;
-      public enum EndingAddressCase
+      private int endingAddressValueCase_ = 0;
+      private java.lang.Object endingAddressValue_;
+      public enum EndingAddressValueCase
           implements com.google.protobuf.Internal.EnumLite,
               com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-        LONG_ENDING_ADDRESS(3),
+        ENDING_ADDRESS(3),
         SYMBOLIC_ENDING_ADDRESS(4),
-        ENDINGADDRESS_NOT_SET(0);
+        ENDINGADDRESSVALUE_NOT_SET(0);
         private final int value;
-        private EndingAddressCase(int value) {
+        private EndingAddressValueCase(int value) {
           this.value = value;
         }
         /**
@@ -5503,15 +5736,15 @@ public final class FunctionProto {
          * @deprecated Use {@link #forNumber(int)} instead.
          */
         @java.lang.Deprecated
-        public static EndingAddressCase valueOf(int value) {
+        public static EndingAddressValueCase valueOf(int value) {
           return forNumber(value);
         }
 
-        public static EndingAddressCase forNumber(int value) {
+        public static EndingAddressValueCase forNumber(int value) {
           switch (value) {
-            case 3: return LONG_ENDING_ADDRESS;
+            case 3: return ENDING_ADDRESS;
             case 4: return SYMBOLIC_ENDING_ADDRESS;
-            case 0: return ENDINGADDRESS_NOT_SET;
+            case 0: return ENDINGADDRESSVALUE_NOT_SET;
             default: return null;
           }
         }
@@ -5520,20 +5753,20 @@ public final class FunctionProto {
         }
       };
 
-      public EndingAddressCase
-      getEndingAddressCase() {
-        return EndingAddressCase.forNumber(
-            endingAddressCase_);
+      public EndingAddressValueCase
+      getEndingAddressValueCase() {
+        return EndingAddressValueCase.forNumber(
+            endingAddressValueCase_);
       }
 
-      public static final int LONG_STARTING_ADDRESS_FIELD_NUMBER = 1;
+      public static final int STARTING_ADDRESS_FIELD_NUMBER = 1;
       /**
-       * <code>uint64 long_starting_address = 1;</code>
-       * @return The longStartingAddress.
+       * <code>uint64 starting_address = 1;</code>
+       * @return The startingAddress.
        */
-      public long getLongStartingAddress() {
-        if (startingAddressCase_ == 1) {
-          return (java.lang.Long) startingAddress_;
+      public long getStartingAddress() {
+        if (startingAddressValueCase_ == 1) {
+          return (java.lang.Long) startingAddressValue_;
         }
         return 0L;
       }
@@ -5545,8 +5778,8 @@ public final class FunctionProto {
        */
       public java.lang.String getSymbolicStartingAddress() {
         java.lang.Object ref = "";
-        if (startingAddressCase_ == 2) {
-          ref = startingAddress_;
+        if (startingAddressValueCase_ == 2) {
+          ref = startingAddressValue_;
         }
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
@@ -5554,8 +5787,8 @@ public final class FunctionProto {
           com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (startingAddressCase_ == 2) {
-            startingAddress_ = s;
+          if (startingAddressValueCase_ == 2) {
+            startingAddressValue_ = s;
           }
           return s;
         }
@@ -5567,15 +5800,15 @@ public final class FunctionProto {
       public com.google.protobuf.ByteString
           getSymbolicStartingAddressBytes() {
         java.lang.Object ref = "";
-        if (startingAddressCase_ == 2) {
-          ref = startingAddress_;
+        if (startingAddressValueCase_ == 2) {
+          ref = startingAddressValue_;
         }
         if (ref instanceof java.lang.String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          if (startingAddressCase_ == 2) {
-            startingAddress_ = b;
+          if (startingAddressValueCase_ == 2) {
+            startingAddressValue_ = b;
           }
           return b;
         } else {
@@ -5583,14 +5816,14 @@ public final class FunctionProto {
         }
       }
 
-      public static final int LONG_ENDING_ADDRESS_FIELD_NUMBER = 3;
+      public static final int ENDING_ADDRESS_FIELD_NUMBER = 3;
       /**
-       * <code>uint64 long_ending_address = 3;</code>
-       * @return The longEndingAddress.
+       * <code>uint64 ending_address = 3;</code>
+       * @return The endingAddress.
        */
-      public long getLongEndingAddress() {
-        if (endingAddressCase_ == 3) {
-          return (java.lang.Long) endingAddress_;
+      public long getEndingAddress() {
+        if (endingAddressValueCase_ == 3) {
+          return (java.lang.Long) endingAddressValue_;
         }
         return 0L;
       }
@@ -5602,8 +5835,8 @@ public final class FunctionProto {
        */
       public java.lang.String getSymbolicEndingAddress() {
         java.lang.Object ref = "";
-        if (endingAddressCase_ == 4) {
-          ref = endingAddress_;
+        if (endingAddressValueCase_ == 4) {
+          ref = endingAddressValue_;
         }
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
@@ -5611,8 +5844,8 @@ public final class FunctionProto {
           com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (endingAddressCase_ == 4) {
-            endingAddress_ = s;
+          if (endingAddressValueCase_ == 4) {
+            endingAddressValue_ = s;
           }
           return s;
         }
@@ -5624,15 +5857,15 @@ public final class FunctionProto {
       public com.google.protobuf.ByteString
           getSymbolicEndingAddressBytes() {
         java.lang.Object ref = "";
-        if (endingAddressCase_ == 4) {
-          ref = endingAddress_;
+        if (endingAddressValueCase_ == 4) {
+          ref = endingAddressValue_;
         }
         if (ref instanceof java.lang.String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          if (endingAddressCase_ == 4) {
-            endingAddress_ = b;
+          if (endingAddressValueCase_ == 4) {
+            endingAddressValue_ = b;
           }
           return b;
         } else {
@@ -5689,19 +5922,19 @@ public final class FunctionProto {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (startingAddressCase_ == 1) {
+        if (startingAddressValueCase_ == 1) {
           output.writeUInt64(
-              1, (long)((java.lang.Long) startingAddress_));
+              1, (long)((java.lang.Long) startingAddressValue_));
         }
-        if (startingAddressCase_ == 2) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, startingAddress_);
+        if (startingAddressValueCase_ == 2) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, startingAddressValue_);
         }
-        if (endingAddressCase_ == 3) {
+        if (endingAddressValueCase_ == 3) {
           output.writeUInt64(
-              3, (long)((java.lang.Long) endingAddress_));
+              3, (long)((java.lang.Long) endingAddressValue_));
         }
-        if (endingAddressCase_ == 4) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, endingAddress_);
+        if (endingAddressValueCase_ == 4) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, endingAddressValue_);
         }
         for (int i = 0; i < instructions_.size(); i++) {
           output.writeMessage(5, instructions_.get(i));
@@ -5715,21 +5948,21 @@ public final class FunctionProto {
         if (size != -1) return size;
 
         size = 0;
-        if (startingAddressCase_ == 1) {
+        if (startingAddressValueCase_ == 1) {
           size += com.google.protobuf.CodedOutputStream
             .computeUInt64Size(
-                1, (long)((java.lang.Long) startingAddress_));
+                1, (long)((java.lang.Long) startingAddressValue_));
         }
-        if (startingAddressCase_ == 2) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, startingAddress_);
+        if (startingAddressValueCase_ == 2) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, startingAddressValue_);
         }
-        if (endingAddressCase_ == 3) {
+        if (endingAddressValueCase_ == 3) {
           size += com.google.protobuf.CodedOutputStream
             .computeUInt64Size(
-                3, (long)((java.lang.Long) endingAddress_));
+                3, (long)((java.lang.Long) endingAddressValue_));
         }
-        if (endingAddressCase_ == 4) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, endingAddress_);
+        if (endingAddressValueCase_ == 4) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, endingAddressValue_);
         }
         for (int i = 0; i < instructions_.size(); i++) {
           size += com.google.protobuf.CodedOutputStream
@@ -5752,11 +5985,11 @@ public final class FunctionProto {
 
         if (!getInstructionsList()
             .equals(other.getInstructionsList())) return false;
-        if (!getStartingAddressCase().equals(other.getStartingAddressCase())) return false;
-        switch (startingAddressCase_) {
+        if (!getStartingAddressValueCase().equals(other.getStartingAddressValueCase())) return false;
+        switch (startingAddressValueCase_) {
           case 1:
-            if (getLongStartingAddress()
-                != other.getLongStartingAddress()) return false;
+            if (getStartingAddress()
+                != other.getStartingAddress()) return false;
             break;
           case 2:
             if (!getSymbolicStartingAddress()
@@ -5765,11 +5998,11 @@ public final class FunctionProto {
           case 0:
           default:
         }
-        if (!getEndingAddressCase().equals(other.getEndingAddressCase())) return false;
-        switch (endingAddressCase_) {
+        if (!getEndingAddressValueCase().equals(other.getEndingAddressValueCase())) return false;
+        switch (endingAddressValueCase_) {
           case 3:
-            if (getLongEndingAddress()
-                != other.getLongEndingAddress()) return false;
+            if (getEndingAddress()
+                != other.getEndingAddress()) return false;
             break;
           case 4:
             if (!getSymbolicEndingAddress()
@@ -5793,11 +6026,11 @@ public final class FunctionProto {
           hash = (37 * hash) + INSTRUCTIONS_FIELD_NUMBER;
           hash = (53 * hash) + getInstructionsList().hashCode();
         }
-        switch (startingAddressCase_) {
+        switch (startingAddressValueCase_) {
           case 1:
-            hash = (37 * hash) + LONG_STARTING_ADDRESS_FIELD_NUMBER;
+            hash = (37 * hash) + STARTING_ADDRESS_FIELD_NUMBER;
             hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-                getLongStartingAddress());
+                getStartingAddress());
             break;
           case 2:
             hash = (37 * hash) + SYMBOLIC_STARTING_ADDRESS_FIELD_NUMBER;
@@ -5806,11 +6039,11 @@ public final class FunctionProto {
           case 0:
           default:
         }
-        switch (endingAddressCase_) {
+        switch (endingAddressValueCase_) {
           case 3:
-            hash = (37 * hash) + LONG_ENDING_ADDRESS_FIELD_NUMBER;
+            hash = (37 * hash) + ENDING_ADDRESS_FIELD_NUMBER;
             hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-                getLongEndingAddress());
+                getEndingAddress());
             break;
           case 4:
             hash = (37 * hash) + SYMBOLIC_ENDING_ADDRESS_FIELD_NUMBER;
@@ -5959,10 +6192,10 @@ public final class FunctionProto {
           } else {
             instructionsBuilder_.clear();
           }
-          startingAddressCase_ = 0;
-          startingAddress_ = null;
-          endingAddressCase_ = 0;
-          endingAddress_ = null;
+          startingAddressValueCase_ = 0;
+          startingAddressValue_ = null;
+          endingAddressValueCase_ = 0;
+          endingAddressValue_ = null;
           return this;
         }
 
@@ -5990,17 +6223,17 @@ public final class FunctionProto {
         public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage buildPartial() {
           protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage result = new protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage(this);
           int from_bitField0_ = bitField0_;
-          if (startingAddressCase_ == 1) {
-            result.startingAddress_ = startingAddress_;
+          if (startingAddressValueCase_ == 1) {
+            result.startingAddressValue_ = startingAddressValue_;
           }
-          if (startingAddressCase_ == 2) {
-            result.startingAddress_ = startingAddress_;
+          if (startingAddressValueCase_ == 2) {
+            result.startingAddressValue_ = startingAddressValue_;
           }
-          if (endingAddressCase_ == 3) {
-            result.endingAddress_ = endingAddress_;
+          if (endingAddressValueCase_ == 3) {
+            result.endingAddressValue_ = endingAddressValue_;
           }
-          if (endingAddressCase_ == 4) {
-            result.endingAddress_ = endingAddress_;
+          if (endingAddressValueCase_ == 4) {
+            result.endingAddressValue_ = endingAddressValue_;
           }
           if (instructionsBuilder_ == null) {
             if (((bitField0_ & 0x00000001) != 0)) {
@@ -6011,8 +6244,8 @@ public final class FunctionProto {
           } else {
             result.instructions_ = instructionsBuilder_.build();
           }
-          result.startingAddressCase_ = startingAddressCase_;
-          result.endingAddressCase_ = endingAddressCase_;
+          result.startingAddressValueCase_ = startingAddressValueCase_;
+          result.endingAddressValueCase_ = endingAddressValueCase_;
           onBuilt();
           return result;
         }
@@ -6087,33 +6320,33 @@ public final class FunctionProto {
               }
             }
           }
-          switch (other.getStartingAddressCase()) {
-            case LONG_STARTING_ADDRESS: {
-              setLongStartingAddress(other.getLongStartingAddress());
+          switch (other.getStartingAddressValueCase()) {
+            case STARTING_ADDRESS: {
+              setStartingAddress(other.getStartingAddress());
               break;
             }
             case SYMBOLIC_STARTING_ADDRESS: {
-              startingAddressCase_ = 2;
-              startingAddress_ = other.startingAddress_;
+              startingAddressValueCase_ = 2;
+              startingAddressValue_ = other.startingAddressValue_;
               onChanged();
               break;
             }
-            case STARTINGADDRESS_NOT_SET: {
+            case STARTINGADDRESSVALUE_NOT_SET: {
               break;
             }
           }
-          switch (other.getEndingAddressCase()) {
-            case LONG_ENDING_ADDRESS: {
-              setLongEndingAddress(other.getLongEndingAddress());
+          switch (other.getEndingAddressValueCase()) {
+            case ENDING_ADDRESS: {
+              setEndingAddress(other.getEndingAddress());
               break;
             }
             case SYMBOLIC_ENDING_ADDRESS: {
-              endingAddressCase_ = 4;
-              endingAddress_ = other.endingAddress_;
+              endingAddressValueCase_ = 4;
+              endingAddressValue_ = other.endingAddressValue_;
               onChanged();
               break;
             }
-            case ENDINGADDRESS_NOT_SET: {
+            case ENDINGADDRESSVALUE_NOT_SET: {
               break;
             }
           }
@@ -6145,32 +6378,32 @@ public final class FunctionProto {
           }
           return this;
         }
-        private int startingAddressCase_ = 0;
-        private java.lang.Object startingAddress_;
-        public StartingAddressCase
-            getStartingAddressCase() {
-          return StartingAddressCase.forNumber(
-              startingAddressCase_);
+        private int startingAddressValueCase_ = 0;
+        private java.lang.Object startingAddressValue_;
+        public StartingAddressValueCase
+            getStartingAddressValueCase() {
+          return StartingAddressValueCase.forNumber(
+              startingAddressValueCase_);
         }
 
-        public Builder clearStartingAddress() {
-          startingAddressCase_ = 0;
-          startingAddress_ = null;
+        public Builder clearStartingAddressValue() {
+          startingAddressValueCase_ = 0;
+          startingAddressValue_ = null;
           onChanged();
           return this;
         }
 
-        private int endingAddressCase_ = 0;
-        private java.lang.Object endingAddress_;
-        public EndingAddressCase
-            getEndingAddressCase() {
-          return EndingAddressCase.forNumber(
-              endingAddressCase_);
+        private int endingAddressValueCase_ = 0;
+        private java.lang.Object endingAddressValue_;
+        public EndingAddressValueCase
+            getEndingAddressValueCase() {
+          return EndingAddressValueCase.forNumber(
+              endingAddressValueCase_);
         }
 
-        public Builder clearEndingAddress() {
-          endingAddressCase_ = 0;
-          endingAddress_ = null;
+        public Builder clearEndingAddressValue() {
+          endingAddressValueCase_ = 0;
+          endingAddressValue_ = null;
           onChanged();
           return this;
         }
@@ -6178,34 +6411,34 @@ public final class FunctionProto {
         private int bitField0_;
 
         /**
-         * <code>uint64 long_starting_address = 1;</code>
-         * @return The longStartingAddress.
+         * <code>uint64 starting_address = 1;</code>
+         * @return The startingAddress.
          */
-        public long getLongStartingAddress() {
-          if (startingAddressCase_ == 1) {
-            return (java.lang.Long) startingAddress_;
+        public long getStartingAddress() {
+          if (startingAddressValueCase_ == 1) {
+            return (java.lang.Long) startingAddressValue_;
           }
           return 0L;
         }
         /**
-         * <code>uint64 long_starting_address = 1;</code>
-         * @param value The longStartingAddress to set.
+         * <code>uint64 starting_address = 1;</code>
+         * @param value The startingAddress to set.
          * @return This builder for chaining.
          */
-        public Builder setLongStartingAddress(long value) {
-          startingAddressCase_ = 1;
-          startingAddress_ = value;
+        public Builder setStartingAddress(long value) {
+          startingAddressValueCase_ = 1;
+          startingAddressValue_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>uint64 long_starting_address = 1;</code>
+         * <code>uint64 starting_address = 1;</code>
          * @return This builder for chaining.
          */
-        public Builder clearLongStartingAddress() {
-          if (startingAddressCase_ == 1) {
-            startingAddressCase_ = 0;
-            startingAddress_ = null;
+        public Builder clearStartingAddress() {
+          if (startingAddressValueCase_ == 1) {
+            startingAddressValueCase_ = 0;
+            startingAddressValue_ = null;
             onChanged();
           }
           return this;
@@ -6217,15 +6450,15 @@ public final class FunctionProto {
          */
         public java.lang.String getSymbolicStartingAddress() {
           java.lang.Object ref = "";
-          if (startingAddressCase_ == 2) {
-            ref = startingAddress_;
+          if (startingAddressValueCase_ == 2) {
+            ref = startingAddressValue_;
           }
           if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
                 (com.google.protobuf.ByteString) ref;
             java.lang.String s = bs.toStringUtf8();
-            if (startingAddressCase_ == 2) {
-              startingAddress_ = s;
+            if (startingAddressValueCase_ == 2) {
+              startingAddressValue_ = s;
             }
             return s;
           } else {
@@ -6239,15 +6472,15 @@ public final class FunctionProto {
         public com.google.protobuf.ByteString
             getSymbolicStartingAddressBytes() {
           java.lang.Object ref = "";
-          if (startingAddressCase_ == 2) {
-            ref = startingAddress_;
+          if (startingAddressValueCase_ == 2) {
+            ref = startingAddressValue_;
           }
           if (ref instanceof String) {
             com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
-            if (startingAddressCase_ == 2) {
-              startingAddress_ = b;
+            if (startingAddressValueCase_ == 2) {
+              startingAddressValue_ = b;
             }
             return b;
           } else {
@@ -6264,8 +6497,8 @@ public final class FunctionProto {
           if (value == null) {
     throw new NullPointerException();
   }
-  startingAddressCase_ = 2;
-          startingAddress_ = value;
+  startingAddressValueCase_ = 2;
+          startingAddressValue_ = value;
           onChanged();
           return this;
         }
@@ -6274,9 +6507,9 @@ public final class FunctionProto {
          * @return This builder for chaining.
          */
         public Builder clearSymbolicStartingAddress() {
-          if (startingAddressCase_ == 2) {
-            startingAddressCase_ = 0;
-            startingAddress_ = null;
+          if (startingAddressValueCase_ == 2) {
+            startingAddressValueCase_ = 0;
+            startingAddressValue_ = null;
             onChanged();
           }
           return this;
@@ -6292,41 +6525,41 @@ public final class FunctionProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-          startingAddressCase_ = 2;
-          startingAddress_ = value;
+          startingAddressValueCase_ = 2;
+          startingAddressValue_ = value;
           onChanged();
           return this;
         }
 
         /**
-         * <code>uint64 long_ending_address = 3;</code>
-         * @return The longEndingAddress.
+         * <code>uint64 ending_address = 3;</code>
+         * @return The endingAddress.
          */
-        public long getLongEndingAddress() {
-          if (endingAddressCase_ == 3) {
-            return (java.lang.Long) endingAddress_;
+        public long getEndingAddress() {
+          if (endingAddressValueCase_ == 3) {
+            return (java.lang.Long) endingAddressValue_;
           }
           return 0L;
         }
         /**
-         * <code>uint64 long_ending_address = 3;</code>
-         * @param value The longEndingAddress to set.
+         * <code>uint64 ending_address = 3;</code>
+         * @param value The endingAddress to set.
          * @return This builder for chaining.
          */
-        public Builder setLongEndingAddress(long value) {
-          endingAddressCase_ = 3;
-          endingAddress_ = value;
+        public Builder setEndingAddress(long value) {
+          endingAddressValueCase_ = 3;
+          endingAddressValue_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>uint64 long_ending_address = 3;</code>
+         * <code>uint64 ending_address = 3;</code>
          * @return This builder for chaining.
          */
-        public Builder clearLongEndingAddress() {
-          if (endingAddressCase_ == 3) {
-            endingAddressCase_ = 0;
-            endingAddress_ = null;
+        public Builder clearEndingAddress() {
+          if (endingAddressValueCase_ == 3) {
+            endingAddressValueCase_ = 0;
+            endingAddressValue_ = null;
             onChanged();
           }
           return this;
@@ -6338,15 +6571,15 @@ public final class FunctionProto {
          */
         public java.lang.String getSymbolicEndingAddress() {
           java.lang.Object ref = "";
-          if (endingAddressCase_ == 4) {
-            ref = endingAddress_;
+          if (endingAddressValueCase_ == 4) {
+            ref = endingAddressValue_;
           }
           if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
                 (com.google.protobuf.ByteString) ref;
             java.lang.String s = bs.toStringUtf8();
-            if (endingAddressCase_ == 4) {
-              endingAddress_ = s;
+            if (endingAddressValueCase_ == 4) {
+              endingAddressValue_ = s;
             }
             return s;
           } else {
@@ -6360,15 +6593,15 @@ public final class FunctionProto {
         public com.google.protobuf.ByteString
             getSymbolicEndingAddressBytes() {
           java.lang.Object ref = "";
-          if (endingAddressCase_ == 4) {
-            ref = endingAddress_;
+          if (endingAddressValueCase_ == 4) {
+            ref = endingAddressValue_;
           }
           if (ref instanceof String) {
             com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
-            if (endingAddressCase_ == 4) {
-              endingAddress_ = b;
+            if (endingAddressValueCase_ == 4) {
+              endingAddressValue_ = b;
             }
             return b;
           } else {
@@ -6385,8 +6618,8 @@ public final class FunctionProto {
           if (value == null) {
     throw new NullPointerException();
   }
-  endingAddressCase_ = 4;
-          endingAddress_ = value;
+  endingAddressValueCase_ = 4;
+          endingAddressValue_ = value;
           onChanged();
           return this;
         }
@@ -6395,9 +6628,9 @@ public final class FunctionProto {
          * @return This builder for chaining.
          */
         public Builder clearSymbolicEndingAddress() {
-          if (endingAddressCase_ == 4) {
-            endingAddressCase_ = 0;
-            endingAddress_ = null;
+          if (endingAddressValueCase_ == 4) {
+            endingAddressValueCase_ = 0;
+            endingAddressValue_ = null;
             onChanged();
           }
           return this;
@@ -6413,8 +6646,8 @@ public final class FunctionProto {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-          endingAddressCase_ = 4;
-          endingAddress_ = value;
+          endingAddressValueCase_ = 4;
+          endingAddressValue_ = value;
           onChanged();
           return this;
         }
@@ -6711,6 +6944,47 @@ public final class FunctionProto {
 
     }
 
+    private int entryPointAddressCase_ = 0;
+    private java.lang.Object entryPointAddress_;
+    public enum EntryPointAddressCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      ENTRY_POINT(2),
+      SYMBOLIC_ENTRY_POINT(3),
+      ENTRYPOINTADDRESS_NOT_SET(0);
+      private final int value;
+      private EntryPointAddressCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static EntryPointAddressCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static EntryPointAddressCase forNumber(int value) {
+        switch (value) {
+          case 2: return ENTRY_POINT;
+          case 3: return SYMBOLIC_ENTRY_POINT;
+          case 0: return ENTRYPOINTADDRESS_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public EntryPointAddressCase
+    getEntryPointAddressCase() {
+      return EntryPointAddressCase.forNumber(
+          entryPointAddressCase_);
+    }
+
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
@@ -6748,45 +7022,66 @@ public final class FunctionProto {
     }
 
     public static final int ENTRY_POINT_FIELD_NUMBER = 2;
-    private volatile java.lang.Object entryPoint_;
     /**
-     * <code>string entry_point = 2;</code>
+     * <code>uint64 entry_point = 2;</code>
      * @return The entryPoint.
      */
-    public java.lang.String getEntryPoint() {
-      java.lang.Object ref = entryPoint_;
+    public long getEntryPoint() {
+      if (entryPointAddressCase_ == 2) {
+        return (java.lang.Long) entryPointAddress_;
+      }
+      return 0L;
+    }
+
+    public static final int SYMBOLIC_ENTRY_POINT_FIELD_NUMBER = 3;
+    /**
+     * <code>string symbolic_entry_point = 3;</code>
+     * @return The symbolicEntryPoint.
+     */
+    public java.lang.String getSymbolicEntryPoint() {
+      java.lang.Object ref = "";
+      if (entryPointAddressCase_ == 3) {
+        ref = entryPointAddress_;
+      }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        entryPoint_ = s;
+        if (entryPointAddressCase_ == 3) {
+          entryPointAddress_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string entry_point = 2;</code>
-     * @return The bytes for entryPoint.
+     * <code>string symbolic_entry_point = 3;</code>
+     * @return The bytes for symbolicEntryPoint.
      */
     public com.google.protobuf.ByteString
-        getEntryPointBytes() {
-      java.lang.Object ref = entryPoint_;
+        getSymbolicEntryPointBytes() {
+      java.lang.Object ref = "";
+      if (entryPointAddressCase_ == 3) {
+        ref = entryPointAddress_;
+      }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        entryPoint_ = b;
+        if (entryPointAddressCase_ == 3) {
+          entryPointAddress_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int DECOMPILED_FIELD_NUMBER = 3;
+    public static final int DECOMPILED_FIELD_NUMBER = 4;
     private volatile java.lang.Object decompiled_;
     /**
-     * <code>string decompiled = 3;</code>
+     * <code>string decompiled = 4;</code>
      * @return The decompiled.
      */
     public java.lang.String getDecompiled() {
@@ -6802,7 +7097,7 @@ public final class FunctionProto {
       }
     }
     /**
-     * <code>string decompiled = 3;</code>
+     * <code>string decompiled = 4;</code>
      * @return The bytes for decompiled.
      */
     public com.google.protobuf.ByteString
@@ -6819,105 +7114,105 @@ public final class FunctionProto {
       }
     }
 
-    public static final int PARAMETERS_FIELD_NUMBER = 4;
+    public static final int PARAMETERS_FIELD_NUMBER = 5;
     private java.util.List<protoclasses.FunctionProto.FunctionMessage.ParameterMessage> parameters_;
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     public java.util.List<protoclasses.FunctionProto.FunctionMessage.ParameterMessage> getParametersList() {
       return parameters_;
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.ParameterMessageOrBuilder> 
         getParametersOrBuilderList() {
       return parameters_;
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     public int getParametersCount() {
       return parameters_.size();
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     public protoclasses.FunctionProto.FunctionMessage.ParameterMessage getParameters(int index) {
       return parameters_.get(index);
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+     * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
      */
     public protoclasses.FunctionProto.FunctionMessage.ParameterMessageOrBuilder getParametersOrBuilder(
         int index) {
       return parameters_.get(index);
     }
 
-    public static final int VARIABLES_FIELD_NUMBER = 5;
+    public static final int VARIABLES_FIELD_NUMBER = 6;
     private java.util.List<protoclasses.FunctionProto.FunctionMessage.VariableMessage> variables_;
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     public java.util.List<protoclasses.FunctionProto.FunctionMessage.VariableMessage> getVariablesList() {
       return variables_;
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.VariableMessageOrBuilder> 
         getVariablesOrBuilderList() {
       return variables_;
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     public int getVariablesCount() {
       return variables_.size();
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     public protoclasses.FunctionProto.FunctionMessage.VariableMessage getVariables(int index) {
       return variables_.get(index);
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+     * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
      */
     public protoclasses.FunctionProto.FunctionMessage.VariableMessageOrBuilder getVariablesOrBuilder(
         int index) {
       return variables_.get(index);
     }
 
-    public static final int BASIC_BLOCKS_FIELD_NUMBER = 6;
+    public static final int BASIC_BLOCKS_FIELD_NUMBER = 7;
     private java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage> basicBlocks_;
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage> getBasicBlocksList() {
       return basicBlocks_;
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessageOrBuilder> 
         getBasicBlocksOrBuilderList() {
       return basicBlocks_;
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     public int getBasicBlocksCount() {
       return basicBlocks_.size();
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage getBasicBlocks(int index) {
       return basicBlocks_.get(index);
     }
     /**
-     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+     * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
      */
     public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessageOrBuilder getBasicBlocksOrBuilder(
         int index) {
@@ -6941,20 +7236,24 @@ public final class FunctionProto {
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (!getEntryPointBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, entryPoint_);
+      if (entryPointAddressCase_ == 2) {
+        output.writeUInt64(
+            2, (long)((java.lang.Long) entryPointAddress_));
+      }
+      if (entryPointAddressCase_ == 3) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, entryPointAddress_);
       }
       if (!getDecompiledBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, decompiled_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, decompiled_);
       }
       for (int i = 0; i < parameters_.size(); i++) {
-        output.writeMessage(4, parameters_.get(i));
+        output.writeMessage(5, parameters_.get(i));
       }
       for (int i = 0; i < variables_.size(); i++) {
-        output.writeMessage(5, variables_.get(i));
+        output.writeMessage(6, variables_.get(i));
       }
       for (int i = 0; i < basicBlocks_.size(); i++) {
-        output.writeMessage(6, basicBlocks_.get(i));
+        output.writeMessage(7, basicBlocks_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -6968,23 +7267,28 @@ public final class FunctionProto {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      if (!getEntryPointBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, entryPoint_);
+      if (entryPointAddressCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(
+              2, (long)((java.lang.Long) entryPointAddress_));
+      }
+      if (entryPointAddressCase_ == 3) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, entryPointAddress_);
       }
       if (!getDecompiledBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, decompiled_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, decompiled_);
       }
       for (int i = 0; i < parameters_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, parameters_.get(i));
+          .computeMessageSize(5, parameters_.get(i));
       }
       for (int i = 0; i < variables_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, variables_.get(i));
+          .computeMessageSize(6, variables_.get(i));
       }
       for (int i = 0; i < basicBlocks_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, basicBlocks_.get(i));
+          .computeMessageSize(7, basicBlocks_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7003,8 +7307,6 @@ public final class FunctionProto {
 
       if (!getName()
           .equals(other.getName())) return false;
-      if (!getEntryPoint()
-          .equals(other.getEntryPoint())) return false;
       if (!getDecompiled()
           .equals(other.getDecompiled())) return false;
       if (!getParametersList()
@@ -7013,6 +7315,19 @@ public final class FunctionProto {
           .equals(other.getVariablesList())) return false;
       if (!getBasicBlocksList()
           .equals(other.getBasicBlocksList())) return false;
+      if (!getEntryPointAddressCase().equals(other.getEntryPointAddressCase())) return false;
+      switch (entryPointAddressCase_) {
+        case 2:
+          if (getEntryPoint()
+              != other.getEntryPoint()) return false;
+          break;
+        case 3:
+          if (!getSymbolicEntryPoint()
+              .equals(other.getSymbolicEntryPoint())) return false;
+          break;
+        case 0:
+        default:
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7026,8 +7341,6 @@ public final class FunctionProto {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + ENTRY_POINT_FIELD_NUMBER;
-      hash = (53 * hash) + getEntryPoint().hashCode();
       hash = (37 * hash) + DECOMPILED_FIELD_NUMBER;
       hash = (53 * hash) + getDecompiled().hashCode();
       if (getParametersCount() > 0) {
@@ -7041,6 +7354,19 @@ public final class FunctionProto {
       if (getBasicBlocksCount() > 0) {
         hash = (37 * hash) + BASIC_BLOCKS_FIELD_NUMBER;
         hash = (53 * hash) + getBasicBlocksList().hashCode();
+      }
+      switch (entryPointAddressCase_) {
+        case 2:
+          hash = (37 * hash) + ENTRY_POINT_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getEntryPoint());
+          break;
+        case 3:
+          hash = (37 * hash) + SYMBOLIC_ENTRY_POINT_FIELD_NUMBER;
+          hash = (53 * hash) + getSymbolicEntryPoint().hashCode();
+          break;
+        case 0:
+        default:
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -7180,8 +7506,6 @@ public final class FunctionProto {
         super.clear();
         name_ = "";
 
-        entryPoint_ = "";
-
         decompiled_ = "";
 
         if (parametersBuilder_ == null) {
@@ -7202,6 +7526,8 @@ public final class FunctionProto {
         } else {
           basicBlocksBuilder_.clear();
         }
+        entryPointAddressCase_ = 0;
+        entryPointAddress_ = null;
         return this;
       }
 
@@ -7230,7 +7556,12 @@ public final class FunctionProto {
         protoclasses.FunctionProto.FunctionMessage result = new protoclasses.FunctionProto.FunctionMessage(this);
         int from_bitField0_ = bitField0_;
         result.name_ = name_;
-        result.entryPoint_ = entryPoint_;
+        if (entryPointAddressCase_ == 2) {
+          result.entryPointAddress_ = entryPointAddress_;
+        }
+        if (entryPointAddressCase_ == 3) {
+          result.entryPointAddress_ = entryPointAddress_;
+        }
         result.decompiled_ = decompiled_;
         if (parametersBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -7259,6 +7590,7 @@ public final class FunctionProto {
         } else {
           result.basicBlocks_ = basicBlocksBuilder_.build();
         }
+        result.entryPointAddressCase_ = entryPointAddressCase_;
         onBuilt();
         return result;
       }
@@ -7309,10 +7641,6 @@ public final class FunctionProto {
         if (other == protoclasses.FunctionProto.FunctionMessage.getDefaultInstance()) return this;
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
-          onChanged();
-        }
-        if (!other.getEntryPoint().isEmpty()) {
-          entryPoint_ = other.entryPoint_;
           onChanged();
         }
         if (!other.getDecompiled().isEmpty()) {
@@ -7397,6 +7725,21 @@ public final class FunctionProto {
             }
           }
         }
+        switch (other.getEntryPointAddressCase()) {
+          case ENTRY_POINT: {
+            setEntryPoint(other.getEntryPoint());
+            break;
+          }
+          case SYMBOLIC_ENTRY_POINT: {
+            entryPointAddressCase_ = 3;
+            entryPointAddress_ = other.entryPointAddress_;
+            onChanged();
+            break;
+          }
+          case ENTRYPOINTADDRESS_NOT_SET: {
+            break;
+          }
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -7425,6 +7768,21 @@ public final class FunctionProto {
         }
         return this;
       }
+      private int entryPointAddressCase_ = 0;
+      private java.lang.Object entryPointAddress_;
+      public EntryPointAddressCase
+          getEntryPointAddressCase() {
+        return EntryPointAddressCase.forNumber(
+            entryPointAddressCase_);
+      }
+
+      public Builder clearEntryPointAddress() {
+        entryPointAddressCase_ = 0;
+        entryPointAddress_ = null;
+        onChanged();
+        return this;
+      }
+
       private int bitField0_;
 
       private java.lang.Object name_ = "";
@@ -7503,85 +7861,130 @@ public final class FunctionProto {
         return this;
       }
 
-      private java.lang.Object entryPoint_ = "";
       /**
-       * <code>string entry_point = 2;</code>
+       * <code>uint64 entry_point = 2;</code>
        * @return The entryPoint.
        */
-      public java.lang.String getEntryPoint() {
-        java.lang.Object ref = entryPoint_;
+      public long getEntryPoint() {
+        if (entryPointAddressCase_ == 2) {
+          return (java.lang.Long) entryPointAddress_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>uint64 entry_point = 2;</code>
+       * @param value The entryPoint to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEntryPoint(long value) {
+        entryPointAddressCase_ = 2;
+        entryPointAddress_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 entry_point = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEntryPoint() {
+        if (entryPointAddressCase_ == 2) {
+          entryPointAddressCase_ = 0;
+          entryPointAddress_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string symbolic_entry_point = 3;</code>
+       * @return The symbolicEntryPoint.
+       */
+      public java.lang.String getSymbolicEntryPoint() {
+        java.lang.Object ref = "";
+        if (entryPointAddressCase_ == 3) {
+          ref = entryPointAddress_;
+        }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          entryPoint_ = s;
+          if (entryPointAddressCase_ == 3) {
+            entryPointAddress_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string entry_point = 2;</code>
-       * @return The bytes for entryPoint.
+       * <code>string symbolic_entry_point = 3;</code>
+       * @return The bytes for symbolicEntryPoint.
        */
       public com.google.protobuf.ByteString
-          getEntryPointBytes() {
-        java.lang.Object ref = entryPoint_;
+          getSymbolicEntryPointBytes() {
+        java.lang.Object ref = "";
+        if (entryPointAddressCase_ == 3) {
+          ref = entryPointAddress_;
+        }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          entryPoint_ = b;
+          if (entryPointAddressCase_ == 3) {
+            entryPointAddress_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string entry_point = 2;</code>
-       * @param value The entryPoint to set.
+       * <code>string symbolic_entry_point = 3;</code>
+       * @param value The symbolicEntryPoint to set.
        * @return This builder for chaining.
        */
-      public Builder setEntryPoint(
+      public Builder setSymbolicEntryPoint(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        entryPoint_ = value;
+  entryPointAddressCase_ = 3;
+        entryPointAddress_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string entry_point = 2;</code>
+       * <code>string symbolic_entry_point = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearEntryPoint() {
-        
-        entryPoint_ = getDefaultInstance().getEntryPoint();
-        onChanged();
+      public Builder clearSymbolicEntryPoint() {
+        if (entryPointAddressCase_ == 3) {
+          entryPointAddressCase_ = 0;
+          entryPointAddress_ = null;
+          onChanged();
+        }
         return this;
       }
       /**
-       * <code>string entry_point = 2;</code>
-       * @param value The bytes for entryPoint to set.
+       * <code>string symbolic_entry_point = 3;</code>
+       * @param value The bytes for symbolicEntryPoint to set.
        * @return This builder for chaining.
        */
-      public Builder setEntryPointBytes(
+      public Builder setSymbolicEntryPointBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        entryPoint_ = value;
+        entryPointAddressCase_ = 3;
+        entryPointAddress_ = value;
         onChanged();
         return this;
       }
 
       private java.lang.Object decompiled_ = "";
       /**
-       * <code>string decompiled = 3;</code>
+       * <code>string decompiled = 4;</code>
        * @return The decompiled.
        */
       public java.lang.String getDecompiled() {
@@ -7597,7 +8000,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>string decompiled = 3;</code>
+       * <code>string decompiled = 4;</code>
        * @return The bytes for decompiled.
        */
       public com.google.protobuf.ByteString
@@ -7614,7 +8017,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>string decompiled = 3;</code>
+       * <code>string decompiled = 4;</code>
        * @param value The decompiled to set.
        * @return This builder for chaining.
        */
@@ -7629,7 +8032,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>string decompiled = 3;</code>
+       * <code>string decompiled = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearDecompiled() {
@@ -7639,7 +8042,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>string decompiled = 3;</code>
+       * <code>string decompiled = 4;</code>
        * @param value The bytes for decompiled to set.
        * @return This builder for chaining.
        */
@@ -7668,7 +8071,7 @@ public final class FunctionProto {
           protoclasses.FunctionProto.FunctionMessage.ParameterMessage, protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder, protoclasses.FunctionProto.FunctionMessage.ParameterMessageOrBuilder> parametersBuilder_;
 
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public java.util.List<protoclasses.FunctionProto.FunctionMessage.ParameterMessage> getParametersList() {
         if (parametersBuilder_ == null) {
@@ -7678,7 +8081,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public int getParametersCount() {
         if (parametersBuilder_ == null) {
@@ -7688,7 +8091,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.ParameterMessage getParameters(int index) {
         if (parametersBuilder_ == null) {
@@ -7698,7 +8101,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public Builder setParameters(
           int index, protoclasses.FunctionProto.FunctionMessage.ParameterMessage value) {
@@ -7715,7 +8118,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public Builder setParameters(
           int index, protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder builderForValue) {
@@ -7729,7 +8132,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public Builder addParameters(protoclasses.FunctionProto.FunctionMessage.ParameterMessage value) {
         if (parametersBuilder_ == null) {
@@ -7745,7 +8148,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public Builder addParameters(
           int index, protoclasses.FunctionProto.FunctionMessage.ParameterMessage value) {
@@ -7762,7 +8165,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public Builder addParameters(
           protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder builderForValue) {
@@ -7776,7 +8179,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public Builder addParameters(
           int index, protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder builderForValue) {
@@ -7790,7 +8193,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public Builder addAllParameters(
           java.lang.Iterable<? extends protoclasses.FunctionProto.FunctionMessage.ParameterMessage> values) {
@@ -7805,7 +8208,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public Builder clearParameters() {
         if (parametersBuilder_ == null) {
@@ -7818,7 +8221,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public Builder removeParameters(int index) {
         if (parametersBuilder_ == null) {
@@ -7831,14 +8234,14 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder getParametersBuilder(
           int index) {
         return getParametersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.ParameterMessageOrBuilder getParametersOrBuilder(
           int index) {
@@ -7848,7 +8251,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.ParameterMessageOrBuilder> 
            getParametersOrBuilderList() {
@@ -7859,14 +8262,14 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder addParametersBuilder() {
         return getParametersFieldBuilder().addBuilder(
             protoclasses.FunctionProto.FunctionMessage.ParameterMessage.getDefaultInstance());
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder addParametersBuilder(
           int index) {
@@ -7874,7 +8277,7 @@ public final class FunctionProto {
             index, protoclasses.FunctionProto.FunctionMessage.ParameterMessage.getDefaultInstance());
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 4;</code>
+       * <code>repeated .protoclasses.FunctionMessage.ParameterMessage parameters = 5;</code>
        */
       public java.util.List<protoclasses.FunctionProto.FunctionMessage.ParameterMessage.Builder> 
            getParametersBuilderList() {
@@ -7908,7 +8311,7 @@ public final class FunctionProto {
           protoclasses.FunctionProto.FunctionMessage.VariableMessage, protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder, protoclasses.FunctionProto.FunctionMessage.VariableMessageOrBuilder> variablesBuilder_;
 
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public java.util.List<protoclasses.FunctionProto.FunctionMessage.VariableMessage> getVariablesList() {
         if (variablesBuilder_ == null) {
@@ -7918,7 +8321,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public int getVariablesCount() {
         if (variablesBuilder_ == null) {
@@ -7928,7 +8331,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.VariableMessage getVariables(int index) {
         if (variablesBuilder_ == null) {
@@ -7938,7 +8341,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public Builder setVariables(
           int index, protoclasses.FunctionProto.FunctionMessage.VariableMessage value) {
@@ -7955,7 +8358,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public Builder setVariables(
           int index, protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder builderForValue) {
@@ -7969,7 +8372,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public Builder addVariables(protoclasses.FunctionProto.FunctionMessage.VariableMessage value) {
         if (variablesBuilder_ == null) {
@@ -7985,7 +8388,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public Builder addVariables(
           int index, protoclasses.FunctionProto.FunctionMessage.VariableMessage value) {
@@ -8002,7 +8405,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public Builder addVariables(
           protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder builderForValue) {
@@ -8016,7 +8419,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public Builder addVariables(
           int index, protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder builderForValue) {
@@ -8030,7 +8433,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public Builder addAllVariables(
           java.lang.Iterable<? extends protoclasses.FunctionProto.FunctionMessage.VariableMessage> values) {
@@ -8045,7 +8448,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public Builder clearVariables() {
         if (variablesBuilder_ == null) {
@@ -8058,7 +8461,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public Builder removeVariables(int index) {
         if (variablesBuilder_ == null) {
@@ -8071,14 +8474,14 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder getVariablesBuilder(
           int index) {
         return getVariablesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.VariableMessageOrBuilder getVariablesOrBuilder(
           int index) {
@@ -8088,7 +8491,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.VariableMessageOrBuilder> 
            getVariablesOrBuilderList() {
@@ -8099,14 +8502,14 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder addVariablesBuilder() {
         return getVariablesFieldBuilder().addBuilder(
             protoclasses.FunctionProto.FunctionMessage.VariableMessage.getDefaultInstance());
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder addVariablesBuilder(
           int index) {
@@ -8114,7 +8517,7 @@ public final class FunctionProto {
             index, protoclasses.FunctionProto.FunctionMessage.VariableMessage.getDefaultInstance());
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 5;</code>
+       * <code>repeated .protoclasses.FunctionMessage.VariableMessage variables = 6;</code>
        */
       public java.util.List<protoclasses.FunctionProto.FunctionMessage.VariableMessage.Builder> 
            getVariablesBuilderList() {
@@ -8148,7 +8551,7 @@ public final class FunctionProto {
           protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.Builder, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessageOrBuilder> basicBlocksBuilder_;
 
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage> getBasicBlocksList() {
         if (basicBlocksBuilder_ == null) {
@@ -8158,7 +8561,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public int getBasicBlocksCount() {
         if (basicBlocksBuilder_ == null) {
@@ -8168,7 +8571,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage getBasicBlocks(int index) {
         if (basicBlocksBuilder_ == null) {
@@ -8178,7 +8581,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public Builder setBasicBlocks(
           int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage value) {
@@ -8195,7 +8598,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public Builder setBasicBlocks(
           int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.Builder builderForValue) {
@@ -8209,7 +8612,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public Builder addBasicBlocks(protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage value) {
         if (basicBlocksBuilder_ == null) {
@@ -8225,7 +8628,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public Builder addBasicBlocks(
           int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage value) {
@@ -8242,7 +8645,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public Builder addBasicBlocks(
           protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.Builder builderForValue) {
@@ -8256,7 +8659,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public Builder addBasicBlocks(
           int index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.Builder builderForValue) {
@@ -8270,7 +8673,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public Builder addAllBasicBlocks(
           java.lang.Iterable<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage> values) {
@@ -8285,7 +8688,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public Builder clearBasicBlocks() {
         if (basicBlocksBuilder_ == null) {
@@ -8298,7 +8701,7 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public Builder removeBasicBlocks(int index) {
         if (basicBlocksBuilder_ == null) {
@@ -8311,14 +8714,14 @@ public final class FunctionProto {
         return this;
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.Builder getBasicBlocksBuilder(
           int index) {
         return getBasicBlocksFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessageOrBuilder getBasicBlocksOrBuilder(
           int index) {
@@ -8328,7 +8731,7 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public java.util.List<? extends protoclasses.FunctionProto.FunctionMessage.BasicBlockMessageOrBuilder> 
            getBasicBlocksOrBuilderList() {
@@ -8339,14 +8742,14 @@ public final class FunctionProto {
         }
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.Builder addBasicBlocksBuilder() {
         return getBasicBlocksFieldBuilder().addBuilder(
             protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.getDefaultInstance());
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.Builder addBasicBlocksBuilder(
           int index) {
@@ -8354,7 +8757,7 @@ public final class FunctionProto {
             index, protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.getDefaultInstance());
       }
       /**
-       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 6;</code>
+       * <code>repeated .protoclasses.FunctionMessage.BasicBlockMessage basic_blocks = 7;</code>
        */
       public java.util.List<protoclasses.FunctionProto.FunctionMessage.BasicBlockMessage.Builder> 
            getBasicBlocksBuilderList() {
@@ -9264,42 +9667,46 @@ public final class FunctionProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016function.proto\022\014protoclasses\"\221\n\n\017Funct" +
-      "ionMessage\022\014\n\004name\030\001 \001(\t\022\023\n\013entry_point\030" +
-      "\002 \001(\t\022\022\n\ndecompiled\030\003 \001(\t\022B\n\nparameters\030" +
-      "\004 \003(\0132..protoclasses.FunctionMessage.Par" +
-      "ameterMessage\022@\n\tvariables\030\005 \003(\0132-.proto" +
-      "classes.FunctionMessage.VariableMessage\022" +
-      "E\n\014basic_blocks\030\006 \003(\0132/.protoclasses.Fun" +
-      "ctionMessage.BasicBlockMessage\032V\n\020Parame" +
-      "terMessage\022\014\n\004name\030\001 \001(\t\022\021\n\tdata_type\030\002 " +
-      "\001(\t\022\016\n\006length\030\003 \001(\r\022\021\n\tregisters\030\004 \003(\t\032k" +
-      "\n\017VariableMessage\022\014\n\004name\030\001 \001(\t\022\021\n\tdata_" +
-      "type\030\002 \001(\t\022\016\n\006length\030\003 \001(\r\022\024\n\014stack_offs" +
-      "et\030\004 \001(\005\022\021\n\tregisters\030\005 \003(\t\032\264\006\n\021BasicBlo" +
-      "ckMessage\022\037\n\025long_starting_address\030\001 \001(\004" +
-      "H\000\022#\n\031symbolic_starting_address\030\002 \001(\tH\000\022" +
-      "\035\n\023long_ending_address\030\003 \001(\004H\001\022!\n\027symbol" +
-      "ic_ending_address\030\004 \001(\tH\001\022X\n\014instruction" +
-      "s\030\005 \003(\0132B.protoclasses.FunctionMessage.B" +
-      "asicBlockMessage.InstructionMessage\032\226\004\n\022" +
-      "InstructionMessage\022\020\n\010mnemonic\030\001 \001(\t\022\020\n\010" +
-      "is_thumb\030\002 \001(\010\022c\n\010operands\030\003 \003(\0132Q.proto" +
-      "classes.FunctionMessage.BasicBlockMessag" +
-      "e.InstructionMessage.OperandMessage\032\366\002\n\016" +
-      "OperandMessage\022\014\n\004name\030\001 \001(\t\022\024\n\014referenc" +
-      "e_id\030\002 \003(\005\022s\n\nop_objects\030\003 \003(\0132_.protocl" +
-      "asses.FunctionMessage.BasicBlockMessage." +
-      "InstructionMessage.OperandMessage.Operan" +
-      "dObject\032\312\001\n\rOperandObject\022\014\n\004name\030\001 \001(\t\022" +
-      "r\n\004type\030\002 \001(\0162d.protoclasses.FunctionMes" +
-      "sage.BasicBlockMessage.InstructionMessag" +
-      "e.OperandMessage.OperandObject.Type\"7\n\004T" +
-      "ype\022\010\n\004NULL\020\000\022\014\n\010REGISTER\020\001\022\n\n\006SCALAR\020\002\022" +
-      "\013\n\007ADDRESS\020\003B\022\n\020starting_addressB\020\n\016endi" +
-      "ng_address\"A\n\rFunctionsList\0220\n\tfunctions" +
-      "\030\001 \003(\0132\035.protoclasses.FunctionMessageB\017B" +
-      "\rFunctionProtob\006proto3"
+      "\n\016function.proto\022\014protoclasses\"\245\013\n\017Funct" +
+      "ionMessage\022\014\n\004name\030\001 \001(\t\022\025\n\013entry_point\030" +
+      "\002 \001(\004H\000\022\036\n\024symbolic_entry_point\030\003 \001(\tH\000\022" +
+      "\022\n\ndecompiled\030\004 \001(\t\022B\n\nparameters\030\005 \003(\0132" +
+      "..protoclasses.FunctionMessage.Parameter" +
+      "Message\022@\n\tvariables\030\006 \003(\0132-.protoclasse" +
+      "s.FunctionMessage.VariableMessage\022E\n\014bas" +
+      "ic_blocks\030\007 \003(\0132/.protoclasses.FunctionM" +
+      "essage.BasicBlockMessage\032X\n\020ParameterMes" +
+      "sage\022\014\n\004name\030\001 \001(\t\022\021\n\tdata_type\030\002 \001(\t\022\016\n" +
+      "\006length\030\003 \001(\r\022\023\n\013register_id\030\004 \003(\005\032m\n\017Va" +
+      "riableMessage\022\014\n\004name\030\001 \001(\t\022\021\n\tdata_type" +
+      "\030\002 \001(\t\022\016\n\006length\030\003 \001(\r\022\024\n\014stack_offset\030\004" +
+      " \001(\005\022\023\n\013register_id\030\005 \003(\005\032\213\007\n\021BasicBlock" +
+      "Message\022\032\n\020starting_address\030\001 \001(\004H\000\022#\n\031s" +
+      "ymbolic_starting_address\030\002 \001(\tH\000\022\030\n\016endi" +
+      "ng_address\030\003 \001(\004H\001\022!\n\027symbolic_ending_ad" +
+      "dress\030\004 \001(\tH\001\022X\n\014instructions\030\005 \003(\0132B.pr" +
+      "otoclasses.FunctionMessage.BasicBlockMes" +
+      "sage.InstructionMessage\032\353\004\n\022InstructionM" +
+      "essage\022\023\n\013mnemonic_id\030\001 \001(\005\022\020\n\010is_thumb\030" +
+      "\002 \001(\010\022c\n\010operands\030\003 \003(\0132Q.protoclasses.F" +
+      "unctionMessage.BasicBlockMessage.Instruc" +
+      "tionMessage.OperandMessage\032\310\003\n\016OperandMe" +
+      "ssage\022\014\n\004name\030\001 \001(\t\022\024\n\014reference_id\030\002 \003(" +
+      "\005\022s\n\nop_objects\030\003 \003(\0132_.protoclasses.Fun" +
+      "ctionMessage.BasicBlockMessage.Instructi" +
+      "onMessage.OperandMessage.OperandObject\032\234" +
+      "\002\n\rOperandObject\022\025\n\013register_id\030\001 \001(\005H\000\022" +
+      "\017\n\005const\030\002 \001(\003H\000\022\021\n\007address\030\003 \001(\004H\000\022\032\n\020s" +
+      "ymbolic_address\030\004 \001(\tH\000\022r\n\004type\030\005 \001(\0162d." +
+      "protoclasses.FunctionMessage.BasicBlockM" +
+      "essage.InstructionMessage.OperandMessage" +
+      ".OperandObject.Type\"7\n\004Type\022\010\n\004NULL\020\000\022\014\n" +
+      "\010REGISTER\020\001\022\n\n\006SCALAR\020\002\022\013\n\007ADDRESS\020\003B\007\n\005" +
+      "valueB\030\n\026starting_address_valueB\026\n\024endin" +
+      "g_address_valueB\025\n\023entry_point_address\"A" +
+      "\n\rFunctionsList\0220\n\tfunctions\030\001 \003(\0132\035.pro" +
+      "toclasses.FunctionMessageB\017B\rFunctionPro" +
+      "tob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9310,31 +9717,31 @@ public final class FunctionProto {
     internal_static_protoclasses_FunctionMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_descriptor,
-        new java.lang.String[] { "Name", "EntryPoint", "Decompiled", "Parameters", "Variables", "BasicBlocks", });
+        new java.lang.String[] { "Name", "EntryPoint", "SymbolicEntryPoint", "Decompiled", "Parameters", "Variables", "BasicBlocks", "EntryPointAddress", });
     internal_static_protoclasses_FunctionMessage_ParameterMessage_descriptor =
       internal_static_protoclasses_FunctionMessage_descriptor.getNestedTypes().get(0);
     internal_static_protoclasses_FunctionMessage_ParameterMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_ParameterMessage_descriptor,
-        new java.lang.String[] { "Name", "DataType", "Length", "Registers", });
+        new java.lang.String[] { "Name", "DataType", "Length", "RegisterId", });
     internal_static_protoclasses_FunctionMessage_VariableMessage_descriptor =
       internal_static_protoclasses_FunctionMessage_descriptor.getNestedTypes().get(1);
     internal_static_protoclasses_FunctionMessage_VariableMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_VariableMessage_descriptor,
-        new java.lang.String[] { "Name", "DataType", "Length", "StackOffset", "Registers", });
+        new java.lang.String[] { "Name", "DataType", "Length", "StackOffset", "RegisterId", });
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_descriptor =
       internal_static_protoclasses_FunctionMessage_descriptor.getNestedTypes().get(2);
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_BasicBlockMessage_descriptor,
-        new java.lang.String[] { "LongStartingAddress", "SymbolicStartingAddress", "LongEndingAddress", "SymbolicEndingAddress", "Instructions", "StartingAddress", "EndingAddress", });
+        new java.lang.String[] { "StartingAddress", "SymbolicStartingAddress", "EndingAddress", "SymbolicEndingAddress", "Instructions", "StartingAddressValue", "EndingAddressValue", });
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_descriptor =
       internal_static_protoclasses_FunctionMessage_BasicBlockMessage_descriptor.getNestedTypes().get(0);
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_descriptor,
-        new java.lang.String[] { "Mnemonic", "IsThumb", "Operands", });
+        new java.lang.String[] { "MnemonicId", "IsThumb", "Operands", });
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_descriptor =
       internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_descriptor.getNestedTypes().get(0);
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_fieldAccessorTable = new
@@ -9346,7 +9753,7 @@ public final class FunctionProto {
     internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_OperandObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_FunctionMessage_BasicBlockMessage_InstructionMessage_OperandMessage_OperandObject_descriptor,
-        new java.lang.String[] { "Name", "Type", });
+        new java.lang.String[] { "RegisterId", "Const", "Address", "SymbolicAddress", "Type", "Value", });
     internal_static_protoclasses_FunctionsList_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protoclasses_FunctionsList_fieldAccessorTable = new

@@ -8,9 +8,17 @@ option java_outer_classname = "ReferenceProto";
 
 message ReferenceMessage {
   int32 reference_id = 1;
-  string to_address = 2;
-  string from_address = 3;
+
+  oneof to_address {
+    uint64 long_to_address = 2;
+    string symbolic_to_address = 3;
+  }
     
+  oneof from_address {
+    uint64 long_from_address = 4;
+    string symbolic_from_address = 5;
+  }
+ 
   enum ReferenceType {
     THUNK = 0;
     CALL_OVERRIDE_UNCONDITIONAL = 1;
@@ -60,8 +68,8 @@ message ReferenceMessage {
   DataMessage ref_data = 8;
 }
 
-message ReferencesMap{
-  map<int32, ReferenceMessage> references = 1;
+message ReferenceList{
+  repeated ReferenceMessage references = 1;
 }
 
 

@@ -25,28 +25,40 @@ public final class ReferenceProto {
     int getReferenceId();
 
     /**
-     * <code>string to_address = 2;</code>
-     * @return The toAddress.
+     * <code>uint64 long_to_address = 2;</code>
+     * @return The longToAddress.
      */
-    java.lang.String getToAddress();
-    /**
-     * <code>string to_address = 2;</code>
-     * @return The bytes for toAddress.
-     */
-    com.google.protobuf.ByteString
-        getToAddressBytes();
+    long getLongToAddress();
 
     /**
-     * <code>string from_address = 3;</code>
-     * @return The fromAddress.
+     * <code>string symbolic_to_address = 3;</code>
+     * @return The symbolicToAddress.
      */
-    java.lang.String getFromAddress();
+    java.lang.String getSymbolicToAddress();
     /**
-     * <code>string from_address = 3;</code>
-     * @return The bytes for fromAddress.
+     * <code>string symbolic_to_address = 3;</code>
+     * @return The bytes for symbolicToAddress.
      */
     com.google.protobuf.ByteString
-        getFromAddressBytes();
+        getSymbolicToAddressBytes();
+
+    /**
+     * <code>uint64 long_from_address = 4;</code>
+     * @return The longFromAddress.
+     */
+    long getLongFromAddress();
+
+    /**
+     * <code>string symbolic_from_address = 5;</code>
+     * @return The symbolicFromAddress.
+     */
+    java.lang.String getSymbolicFromAddress();
+    /**
+     * <code>string symbolic_from_address = 5;</code>
+     * @return The bytes for symbolicFromAddress.
+     */
+    com.google.protobuf.ByteString
+        getSymbolicFromAddressBytes();
 
     /**
      * <code>.protoclasses.ReferenceMessage.ReferenceType ref_type = 6;</code>
@@ -84,6 +96,10 @@ public final class ReferenceProto {
      * <code>.protoclasses.DataMessage ref_data = 8;</code>
      */
     protoclasses.DataProto.DataMessageOrBuilder getRefDataOrBuilder();
+
+    public protoclasses.ReferenceProto.ReferenceMessage.ToAddressCase getToAddressCase();
+
+    public protoclasses.ReferenceProto.ReferenceMessage.FromAddressCase getFromAddressCase();
   }
   /**
    * Protobuf type {@code protoclasses.ReferenceMessage}
@@ -98,8 +114,6 @@ public final class ReferenceProto {
       super(builder);
     }
     private ReferenceMessage() {
-      toAddress_ = "";
-      fromAddress_ = "";
       refType_ = 0;
       source_ = 0;
     }
@@ -139,15 +153,25 @@ public final class ReferenceProto {
               referenceId_ = input.readInt32();
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              toAddress_ = s;
+            case 16: {
+              toAddressCase_ = 2;
+              toAddress_ = input.readUInt64();
               break;
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
-
+              toAddressCase_ = 3;
+              toAddress_ = s;
+              break;
+            }
+            case 32: {
+              fromAddressCase_ = 4;
+              fromAddress_ = input.readUInt64();
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+              fromAddressCase_ = 5;
               fromAddress_ = s;
               break;
             }
@@ -713,6 +737,88 @@ public final class ReferenceProto {
       // @@protoc_insertion_point(enum_scope:protoclasses.ReferenceMessage.SourceType)
     }
 
+    private int toAddressCase_ = 0;
+    private java.lang.Object toAddress_;
+    public enum ToAddressCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      LONG_TO_ADDRESS(2),
+      SYMBOLIC_TO_ADDRESS(3),
+      TOADDRESS_NOT_SET(0);
+      private final int value;
+      private ToAddressCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static ToAddressCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static ToAddressCase forNumber(int value) {
+        switch (value) {
+          case 2: return LONG_TO_ADDRESS;
+          case 3: return SYMBOLIC_TO_ADDRESS;
+          case 0: return TOADDRESS_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public ToAddressCase
+    getToAddressCase() {
+      return ToAddressCase.forNumber(
+          toAddressCase_);
+    }
+
+    private int fromAddressCase_ = 0;
+    private java.lang.Object fromAddress_;
+    public enum FromAddressCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      LONG_FROM_ADDRESS(4),
+      SYMBOLIC_FROM_ADDRESS(5),
+      FROMADDRESS_NOT_SET(0);
+      private final int value;
+      private FromAddressCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static FromAddressCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static FromAddressCase forNumber(int value) {
+        switch (value) {
+          case 4: return LONG_FROM_ADDRESS;
+          case 5: return SYMBOLIC_FROM_ADDRESS;
+          case 0: return FROMADDRESS_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public FromAddressCase
+    getFromAddressCase() {
+      return FromAddressCase.forNumber(
+          fromAddressCase_);
+    }
+
     public static final int REFERENCE_ID_FIELD_NUMBER = 1;
     private int referenceId_;
     /**
@@ -723,72 +829,114 @@ public final class ReferenceProto {
       return referenceId_;
     }
 
-    public static final int TO_ADDRESS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object toAddress_;
+    public static final int LONG_TO_ADDRESS_FIELD_NUMBER = 2;
     /**
-     * <code>string to_address = 2;</code>
-     * @return The toAddress.
+     * <code>uint64 long_to_address = 2;</code>
+     * @return The longToAddress.
      */
-    public java.lang.String getToAddress() {
-      java.lang.Object ref = toAddress_;
+    public long getLongToAddress() {
+      if (toAddressCase_ == 2) {
+        return (java.lang.Long) toAddress_;
+      }
+      return 0L;
+    }
+
+    public static final int SYMBOLIC_TO_ADDRESS_FIELD_NUMBER = 3;
+    /**
+     * <code>string symbolic_to_address = 3;</code>
+     * @return The symbolicToAddress.
+     */
+    public java.lang.String getSymbolicToAddress() {
+      java.lang.Object ref = "";
+      if (toAddressCase_ == 3) {
+        ref = toAddress_;
+      }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        toAddress_ = s;
+        if (toAddressCase_ == 3) {
+          toAddress_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string to_address = 2;</code>
-     * @return The bytes for toAddress.
+     * <code>string symbolic_to_address = 3;</code>
+     * @return The bytes for symbolicToAddress.
      */
     public com.google.protobuf.ByteString
-        getToAddressBytes() {
-      java.lang.Object ref = toAddress_;
+        getSymbolicToAddressBytes() {
+      java.lang.Object ref = "";
+      if (toAddressCase_ == 3) {
+        ref = toAddress_;
+      }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        toAddress_ = b;
+        if (toAddressCase_ == 3) {
+          toAddress_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int FROM_ADDRESS_FIELD_NUMBER = 3;
-    private volatile java.lang.Object fromAddress_;
+    public static final int LONG_FROM_ADDRESS_FIELD_NUMBER = 4;
     /**
-     * <code>string from_address = 3;</code>
-     * @return The fromAddress.
+     * <code>uint64 long_from_address = 4;</code>
+     * @return The longFromAddress.
      */
-    public java.lang.String getFromAddress() {
-      java.lang.Object ref = fromAddress_;
+    public long getLongFromAddress() {
+      if (fromAddressCase_ == 4) {
+        return (java.lang.Long) fromAddress_;
+      }
+      return 0L;
+    }
+
+    public static final int SYMBOLIC_FROM_ADDRESS_FIELD_NUMBER = 5;
+    /**
+     * <code>string symbolic_from_address = 5;</code>
+     * @return The symbolicFromAddress.
+     */
+    public java.lang.String getSymbolicFromAddress() {
+      java.lang.Object ref = "";
+      if (fromAddressCase_ == 5) {
+        ref = fromAddress_;
+      }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        fromAddress_ = s;
+        if (fromAddressCase_ == 5) {
+          fromAddress_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string from_address = 3;</code>
-     * @return The bytes for fromAddress.
+     * <code>string symbolic_from_address = 5;</code>
+     * @return The bytes for symbolicFromAddress.
      */
     public com.google.protobuf.ByteString
-        getFromAddressBytes() {
-      java.lang.Object ref = fromAddress_;
+        getSymbolicFromAddressBytes() {
+      java.lang.Object ref = "";
+      if (fromAddressCase_ == 5) {
+        ref = fromAddress_;
+      }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        fromAddress_ = b;
+        if (fromAddressCase_ == 5) {
+          fromAddress_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -873,11 +1021,19 @@ public final class ReferenceProto {
       if (referenceId_ != 0) {
         output.writeInt32(1, referenceId_);
       }
-      if (!getToAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, toAddress_);
+      if (toAddressCase_ == 2) {
+        output.writeUInt64(
+            2, (long)((java.lang.Long) toAddress_));
       }
-      if (!getFromAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, fromAddress_);
+      if (toAddressCase_ == 3) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, toAddress_);
+      }
+      if (fromAddressCase_ == 4) {
+        output.writeUInt64(
+            4, (long)((java.lang.Long) fromAddress_));
+      }
+      if (fromAddressCase_ == 5) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, fromAddress_);
       }
       if (refType_ != protoclasses.ReferenceProto.ReferenceMessage.ReferenceType.THUNK.getNumber()) {
         output.writeEnum(6, refType_);
@@ -901,11 +1057,21 @@ public final class ReferenceProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, referenceId_);
       }
-      if (!getToAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, toAddress_);
+      if (toAddressCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(
+              2, (long)((java.lang.Long) toAddress_));
       }
-      if (!getFromAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, fromAddress_);
+      if (toAddressCase_ == 3) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, toAddress_);
+      }
+      if (fromAddressCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(
+              4, (long)((java.lang.Long) fromAddress_));
+      }
+      if (fromAddressCase_ == 5) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, fromAddress_);
       }
       if (refType_ != protoclasses.ReferenceProto.ReferenceMessage.ReferenceType.THUNK.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
@@ -936,16 +1102,38 @@ public final class ReferenceProto {
 
       if (getReferenceId()
           != other.getReferenceId()) return false;
-      if (!getToAddress()
-          .equals(other.getToAddress())) return false;
-      if (!getFromAddress()
-          .equals(other.getFromAddress())) return false;
       if (refType_ != other.refType_) return false;
       if (source_ != other.source_) return false;
       if (hasRefData() != other.hasRefData()) return false;
       if (hasRefData()) {
         if (!getRefData()
             .equals(other.getRefData())) return false;
+      }
+      if (!getToAddressCase().equals(other.getToAddressCase())) return false;
+      switch (toAddressCase_) {
+        case 2:
+          if (getLongToAddress()
+              != other.getLongToAddress()) return false;
+          break;
+        case 3:
+          if (!getSymbolicToAddress()
+              .equals(other.getSymbolicToAddress())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!getFromAddressCase().equals(other.getFromAddressCase())) return false;
+      switch (fromAddressCase_) {
+        case 4:
+          if (getLongFromAddress()
+              != other.getLongFromAddress()) return false;
+          break;
+        case 5:
+          if (!getSymbolicFromAddress()
+              .equals(other.getSymbolicFromAddress())) return false;
+          break;
+        case 0:
+        default:
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -960,10 +1148,6 @@ public final class ReferenceProto {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + REFERENCE_ID_FIELD_NUMBER;
       hash = (53 * hash) + getReferenceId();
-      hash = (37 * hash) + TO_ADDRESS_FIELD_NUMBER;
-      hash = (53 * hash) + getToAddress().hashCode();
-      hash = (37 * hash) + FROM_ADDRESS_FIELD_NUMBER;
-      hash = (53 * hash) + getFromAddress().hashCode();
       hash = (37 * hash) + REF_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + refType_;
       hash = (37 * hash) + SOURCE_FIELD_NUMBER;
@@ -971,6 +1155,32 @@ public final class ReferenceProto {
       if (hasRefData()) {
         hash = (37 * hash) + REF_DATA_FIELD_NUMBER;
         hash = (53 * hash) + getRefData().hashCode();
+      }
+      switch (toAddressCase_) {
+        case 2:
+          hash = (37 * hash) + LONG_TO_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getLongToAddress());
+          break;
+        case 3:
+          hash = (37 * hash) + SYMBOLIC_TO_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getSymbolicToAddress().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      switch (fromAddressCase_) {
+        case 4:
+          hash = (37 * hash) + LONG_FROM_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getLongFromAddress());
+          break;
+        case 5:
+          hash = (37 * hash) + SYMBOLIC_FROM_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getSymbolicFromAddress().hashCode();
+          break;
+        case 0:
+        default:
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -1107,10 +1317,6 @@ public final class ReferenceProto {
         super.clear();
         referenceId_ = 0;
 
-        toAddress_ = "";
-
-        fromAddress_ = "";
-
         refType_ = 0;
 
         source_ = 0;
@@ -1121,6 +1327,10 @@ public final class ReferenceProto {
           refData_ = null;
           refDataBuilder_ = null;
         }
+        toAddressCase_ = 0;
+        toAddress_ = null;
+        fromAddressCase_ = 0;
+        fromAddress_ = null;
         return this;
       }
 
@@ -1148,8 +1358,18 @@ public final class ReferenceProto {
       public protoclasses.ReferenceProto.ReferenceMessage buildPartial() {
         protoclasses.ReferenceProto.ReferenceMessage result = new protoclasses.ReferenceProto.ReferenceMessage(this);
         result.referenceId_ = referenceId_;
-        result.toAddress_ = toAddress_;
-        result.fromAddress_ = fromAddress_;
+        if (toAddressCase_ == 2) {
+          result.toAddress_ = toAddress_;
+        }
+        if (toAddressCase_ == 3) {
+          result.toAddress_ = toAddress_;
+        }
+        if (fromAddressCase_ == 4) {
+          result.fromAddress_ = fromAddress_;
+        }
+        if (fromAddressCase_ == 5) {
+          result.fromAddress_ = fromAddress_;
+        }
         result.refType_ = refType_;
         result.source_ = source_;
         if (refDataBuilder_ == null) {
@@ -1157,6 +1377,8 @@ public final class ReferenceProto {
         } else {
           result.refData_ = refDataBuilder_.build();
         }
+        result.toAddressCase_ = toAddressCase_;
+        result.fromAddressCase_ = fromAddressCase_;
         onBuilt();
         return result;
       }
@@ -1208,14 +1430,6 @@ public final class ReferenceProto {
         if (other.getReferenceId() != 0) {
           setReferenceId(other.getReferenceId());
         }
-        if (!other.getToAddress().isEmpty()) {
-          toAddress_ = other.toAddress_;
-          onChanged();
-        }
-        if (!other.getFromAddress().isEmpty()) {
-          fromAddress_ = other.fromAddress_;
-          onChanged();
-        }
         if (other.refType_ != 0) {
           setRefTypeValue(other.getRefTypeValue());
         }
@@ -1224,6 +1438,36 @@ public final class ReferenceProto {
         }
         if (other.hasRefData()) {
           mergeRefData(other.getRefData());
+        }
+        switch (other.getToAddressCase()) {
+          case LONG_TO_ADDRESS: {
+            setLongToAddress(other.getLongToAddress());
+            break;
+          }
+          case SYMBOLIC_TO_ADDRESS: {
+            toAddressCase_ = 3;
+            toAddress_ = other.toAddress_;
+            onChanged();
+            break;
+          }
+          case TOADDRESS_NOT_SET: {
+            break;
+          }
+        }
+        switch (other.getFromAddressCase()) {
+          case LONG_FROM_ADDRESS: {
+            setLongFromAddress(other.getLongFromAddress());
+            break;
+          }
+          case SYMBOLIC_FROM_ADDRESS: {
+            fromAddressCase_ = 5;
+            fromAddress_ = other.fromAddress_;
+            onChanged();
+            break;
+          }
+          case FROMADDRESS_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1253,6 +1497,36 @@ public final class ReferenceProto {
         }
         return this;
       }
+      private int toAddressCase_ = 0;
+      private java.lang.Object toAddress_;
+      public ToAddressCase
+          getToAddressCase() {
+        return ToAddressCase.forNumber(
+            toAddressCase_);
+      }
+
+      public Builder clearToAddress() {
+        toAddressCase_ = 0;
+        toAddress_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int fromAddressCase_ = 0;
+      private java.lang.Object fromAddress_;
+      public FromAddressCase
+          getFromAddressCase() {
+        return FromAddressCase.forNumber(
+            fromAddressCase_);
+      }
+
+      public Builder clearFromAddress() {
+        fromAddressCase_ = 0;
+        fromAddress_ = null;
+        onChanged();
+        return this;
+      }
+
 
       private int referenceId_ ;
       /**
@@ -1284,153 +1558,243 @@ public final class ReferenceProto {
         return this;
       }
 
-      private java.lang.Object toAddress_ = "";
       /**
-       * <code>string to_address = 2;</code>
-       * @return The toAddress.
+       * <code>uint64 long_to_address = 2;</code>
+       * @return The longToAddress.
        */
-      public java.lang.String getToAddress() {
-        java.lang.Object ref = toAddress_;
+      public long getLongToAddress() {
+        if (toAddressCase_ == 2) {
+          return (java.lang.Long) toAddress_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>uint64 long_to_address = 2;</code>
+       * @param value The longToAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLongToAddress(long value) {
+        toAddressCase_ = 2;
+        toAddress_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 long_to_address = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLongToAddress() {
+        if (toAddressCase_ == 2) {
+          toAddressCase_ = 0;
+          toAddress_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string symbolic_to_address = 3;</code>
+       * @return The symbolicToAddress.
+       */
+      public java.lang.String getSymbolicToAddress() {
+        java.lang.Object ref = "";
+        if (toAddressCase_ == 3) {
+          ref = toAddress_;
+        }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          toAddress_ = s;
+          if (toAddressCase_ == 3) {
+            toAddress_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string to_address = 2;</code>
-       * @return The bytes for toAddress.
+       * <code>string symbolic_to_address = 3;</code>
+       * @return The bytes for symbolicToAddress.
        */
       public com.google.protobuf.ByteString
-          getToAddressBytes() {
-        java.lang.Object ref = toAddress_;
+          getSymbolicToAddressBytes() {
+        java.lang.Object ref = "";
+        if (toAddressCase_ == 3) {
+          ref = toAddress_;
+        }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          toAddress_ = b;
+          if (toAddressCase_ == 3) {
+            toAddress_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string to_address = 2;</code>
-       * @param value The toAddress to set.
+       * <code>string symbolic_to_address = 3;</code>
+       * @param value The symbolicToAddress to set.
        * @return This builder for chaining.
        */
-      public Builder setToAddress(
+      public Builder setSymbolicToAddress(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  toAddressCase_ = 3;
         toAddress_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string to_address = 2;</code>
+       * <code>string symbolic_to_address = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearToAddress() {
-        
-        toAddress_ = getDefaultInstance().getToAddress();
-        onChanged();
+      public Builder clearSymbolicToAddress() {
+        if (toAddressCase_ == 3) {
+          toAddressCase_ = 0;
+          toAddress_ = null;
+          onChanged();
+        }
         return this;
       }
       /**
-       * <code>string to_address = 2;</code>
-       * @param value The bytes for toAddress to set.
+       * <code>string symbolic_to_address = 3;</code>
+       * @param value The bytes for symbolicToAddress to set.
        * @return This builder for chaining.
        */
-      public Builder setToAddressBytes(
+      public Builder setSymbolicToAddressBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+        toAddressCase_ = 3;
         toAddress_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object fromAddress_ = "";
       /**
-       * <code>string from_address = 3;</code>
-       * @return The fromAddress.
+       * <code>uint64 long_from_address = 4;</code>
+       * @return The longFromAddress.
        */
-      public java.lang.String getFromAddress() {
-        java.lang.Object ref = fromAddress_;
+      public long getLongFromAddress() {
+        if (fromAddressCase_ == 4) {
+          return (java.lang.Long) fromAddress_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>uint64 long_from_address = 4;</code>
+       * @param value The longFromAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLongFromAddress(long value) {
+        fromAddressCase_ = 4;
+        fromAddress_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 long_from_address = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLongFromAddress() {
+        if (fromAddressCase_ == 4) {
+          fromAddressCase_ = 0;
+          fromAddress_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string symbolic_from_address = 5;</code>
+       * @return The symbolicFromAddress.
+       */
+      public java.lang.String getSymbolicFromAddress() {
+        java.lang.Object ref = "";
+        if (fromAddressCase_ == 5) {
+          ref = fromAddress_;
+        }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          fromAddress_ = s;
+          if (fromAddressCase_ == 5) {
+            fromAddress_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string from_address = 3;</code>
-       * @return The bytes for fromAddress.
+       * <code>string symbolic_from_address = 5;</code>
+       * @return The bytes for symbolicFromAddress.
        */
       public com.google.protobuf.ByteString
-          getFromAddressBytes() {
-        java.lang.Object ref = fromAddress_;
+          getSymbolicFromAddressBytes() {
+        java.lang.Object ref = "";
+        if (fromAddressCase_ == 5) {
+          ref = fromAddress_;
+        }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          fromAddress_ = b;
+          if (fromAddressCase_ == 5) {
+            fromAddress_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string from_address = 3;</code>
-       * @param value The fromAddress to set.
+       * <code>string symbolic_from_address = 5;</code>
+       * @param value The symbolicFromAddress to set.
        * @return This builder for chaining.
        */
-      public Builder setFromAddress(
+      public Builder setSymbolicFromAddress(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  fromAddressCase_ = 5;
         fromAddress_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string from_address = 3;</code>
+       * <code>string symbolic_from_address = 5;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFromAddress() {
-        
-        fromAddress_ = getDefaultInstance().getFromAddress();
-        onChanged();
+      public Builder clearSymbolicFromAddress() {
+        if (fromAddressCase_ == 5) {
+          fromAddressCase_ = 0;
+          fromAddress_ = null;
+          onChanged();
+        }
         return this;
       }
       /**
-       * <code>string from_address = 3;</code>
-       * @param value The bytes for fromAddress to set.
+       * <code>string symbolic_from_address = 5;</code>
+       * @param value The bytes for symbolicFromAddress to set.
        * @return This builder for chaining.
        */
-      public Builder setFromAddressBytes(
+      public Builder setSymbolicFromAddressBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
+        fromAddressCase_ = 5;
         fromAddress_ = value;
         onChanged();
         return this;
@@ -1711,64 +2075,55 @@ public final class ReferenceProto {
 
   }
 
-  public interface ReferencesMapOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:protoclasses.ReferencesMap)
+  public interface ReferenceListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protoclasses.ReferenceList)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+     */
+    java.util.List<protoclasses.ReferenceProto.ReferenceMessage> 
+        getReferencesList();
+    /**
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+     */
+    protoclasses.ReferenceProto.ReferenceMessage getReferences(int index);
+    /**
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
      */
     int getReferencesCount();
     /**
-     * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
      */
-    boolean containsReferences(
-        int key);
+    java.util.List<? extends protoclasses.ReferenceProto.ReferenceMessageOrBuilder> 
+        getReferencesOrBuilderList();
     /**
-     * Use {@link #getReferencesMap()} instead.
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
      */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage>
-    getReferences();
-    /**
-     * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-     */
-    java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage>
-    getReferencesMap();
-    /**
-     * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-     */
-
-    protoclasses.ReferenceProto.ReferenceMessage getReferencesOrDefault(
-        int key,
-        protoclasses.ReferenceProto.ReferenceMessage defaultValue);
-    /**
-     * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-     */
-
-    protoclasses.ReferenceProto.ReferenceMessage getReferencesOrThrow(
-        int key);
+    protoclasses.ReferenceProto.ReferenceMessageOrBuilder getReferencesOrBuilder(
+        int index);
   }
   /**
-   * Protobuf type {@code protoclasses.ReferencesMap}
+   * Protobuf type {@code protoclasses.ReferenceList}
    */
-  public  static final class ReferencesMap extends
+  public  static final class ReferenceList extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:protoclasses.ReferencesMap)
-      ReferencesMapOrBuilder {
+      // @@protoc_insertion_point(message_implements:protoclasses.ReferenceList)
+      ReferenceListOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ReferencesMap.newBuilder() to construct.
-    private ReferencesMap(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ReferenceList.newBuilder() to construct.
+    private ReferenceList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ReferencesMap() {
+    private ReferenceList() {
+      references_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ReferencesMap();
+      return new ReferenceList();
     }
 
     @java.lang.Override
@@ -1776,7 +2131,7 @@ public final class ReferenceProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ReferencesMap(
+    private ReferenceList(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1797,15 +2152,11 @@ public final class ReferenceProto {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                references_ = com.google.protobuf.MapField.newMapField(
-                    ReferencesDefaultEntryHolder.defaultEntry);
+                references_ = new java.util.ArrayList<protoclasses.ReferenceProto.ReferenceMessage>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage>
-              references__ = input.readMessage(
-                  ReferencesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              references_.getMutableMap().put(
-                  references__.getKey(), references__.getValue());
+              references_.add(
+                  input.readMessage(protoclasses.ReferenceProto.ReferenceMessage.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -1823,109 +2174,59 @@ public final class ReferenceProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          references_ = java.util.Collections.unmodifiableList(references_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protoclasses.ReferenceProto.internal_static_protoclasses_ReferencesMap_descriptor;
+      return protoclasses.ReferenceProto.internal_static_protoclasses_ReferenceList_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    @java.lang.Override
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 1:
-          return internalGetReferences();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protoclasses.ReferenceProto.internal_static_protoclasses_ReferencesMap_fieldAccessorTable
+      return protoclasses.ReferenceProto.internal_static_protoclasses_ReferenceList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protoclasses.ReferenceProto.ReferencesMap.class, protoclasses.ReferenceProto.ReferencesMap.Builder.class);
+              protoclasses.ReferenceProto.ReferenceList.class, protoclasses.ReferenceProto.ReferenceList.Builder.class);
     }
 
     public static final int REFERENCES_FIELD_NUMBER = 1;
-    private static final class ReferencesDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage>newDefaultInstance(
-                  protoclasses.ReferenceProto.internal_static_protoclasses_ReferencesMap_ReferencesEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT32,
-                  0,
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  protoclasses.ReferenceProto.ReferenceMessage.getDefaultInstance());
-    }
-    private com.google.protobuf.MapField<
-        java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> references_;
-    private com.google.protobuf.MapField<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage>
-    internalGetReferences() {
-      if (references_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            ReferencesDefaultEntryHolder.defaultEntry);
-      }
+    private java.util.List<protoclasses.ReferenceProto.ReferenceMessage> references_;
+    /**
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+     */
+    public java.util.List<protoclasses.ReferenceProto.ReferenceMessage> getReferencesList() {
       return references_;
     }
-
+    /**
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+     */
+    public java.util.List<? extends protoclasses.ReferenceProto.ReferenceMessageOrBuilder> 
+        getReferencesOrBuilderList() {
+      return references_;
+    }
+    /**
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+     */
     public int getReferencesCount() {
-      return internalGetReferences().getMap().size();
+      return references_.size();
     }
     /**
-     * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
      */
-
-    public boolean containsReferences(
-        int key) {
-      
-      return internalGetReferences().getMap().containsKey(key);
+    public protoclasses.ReferenceProto.ReferenceMessage getReferences(int index) {
+      return references_.get(index);
     }
     /**
-     * Use {@link #getReferencesMap()} instead.
+     * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
      */
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> getReferences() {
-      return getReferencesMap();
-    }
-    /**
-     * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-     */
-
-    public java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> getReferencesMap() {
-      return internalGetReferences().getMap();
-    }
-    /**
-     * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-     */
-
-    public protoclasses.ReferenceProto.ReferenceMessage getReferencesOrDefault(
-        int key,
-        protoclasses.ReferenceProto.ReferenceMessage defaultValue) {
-      
-      java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> map =
-          internalGetReferences().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-     */
-
-    public protoclasses.ReferenceProto.ReferenceMessage getReferencesOrThrow(
-        int key) {
-      
-      java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> map =
-          internalGetReferences().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
+    public protoclasses.ReferenceProto.ReferenceMessageOrBuilder getReferencesOrBuilder(
+        int index) {
+      return references_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1942,12 +2243,9 @@ public final class ReferenceProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
-        .serializeIntegerMapTo(
-          output,
-          internalGetReferences(),
-          ReferencesDefaultEntryHolder.defaultEntry,
-          1);
+      for (int i = 0; i < references_.size(); i++) {
+        output.writeMessage(1, references_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1957,15 +2255,9 @@ public final class ReferenceProto {
       if (size != -1) return size;
 
       size = 0;
-      for (java.util.Map.Entry<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> entry
-           : internalGetReferences().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage>
-        references__ = ReferencesDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
+      for (int i = 0; i < references_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, references__);
+          .computeMessageSize(1, references_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1977,13 +2269,13 @@ public final class ReferenceProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof protoclasses.ReferenceProto.ReferencesMap)) {
+      if (!(obj instanceof protoclasses.ReferenceProto.ReferenceList)) {
         return super.equals(obj);
       }
-      protoclasses.ReferenceProto.ReferencesMap other = (protoclasses.ReferenceProto.ReferencesMap) obj;
+      protoclasses.ReferenceProto.ReferenceList other = (protoclasses.ReferenceProto.ReferenceList) obj;
 
-      if (!internalGetReferences().equals(
-          other.internalGetReferences())) return false;
+      if (!getReferencesList()
+          .equals(other.getReferencesList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1995,78 +2287,78 @@ public final class ReferenceProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (!internalGetReferences().getMap().isEmpty()) {
+      if (getReferencesCount() > 0) {
         hash = (37 * hash) + REFERENCES_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetReferences().hashCode();
+        hash = (53 * hash) + getReferencesList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(byte[] data)
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(java.io.InputStream input)
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseDelimitedFrom(java.io.InputStream input)
+    public static protoclasses.ReferenceProto.ReferenceList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseDelimitedFrom(
+    public static protoclasses.ReferenceProto.ReferenceList parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static protoclasses.ReferenceProto.ReferencesMap parseFrom(
+    public static protoclasses.ReferenceProto.ReferenceList parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2079,7 +2371,7 @@ public final class ReferenceProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(protoclasses.ReferenceProto.ReferencesMap prototype) {
+    public static Builder newBuilder(protoclasses.ReferenceProto.ReferenceList prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2095,48 +2387,26 @@ public final class ReferenceProto {
       return builder;
     }
     /**
-     * Protobuf type {@code protoclasses.ReferencesMap}
+     * Protobuf type {@code protoclasses.ReferenceList}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:protoclasses.ReferencesMap)
-        protoclasses.ReferenceProto.ReferencesMapOrBuilder {
+        // @@protoc_insertion_point(builder_implements:protoclasses.ReferenceList)
+        protoclasses.ReferenceProto.ReferenceListOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protoclasses.ReferenceProto.internal_static_protoclasses_ReferencesMap_descriptor;
+        return protoclasses.ReferenceProto.internal_static_protoclasses_ReferenceList_descriptor;
       }
 
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetReferences();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetMutableReferences();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protoclasses.ReferenceProto.internal_static_protoclasses_ReferencesMap_fieldAccessorTable
+        return protoclasses.ReferenceProto.internal_static_protoclasses_ReferenceList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protoclasses.ReferenceProto.ReferencesMap.class, protoclasses.ReferenceProto.ReferencesMap.Builder.class);
+                protoclasses.ReferenceProto.ReferenceList.class, protoclasses.ReferenceProto.ReferenceList.Builder.class);
       }
 
-      // Construct using protoclasses.ReferenceProto.ReferencesMap.newBuilder()
+      // Construct using protoclasses.ReferenceProto.ReferenceList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2149,29 +2419,35 @@ public final class ReferenceProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getReferencesFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        internalGetMutableReferences().clear();
+        if (referencesBuilder_ == null) {
+          references_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          referencesBuilder_.clear();
+        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protoclasses.ReferenceProto.internal_static_protoclasses_ReferencesMap_descriptor;
+        return protoclasses.ReferenceProto.internal_static_protoclasses_ReferenceList_descriptor;
       }
 
       @java.lang.Override
-      public protoclasses.ReferenceProto.ReferencesMap getDefaultInstanceForType() {
-        return protoclasses.ReferenceProto.ReferencesMap.getDefaultInstance();
+      public protoclasses.ReferenceProto.ReferenceList getDefaultInstanceForType() {
+        return protoclasses.ReferenceProto.ReferenceList.getDefaultInstance();
       }
 
       @java.lang.Override
-      public protoclasses.ReferenceProto.ReferencesMap build() {
-        protoclasses.ReferenceProto.ReferencesMap result = buildPartial();
+      public protoclasses.ReferenceProto.ReferenceList build() {
+        protoclasses.ReferenceProto.ReferenceList result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2179,11 +2455,18 @@ public final class ReferenceProto {
       }
 
       @java.lang.Override
-      public protoclasses.ReferenceProto.ReferencesMap buildPartial() {
-        protoclasses.ReferenceProto.ReferencesMap result = new protoclasses.ReferenceProto.ReferencesMap(this);
+      public protoclasses.ReferenceProto.ReferenceList buildPartial() {
+        protoclasses.ReferenceProto.ReferenceList result = new protoclasses.ReferenceProto.ReferenceList(this);
         int from_bitField0_ = bitField0_;
-        result.references_ = internalGetReferences();
-        result.references_.makeImmutable();
+        if (referencesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            references_ = java.util.Collections.unmodifiableList(references_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.references_ = references_;
+        } else {
+          result.references_ = referencesBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -2222,18 +2505,42 @@ public final class ReferenceProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protoclasses.ReferenceProto.ReferencesMap) {
-          return mergeFrom((protoclasses.ReferenceProto.ReferencesMap)other);
+        if (other instanceof protoclasses.ReferenceProto.ReferenceList) {
+          return mergeFrom((protoclasses.ReferenceProto.ReferenceList)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protoclasses.ReferenceProto.ReferencesMap other) {
-        if (other == protoclasses.ReferenceProto.ReferencesMap.getDefaultInstance()) return this;
-        internalGetMutableReferences().mergeFrom(
-            other.internalGetReferences());
+      public Builder mergeFrom(protoclasses.ReferenceProto.ReferenceList other) {
+        if (other == protoclasses.ReferenceProto.ReferenceList.getDefaultInstance()) return this;
+        if (referencesBuilder_ == null) {
+          if (!other.references_.isEmpty()) {
+            if (references_.isEmpty()) {
+              references_ = other.references_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureReferencesIsMutable();
+              references_.addAll(other.references_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.references_.isEmpty()) {
+            if (referencesBuilder_.isEmpty()) {
+              referencesBuilder_.dispose();
+              referencesBuilder_ = null;
+              references_ = other.references_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              referencesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getReferencesFieldBuilder() : null;
+            } else {
+              referencesBuilder_.addAllMessages(other.references_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2249,11 +2556,11 @@ public final class ReferenceProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protoclasses.ReferenceProto.ReferencesMap parsedMessage = null;
+        protoclasses.ReferenceProto.ReferenceList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protoclasses.ReferenceProto.ReferencesMap) e.getUnfinishedMessage();
+          parsedMessage = (protoclasses.ReferenceProto.ReferenceList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2264,127 +2571,244 @@ public final class ReferenceProto {
       }
       private int bitField0_;
 
-      private com.google.protobuf.MapField<
-          java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> references_;
-      private com.google.protobuf.MapField<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage>
-      internalGetReferences() {
-        if (references_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              ReferencesDefaultEntryHolder.defaultEntry);
-        }
-        return references_;
-      }
-      private com.google.protobuf.MapField<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage>
-      internalGetMutableReferences() {
-        onChanged();;
-        if (references_ == null) {
-          references_ = com.google.protobuf.MapField.newMapField(
-              ReferencesDefaultEntryHolder.defaultEntry);
-        }
-        if (!references_.isMutable()) {
-          references_ = references_.copy();
-        }
-        return references_;
+      private java.util.List<protoclasses.ReferenceProto.ReferenceMessage> references_ =
+        java.util.Collections.emptyList();
+      private void ensureReferencesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          references_ = new java.util.ArrayList<protoclasses.ReferenceProto.ReferenceMessage>(references_);
+          bitField0_ |= 0x00000001;
+         }
       }
 
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protoclasses.ReferenceProto.ReferenceMessage, protoclasses.ReferenceProto.ReferenceMessage.Builder, protoclasses.ReferenceProto.ReferenceMessageOrBuilder> referencesBuilder_;
+
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public java.util.List<protoclasses.ReferenceProto.ReferenceMessage> getReferencesList() {
+        if (referencesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(references_);
+        } else {
+          return referencesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
       public int getReferencesCount() {
-        return internalGetReferences().getMap().size();
-      }
-      /**
-       * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-       */
-
-      public boolean containsReferences(
-          int key) {
-        
-        return internalGetReferences().getMap().containsKey(key);
-      }
-      /**
-       * Use {@link #getReferencesMap()} instead.
-       */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> getReferences() {
-        return getReferencesMap();
-      }
-      /**
-       * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-       */
-
-      public java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> getReferencesMap() {
-        return internalGetReferences().getMap();
-      }
-      /**
-       * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-       */
-
-      public protoclasses.ReferenceProto.ReferenceMessage getReferencesOrDefault(
-          int key,
-          protoclasses.ReferenceProto.ReferenceMessage defaultValue) {
-        
-        java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> map =
-            internalGetReferences().getMap();
-        return map.containsKey(key) ? map.get(key) : defaultValue;
-      }
-      /**
-       * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
-       */
-
-      public protoclasses.ReferenceProto.ReferenceMessage getReferencesOrThrow(
-          int key) {
-        
-        java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> map =
-            internalGetReferences().getMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+        if (referencesBuilder_ == null) {
+          return references_.size();
+        } else {
+          return referencesBuilder_.getCount();
         }
-        return map.get(key);
       }
-
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public protoclasses.ReferenceProto.ReferenceMessage getReferences(int index) {
+        if (referencesBuilder_ == null) {
+          return references_.get(index);
+        } else {
+          return referencesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public Builder setReferences(
+          int index, protoclasses.ReferenceProto.ReferenceMessage value) {
+        if (referencesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReferencesIsMutable();
+          references_.set(index, value);
+          onChanged();
+        } else {
+          referencesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public Builder setReferences(
+          int index, protoclasses.ReferenceProto.ReferenceMessage.Builder builderForValue) {
+        if (referencesBuilder_ == null) {
+          ensureReferencesIsMutable();
+          references_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          referencesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public Builder addReferences(protoclasses.ReferenceProto.ReferenceMessage value) {
+        if (referencesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReferencesIsMutable();
+          references_.add(value);
+          onChanged();
+        } else {
+          referencesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public Builder addReferences(
+          int index, protoclasses.ReferenceProto.ReferenceMessage value) {
+        if (referencesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureReferencesIsMutable();
+          references_.add(index, value);
+          onChanged();
+        } else {
+          referencesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public Builder addReferences(
+          protoclasses.ReferenceProto.ReferenceMessage.Builder builderForValue) {
+        if (referencesBuilder_ == null) {
+          ensureReferencesIsMutable();
+          references_.add(builderForValue.build());
+          onChanged();
+        } else {
+          referencesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public Builder addReferences(
+          int index, protoclasses.ReferenceProto.ReferenceMessage.Builder builderForValue) {
+        if (referencesBuilder_ == null) {
+          ensureReferencesIsMutable();
+          references_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          referencesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public Builder addAllReferences(
+          java.lang.Iterable<? extends protoclasses.ReferenceProto.ReferenceMessage> values) {
+        if (referencesBuilder_ == null) {
+          ensureReferencesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, references_);
+          onChanged();
+        } else {
+          referencesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
       public Builder clearReferences() {
-        internalGetMutableReferences().getMutableMap()
-            .clear();
+        if (referencesBuilder_ == null) {
+          references_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          referencesBuilder_.clear();
+        }
         return this;
       }
       /**
-       * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
        */
-
-      public Builder removeReferences(
-          int key) {
-        
-        internalGetMutableReferences().getMutableMap()
-            .remove(key);
+      public Builder removeReferences(int index) {
+        if (referencesBuilder_ == null) {
+          ensureReferencesIsMutable();
+          references_.remove(index);
+          onChanged();
+        } else {
+          referencesBuilder_.remove(index);
+        }
         return this;
       }
       /**
-       * Use alternate mutation accessors instead.
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
        */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage>
-      getMutableReferences() {
-        return internalGetMutableReferences().getMutableMap();
+      public protoclasses.ReferenceProto.ReferenceMessage.Builder getReferencesBuilder(
+          int index) {
+        return getReferencesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
        */
-      public Builder putReferences(
-          int key,
-          protoclasses.ReferenceProto.ReferenceMessage value) {
-        
-        if (value == null) { throw new java.lang.NullPointerException(); }
-        internalGetMutableReferences().getMutableMap()
-            .put(key, value);
-        return this;
+      public protoclasses.ReferenceProto.ReferenceMessageOrBuilder getReferencesOrBuilder(
+          int index) {
+        if (referencesBuilder_ == null) {
+          return references_.get(index);  } else {
+          return referencesBuilder_.getMessageOrBuilder(index);
+        }
       }
       /**
-       * <code>map&lt;int32, .protoclasses.ReferenceMessage&gt; references = 1;</code>
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
        */
-
-      public Builder putAllReferences(
-          java.util.Map<java.lang.Integer, protoclasses.ReferenceProto.ReferenceMessage> values) {
-        internalGetMutableReferences().getMutableMap()
-            .putAll(values);
-        return this;
+      public java.util.List<? extends protoclasses.ReferenceProto.ReferenceMessageOrBuilder> 
+           getReferencesOrBuilderList() {
+        if (referencesBuilder_ != null) {
+          return referencesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(references_);
+        }
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public protoclasses.ReferenceProto.ReferenceMessage.Builder addReferencesBuilder() {
+        return getReferencesFieldBuilder().addBuilder(
+            protoclasses.ReferenceProto.ReferenceMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public protoclasses.ReferenceProto.ReferenceMessage.Builder addReferencesBuilder(
+          int index) {
+        return getReferencesFieldBuilder().addBuilder(
+            index, protoclasses.ReferenceProto.ReferenceMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protoclasses.ReferenceMessage references = 1;</code>
+       */
+      public java.util.List<protoclasses.ReferenceProto.ReferenceMessage.Builder> 
+           getReferencesBuilderList() {
+        return getReferencesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          protoclasses.ReferenceProto.ReferenceMessage, protoclasses.ReferenceProto.ReferenceMessage.Builder, protoclasses.ReferenceProto.ReferenceMessageOrBuilder> 
+          getReferencesFieldBuilder() {
+        if (referencesBuilder_ == null) {
+          referencesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              protoclasses.ReferenceProto.ReferenceMessage, protoclasses.ReferenceProto.ReferenceMessage.Builder, protoclasses.ReferenceProto.ReferenceMessageOrBuilder>(
+                  references_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          references_ = null;
+        }
+        return referencesBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2399,41 +2823,41 @@ public final class ReferenceProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:protoclasses.ReferencesMap)
+      // @@protoc_insertion_point(builder_scope:protoclasses.ReferenceList)
     }
 
-    // @@protoc_insertion_point(class_scope:protoclasses.ReferencesMap)
-    private static final protoclasses.ReferenceProto.ReferencesMap DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:protoclasses.ReferenceList)
+    private static final protoclasses.ReferenceProto.ReferenceList DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new protoclasses.ReferenceProto.ReferencesMap();
+      DEFAULT_INSTANCE = new protoclasses.ReferenceProto.ReferenceList();
     }
 
-    public static protoclasses.ReferenceProto.ReferencesMap getDefaultInstance() {
+    public static protoclasses.ReferenceProto.ReferenceList getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ReferencesMap>
-        PARSER = new com.google.protobuf.AbstractParser<ReferencesMap>() {
+    private static final com.google.protobuf.Parser<ReferenceList>
+        PARSER = new com.google.protobuf.AbstractParser<ReferenceList>() {
       @java.lang.Override
-      public ReferencesMap parsePartialFrom(
+      public ReferenceList parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ReferencesMap(input, extensionRegistry);
+        return new ReferenceList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ReferencesMap> parser() {
+    public static com.google.protobuf.Parser<ReferenceList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ReferencesMap> getParserForType() {
+    public com.google.protobuf.Parser<ReferenceList> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public protoclasses.ReferenceProto.ReferencesMap getDefaultInstanceForType() {
+    public protoclasses.ReferenceProto.ReferenceList getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2445,15 +2869,10 @@ public final class ReferenceProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protoclasses_ReferenceMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protoclasses_ReferencesMap_descriptor;
+    internal_static_protoclasses_ReferenceList_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protoclasses_ReferencesMap_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protoclasses_ReferencesMap_ReferencesEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protoclasses_ReferencesMap_ReferencesEntry_fieldAccessorTable;
+      internal_static_protoclasses_ReferenceList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2464,37 +2883,37 @@ public final class ReferenceProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\017reference.proto\022\014protoclasses\032\ndata.pr" +
-      "oto\"\366\007\n\020ReferenceMessage\022\024\n\014reference_id" +
-      "\030\001 \001(\005\022\022\n\nto_address\030\002 \001(\t\022\024\n\014from_addre" +
-      "ss\030\003 \001(\t\022>\n\010ref_type\030\006 \001(\0162,.protoclasse" +
-      "s.ReferenceMessage.ReferenceType\0229\n\006sour" +
-      "ce\030\007 \001(\0162).protoclasses.ReferenceMessage" +
-      ".SourceType\022+\n\010ref_data\030\010 \001(\0132\031.protocla" +
-      "sses.DataMessage\"\260\005\n\rReferenceType\022\t\n\005TH" +
-      "UNK\020\000\022\037\n\033CALL_OVERRIDE_UNCONDITIONAL\020\001\022\023" +
-      "\n\017CALL_TERMINATOR\020\002\022\033\n\027CALLOTHER_OVERRID" +
-      "E_CALL\020\003\022\033\n\027CALLOTHER_OVERRIDE_JUMP\020\004\022\021\n" +
-      "\rCOMPUTED_CALL\020\005\022\034\n\030COMPUTED_CALL_TERMIN" +
-      "ATOR\020\006\022\021\n\rCOMPUTED_JUMP\020\007\022\024\n\020CONDITIONAL" +
-      "_CALL\020\010\022\037\n\033CONDITIONAL_CALL_TERMINATOR\020\t" +
-      "\022\035\n\031CONDITIONAL_COMPUTED_CALL\020\n\022\035\n\031CONDI" +
-      "TIONAL_COMPUTED_JUMP\020\013\022\024\n\020CONDITIONAL_JU" +
-      "MP\020\014\022\032\n\026CONDITIONAL_TERMINATOR\020\r\022\010\n\004DATA" +
-      "\020\016\022\014\n\010DATA_IND\020\017\022\020\n\014EXTERNAL_REF\020\020\022\020\n\014FA" +
-      "LL_THROUGH\020\021\022\010\n\004FLOW\020\022\022\017\n\013INDIRECTION\020\023\022" +
-      "\013\n\007INVALID\020\024\022\037\n\033JUMP_OVERRIDE_UNCONDITIO" +
-      "NAL\020\025\022\023\n\017JUMP_TERMINATOR\020\026\022\t\n\005PARAM\020\027\022\010\n" +
-      "\004READ\020\030\022\014\n\010READ_IND\020\031\022\016\n\nREAD_WRITE\020\032\022\022\n" +
-      "\016READ_WRITE_IND\020\033\022\016\n\nTERMINATOR\020\034\022\026\n\022UNC" +
-      "ONDITIONAL_CALL\020\035\022\026\n\022UNCONDITIONAL_JUMP\020" +
-      "\036\022\t\n\005WRITE\020\037\022\r\n\tWRITE_IND\020 \"G\n\nSourceTyp" +
-      "e\022\013\n\007DEFAULT\020\000\022\014\n\010ANALYSIS\020\001\022\014\n\010IMPORTED" +
-      "\020\002\022\020\n\014USER_DEFINED\020\003\"\243\001\n\rReferencesMap\022?" +
-      "\n\nreferences\030\001 \003(\0132+.protoclasses.Refere" +
-      "ncesMap.ReferencesEntry\032Q\n\017ReferencesEnt" +
-      "ry\022\013\n\003key\030\001 \001(\005\022-\n\005value\030\002 \001(\0132\036.protocl" +
-      "asses.ReferenceMessage:\0028\001B\020B\016ReferenceP" +
-      "rotob\006proto3"
+      "oto\"\342\010\n\020ReferenceMessage\022\024\n\014reference_id" +
+      "\030\001 \001(\005\022\031\n\017long_to_address\030\002 \001(\004H\000\022\035\n\023sym" +
+      "bolic_to_address\030\003 \001(\tH\000\022\033\n\021long_from_ad" +
+      "dress\030\004 \001(\004H\001\022\037\n\025symbolic_from_address\030\005" +
+      " \001(\tH\001\022>\n\010ref_type\030\006 \001(\0162,.protoclasses." +
+      "ReferenceMessage.ReferenceType\0229\n\006source" +
+      "\030\007 \001(\0162).protoclasses.ReferenceMessage.S" +
+      "ourceType\022+\n\010ref_data\030\010 \001(\0132\031.protoclass" +
+      "es.DataMessage\"\260\005\n\rReferenceType\022\t\n\005THUN" +
+      "K\020\000\022\037\n\033CALL_OVERRIDE_UNCONDITIONAL\020\001\022\023\n\017" +
+      "CALL_TERMINATOR\020\002\022\033\n\027CALLOTHER_OVERRIDE_" +
+      "CALL\020\003\022\033\n\027CALLOTHER_OVERRIDE_JUMP\020\004\022\021\n\rC" +
+      "OMPUTED_CALL\020\005\022\034\n\030COMPUTED_CALL_TERMINAT" +
+      "OR\020\006\022\021\n\rCOMPUTED_JUMP\020\007\022\024\n\020CONDITIONAL_C" +
+      "ALL\020\010\022\037\n\033CONDITIONAL_CALL_TERMINATOR\020\t\022\035" +
+      "\n\031CONDITIONAL_COMPUTED_CALL\020\n\022\035\n\031CONDITI" +
+      "ONAL_COMPUTED_JUMP\020\013\022\024\n\020CONDITIONAL_JUMP" +
+      "\020\014\022\032\n\026CONDITIONAL_TERMINATOR\020\r\022\010\n\004DATA\020\016" +
+      "\022\014\n\010DATA_IND\020\017\022\020\n\014EXTERNAL_REF\020\020\022\020\n\014FALL" +
+      "_THROUGH\020\021\022\010\n\004FLOW\020\022\022\017\n\013INDIRECTION\020\023\022\013\n" +
+      "\007INVALID\020\024\022\037\n\033JUMP_OVERRIDE_UNCONDITIONA" +
+      "L\020\025\022\023\n\017JUMP_TERMINATOR\020\026\022\t\n\005PARAM\020\027\022\010\n\004R" +
+      "EAD\020\030\022\014\n\010READ_IND\020\031\022\016\n\nREAD_WRITE\020\032\022\022\n\016R" +
+      "EAD_WRITE_IND\020\033\022\016\n\nTERMINATOR\020\034\022\026\n\022UNCON" +
+      "DITIONAL_CALL\020\035\022\026\n\022UNCONDITIONAL_JUMP\020\036\022" +
+      "\t\n\005WRITE\020\037\022\r\n\tWRITE_IND\020 \"G\n\nSourceType\022" +
+      "\013\n\007DEFAULT\020\000\022\014\n\010ANALYSIS\020\001\022\014\n\010IMPORTED\020\002" +
+      "\022\020\n\014USER_DEFINED\020\003B\014\n\nto_addressB\016\n\014from" +
+      "_address\"C\n\rReferenceList\0222\n\nreferences\030" +
+      "\001 \003(\0132\036.protoclasses.ReferenceMessageB\020B" +
+      "\016ReferenceProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2506,19 +2925,13 @@ public final class ReferenceProto {
     internal_static_protoclasses_ReferenceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_ReferenceMessage_descriptor,
-        new java.lang.String[] { "ReferenceId", "ToAddress", "FromAddress", "RefType", "Source", "RefData", });
-    internal_static_protoclasses_ReferencesMap_descriptor =
+        new java.lang.String[] { "ReferenceId", "LongToAddress", "SymbolicToAddress", "LongFromAddress", "SymbolicFromAddress", "RefType", "Source", "RefData", "ToAddress", "FromAddress", });
+    internal_static_protoclasses_ReferenceList_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_protoclasses_ReferencesMap_fieldAccessorTable = new
+    internal_static_protoclasses_ReferenceList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protoclasses_ReferencesMap_descriptor,
+        internal_static_protoclasses_ReferenceList_descriptor,
         new java.lang.String[] { "References", });
-    internal_static_protoclasses_ReferencesMap_ReferencesEntry_descriptor =
-      internal_static_protoclasses_ReferencesMap_descriptor.getNestedTypes().get(0);
-    internal_static_protoclasses_ReferencesMap_ReferencesEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protoclasses_ReferencesMap_ReferencesEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
     protoclasses.DataProto.getDescriptor();
   }
 
