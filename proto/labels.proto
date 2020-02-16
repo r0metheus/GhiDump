@@ -5,12 +5,8 @@ package protoclasses;
 option java_outer_classname = "LabelsProto";
  
 message LabelMessage {
-    oneof label {
-        uint64 int_label = 1;
-        string symbolic_label = 2;
-    }
-
-    int32 label_id = 3;
+    string label = 1;
+    int32 label_id = 2;
 }
 
 message LabelsList {

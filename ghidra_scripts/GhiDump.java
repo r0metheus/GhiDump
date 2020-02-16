@@ -568,7 +568,7 @@ public class GhiDump extends GhidraScript {
   }
 
   private void protoWriter(Message message, String filename) throws IOException {
-    File results = new File("GhiDumps" + File.separator + filename + ".pb");
+    File results = new File("GhiDumps" + File.separator + currentProgram.getName() + File.separator + filename + ".pb");
     FileOutputStream output = new FileOutputStream(results);
     message.writeTo(output);
     output.close();
@@ -859,14 +859,10 @@ public class GhiDump extends GhidraScript {
       LabelMessage.Builder label = LabelMessage.newBuilder();
       String input = entry.getKey();
       int output = entry.getValue();
-      
-      if(!input.matches("-?[0-9a-f]+"))
-        label.setSymbolicLabel(input);
-      else
-        label.setIntLabel(Long.parseLong(input));
+            
+      label.setLabel(input);
 
       label.setLabelId(output);
-      
       
       labelslist.addLabels(label.build());
     }
@@ -881,8 +877,8 @@ public class GhiDump extends GhidraScript {
     FlatDecompilerAPI decompilerAPI = new FlatDecompilerAPI(programAPI);
     String programName = currentProgram.getName();
 
-    File results = new File("GhiDumps");
-
+    File results = new File("GhiDumps" + File.separator + programName);
+    
     if (!results.exists())
       results.mkdirs();
 

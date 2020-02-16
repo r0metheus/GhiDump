@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protoclasses',
   syntax='proto3',
   serialized_options=b'B\013LabelsProto',
-  serialized_pb=b'\n\x0clabels.proto\x12\x0cprotoclasses\"X\n\x0cLabelMessage\x12\x13\n\tint_label\x18\x01 \x01(\x04H\x00\x12\x18\n\x0esymbolic_label\x18\x02 \x01(\tH\x00\x12\x10\n\x08label_id\x18\x03 \x01(\x05\x42\x07\n\x05label\"8\n\nLabelsList\x12*\n\x06labels\x18\x01 \x03(\x0b\x32\x1a.protoclasses.LabelMessageB\rB\x0bLabelsProtob\x06proto3'
+  serialized_pb=b'\n\x0clabels.proto\x12\x0cprotoclasses\"/\n\x0cLabelMessage\x12\r\n\x05label\x18\x01 \x01(\t\x12\x10\n\x08label_id\x18\x02 \x01(\x05\"8\n\nLabelsList\x12*\n\x06labels\x18\x01 \x03(\x0b\x32\x1a.protoclasses.LabelMessageB\rB\x0bLabelsProtob\x06proto3'
 )
 
 
@@ -32,22 +32,15 @@ _LABELMESSAGE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='int_label', full_name='protoclasses.LabelMessage.int_label', index=0,
-      number=1, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='symbolic_label', full_name='protoclasses.LabelMessage.symbolic_label', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='label', full_name='protoclasses.LabelMessage.label', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='label_id', full_name='protoclasses.LabelMessage.label_id', index=2,
-      number=3, type=5, cpp_type=1, label=1,
+      name='label_id', full_name='protoclasses.LabelMessage.label_id', index=1,
+      number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -63,12 +56,9 @@ _LABELMESSAGE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
-    _descriptor.OneofDescriptor(
-      name='label', full_name='protoclasses.LabelMessage.label',
-      index=0, containing_type=None, fields=[]),
   ],
   serialized_start=30,
-  serialized_end=118,
+  serialized_end=77,
 )
 
 
@@ -98,16 +88,10 @@ _LABELSLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=120,
-  serialized_end=176,
+  serialized_start=79,
+  serialized_end=135,
 )
 
-_LABELMESSAGE.oneofs_by_name['label'].fields.append(
-  _LABELMESSAGE.fields_by_name['int_label'])
-_LABELMESSAGE.fields_by_name['int_label'].containing_oneof = _LABELMESSAGE.oneofs_by_name['label']
-_LABELMESSAGE.oneofs_by_name['label'].fields.append(
-  _LABELMESSAGE.fields_by_name['symbolic_label'])
-_LABELMESSAGE.fields_by_name['symbolic_label'].containing_oneof = _LABELMESSAGE.oneofs_by_name['label']
 _LABELSLIST.fields_by_name['labels'].message_type = _LABELMESSAGE
 DESCRIPTOR.message_types_by_name['LabelMessage'] = _LABELMESSAGE
 DESCRIPTOR.message_types_by_name['LabelsList'] = _LABELSLIST

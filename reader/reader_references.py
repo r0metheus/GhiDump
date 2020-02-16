@@ -4,9 +4,9 @@ from google.protobuf import text_format
  
 import sys
 import os
-import labels_pb2 as pbutil
+import reference_pb2 as pbutil
 
-function = pbutil.LabelsList()
+function = pbutil.ReferenceList()
 
 filename = sys.argv[1]
 pb = open(filename, 'rb')

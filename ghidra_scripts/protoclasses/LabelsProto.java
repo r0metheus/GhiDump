@@ -19,30 +19,22 @@ public final class LabelsProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint64 int_label = 1;</code>
-     * @return The intLabel.
+     * <code>string label = 1;</code>
+     * @return The label.
      */
-    long getIntLabel();
-
+    java.lang.String getLabel();
     /**
-     * <code>string symbolic_label = 2;</code>
-     * @return The symbolicLabel.
-     */
-    java.lang.String getSymbolicLabel();
-    /**
-     * <code>string symbolic_label = 2;</code>
-     * @return The bytes for symbolicLabel.
+     * <code>string label = 1;</code>
+     * @return The bytes for label.
      */
     com.google.protobuf.ByteString
-        getSymbolicLabelBytes();
+        getLabelBytes();
 
     /**
-     * <code>int32 label_id = 3;</code>
+     * <code>int32 label_id = 2;</code>
      * @return The labelId.
      */
     int getLabelId();
-
-    public protoclasses.LabelsProto.LabelMessage.LabelCase getLabelCase();
   }
   /**
    * Protobuf type {@code protoclasses.LabelMessage}
@@ -57,6 +49,7 @@ public final class LabelsProto {
       super(builder);
     }
     private LabelMessage() {
+      label_ = "";
     }
 
     @java.lang.Override
@@ -89,18 +82,13 @@ public final class LabelsProto {
             case 0:
               done = true;
               break;
-            case 8: {
-              labelCase_ = 1;
-              label_ = input.readUInt64();
-              break;
-            }
-            case 18: {
+            case 10: {
               java.lang.String s = input.readStringRequireUtf8();
-              labelCase_ = 2;
+
               label_ = s;
               break;
             }
-            case 24: {
+            case 16: {
 
               labelId_ = input.readInt32();
               break;
@@ -137,108 +125,46 @@ public final class LabelsProto {
               protoclasses.LabelsProto.LabelMessage.class, protoclasses.LabelsProto.LabelMessage.Builder.class);
     }
 
-    private int labelCase_ = 0;
-    private java.lang.Object label_;
-    public enum LabelCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      INT_LABEL(1),
-      SYMBOLIC_LABEL(2),
-      LABEL_NOT_SET(0);
-      private final int value;
-      private LabelCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static LabelCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static LabelCase forNumber(int value) {
-        switch (value) {
-          case 1: return INT_LABEL;
-          case 2: return SYMBOLIC_LABEL;
-          case 0: return LABEL_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    };
-
-    public LabelCase
-    getLabelCase() {
-      return LabelCase.forNumber(
-          labelCase_);
-    }
-
-    public static final int INT_LABEL_FIELD_NUMBER = 1;
+    public static final int LABEL_FIELD_NUMBER = 1;
+    private volatile java.lang.Object label_;
     /**
-     * <code>uint64 int_label = 1;</code>
-     * @return The intLabel.
+     * <code>string label = 1;</code>
+     * @return The label.
      */
-    public long getIntLabel() {
-      if (labelCase_ == 1) {
-        return (java.lang.Long) label_;
-      }
-      return 0L;
-    }
-
-    public static final int SYMBOLIC_LABEL_FIELD_NUMBER = 2;
-    /**
-     * <code>string symbolic_label = 2;</code>
-     * @return The symbolicLabel.
-     */
-    public java.lang.String getSymbolicLabel() {
-      java.lang.Object ref = "";
-      if (labelCase_ == 2) {
-        ref = label_;
-      }
+    public java.lang.String getLabel() {
+      java.lang.Object ref = label_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (labelCase_ == 2) {
-          label_ = s;
-        }
+        label_ = s;
         return s;
       }
     }
     /**
-     * <code>string symbolic_label = 2;</code>
-     * @return The bytes for symbolicLabel.
+     * <code>string label = 1;</code>
+     * @return The bytes for label.
      */
     public com.google.protobuf.ByteString
-        getSymbolicLabelBytes() {
-      java.lang.Object ref = "";
-      if (labelCase_ == 2) {
-        ref = label_;
-      }
+        getLabelBytes() {
+      java.lang.Object ref = label_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        if (labelCase_ == 2) {
-          label_ = b;
-        }
+        label_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int LABEL_ID_FIELD_NUMBER = 3;
+    public static final int LABEL_ID_FIELD_NUMBER = 2;
     private int labelId_;
     /**
-     * <code>int32 label_id = 3;</code>
+     * <code>int32 label_id = 2;</code>
      * @return The labelId.
      */
     public int getLabelId() {
@@ -259,15 +185,11 @@ public final class LabelsProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (labelCase_ == 1) {
-        output.writeUInt64(
-            1, (long)((java.lang.Long) label_));
-      }
-      if (labelCase_ == 2) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, label_);
+      if (!getLabelBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, label_);
       }
       if (labelId_ != 0) {
-        output.writeInt32(3, labelId_);
+        output.writeInt32(2, labelId_);
       }
       unknownFields.writeTo(output);
     }
@@ -278,17 +200,12 @@ public final class LabelsProto {
       if (size != -1) return size;
 
       size = 0;
-      if (labelCase_ == 1) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(
-              1, (long)((java.lang.Long) label_));
-      }
-      if (labelCase_ == 2) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, label_);
+      if (!getLabelBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, label_);
       }
       if (labelId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, labelId_);
+          .computeInt32Size(2, labelId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -305,21 +222,10 @@ public final class LabelsProto {
       }
       protoclasses.LabelsProto.LabelMessage other = (protoclasses.LabelsProto.LabelMessage) obj;
 
+      if (!getLabel()
+          .equals(other.getLabel())) return false;
       if (getLabelId()
           != other.getLabelId()) return false;
-      if (!getLabelCase().equals(other.getLabelCase())) return false;
-      switch (labelCase_) {
-        case 1:
-          if (getIntLabel()
-              != other.getIntLabel()) return false;
-          break;
-        case 2:
-          if (!getSymbolicLabel()
-              .equals(other.getSymbolicLabel())) return false;
-          break;
-        case 0:
-        default:
-      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -331,21 +237,10 @@ public final class LabelsProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LABEL_FIELD_NUMBER;
+      hash = (53 * hash) + getLabel().hashCode();
       hash = (37 * hash) + LABEL_ID_FIELD_NUMBER;
       hash = (53 * hash) + getLabelId();
-      switch (labelCase_) {
-        case 1:
-          hash = (37 * hash) + INT_LABEL_FIELD_NUMBER;
-          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-              getIntLabel());
-          break;
-        case 2:
-          hash = (37 * hash) + SYMBOLIC_LABEL_FIELD_NUMBER;
-          hash = (53 * hash) + getSymbolicLabel().hashCode();
-          break;
-        case 0:
-        default:
-      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -479,10 +374,10 @@ public final class LabelsProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        label_ = "";
+
         labelId_ = 0;
 
-        labelCase_ = 0;
-        label_ = null;
         return this;
       }
 
@@ -509,14 +404,8 @@ public final class LabelsProto {
       @java.lang.Override
       public protoclasses.LabelsProto.LabelMessage buildPartial() {
         protoclasses.LabelsProto.LabelMessage result = new protoclasses.LabelsProto.LabelMessage(this);
-        if (labelCase_ == 1) {
-          result.label_ = label_;
-        }
-        if (labelCase_ == 2) {
-          result.label_ = label_;
-        }
+        result.label_ = label_;
         result.labelId_ = labelId_;
-        result.labelCase_ = labelCase_;
         onBuilt();
         return result;
       }
@@ -565,23 +454,12 @@ public final class LabelsProto {
 
       public Builder mergeFrom(protoclasses.LabelsProto.LabelMessage other) {
         if (other == protoclasses.LabelsProto.LabelMessage.getDefaultInstance()) return this;
+        if (!other.getLabel().isEmpty()) {
+          label_ = other.label_;
+          onChanged();
+        }
         if (other.getLabelId() != 0) {
           setLabelId(other.getLabelId());
-        }
-        switch (other.getLabelCase()) {
-          case INT_LABEL: {
-            setIntLabel(other.getIntLabel());
-            break;
-          }
-          case SYMBOLIC_LABEL: {
-            labelCase_ = 2;
-            label_ = other.label_;
-            onChanged();
-            break;
-          }
-          case LABEL_NOT_SET: {
-            break;
-          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -611,138 +489,78 @@ public final class LabelsProto {
         }
         return this;
       }
-      private int labelCase_ = 0;
-      private java.lang.Object label_;
-      public LabelCase
-          getLabelCase() {
-        return LabelCase.forNumber(
-            labelCase_);
-      }
 
-      public Builder clearLabel() {
-        labelCase_ = 0;
-        label_ = null;
-        onChanged();
-        return this;
-      }
-
-
+      private java.lang.Object label_ = "";
       /**
-       * <code>uint64 int_label = 1;</code>
-       * @return The intLabel.
+       * <code>string label = 1;</code>
+       * @return The label.
        */
-      public long getIntLabel() {
-        if (labelCase_ == 1) {
-          return (java.lang.Long) label_;
-        }
-        return 0L;
-      }
-      /**
-       * <code>uint64 int_label = 1;</code>
-       * @param value The intLabel to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIntLabel(long value) {
-        labelCase_ = 1;
-        label_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint64 int_label = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearIntLabel() {
-        if (labelCase_ == 1) {
-          labelCase_ = 0;
-          label_ = null;
-          onChanged();
-        }
-        return this;
-      }
-
-      /**
-       * <code>string symbolic_label = 2;</code>
-       * @return The symbolicLabel.
-       */
-      public java.lang.String getSymbolicLabel() {
-        java.lang.Object ref = "";
-        if (labelCase_ == 2) {
-          ref = label_;
-        }
+      public java.lang.String getLabel() {
+        java.lang.Object ref = label_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (labelCase_ == 2) {
-            label_ = s;
-          }
+          label_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string symbolic_label = 2;</code>
-       * @return The bytes for symbolicLabel.
+       * <code>string label = 1;</code>
+       * @return The bytes for label.
        */
       public com.google.protobuf.ByteString
-          getSymbolicLabelBytes() {
-        java.lang.Object ref = "";
-        if (labelCase_ == 2) {
-          ref = label_;
-        }
+          getLabelBytes() {
+        java.lang.Object ref = label_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          if (labelCase_ == 2) {
-            label_ = b;
-          }
+          label_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string symbolic_label = 2;</code>
-       * @param value The symbolicLabel to set.
+       * <code>string label = 1;</code>
+       * @param value The label to set.
        * @return This builder for chaining.
        */
-      public Builder setSymbolicLabel(
+      public Builder setLabel(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  labelCase_ = 2;
+  
         label_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string symbolic_label = 2;</code>
+       * <code>string label = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSymbolicLabel() {
-        if (labelCase_ == 2) {
-          labelCase_ = 0;
-          label_ = null;
-          onChanged();
-        }
+      public Builder clearLabel() {
+        
+        label_ = getDefaultInstance().getLabel();
+        onChanged();
         return this;
       }
       /**
-       * <code>string symbolic_label = 2;</code>
-       * @param value The bytes for symbolicLabel to set.
+       * <code>string label = 1;</code>
+       * @param value The bytes for label to set.
        * @return This builder for chaining.
        */
-      public Builder setSymbolicLabelBytes(
+      public Builder setLabelBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        labelCase_ = 2;
+        
         label_ = value;
         onChanged();
         return this;
@@ -750,14 +568,14 @@ public final class LabelsProto {
 
       private int labelId_ ;
       /**
-       * <code>int32 label_id = 3;</code>
+       * <code>int32 label_id = 2;</code>
        * @return The labelId.
        */
       public int getLabelId() {
         return labelId_;
       }
       /**
-       * <code>int32 label_id = 3;</code>
+       * <code>int32 label_id = 2;</code>
        * @param value The labelId to set.
        * @return This builder for chaining.
        */
@@ -768,7 +586,7 @@ public final class LabelsProto {
         return this;
       }
       /**
-       * <code>int32 label_id = 3;</code>
+       * <code>int32 label_id = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearLabelId() {
@@ -1637,11 +1455,10 @@ public final class LabelsProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014labels.proto\022\014protoclasses\"X\n\014LabelMes" +
-      "sage\022\023\n\tint_label\030\001 \001(\004H\000\022\030\n\016symbolic_la" +
-      "bel\030\002 \001(\tH\000\022\020\n\010label_id\030\003 \001(\005B\007\n\005label\"8" +
-      "\n\nLabelsList\022*\n\006labels\030\001 \003(\0132\032.protoclas" +
-      "ses.LabelMessageB\rB\013LabelsProtob\006proto3"
+      "\n\014labels.proto\022\014protoclasses\"/\n\014LabelMes" +
+      "sage\022\r\n\005label\030\001 \001(\t\022\020\n\010label_id\030\002 \001(\005\"8\n" +
+      "\nLabelsList\022*\n\006labels\030\001 \003(\0132\032.protoclass" +
+      "es.LabelMessageB\rB\013LabelsProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1652,7 +1469,7 @@ public final class LabelsProto {
     internal_static_protoclasses_LabelMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protoclasses_LabelMessage_descriptor,
-        new java.lang.String[] { "IntLabel", "SymbolicLabel", "LabelId", "Label", });
+        new java.lang.String[] { "Label", "LabelId", });
     internal_static_protoclasses_LabelsList_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protoclasses_LabelsList_fieldAccessorTable = new
