@@ -41,33 +41,14 @@ message FunctionMessage{
     }
     
     message InstructionMessage{
-      int32 mnemonic_id = 1;
-      bool is_thumb = 2;
+      bool is_thumb = 1;
+      
+      ASTNodeMessage root = 2;
       
       message OperandMessage{
-        string name = 1;
-        
-        message OperandObject{
-            
-            oneof value {
-                int32 register_id = 1;
-                int64 const = 2;
-                uint64 address = 3;
-                string symbolic_address = 4;
-            }
-            
-            enum Type {
-                NULL = 0;
-                REGISTER = 1;
-                SCALAR = 2;
-                ADDRESS = 3;
-            }
+        int32 operand_number = 1;
 
-            Type type = 5;
-        }
-        
         repeated int32 reference_id = 2;
-        repeated OperandObject op_objects = 3;
       }
       
       repeated OperandMessage operands = 3;
@@ -83,4 +64,20 @@ message FunctionMessage{
 
 message FunctionsList{
     repeated FunctionMessage functions = 1;
+}
+
+message ASTNodeMessage {
+  int32 label_id = 1;
+  
+  enum Type {
+    NONE = 0;
+    REG = 1;
+    CONST = 2;
+    ADDR = 3;  
+  }
+  
+  Type type = 2;
+
+  repeated ASTNodeMessage children = 3;
+
 }

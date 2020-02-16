@@ -18,40 +18,40 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='protoclasses',
   syntax='proto3',
   serialized_options=b'B\rFunctionProto',
-  serialized_pb=b'\n\x0e\x66unction.proto\x12\x0cprotoclasses\"\xa5\x0b\n\x0f\x46unctionMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x15\n\x0b\x65ntry_point\x18\x02 \x01(\x04H\x00\x12\x1e\n\x14symbolic_entry_point\x18\x03 \x01(\tH\x00\x12\x12\n\ndecompiled\x18\x04 \x01(\t\x12\x42\n\nparameters\x18\x05 \x03(\x0b\x32..protoclasses.FunctionMessage.ParameterMessage\x12@\n\tvariables\x18\x06 \x03(\x0b\x32-.protoclasses.FunctionMessage.VariableMessage\x12\x45\n\x0c\x62\x61sic_blocks\x18\x07 \x03(\x0b\x32/.protoclasses.FunctionMessage.BasicBlockMessage\x1aX\n\x10ParameterMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tdata_type\x18\x02 \x01(\t\x12\x0e\n\x06length\x18\x03 \x01(\r\x12\x13\n\x0bregister_id\x18\x04 \x03(\x05\x1am\n\x0fVariableMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tdata_type\x18\x02 \x01(\t\x12\x0e\n\x06length\x18\x03 \x01(\r\x12\x14\n\x0cstack_offset\x18\x04 \x01(\x05\x12\x13\n\x0bregister_id\x18\x05 \x03(\x05\x1a\x8b\x07\n\x11\x42\x61sicBlockMessage\x12\x1a\n\x10starting_address\x18\x01 \x01(\x04H\x00\x12#\n\x19symbolic_starting_address\x18\x02 \x01(\tH\x00\x12\x18\n\x0e\x65nding_address\x18\x03 \x01(\x04H\x01\x12!\n\x17symbolic_ending_address\x18\x04 \x01(\tH\x01\x12X\n\x0cinstructions\x18\x05 \x03(\x0b\x32\x42.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage\x1a\xeb\x04\n\x12InstructionMessage\x12\x13\n\x0bmnemonic_id\x18\x01 \x01(\x05\x12\x10\n\x08is_thumb\x18\x02 \x01(\x08\x12\x63\n\x08operands\x18\x03 \x03(\x0b\x32Q.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage\x1a\xc8\x03\n\x0eOperandMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0creference_id\x18\x02 \x03(\x05\x12s\n\nop_objects\x18\x03 \x03(\x0b\x32_.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject\x1a\x9c\x02\n\rOperandObject\x12\x15\n\x0bregister_id\x18\x01 \x01(\x05H\x00\x12\x0f\n\x05\x63onst\x18\x02 \x01(\x03H\x00\x12\x11\n\x07\x61\x64\x64ress\x18\x03 \x01(\x04H\x00\x12\x1a\n\x10symbolic_address\x18\x04 \x01(\tH\x00\x12r\n\x04type\x18\x05 \x01(\x0e\x32\x64.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type\"7\n\x04Type\x12\x08\n\x04NULL\x10\x00\x12\x0c\n\x08REGISTER\x10\x01\x12\n\n\x06SCALAR\x10\x02\x12\x0b\n\x07\x41\x44\x44RESS\x10\x03\x42\x07\n\x05valueB\x18\n\x16starting_address_valueB\x16\n\x14\x65nding_address_valueB\x15\n\x13\x65ntry_point_address\"A\n\rFunctionsList\x12\x30\n\tfunctions\x18\x01 \x03(\x0b\x32\x1d.protoclasses.FunctionMessageB\x0f\x42\rFunctionProtob\x06proto3'
+  serialized_pb=b'\n\x0e\x66unction.proto\x12\x0cprotoclasses\"\xb1\x08\n\x0f\x46unctionMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x15\n\x0b\x65ntry_point\x18\x02 \x01(\x04H\x00\x12\x1e\n\x14symbolic_entry_point\x18\x03 \x01(\tH\x00\x12\x12\n\ndecompiled\x18\x04 \x01(\t\x12\x42\n\nparameters\x18\x05 \x03(\x0b\x32..protoclasses.FunctionMessage.ParameterMessage\x12@\n\tvariables\x18\x06 \x03(\x0b\x32-.protoclasses.FunctionMessage.VariableMessage\x12\x45\n\x0c\x62\x61sic_blocks\x18\x07 \x03(\x0b\x32/.protoclasses.FunctionMessage.BasicBlockMessage\x1aX\n\x10ParameterMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tdata_type\x18\x02 \x01(\t\x12\x0e\n\x06length\x18\x03 \x01(\r\x12\x13\n\x0bregister_id\x18\x04 \x03(\x05\x1am\n\x0fVariableMessage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tdata_type\x18\x02 \x01(\t\x12\x0e\n\x06length\x18\x03 \x01(\r\x12\x14\n\x0cstack_offset\x18\x04 \x01(\x05\x12\x13\n\x0bregister_id\x18\x05 \x03(\x05\x1a\x97\x04\n\x11\x42\x61sicBlockMessage\x12\x1a\n\x10starting_address\x18\x01 \x01(\x04H\x00\x12#\n\x19symbolic_starting_address\x18\x02 \x01(\tH\x00\x12\x18\n\x0e\x65nding_address\x18\x03 \x01(\x04H\x01\x12!\n\x17symbolic_ending_address\x18\x04 \x01(\tH\x01\x12X\n\x0cinstructions\x18\x05 \x03(\x0b\x32\x42.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage\x1a\xf7\x01\n\x12InstructionMessage\x12\x10\n\x08is_thumb\x18\x01 \x01(\x08\x12*\n\x04root\x18\x02 \x01(\x0b\x32\x1c.protoclasses.ASTNodeMessage\x12\x63\n\x08operands\x18\x03 \x03(\x0b\x32Q.protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage\x1a>\n\x0eOperandMessage\x12\x16\n\x0eoperand_number\x18\x01 \x01(\x05\x12\x14\n\x0creference_id\x18\x02 \x03(\x05\x42\x18\n\x16starting_address_valueB\x16\n\x14\x65nding_address_valueB\x15\n\x13\x65ntry_point_address\"A\n\rFunctionsList\x12\x30\n\tfunctions\x18\x01 \x03(\x0b\x32\x1d.protoclasses.FunctionMessage\"\xb3\x01\n\x0e\x41STNodeMessage\x12\x10\n\x08label_id\x18\x01 \x01(\x05\x12/\n\x04type\x18\x02 \x01(\x0e\x32!.protoclasses.ASTNodeMessage.Type\x12.\n\x08\x63hildren\x18\x03 \x03(\x0b\x32\x1c.protoclasses.ASTNodeMessage\".\n\x04Type\x12\x08\n\x04NONE\x10\x00\x12\x07\n\x03REG\x10\x01\x12\t\n\x05\x43ONST\x10\x02\x12\x08\n\x04\x41\x44\x44R\x10\x03\x42\x0f\x42\rFunctionProtob\x06proto3'
 )
 
 
 
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT_TYPE = _descriptor.EnumDescriptor(
+_ASTNODEMESSAGE_TYPE = _descriptor.EnumDescriptor(
   name='Type',
-  full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.Type',
+  full_name='protoclasses.ASTNodeMessage.Type',
   filename=None,
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='NULL', index=0, number=0,
+      name='NONE', index=0, number=0,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='REGISTER', index=1, number=1,
+      name='REG', index=1, number=1,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='SCALAR', index=2, number=2,
+      name='CONST', index=2, number=2,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='ADDRESS', index=3, number=3,
+      name='ADDR', index=3, number=3,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1341,
-  serialized_end=1396,
+  serialized_start=1309,
+  serialized_end=1355,
 )
-_sym_db.RegisterEnumDescriptor(_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT_TYPE)
+_sym_db.RegisterEnumDescriptor(_ASTNODEMESSAGE_TYPE)
 
 
 _FUNCTIONMESSAGE_PARAMETERMESSAGE = _descriptor.Descriptor(
@@ -163,68 +163,6 @@ _FUNCTIONMESSAGE_VARIABLEMESSAGE = _descriptor.Descriptor(
   serialized_end=545,
 )
 
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT = _descriptor.Descriptor(
-  name='OperandObject',
-  full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='register_id', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.register_id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='const', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.const', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='address', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.address', index=2,
-      number=3, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='symbolic_address', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.symbolic_address', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='type', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.type', index=4,
-      number=5, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT_TYPE,
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='value', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject.value',
-      index=0, containing_type=None, fields=[]),
-  ],
-  serialized_start=1121,
-  serialized_end=1405,
-)
-
 _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE = _descriptor.Descriptor(
   name='OperandMessage',
   full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage',
@@ -233,9 +171,9 @@ _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE = _descript
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='operand_number', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.operand_number', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -246,17 +184,10 @@ _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE = _descript
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='op_objects', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.op_objects', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT, ],
+  nested_types=[],
   enum_types=[
   ],
   serialized_options=None,
@@ -265,8 +196,8 @@ _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE = _descript
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=949,
-  serialized_end=1405,
+  serialized_start=971,
+  serialized_end=1033,
 )
 
 _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE = _descriptor.Descriptor(
@@ -277,16 +208,16 @@ _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='mnemonic_id', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.mnemonic_id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      name='is_thumb', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.is_thumb', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='is_thumb', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.is_thumb', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      name='root', full_name='protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.root', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -310,7 +241,7 @@ _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=786,
-  serialized_end=1405,
+  serialized_end=1033,
 )
 
 _FUNCTIONMESSAGE_BASICBLOCKMESSAGE = _descriptor.Descriptor(
@@ -374,7 +305,7 @@ _FUNCTIONMESSAGE_BASICBLOCKMESSAGE = _descriptor.Descriptor(
       index=1, containing_type=None, fields=[]),
   ],
   serialized_start=548,
-  serialized_end=1455,
+  serialized_end=1083,
 )
 
 _FUNCTIONMESSAGE = _descriptor.Descriptor(
@@ -449,7 +380,7 @@ _FUNCTIONMESSAGE = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=33,
-  serialized_end=1478,
+  serialized_end=1106,
 )
 
 
@@ -479,29 +410,60 @@ _FUNCTIONSLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1480,
-  serialized_end=1545,
+  serialized_start=1108,
+  serialized_end=1173,
+)
+
+
+_ASTNODEMESSAGE = _descriptor.Descriptor(
+  name='ASTNodeMessage',
+  full_name='protoclasses.ASTNodeMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='label_id', full_name='protoclasses.ASTNodeMessage.label_id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='protoclasses.ASTNodeMessage.type', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='children', full_name='protoclasses.ASTNodeMessage.children', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _ASTNODEMESSAGE_TYPE,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1176,
+  serialized_end=1355,
 )
 
 _FUNCTIONMESSAGE_PARAMETERMESSAGE.containing_type = _FUNCTIONMESSAGE
 _FUNCTIONMESSAGE_VARIABLEMESSAGE.containing_type = _FUNCTIONMESSAGE
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.fields_by_name['type'].enum_type = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT_TYPE
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.containing_type = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT_TYPE.containing_type = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.oneofs_by_name['value'].fields.append(
-  _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.fields_by_name['register_id'])
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.fields_by_name['register_id'].containing_oneof = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.oneofs_by_name['value']
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.oneofs_by_name['value'].fields.append(
-  _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.fields_by_name['const'])
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.fields_by_name['const'].containing_oneof = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.oneofs_by_name['value']
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.oneofs_by_name['value'].fields.append(
-  _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.fields_by_name['address'])
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.fields_by_name['address'].containing_oneof = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.oneofs_by_name['value']
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.oneofs_by_name['value'].fields.append(
-  _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.fields_by_name['symbolic_address'])
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.fields_by_name['symbolic_address'].containing_oneof = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT.oneofs_by_name['value']
-_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE.fields_by_name['op_objects'].message_type = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT
 _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE.containing_type = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE
+_FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE.fields_by_name['root'].message_type = _ASTNODEMESSAGE
 _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE.fields_by_name['operands'].message_type = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE
 _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE.containing_type = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE
 _FUNCTIONMESSAGE_BASICBLOCKMESSAGE.fields_by_name['instructions'].message_type = _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE
@@ -528,8 +490,12 @@ _FUNCTIONMESSAGE.oneofs_by_name['entry_point_address'].fields.append(
   _FUNCTIONMESSAGE.fields_by_name['symbolic_entry_point'])
 _FUNCTIONMESSAGE.fields_by_name['symbolic_entry_point'].containing_oneof = _FUNCTIONMESSAGE.oneofs_by_name['entry_point_address']
 _FUNCTIONSLIST.fields_by_name['functions'].message_type = _FUNCTIONMESSAGE
+_ASTNODEMESSAGE.fields_by_name['type'].enum_type = _ASTNODEMESSAGE_TYPE
+_ASTNODEMESSAGE.fields_by_name['children'].message_type = _ASTNODEMESSAGE
+_ASTNODEMESSAGE_TYPE.containing_type = _ASTNODEMESSAGE
 DESCRIPTOR.message_types_by_name['FunctionMessage'] = _FUNCTIONMESSAGE
 DESCRIPTOR.message_types_by_name['FunctionsList'] = _FUNCTIONSLIST
+DESCRIPTOR.message_types_by_name['ASTNodeMessage'] = _ASTNODEMESSAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 FunctionMessage = _reflection.GeneratedProtocolMessageType('FunctionMessage', (_message.Message,), {
@@ -553,13 +519,6 @@ FunctionMessage = _reflection.GeneratedProtocolMessageType('FunctionMessage', (_
     'InstructionMessage' : _reflection.GeneratedProtocolMessageType('InstructionMessage', (_message.Message,), {
 
       'OperandMessage' : _reflection.GeneratedProtocolMessageType('OperandMessage', (_message.Message,), {
-
-        'OperandObject' : _reflection.GeneratedProtocolMessageType('OperandObject', (_message.Message,), {
-          'DESCRIPTOR' : _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE_OPERANDOBJECT,
-          '__module__' : 'function_pb2'
-          # @@protoc_insertion_point(class_scope:protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject)
-          })
-        ,
         'DESCRIPTOR' : _FUNCTIONMESSAGE_BASICBLOCKMESSAGE_INSTRUCTIONMESSAGE_OPERANDMESSAGE,
         '__module__' : 'function_pb2'
         # @@protoc_insertion_point(class_scope:protoclasses.FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage)
@@ -585,7 +544,6 @@ _sym_db.RegisterMessage(FunctionMessage.VariableMessage)
 _sym_db.RegisterMessage(FunctionMessage.BasicBlockMessage)
 _sym_db.RegisterMessage(FunctionMessage.BasicBlockMessage.InstructionMessage)
 _sym_db.RegisterMessage(FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage)
-_sym_db.RegisterMessage(FunctionMessage.BasicBlockMessage.InstructionMessage.OperandMessage.OperandObject)
 
 FunctionsList = _reflection.GeneratedProtocolMessageType('FunctionsList', (_message.Message,), {
   'DESCRIPTOR' : _FUNCTIONSLIST,
@@ -593,6 +551,13 @@ FunctionsList = _reflection.GeneratedProtocolMessageType('FunctionsList', (_mess
   # @@protoc_insertion_point(class_scope:protoclasses.FunctionsList)
   })
 _sym_db.RegisterMessage(FunctionsList)
+
+ASTNodeMessage = _reflection.GeneratedProtocolMessageType('ASTNodeMessage', (_message.Message,), {
+  'DESCRIPTOR' : _ASTNODEMESSAGE,
+  '__module__' : 'function_pb2'
+  # @@protoc_insertion_point(class_scope:protoclasses.ASTNodeMessage)
+  })
+_sym_db.RegisterMessage(ASTNodeMessage)
 
 
 DESCRIPTOR._options = None
