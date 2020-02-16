@@ -90,8 +90,8 @@ import protoclasses.SymbolsProto.SymbolsList;
 public class GhiDump extends GhidraScript {
 
   static ReferenceList.Builder references = ReferenceList.newBuilder();
-  static Map<ReferenceKey, Integer> referenceMap = new HashMap<ReferenceKey, Integer>();
-  static Map<String, Integer> labels = new HashMap<String, Integer>();
+  static Map<ReferenceKey, Integer> referenceMap = new LinkedHashMap<ReferenceKey, Integer>();
+  static Map<String, Integer> labels = new LinkedHashMap<String, Integer>();
 
   private FunctionsList dumpFunctions(FlatDecompilerAPI decompilerAPI, Listing listing) {
     FunctionIterator fooIter = listing.getFunctions(true);
@@ -298,9 +298,6 @@ public class GhiDump extends GhidraScript {
 
         String refType = ref.getReferenceType().toString();
         String refSource = ref.getSource().toString().toUpperCase();
-
-        // REF ID
-        reference.setReferenceId(reference_id);
 
         if (!refFrom.toString().matches("-?[0-9a-f]+"))
           reference.setSymbolicFromAddress(refFrom.toString());
@@ -858,11 +855,8 @@ public class GhiDump extends GhidraScript {
     for(Map.Entry<String, Integer> entry: labels.entrySet()) {
       LabelMessage.Builder label = LabelMessage.newBuilder();
       String input = entry.getKey();
-      int output = entry.getValue();
-            
+     
       label.setLabel(input);
-
-      label.setLabelId(output);
       
       labelslist.addLabels(label.build());
     }
