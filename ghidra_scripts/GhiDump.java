@@ -733,9 +733,9 @@ public class GhiDump extends GhidraScript {
             node.setValue(replacement);
           }
 
-          else if(node.getValue().contains("0x") && node.getValue().substring(addroffset).equals(pure.substring(addroffset+2))) {
-   
-            node.setValue(replacement);
+          else if(node.getValue().contains("0x") && node.getType().equals("Address")) {
+        	  if(node.getValue().substring(addroffset).equals(pure.substring(addroffset+2)))
+        		  node.setValue(replacement);
           }
  
         }
