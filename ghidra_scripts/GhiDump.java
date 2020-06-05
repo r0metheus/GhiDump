@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.lang3.StringUtils;
+import org.bson.Document;
+
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Message;
 
@@ -86,6 +88,22 @@ import protoclasses.SegmentsProto.SegmentMessage;
 import protoclasses.SymbolsProto.SymbolMessage;
 import protoclasses.SymbolsProto.SymbolMessage.SymbolMessageType;
 import protoclasses.SymbolsProto.SymbolsList;
+
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.ConnectionString;
+import com.mongodb.ServerAddress;
+import com.mongodb.MongoCredential;
+import com.mongodb.MongoClientOptions;
+
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.*;
+import com.mongodb.client.model.CreateCollectionOptions;
+import com.mongodb.client.model.ValidationOptions;
+
+import java.util.Arrays;
 
 public class GhiDump extends GhidraScript {
 
@@ -516,52 +534,34 @@ public class GhiDump extends GhidraScript {
     return database.build();
   }
 
-  private SegmentList dumpSegments(FlatProgramAPI programAPI) {
-    SegmentList.Builder segments = SegmentList.newBuilder();
-
+  private void dumpSegments(FlatProgramAPI programAPI, MongoDatabase database) {
+	  MongoCollection<Document> segmentcollection = database.getCollection("segments");
+	  
     for (MemoryBlock mb : programAPI.getMemoryBlocks()) {
-      SegmentMessage.Builder segment = SegmentMessage.newBuilder();
+    	String name = mb.getName().replace(".", "(dot)");
 
-      String start = mb.getStart().toString();
-      String end = mb.getEnd().toString();
-
-      segment.setName(mb.getName());
-
-      if (!start.matches("-?[0-9a-f]+"))
-        segment.setSymbolicStartingAddress(start);
-      else
-        segment.setLongStartingAddress(Long.parseLong(start, 16));
-
-      if (!end.matches("-?[0-9a-f]+"))
-        segment.setSymbolicEndingAddress(end);
-      else
-        segment.setLongEndingAddress(Long.parseLong(end, 16));
-
-      segment.setLength((int) mb.getSize());
-
-      segments.addSegments(segment.build());
+    	String start = mb.getStart().toString();
+    	String end = mb.getEnd().toString();
+    	int size = (int) mb.getSize();
+    	
+    	List<Object> values = new ArrayList<Object>();
+    	values.add(start);
+    	values.add(end);
+    	values.add(size);    	
+    	
+    	segmentcollection.insertOne(new Document().append(name, values));
+ 
     }
 
-    return segments.build();
   }
 
-  private MetaList dumpMetadata() {
-    MetaList.Builder metadata = MetaList.newBuilder();
+  private void dumpMetadata(MongoDatabase database) {
+	  MongoCollection<Document> metacollection = database.getCollection("metadata");
+	  
+	  for (Map.Entry<String, String> entry : currentProgram.getMetadata().entrySet()) {
+		  metacollection.insertOne(new Document().append(entry.getKey(), entry.getValue()));
+	  }
 
-    for (Map.Entry<String, String> entry : currentProgram.getMetadata().entrySet()) {
-      MetadataMessage.Builder meta = MetadataMessage.newBuilder();
-
-      meta.setKey(entry.getKey());
-
-      if (entry.getValue() != null)
-        meta.setValue(entry.getValue());
-      else
-        meta.setValue("null");
-
-      metadata.addMetadata(meta.build());
-    }
-
-    return metadata.build();
   }
 
   private void protoWriter(Message message, String filename) throws IOException {
@@ -869,8 +869,12 @@ public class GhiDump extends GhidraScript {
     Listing listing = currentProgram.getListing();
     FlatProgramAPI programAPI = new FlatProgramAPI(currentProgram);
     FlatDecompilerAPI decompilerAPI = new FlatDecompilerAPI(programAPI);
-    String programName = currentProgram.getName();
-
+    String programName = currentProgram.getName().replace(".", "(dot)");
+    
+    MongoClient mongoClient = MongoClients.create();
+    println(programName);
+    MongoDatabase database = mongoClient.getDatabase(programName);
+    
     File results = new File("GhiDumps" + File.separator + programName);
     
     if (!results.exists())
@@ -884,14 +888,17 @@ public class GhiDump extends GhidraScript {
     println("                                  /_/      ");
     println("Dumping " + programName + "...");
 
-    protoWriter(dumpMetadata(), programName+"_metadata"); 
-    protoWriter(dumpSegments(programAPI), programName+"_segments"); 
+    dumpMetadata(database);
+    
+    dumpSegments(programAPI, database);
+    
+    /*
     protoWriter(dumpSymbols(listing), programName+"_symbols");
     protoWriter(dumpData(programAPI, listing), programName+"_data");
 
     dumpFunctions(decompilerAPI, listing);
     dumpLabels();
-    
+    */
     println("Dump completed.");
   }
 
