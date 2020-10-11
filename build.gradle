@@ -14,8 +14,20 @@
 // application.gradle.version property in <GHIDRA_INSTALL_DIR>/Ghidra/application.properties
 // for the correction version of Gradle to use for the Ghidra installation you specify.
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'org.neo4j.driver:neo4j-java-driver:4.1.1'
+	compile 'com.google.protobuf:protobuf-java:3.13.0'
+}
+
 //----------------------START "DO NOT MODIFY" SECTION------------------------------
-def ghidraInstallDir
+def ghidraInstallDir = 'C:\\Users\\r0metheus\\Documents\\ghidra_9.1.2_PUBLIC'
 
 if (System.env.GHIDRA_INSTALL_DIR) {
 	ghidraInstallDir = System.env.GHIDRA_INSTALL_DIR
