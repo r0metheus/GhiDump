@@ -22,8 +22,8 @@ repositories {
 }
 
 dependencies {
-	compile 'org.neo4j.driver:neo4j-java-driver:4.1.1'
-	compile 'com.google.protobuf:protobuf-java:3.13.0'
+	implementation 'org.neo4j.driver:neo4j-java-driver:4.1.1'
+	implementation 'com.google.protobuf:protobuf-java:3.13.0'
 }
 
 //----------------------START "DO NOT MODIFY" SECTION------------------------------
