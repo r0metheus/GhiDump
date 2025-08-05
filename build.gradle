@@ -1,4 +1,5 @@
-// Builds a Ghidra Extension for a given Ghidra installation.
+// Ghidump 2.0 - Ghidra Extension Build Script
+// Builds a Ghidra Extension for automatic analysis export to Redis
 //
 // An absolute path to the Ghidra installation directory must be supplied either by setting the 
 // GHIDRA_INSTALL_DIR environment variable or Gradle project property:
@@ -9,25 +10,28 @@
 //         or
 //
 //     > gradle -PGHIDRA_INSTALL_DIR=<Absolute path to Ghidra>
-//
-// Gradle should be invoked from the directory of the project to build.  Please see the
-// application.gradle.version property in <GHIDRA_INSTALL_DIR>/Ghidra/application.properties
-// for the correction version of Gradle to use for the Ghidra installation you specify.
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
+
+// Extension info
+version = '2.0.0'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-	implementation 'org.neo4j.driver:neo4j-java-driver:4.1.1'
-	implementation 'com.google.protobuf:protobuf-java:3.13.0'
+	// Ghidump 2.0 dependencies
+	implementation 'org.msgpack:msgpack-core:0.9.5'
+	implementation 'redis.clients:jedis:5.0.0'
 }
 
-//----------------------START "DO NOT MODIFY" SECTION------------------------------
-def ghidraInstallDir = 'C:\\Users\\r0metheus\\Documents\\ghidra_9.1.2_PUBLIC'
+// Java version configuration
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+// Ghidra installation directory
+def ghidraInstallDir
 
 if (System.env.GHIDRA_INSTALL_DIR) {
 	ghidraInstallDir = System.env.GHIDRA_INSTALL_DIR
@@ -42,4 +46,3 @@ if (ghidraInstallDir) {
 else {
 	throw new GradleException("GHIDRA_INSTALL_DIR is not defined!")
 }
-//----------------------END "DO NOT MODIFY" SECTION-------------------------------
